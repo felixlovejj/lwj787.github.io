@@ -1,0 +1,1009 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+  <p><del>不要问我为什么是粉色，因为我喜欢粉色</del></p>
+          <h2>开发工具</h2>
+<ul>
+    <h2>开发工具</h2>
+<ul>
+<li>集成开发环境：Pycharm</li>
+<li>Python</li>
+<li>Pyside2</li>
+</ul>
+<h2>功能</h2>
+<ol>
+<li><strong>计算器</strong></li>
+</ol>
+<p>包括计算器和科学计算器，科学计算器功能更多，支持键盘输入，有输入音效</p>
+<ol start="2">
+<li><strong>佳语翻译器</strong></li>
+</ol>
+<p>把用户输入的文字转化为意义不明的文字，并且可以通过该软件给还原回来。。。。</p>
+<p><img src="../../image/passage1/4.png" alt="4"></p>
+<p><img src="../../image/passage1/10.png" alt="10"></p>
+<ol start="3">
+<li><strong>解方程</strong></li>
+</ol>
+<p>不必多言，就是解方程的东西，初中学一元二次方程的时候写了这个软件，用来懒得写求根公式</p>
+<p><img src="../../image/passage1/5.png" alt="5"></p>
+<ol start="4">
+<li><strong>乱码编译器</strong></li>
+</ol>
+<p>就是加密，比刚刚那个高级一点，这个对于同一段文字会生成随机的密钥，加强随机性，需要密钥和加密后的文字同时输入才能得到原文字（原理都是基于凯撒密码）</p>
+<p><img src="../../image/passage1/6.png" alt="6"></p>
+<ol start="5">
+<li><strong>商城（皮肤/设置）</strong></li>
+</ol>
+<p>当初做了金币系统，可以买皮肤，但是懒得做皮肤了。。。。</p>
+<p><img src="../../image/passage1/7.png" alt="1"></p>
+<p><img src="../../image/passage1/8.png" alt="1"></p>
+<ol start="6">
+<li><strong>小鸟管道</strong></li>
+</ol>
+<p>前面提到金币系统，那么金币从哪里来呢？就是这个游戏了</p>
+<p>其实我本来只是想做一个计算器，后来加的功能越来越多。。。甚至有了游戏，所以干脆改名工具箱了</p>
+<p><img src="../../image/passage1/9.png" alt="1"></p>
+<p>源码就不放了，想看加我qq</p>
+<h1>后来增加了新的UI界面，但是没有把功能放进去，但是UI还是挺好看的，如图</h1>
+<p><img src="../../image/passage1/11.png" alt="1"></p>
+<p>还可以，但是没有再完善了</p>
+<p><strong>以下为main.py的代码，也有近千行了</strong></p>
+<p>​</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">import keyboard                           #qq号：2141703630有兴趣交流哦
+</span><span class="code-line line-number" line="2">from PySide2.QtWidgets import QApplication, QMessageBox
+</span><span class="code-line line-number" line="3">from PySide2.QtUiTools import QUiLoader
+</span><span class="code-line line-number" line="4">import pygame
+</span><span class="code-line line-number" line="5">import math
+</span><span class="code-line line-number" line="6">from sympy import *
+</span><span class="code-line line-number" line="7">from pygame.mixer import *
+</span><span class="code-line line-number" line="8">import time
+</span><span class="code-line line-number" line="9">import json
+</span><span class="code-line line-number" line="10">import Bird
+</span><span class="code-line line-number" line="11">import Pipe
+</span><span class="code-line line-number" line="12">import pygame
+</span><span class="code-line line-number" line="13">from pygame.locals import *
+</span><span class="code-line line-number" line="14">import sys
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16">sys.setrecursionlimit(5000)
+</span><span class="code-line line-number" line="17">lmresulr=''
+</span><span class="code-line line-number" line="18">x = Symbol('x')
+</span><span class="code-line line-number" line="19">y = Symbol('y')#导入
+</span><span class="code-line line-number" line="20">result1 = ''
+</span><span class="code-line line-number" line="21">lfresult=''
+</span><span class="code-line line-number" line="22">pygame.mixer.init()
+</span><span class="code-line line-number" line="23">pygame.mixer.music.load('dazi.mp3')  
+</span><span class="code-line line-number" line="24">pygame.mixer.music.set_volume(1.0)
+</span><span class="code-line line-number" line="25">shuru=''
+</span><span class="code-line line-number" line="26">xianshi='0'
+</span><span class="code-line line-number" line="27">zxianshi='0'
+</span><span class="code-line line-number" line="28">zxianshi2=''
+</span><span class="code-line line-number" line="29">lastwin='win1'
+</span><span class="code-line line-number" line="30">rt=''
+</span><span class="code-line line-number" line="31">pan=''
+</span><span class="code-line line-number" line="32">m=0
+</span><span class="code-line line-number" line="33">WIDTH, HEIGHT = 640, 480
+</span><span class="code-line line-number" line="34">running =False 
+</span><span class="code-line line-number" line="35">from Game6 import main
+</span><span class="code-line line-number" line="36">
+</span><span class="code-line line-number" line="37">class Window1:
+</span><span class="code-line line-number" line="38">
+</span><span class="code-line line-number" line="39">    def __init__(self):
+</span><span class="code-line line-number" line="40">        self.ui = QUiLoader().load('win1.ui')#动态加载ui
+</span><span class="code-line line-number" line="41">        self.ui.bt1.clicked.connect(lambda:self.cao1("1"))
+</span><span class="code-line line-number" line="42">        self.ui.bt2.clicked.connect(lambda:self.cao1("2"))
+</span><span class="code-line line-number" line="43">        self.ui.bt3.clicked.connect(lambda:self.cao1("3"))
+</span><span class="code-line line-number" line="44">        self.ui.bt4.clicked.connect(lambda:self.cao1("4"))
+</span><span class="code-line line-number" line="45">        self.ui.bt5.clicked.connect(lambda:self.cao1("5"))
+</span><span class="code-line line-number" line="46">        self.ui.bt6.clicked.connect(lambda:self.cao1("6"))
+</span><span class="code-line line-number" line="47">        self.ui.bt7.clicked.connect(lambda:self.cao1("7"))
+</span><span class="code-line line-number" line="48">        self.ui.bt8.clicked.connect(lambda:self.cao1("8"))
+</span><span class="code-line line-number" line="49">        self.ui.bt9.clicked.connect(lambda:self.cao1("9"))
+</span><span class="code-line line-number" line="50">        self.ui.bt0.clicked.connect(lambda:self.cao1("0"))
+</span><span class="code-line line-number" line="51">        self.ui.btdian.clicked.connect(lambda:self.cao7())
+</span><span class="code-line line-number" line="52">        self.ui.btcheng.clicked.connect(lambda:self.cao3("×"))
+</span><span class="code-line line-number" line="53">        self.ui.btchu.clicked.connect(lambda:self.cao6(""))
+</span><span class="code-line line-number" line="54">        self.ui.btjia.clicked.connect(lambda:self.cao3("+"))
+</span><span class="code-line line-number" line="55">        self.ui.btjian.clicked.connect(lambda:self.cao3("-"))
+</span><span class="code-line line-number" line="56">        self.ui.btdeng.clicked.connect(lambda:self.cao2())
+</span><span class="code-line line-number" line="57">        self.ui.bttui.clicked.connect(lambda:self.cao4())
+</span><span class="code-line line-number" line="58">        self.ui.btc.clicked.connect(lambda:self.cao5())
+</span><span class="code-line line-number" line="59">        self.ui.btmenu.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="60">        self.ui.btyan.clicked.connect(lambda:self.cao8())
+</span><span class="code-line line-number" line="61">
+</span><span class="code-line line-number" line="62">        self.ui.xianshi.setText(zxianshi)
+</span><span class="code-line line-number" line="63">        self.maxnum=16
+</span><span class="code-line line-number" line="64">        if __name__ == "__main__":
+</span><span class="code-line line-number" line="65">            keyboard.add_hotkey("1",lambda:self.cao1("1"))
+</span><span class="code-line line-number" line="66">            keyboard.add_hotkey("2",lambda:self.cao1("2"))
+</span><span class="code-line line-number" line="67">            keyboard.add_hotkey("3",lambda:self.cao1("3"))
+</span><span class="code-line line-number" line="68">            keyboard.add_hotkey("4",lambda:self.cao1("4"))
+</span><span class="code-line line-number" line="69">            keyboard.add_hotkey("5",lambda:self.cao1("5"))
+</span><span class="code-line line-number" line="70">            keyboard.add_hotkey("6",lambda:self.cao1("6"))
+</span><span class="code-line line-number" line="71">            keyboard.add_hotkey("7",lambda:self.cao1("7"))
+</span><span class="code-line line-number" line="72">            keyboard.add_hotkey("8",lambda:self.cao1("8"))
+</span><span class="code-line line-number" line="73">            keyboard.add_hotkey("9",lambda:self.cao1("9"))
+</span><span class="code-line line-number" line="74">            keyboard.add_hotkey("0",lambda:self.cao1("0"))
+</span><span class="code-line line-number" line="75">            keyboard.add_hotkey("+",lambda:self.cao3("+"))
+</span><span class="code-line line-number" line="76">            keyboard.add_hotkey("-",lambda:self.cao3("-"))
+</span><span class="code-line line-number" line="77">            keyboard.add_hotkey("*",lambda:self.cao3("×"))
+</span><span class="code-line line-number" line="78">            keyboard.add_hotkey("/",lambda:self.cao6(""))
+</span><span class="code-line line-number" line="79">            keyboard.add_hotkey("backspace",lambda:self.cao4())
+</span><span class="code-line line-number" line="80">            keyboard.add_hotkey("enter",lambda:self.cao2())
+</span><span class="code-line line-number" line="81">            keyboard.add_hotkey("ctrl+backspace",lambda:self.cao5())
+</span><span class="code-line line-number" line="82">        self.ui.xianshi.setText(str(0))
+</span><span class="code-line line-number" line="83">        self.ui.xianshi.setText(zxianshi)
+</span><span class="code-line line-number" line="84">        self.ui.xianshi2.setText(zxianshi2)
+</span><span class="code-line line-number" line="85">    def cao1(self,intt):
+</span><span class="code-line line-number" line="86">        global shuru,xianshi,zxianshi,zxianshi2
+</span><span class="code-line line-number" line="87">        if len(shuru)&lt;=self.maxnum+1:
+</span><span class="code-line line-number" line="88">            if xianshi=="0":
+</span><span class="code-line line-number" line="89">                xianshi=''
+</span><span class="code-line line-number" line="90">            pygame.mixer.music.play()
+</span><span class="code-line line-number" line="91">            pygame.mixer.music.play()
+</span><span class="code-line line-number" line="92">            shuru+=intt
+</span><span class="code-line line-number" line="93">            xianshi+=intt
+</span><span class="code-line line-number" line="94">            zxianshi=xianshi
+</span><span class="code-line line-number" line="95">            zxianshi2=''
+</span><span class="code-line line-number" line="96">            self.ui.xianshi2.setText('')
+</span><span class="code-line line-number" line="97">            self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="98">        
+</span><span class="code-line line-number" line="99">    def cao2(self):
+</span><span class="code-line line-number" line="100">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="101">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="102">        global shuru,xianshi,zxianshi,zxianshi2,rt
+</span><span class="code-line line-number" line="103">        self.ui.xianshi2.setText(xianshi+"=")
+</span><span class="code-line line-number" line="104">        result=shuru.replace("÷","/")
+</span><span class="code-line line-number" line="105">        result=shuru.replace("×","*")
+</span><span class="code-line line-number" line="106">        rt=str(eval(result))
+</span><span class="code-line line-number" line="107">        self.ui.xianshi.setText(rt)
+</span><span class="code-line line-number" line="108">        zxianshi2=xianshi+'='
+</span><span class="code-line line-number" line="109">        zxianshi=str(eval(result))
+</span><span class="code-line line-number" line="110">        shuru =""
+</span><span class="code-line line-number" line="111">        xianshi="0"
+</span><span class="code-line line-number" line="112">    def cao3(self,intt):
+</span><span class="code-line line-number" line="113">        global shuru,xianshi
+</span><span class="code-line line-number" line="114">        num=len(shuru)
+</span><span class="code-line line-number" line="115">        if  xianshi!="0" or intt=="-":
+</span><span class="code-line line-number" line="116">            if len(shuru)&lt;=self.maxnum:
+</span><span class="code-line line-number" line="117">                if shuru[num-1:] in ["+","-","×","/"]:
+</span><span class="code-line line-number" line="118">                    pygame.mixer.music.play()
+</span><span class="code-line line-number" line="119">                    pygame.mixer.music.play()
+</span><span class="code-line line-number" line="120">                    shuru=shuru[:-1]
+</span><span class="code-line line-number" line="121">                    shuru+=intt
+</span><span class="code-line line-number" line="122">                    xianshi=xianshi[:-1]
+</span><span class="code-line line-number" line="123">                    xianshi+=intt
+</span><span class="code-line line-number" line="124">                    self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="125">                else:
+</span><span class="code-line line-number" line="126">                    if xianshi=="0":
+</span><span class="code-line line-number" line="127">                        xianshi=''
+</span><span class="code-line line-number" line="128">                    pygame.mixer.music.play()
+</span><span class="code-line line-number" line="129">                    pygame.mixer.music.play()
+</span><span class="code-line line-number" line="130">                    xianshi+=intt
+</span><span class="code-line line-number" line="131">                    shuru+=intt
+</span><span class="code-line line-number" line="132">                    self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="133">  
+</span><span class="code-line line-number" line="134">            
+</span><span class="code-line line-number" line="135">          
+</span><span class="code-line line-number" line="136">
+</span><span class="code-line line-number" line="137">
+</span><span class="code-line line-number" line="138">            self.ui.xianshi.setText(shuru)
+</span><span class="code-line line-number" line="139">    def cao4(self):
+</span><span class="code-line line-number" line="140">        global shuru,xianshi
+</span><span class="code-line line-number" line="141">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="142">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="143">        text=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="144">        if text:
+</span><span class="code-line line-number" line="145">                xianshi=text[:-1]
+</span><span class="code-line line-number" line="146">                shuru=xianshi
+</span><span class="code-line line-number" line="147">        else:
+</span><span class="code-line line-number" line="148">            if xianshi!="0":
+</span><span class="code-line line-number" line="149">                if xianshi!="":
+</span><span class="code-line line-number" line="150">                    shuru=shuru[:-1]
+</span><span class="code-line line-number" line="151">                    xianshi=xianshi[:-1]
+</span><span class="code-line line-number" line="152">                    if xianshi=="":
+</span><span class="code-line line-number" line="153">                        xianshi="0"
+</span><span class="code-line line-number" line="154">            else:
+</span><span class="code-line line-number" line="155">                xianshi=""
+</span><span class="code-line line-number" line="156">        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="157">        
+</span><span class="code-line line-number" line="158">
+</span><span class="code-line line-number" line="159">    def cao5(self):
+</span><span class="code-line line-number" line="160">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="161">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="162">        global shuru,xianshi
+</span><span class="code-line line-number" line="163">        shuru=''
+</span><span class="code-line line-number" line="164">        xianshi='0'
+</span><span class="code-line line-number" line="165">        xianshi2=""
+</span><span class="code-line line-number" line="166">        zxianshi='0'
+</span><span class="code-line line-number" line="167">        zxianshi2=''
+</span><span class="code-line line-number" line="168">        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="169">        self.ui.xianshi2.setText(xianshi2)
+</span><span class="code-line line-number" line="170">    def cao6(self,chu):
+</span><span class="code-line line-number" line="171">
+</span><span class="code-line line-number" line="172">
+</span><span class="code-line line-number" line="173">        global shuru,xianshi
+</span><span class="code-line line-number" line="174">        num1=len(shuru) 
+</span><span class="code-line line-number" line="175">        if len(shuru)&lt;=self.maxnum:
+</span><span class="code-line line-number" line="176">            if xianshi!="0":
+</span><span class="code-line line-number" line="177">                pygame.mixer.music.play()
+</span><span class="code-line line-number" line="178">                pygame.mixer.music.play()
+</span><span class="code-line line-number" line="179">                if num1&lt;=self.maxnum:
+</span><span class="code-line line-number" line="180">                    if shuru[num1-1:] in ["+","-","×","/"]:
+</span><span class="code-line line-number" line="181">                        shuru=shuru[:-1]
+</span><span class="code-line line-number" line="182">                        xianshi=shuru
+</span><span class="code-line line-number" line="183">                        xianshi+="÷"
+</span><span class="code-line line-number" line="184">                        shuru+="/"
+</span><span class="code-line line-number" line="185">                        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="186">                    else:
+</span><span class="code-line line-number" line="187">                        xianshi=shuru
+</span><span class="code-line line-number" line="188">                        shuru+="/"
+</span><span class="code-line line-number" line="189">                        xianshi+="÷"
+</span><span class="code-line line-number" line="190">                        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="191">    def cao7(self):
+</span><span class="code-line line-number" line="192">        global shuru,xianshi
+</span><span class="code-line line-number" line="193">        if len(shuru)&lt;=self.maxnum:
+</span><span class="code-line line-number" line="194">            pygame.mixer.music.play()
+</span><span class="code-line line-number" line="195">            pygame.mixer.music.play()
+</span><span class="code-line line-number" line="196">            shuru+="."
+</span><span class="code-line line-number" line="197">            xianshi+="."
+</span><span class="code-line line-number" line="198">            self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="199">    def cao8(self):
+</span><span class="code-line line-number" line="200">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="201">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="202">        global shuru,xianshi,pan
+</span><span class="code-line line-number" line="203">        
+</span><span class="code-line line-number" line="204">        pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="205">        if pan != xianshi:
+</span><span class="code-line line-number" line="206">    
+</span><span class="code-line line-number" line="207">            shuru=pan
+</span><span class="code-line line-number" line="208">        try:
+</span><span class="code-line line-number" line="209">            xianshi=str(math.sqrt(float(shuru)))
+</span><span class="code-line line-number" line="210">        except:
+</span><span class="code-line line-number" line="211">            try:
+</span><span class="code-line line-number" line="212">                xianshi=str(math.sqrt(int(shuru)))
+</span><span class="code-line line-number" line="213">            except:
+</span><span class="code-line line-number" line="214">                print("输入错误")
+</span><span class="code-line line-number" line="215">        rt=xianshi
+</span><span class="code-line line-number" line="216">        xianshi=xianshi[:self.maxnum]
+</span><span class="code-line line-number" line="217">        zxianshi=xianshi
+</span><span class="code-line line-number" line="218">        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="219">        xianshi='0'
+</span><span class="code-line line-number" line="220">    def win2(self):
+</span><span class="code-line line-number" line="221">        self.ui.close()
+</span><span class="code-line line-number" line="222">        self.windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="223">        self.windowsmenu.ui.show()
+</span><span class="code-line line-number" line="224">        app.exec_()
+</span><span class="code-line line-number" line="225">class Window2(Window1):
+</span><span class="code-line line-number" line="226">    def __init__(self):
+</span><span class="code-line line-number" line="227">        super().__init__()
+</span><span class="code-line line-number" line="228">        self.ui = QUiLoader().load('win2.ui')#动态加载ui
+</span><span class="code-line line-number" line="229">        self.ui.bt1.clicked.connect(lambda:self.cao1("1"))
+</span><span class="code-line line-number" line="230">        self.ui.bt2.clicked.connect(lambda:self.cao1("2"))
+</span><span class="code-line line-number" line="231">        self.ui.bt3.clicked.connect(lambda:self.cao1("3"))
+</span><span class="code-line line-number" line="232">        self.ui.bt4.clicked.connect(lambda:self.cao1("4"))
+</span><span class="code-line line-number" line="233">        self.ui.bt5.clicked.connect(lambda:self.cao1("5"))
+</span><span class="code-line line-number" line="234">        self.ui.bt6.clicked.connect(lambda:self.cao1("6"))
+</span><span class="code-line line-number" line="235">        self.ui.bt7.clicked.connect(lambda:self.cao1("7"))
+</span><span class="code-line line-number" line="236">        self.ui.bt8.clicked.connect(lambda:self.cao1("8"))
+</span><span class="code-line line-number" line="237">        self.ui.bt9.clicked.connect(lambda:self.cao1("9"))
+</span><span class="code-line line-number" line="238">        self.ui.bt0.clicked.connect(lambda:self.cao1("0"))
+</span><span class="code-line line-number" line="239">        self.ui.btdian.clicked.connect(lambda:self.cao7())
+</span><span class="code-line line-number" line="240">        self.ui.btcheng.clicked.connect(lambda:self.cao3("×"))
+</span><span class="code-line line-number" line="241">        self.ui.btchu.clicked.connect(lambda:self.cao6(""))
+</span><span class="code-line line-number" line="242">        self.ui.btjia.clicked.connect(lambda:self.cao3("+"))
+</span><span class="code-line line-number" line="243">        self.ui.btjian.clicked.connect(lambda:self.cao3("-"))
+</span><span class="code-line line-number" line="244">        self.ui.btdeng.clicked.connect(lambda:self.cao2())
+</span><span class="code-line line-number" line="245">        self.ui.bttui.clicked.connect(lambda:self.cao4())
+</span><span class="code-line line-number" line="246">        self.ui.btc.clicked.connect(lambda:self.cao5())
+</span><span class="code-line line-number" line="247">        self.ui.btmenu.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="248">        self.ui.btyan.clicked.connect(lambda:self.cao8())
+</span><span class="code-line line-number" line="249">        self.ui.btz.clicked.connect(lambda:self.cao1("("))
+</span><span class="code-line line-number" line="250">        self.ui.bty.clicked.connect(lambda:self.cao1(")"))
+</span><span class="code-line line-number" line="251">        self.ui.btsin.clicked.connect(lambda:self.sin())
+</span><span class="code-line line-number" line="252">        self.ui.btcos.clicked.connect(lambda:self.cos())
+</span><span class="code-line line-number" line="253">        self.ui.bttan.clicked.connect(lambda:self.tan())
+</span><span class="code-line line-number" line="254">        self.ui.btans.clicked.connect(lambda:self.ans())
+</span><span class="code-line line-number" line="255">        self.ui.btjue.clicked.connect(lambda:self.jue())
+</span><span class="code-line line-number" line="256">        self.ui.btping.clicked.connect(lambda:self.ping())
+</span><span class="code-line line-number" line="257">        self.ui.btsan.clicked.connect(lambda:self.san())
+</span><span class="code-line line-number" line="258">        self.ui.btshu.clicked.connect(lambda:self.cha(shuru))
+</span><span class="code-line line-number" line="259">        self.ui.btxian.clicked.connect(lambda:self.cha(xianshi))
+</span><span class="code-line line-number" line="260">        self.ui.btrt.clicked.connect(lambda:self.cha(rt))
+</span><span class="code-line line-number" line="261">        self.ui.btpan.clicked.connect(lambda:self.cha(pan))
+</span><span class="code-line line-number" line="262">        self.ui.btjie.clicked.connect(lambda:self.jiecheng())
+</span><span class="code-line line-number" line="263">        self.ui.btm1.clicked.connect(lambda:self.m1())
+</span><span class="code-line line-number" line="264">        self.ui.btm2.clicked.connect(lambda:self.m2())
+</span><span class="code-line line-number" line="265">        self.ui.btm3.clicked.connect(lambda:self.m3())
+</span><span class="code-line line-number" line="266">        self.ui.btm4.clicked.connect(lambda:self.m4())
+</span><span class="code-line line-number" line="267">        self.ui.bts.clicked.connect(lambda:self.come_win4())
+</span><span class="code-line line-number" line="268">        
+</span><span class="code-line line-number" line="269">        self.ui.xianshi.setText(zxianshi)
+</span><span class="code-line line-number" line="270">        self.maxnum=27
+</span><span class="code-line line-number" line="271">
+</span><span class="code-line line-number" line="272">    def cha(self,intt):
+</span><span class="code-line line-number" line="273">        print(intt)
+</span><span class="code-line line-number" line="274">
+</span><span class="code-line line-number" line="275">    def sin(self):
+</span><span class="code-line line-number" line="276">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="277">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="278">        global shuru,xianshi,rt,pan
+</span><span class="code-line line-number" line="279">        try:
+</span><span class="code-line line-number" line="280">            pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="281">            if pan != xianshi:
+</span><span class="code-line line-number" line="282">                shuru=pan
+</span><span class="code-line line-number" line="283">            rt=str(math.sin(math.radians(int(shuru))))
+</span><span class="code-line line-number" line="284">            xianshi=rt
+</span><span class="code-line line-number" line="285">            xianshi=xianshi[:self.maxnum]
+</span><span class="code-line line-number" line="286">            zxianshi=xianshi
+</span><span class="code-line line-number" line="287">            self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="288">            xianshi='0'
+</span><span class="code-line line-number" line="289">        except:
+</span><span class="code-line line-number" line="290">            print("出bug了，但是我懒得修")
+</span><span class="code-line line-number" line="291">    def cos(self):
+</span><span class="code-line line-number" line="292">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="293">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="294">        global shuru,xianshi,rt,pan
+</span><span class="code-line line-number" line="295">        try:
+</span><span class="code-line line-number" line="296">            pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="297">            if pan != xianshi:
+</span><span class="code-line line-number" line="298">                shuru=pan
+</span><span class="code-line line-number" line="299">            rt=str(math.cos(math.radians(int(shuru))))
+</span><span class="code-line line-number" line="300">            xianshi=rt
+</span><span class="code-line line-number" line="301">            xianshi=xianshi[:self.maxnum]
+</span><span class="code-line line-number" line="302">            zxianshi=xianshi
+</span><span class="code-line line-number" line="303">            self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="304">            xianshi='0'
+</span><span class="code-line line-number" line="305">        except:
+</span><span class="code-line line-number" line="306">            print("出bug了，但是我懒得修")
+</span><span class="code-line line-number" line="307">    def tan(self):
+</span><span class="code-line line-number" line="308">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="309">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="310">        global shuru,xianshi,pan
+</span><span class="code-line line-number" line="311">        try:
+</span><span class="code-line line-number" line="312">            pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="313">            if pan != xianshi:
+</span><span class="code-line line-number" line="314">                shuru=pan
+</span><span class="code-line line-number" line="315">            rt=str(math.tan(math.radians(int(shuru))))
+</span><span class="code-line line-number" line="316">            xianshi=rt
+</span><span class="code-line line-number" line="317">            xianshi=xianshi[:self.maxnum]
+</span><span class="code-line line-number" line="318">            zxianshi=xianshi
+</span><span class="code-line line-number" line="319">            self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="320">            xianshi='0'
+</span><span class="code-line line-number" line="321">        except:
+</span><span class="code-line line-number" line="322">            print("出bug了，但是我懒得修")
+</span><span class="code-line line-number" line="323">    def ans(self):
+</span><span class="code-line line-number" line="324">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="325">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="326">        global xianshi,shuru,rt
+</span><span class="code-line line-number" line="327">        if xianshi=='0':
+</span><span class="code-line line-number" line="328">            xianshi=''
+</span><span class="code-line line-number" line="329">        xianshi+=rt
+</span><span class="code-line line-number" line="330">        shuru+=rt
+</span><span class="code-line line-number" line="331">        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="332">    def jue(self):
+</span><span class="code-line line-number" line="333">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="334">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="335">        global xianshi,shuru,rt,pan
+</span><span class="code-line line-number" line="336">        try:
+</span><span class="code-line line-number" line="337">            pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="338">            if pan != xianshi:
+</span><span class="code-line line-number" line="339">                shuru=pan
+</span><span class="code-line line-number" line="340">            if int(shuru) &gt;=0:
+</span><span class="code-line line-number" line="341">                xianshi=shuru
+</span><span class="code-line line-number" line="342">            else:
+</span><span class="code-line line-number" line="343">                xianshi=int(shuru)-int(shuru)*2
+</span><span class="code-line line-number" line="344">            rt=xianshi
+</span><span class="code-line line-number" line="345">            self.ui.xianshi.setText(str(xianshi))
+</span><span class="code-line line-number" line="346">        except:
+</span><span class="code-line line-number" line="347">            print("输入错误")
+</span><span class="code-line line-number" line="348">    def ping(self):
+</span><span class="code-line line-number" line="349">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="350">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="351">        global xianshi,shuru,rt,pan
+</span><span class="code-line line-number" line="352">        pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="353">        if pan != xianshi:
+</span><span class="code-line line-number" line="354">            shuru=pan
+</span><span class="code-line line-number" line="355">        try:
+</span><span class="code-line line-number" line="356">            xianshi= float(shuru)**2
+</span><span class="code-line line-number" line="357">        except:
+</span><span class="code-line line-number" line="358">            try:
+</span><span class="code-line line-number" line="359">                xianshi= int(shuru)**2
+</span><span class="code-line line-number" line="360">            except:
+</span><span class="code-line line-number" line="361">                print("输入错误")
+</span><span class="code-line line-number" line="362">            
+</span><span class="code-line line-number" line="363">        shuru=''
+</span><span class="code-line line-number" line="364">        rt=str(xianshi)
+</span><span class="code-line line-number" line="365">        self.ui.xianshi.setText(str(xianshi))
+</span><span class="code-line line-number" line="366">        xianshi='0'
+</span><span class="code-line line-number" line="367">
+</span><span class="code-line line-number" line="368">    def san(self):
+</span><span class="code-line line-number" line="369">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="370">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="371">        global xianshi,shuru,rt,pan
+</span><span class="code-line line-number" line="372">        pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="373">        if pan != xianshi:
+</span><span class="code-line line-number" line="374">            shuru=pan
+</span><span class="code-line line-number" line="375">        try:
+</span><span class="code-line line-number" line="376">            xianshi= int(shuru)**3
+</span><span class="code-line line-number" line="377">        except:
+</span><span class="code-line line-number" line="378">            try:
+</span><span class="code-line line-number" line="379">                xianshi= float(shuru)**3
+</span><span class="code-line line-number" line="380">            except:
+</span><span class="code-line line-number" line="381">                print("输入错误")
+</span><span class="code-line line-number" line="382">            
+</span><span class="code-line line-number" line="383">            
+</span><span class="code-line line-number" line="384">        rt=str(xianshi)
+</span><span class="code-line line-number" line="385">        self.ui.xianshi.setText(str(xianshi))
+</span><span class="code-line line-number" line="386">        xianshi='0'
+</span><span class="code-line line-number" line="387">
+</span><span class="code-line line-number" line="388">    def jiecheng(self):
+</span><span class="code-line line-number" line="389">        global xianshi,shuru,rt,rslt
+</span><span class="code-line line-number" line="390">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="391">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="392">        pan=self.ui.xianshi.text()
+</span><span class="code-line line-number" line="393">        if pan != xianshi:
+</span><span class="code-line line-number" line="394">            xianshi=pan
+</span><span class="code-line line-number" line="395">        try:
+</span><span class="code-line line-number" line="396">            a=int(shuru)
+</span><span class="code-line line-number" line="397">            num=1
+</span><span class="code-line line-number" line="398">            if a &lt; 0:
+</span><span class="code-line line-number" line="399">                print("负数没有阶乘")
+</span><span class="code-line line-number" line="400">                num="无"
+</span><span class="code-line line-number" line="401">            elif a == 0:
+</span><span class="code-line line-number" line="402">                print("0的阶乘为1")
+</span><span class="code-line line-number" line="403">                num=1
+</span><span class="code-line line-number" line="404">            else:
+</span><span class="code-line line-number" line="405">                for i in range(1,a+1):
+</span><span class="code-line line-number" line="406">                    num*=i
+</span><span class="code-line line-number" line="407">            xianshi=num
+</span><span class="code-line line-number" line="408">            rt=str(xianshi)
+</span><span class="code-line line-number" line="409">            zxianshi=xianshi
+</span><span class="code-line line-number" line="410">            self.ui.xianshi.setText(str(xianshi))
+</span><span class="code-line line-number" line="411">                
+</span><span class="code-line line-number" line="412">        except:
+</span><span class="code-line line-number" line="413">                print("输入错误")
+</span><span class="code-line line-number" line="414">    def m1(self):
+</span><span class="code-line line-number" line="415">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="416">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="417">        global xianshi,shuru,zxianshi,m
+</span><span class="code-line line-number" line="418">        try:
+</span><span class="code-line line-number" line="419">            m+=int(xianshi)
+</span><span class="code-line line-number" line="420">        except:
+</span><span class="code-line line-number" line="421">            print("输入错误")
+</span><span class="code-line line-number" line="422">    def m2(self):
+</span><span class="code-line line-number" line="423">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="424">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="425">        global xianshi,shuru,zxianshi,m
+</span><span class="code-line line-number" line="426">        try:
+</span><span class="code-line line-number" line="427">            m-=int(xianshi)
+</span><span class="code-line line-number" line="428">        except:
+</span><span class="code-line line-number" line="429">            print("输入错误")
+</span><span class="code-line line-number" line="430">    def m3(self):
+</span><span class="code-line line-number" line="431">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="432">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="433">        global xianshi,shuru,zxianshi,m
+</span><span class="code-line line-number" line="434">        try:
+</span><span class="code-line line-number" line="435">            if xianshi !='0':
+</span><span class="code-line line-number" line="436">                xianshi+=str(m)
+</span><span class="code-line line-number" line="437">                zxianshi=xianshi
+</span><span class="code-line line-number" line="438">                shuru+=str(m)
+</span><span class="code-line line-number" line="439">            else:
+</span><span class="code-line line-number" line="440">                xianshi=str(m)
+</span><span class="code-line line-number" line="441">        except:
+</span><span class="code-line line-number" line="442">            print("输入错误")
+</span><span class="code-line line-number" line="443">        self.ui.xianshi.setText(xianshi)
+</span><span class="code-line line-number" line="444">    def m4(self):
+</span><span class="code-line line-number" line="445">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="446">        pygame.mixer.music.play()
+</span><span class="code-line line-number" line="447">        global xianshi,shuru,zxianshi,m
+</span><span class="code-line line-number" line="448">        m=0
+</span><span class="code-line line-number" line="449">    def come_win4(self):
+</span><span class="code-line line-number" line="450">        
+</span><span class="code-line line-number" line="451">        global lastwin
+</span><span class="code-line line-number" line="452">        lastwin = 'win4'
+</span><span class="code-line line-number" line="453">        self.ui.close()
+</span><span class="code-line line-number" line="454">        windows4 = Window4()
+</span><span class="code-line line-number" line="455">        windows4.ui.show()
+</span><span class="code-line line-number" line="456">        app.exec_()
+</span><span class="code-line line-number" line="457">        牛逼666
+</span><span class="code-line line-number" line="458">
+</span><span class="code-line line-number" line="459">class Window3:
+</span><span class="code-line line-number" line="460">    def __init__(self):
+</span><span class="code-line line-number" line="461">        self.ui = QUiLoader().load('win3.ui')
+</span><span class="code-line line-number" line="462">        self.ui.button.clicked.connect(self.cao1)
+</span><span class="code-line line-number" line="463">        self.ui.button2.clicked.connect(self.cao2)#动态加载ui
+</span><span class="code-line line-number" line="464">        self.ui.btmenu.clicked.connect(lambda:self.winmenu())
+</span><span class="code-line line-number" line="465">
+</span><span class="code-line line-number" line="466">    def cao1(self):
+</span><span class="code-line line-number" line="467">        un = self.ui.textEdit.toPlainText()
+</span><span class="code-line line-number" line="468">        un=un.encode('unicode_escape')
+</span><span class="code-line line-number" line="469">        un=str(un)
+</span><span class="code-line line-number" line="470">        un=un[2:]
+</span><span class="code-line line-number" line="471">
+</span><span class="code-line line-number" line="472">        un=un.replace('0','好难')
+</span><span class="code-line line-number" line="473">        un=un.replace('1','+')
+</span><span class="code-line line-number" line="474">        un=un.replace('2','贱')
+</span><span class="code-line line-number" line="475">        un=un.replace('3','娄')
+</span><span class="code-line line-number" line="476">        un=un.replace('4','卫~')
+</span><span class="code-line line-number" line="477">        un=un.replace('5','健')
+</span><span class="code-line line-number" line="478">        un=un.replace('6','李')
+</span><span class="code-line line-number" line="479">        un=un.replace('7','亦~')
+</span><span class="code-line line-number" line="480">        un=un.replace('8','++')
+</span><span class="code-line line-number" line="481">        un=un.replace('9','--')
+</span><span class="code-line line-number" line="482">        un=un.replace('a','+++')
+</span><span class="code-line line-number" line="483">        un=un.replace('b','---~~')
+</span><span class="code-line line-number" line="484">        un=un.replace('c','+~')
+</span><span class="code-line line-number" line="485">        un=un.replace('d','-~')
+</span><span class="code-line line-number" line="486">        un=un.replace('e','++~')
+</span><span class="code-line line-number" line="487">        un=un.replace('f','--~')
+</span><span class="code-line line-number" line="488">        un=un.replace('g','+++~')
+</span><span class="code-line line-number" line="489">        un=un.replace('h','---~')
+</span><span class="code-line line-number" line="490">        un=un.replace('i','佳佳~')
+</span><span class="code-line line-number" line="491">        un=un.replace('j','健健~')
+</span><span class="code-line line-number" line="492">        un=un.replace('k','python')
+</span><span class="code-line line-number" line="493">        un=un.replace('l','亦佳')
+</span><span class="code-line line-number" line="494">        un=un.replace('m','亦佳~')
+</span><span class="code-line line-number" line="495">        un=un.replace('n','卫健')
+</span><span class="code-line line-number" line="496">        un=un.replace('o','卫健~')
+</span><span class="code-line line-number" line="497">        un=un.replace('p','嘎~')
+</span><span class="code-line line-number" line="498">        un=un.replace('q','嘎')
+</span><span class="code-line line-number" line="499">        un=un.replace('r','牛逼')
+</span><span class="code-line line-number" line="500">        un=un.replace('s','666')
+</span><span class="code-line line-number" line="501">        un=un.replace('t','可以的')
+</span><span class="code-line line-number" line="502">        un=un.replace('u','最可爱了！')
+</span><span class="code-line line-number" line="503">        un=un.replace('v','奥利给!')
+</span><span class="code-line line-number" line="504">        un=un.replace('w','吃')
+</span><span class="code-line line-number" line="505">        un=un.replace('x','哎')
+</span><span class="code-line line-number" line="506">        un=un.replace('y','编')
+</span><span class="code-line line-number" line="507">        un=un.replace('z','了')
+</span><span class="code-line line-number" line="508">        un=un.replace('\\','佳')
+</span><span class="code-line line-number" line="509">        n=len(un)
+</span><span class="code-line line-number" line="510">        n-=1
+</span><span class="code-line line-number" line="511">        self.ui.textEdit.setPlainText(un[0:n])
+</span><span class="code-line line-number" line="512">
+</span><span class="code-line line-number" line="513">    def cao2(self):
+</span><span class="code-line line-number" line="514">        un = self.ui.textEdit.toPlainText()
+</span><span class="code-line line-number" line="515">        
+</span><span class="code-line line-number" line="516">        un=un.replace('---~~','b')
+</span><span class="code-line line-number" line="517">        un=un.replace('卫健~','o')
+</span><span class="code-line line-number" line="518">        un=un.replace('卫健','n')
+</span><span class="code-line line-number" line="519">        un=un.replace('亦佳~','m')
+</span><span class="code-line line-number" line="520">        un=un.replace('亦佳','l')
+</span><span class="code-line line-number" line="521">        un=un.replace('python','k')
+</span><span class="code-line line-number" line="522">        un=un.replace('健健~','j')
+</span><span class="code-line line-number" line="523">        un=un.replace('佳佳~','i')
+</span><span class="code-line line-number" line="524">        un=un.replace('---~','h')
+</span><span class="code-line line-number" line="525">        un=un.replace('+++~','g')
+</span><span class="code-line line-number" line="526">        un=un.replace('--~','f')
+</span><span class="code-line line-number" line="527">        un=un.replace('++~','e')
+</span><span class="code-line line-number" line="528">        un=un.replace('-~','d')
+</span><span class="code-line line-number" line="529">        un=un.replace('+~','c')
+</span><span class="code-line line-number" line="530">
+</span><span class="code-line line-number" line="531">        un=un.replace('+++','a')
+</span><span class="code-line line-number" line="532">        un=un.replace('--','9')
+</span><span class="code-line line-number" line="533">        un=un.replace('++','8')
+</span><span class="code-line line-number" line="534">        un=un.replace('亦~','7')
+</span><span class="code-line line-number" line="535">        un=un.replace('李','6')
+</span><span class="code-line line-number" line="536">        un=un.replace('健','5')
+</span><span class="code-line line-number" line="537">        un=un.replace('卫~','4')
+</span><span class="code-line line-number" line="538">        un=un.replace('娄','3')
+</span><span class="code-line line-number" line="539">        un=un.replace('贱','2')
+</span><span class="code-line line-number" line="540">        un=un.replace('+','1')
+</span><span class="code-line line-number" line="541">        un=un.replace('好难','0')
+</span><span class="code-line line-number" line="542">        un=un.replace('佳','\\')
+</span><span class="code-line line-number" line="543">
+</span><span class="code-line line-number" line="544">
+</span><span class="code-line line-number" line="545">
+</span><span class="code-line line-number" line="546">        un=un.replace('嘎~','p')
+</span><span class="code-line line-number" line="547">        un=un.replace('嘎','q')
+</span><span class="code-line line-number" line="548">        un=un.replace('牛逼','r')
+</span><span class="code-line line-number" line="549">        un=un.replace('666','s')
+</span><span class="code-line line-number" line="550">        un=un.replace('可以的','t')
+</span><span class="code-line line-number" line="551">        un=un.replace('最可爱了！','u')
+</span><span class="code-line line-number" line="552">        un=un.replace('奥利给！','v')
+</span><span class="code-line line-number" line="553">        un=un.replace('吃','w')
+</span><span class="code-line line-number" line="554">        un=un.replace('哎','x')
+</span><span class="code-line line-number" line="555">        un=un.replace('编','y')
+</span><span class="code-line line-number" line="556">        un=un.replace('了','z')
+</span><span class="code-line line-number" line="557">        un.encode('latin-1').decode('unicode_escape')
+</span><span class="code-line line-number" line="558">        un=un.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="559">        jiance=un.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="560">        self.ui.textEdit.setPlainText(un.encode('utf8').decode('unicode_escape'))
+</span><span class="code-line line-number" line="561">    def winmenu(self):
+</span><span class="code-line line-number" line="562">        self.ui.close()
+</span><span class="code-line line-number" line="563">        self.windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="564">        self.windowsmenu.ui.show()
+</span><span class="code-line line-number" line="565">        app.exec_()
+</span><span class="code-line line-number" line="566">class Window4:
+</span><span class="code-line line-number" line="567">
+</span><span class="code-line line-number" line="568">    def __init__(self):
+</span><span class="code-line line-number" line="569">        self.ui = QUiLoader().load('win4.ui')
+</span><span class="code-line line-number" line="570">        self.ui.button.clicked.connect(self.handleCalc)#动态加载ui
+</span><span class="code-line line-number" line="571">        self.ui.button_2.clicked.connect(self.handleCalc)#动态加载ui
+</span><span class="code-line line-number" line="572">        self.ui.btmenu.clicked.connect(self.winmenu)#动态加载ui
+</span><span class="code-line line-number" line="573">
+</span><span class="code-line line-number" line="574">    def handleCalc(self):
+</span><span class="code-line line-number" line="575">        global result1
+</span><span class="code-line line-number" line="576">        fangcheng1 = self.ui.lineEdit.text()
+</span><span class="code-line line-number" line="577">        fangcheng2 = self.ui.lineEdit_1.text()
+</span><span class="code-line line-number" line="578">        fangcheng3 = self.ui.lineEdit_2.text()
+</span><span class="code-line line-number" line="579">        if 'x' in fangcheng1 and "=" in fangcheng1:
+</span><span class="code-line line-number" line="580">            fangcheng1=fangcheng1.replace('=','-')
+</span><span class="code-line line-number" line="581">                
+</span><span class="code-line line-number" line="582">            result1=''
+</span><span class="code-line line-number" line="583">            for i , f in enumerate(fangcheng1):
+</span><span class="code-line line-number" line="584">                if f in ['x', 'y', '(']and i &gt; 0:
+</span><span class="code-line line-number" line="585">                    if fangcheng1[i - 1] not in ['*', '(', '+', '-', '/']:
+</span><span class="code-line line-number" line="586">                        result1 += '*'
+</span><span class="code-line line-number" line="587">                result1 += f
+</span><span class="code-line line-number" line="588">                
+</span><span class="code-line line-number" line="589">                
+</span><span class="code-line line-number" line="590">            QMessageBox.about(self.ui,'解方程结果',"方程的解为:\n"+str(solve([result1], [x]))+"     ")
+</span><span class="code-line line-number" line="591">            self.ui.lineEdit.clear()#清空输入框
+</span><span class="code-line line-number" line="592">
+</span><span class="code-line line-number" line="593">        elif 'x' in fangcheng2 and "=" in fangcheng2 and 'y' in fangcheng3 and "=" in fangcheng3:
+</span><span class="code-line line-number" line="594">            fangcheng2=fangcheng2.replace('=','-')
+</span><span class="code-line line-number" line="595">            fangcheng3=fangcheng3.replace('=','-')
+</span><span class="code-line line-number" line="596">            QMessageBox.about(self.ui,'解方程结果',"方程的解为:\n"+str(solve([fangcheng2,fangcheng3], [x,y]))+"     ")
+</span><span class="code-line line-number" line="597">            self.ui.lineEdit_1.clear()#清空输入框
+</span><span class="code-line line-number" line="598">            self.ui.lineEdit_2.clear()#清空输入框
+</span><span class="code-line line-number" line="599">
+</span><span class="code-line line-number" line="600">        else:
+</span><span class="code-line line-number" line="601">            QMessageBox.about(self.ui,'温馨提示',"请输入正确的方程   ",)
+</span><span class="code-line line-number" line="602">    def winmenu(self):
+</span><span class="code-line line-number" line="603">        self.ui.close()
+</span><span class="code-line line-number" line="604">        self.windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="605">        self.windowsmenu.ui.show()
+</span><span class="code-line line-number" line="606">        app.exec_()
+</span><span class="code-line line-number" line="607">class Window5:
+</span><span class="code-line line-number" line="608">
+</span><span class="code-line line-number" line="609">    def __init__(self):
+</span><span class="code-line line-number" line="610">        self.ui = QUiLoader().load('win5.ui')
+</span><span class="code-line line-number" line="611">        self.ui.button.clicked.connect(self.cao1)
+</span><span class="code-line line-number" line="612">        self.ui.button2.clicked.connect(self.cao2)#动态加载ui
+</span><span class="code-line line-number" line="613">        self.ui.btmenu.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="614">    def cao1(self):
+</span><span class="code-line line-number" line="615">        un = self.ui.textEdit.toPlainText()
+</span><span class="code-line line-number" line="616">        un=un.encode('unicode_escape')
+</span><span class="code-line line-number" line="617">        un=str(un)
+</span><span class="code-line line-number" line="618">        un=un[2:]
+</span><span class="code-line line-number" line="619">        un=un[:-1]
+</span><span class="code-line line-number" line="620">        mishi=''
+</span><span class="code-line line-number" line="621">        global lmresulr
+</span><span class="code-line line-number" line="622">        lmresulr=''
+</span><span class="code-line line-number" line="623">        
+</span><span class="code-line line-number" line="624">        
+</span><span class="code-line line-number" line="625">        for i  , f in enumerate(un):
+</span><span class="code-line line-number" line="626">            if f in ["1","2","3","4","5","6","7","8","9","0"]:
+</span><span class="code-line line-number" line="627">                mishi+=f
+</span><span class="code-line line-number" line="628">        l=len(mishi)
+</span><span class="code-line line-number" line="629">        if l &gt;= 10 :
+</span><span class="code-line line-number" line="630">            b=int(l/2)
+</span><span class="code-line line-number" line="631">            s=int(l/-2)
+</span><span class="code-line line-number" line="632">            baoliu=random.randint(0,b-2)
+</span><span class="code-line line-number" line="633">            baoliu2=random.randint(s-2,-1)
+</span><span class="code-line line-number" line="634">            mishi=mishi[baoliu:]
+</span><span class="code-line line-number" line="635">            mishi=mishi[:baoliu2]
+</span><span class="code-line line-number" line="636">
+</span><span class="code-line line-number" line="637">            
+</span><span class="code-line line-number" line="638">        mishi2=random.randint(1,9)
+</span><span class="code-line line-number" line="639">        mishi+=str(mishi2)
+</span><span class="code-line line-number" line="640">        for i  , f in enumerate(un):
+</span><span class="code-line line-number" line="641">            if f in ["1","2","3","4","5","6","7","8","9","0"]:
+</span><span class="code-line line-number" line="642">                f=int(f)+mishi2
+</span><span class="code-line line-number" line="643">                f=str(f)
+</span><span class="code-line line-number" line="644">                f=f[-1:]
+</span><span class="code-line line-number" line="645">            else:
+</span><span class="code-line line-number" line="646">                f=f
+</span><span class="code-line line-number" line="647">            lmresulr+=f
+</span><span class="code-line line-number" line="648"> 
+</span><span class="code-line line-number" line="649">
+</span><span class="code-line line-number" line="650">        lmresulr.encode('latin-1').decode('unicode_escape')
+</span><span class="code-line line-number" line="651">        lmresulr=lmresulr.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="652">        lmresulr=lmresulr.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="653">        self.ui.textEdit.setPlainText(lmresulr)
+</span><span class="code-line line-number" line="654">        self.ui.mishi2.setPlainText(mishi)
+</span><span class="code-line line-number" line="655">        mishi=''
+</span><span class="code-line line-number" line="656">    def cao2(self):
+</span><span class="code-line line-number" line="657">        un = self.ui.textEdit.toPlainText()
+</span><span class="code-line line-number" line="658">        un=un.encode('unicode_escape')
+</span><span class="code-line line-number" line="659">        un=str(un)
+</span><span class="code-line line-number" line="660">        un=un[2:]
+</span><span class="code-line line-number" line="661">        un=un[:-1]
+</span><span class="code-line line-number" line="662">        密匙=self.ui.mishi2.toPlainText()
+</span><span class="code-line line-number" line="663">        mishi2=int(密匙[-1:])
+</span><span class="code-line line-number" line="664">        if 密匙:
+</span><span class="code-line line-number" line="665">            mishi1=''
+</span><span class="code-line line-number" line="666">            
+</span><span class="code-line line-number" line="667">            global lmresulr
+</span><span class="code-line line-number" line="668">            lmresulr=''
+</span><span class="code-line line-number" line="669">            for i  , f in enumerate(un):
+</span><span class="code-line line-number" line="670">                if f in ["1","2","3","4","5","6","7","8","9","0"]:
+</span><span class="code-line line-number" line="671">                    f =int(f) - mishi2
+</span><span class="code-line line-number" line="672">                    if f &lt; 0:
+</span><span class="code-line line-number" line="673">                        f =f+ 10
+</span><span class="code-line line-number" line="674">
+</span><span class="code-line line-number" line="675">                lmresulr+=str(f)
+</span><span class="code-line line-number" line="676">            for i  , f in enumerate(lmresulr):
+</span><span class="code-line line-number" line="677">                if f in ["1","2","3","4","5","6","7","8","9","0"]:
+</span><span class="code-line line-number" line="678">                    mishi1+=f
+</span><span class="code-line line-number" line="679">
+</span><span class="code-line line-number" line="680">            if len(str(mishi1))&gt;10:
+</span><span class="code-line line-number" line="681">                l=len(mishi1)
+</span><span class="code-line line-number" line="682">                mishi1=mishi1[:int(l/-2-2)]
+</span><span class="code-line line-number" line="683">                mishi1=mishi1[int(l/2+2):]
+</span><span class="code-line line-number" line="684">            
+</span><span class="code-line line-number" line="685">            if mishi1 in 密匙[:-1]:
+</span><span class="code-line line-number" line="686">                           
+</span><span class="code-line line-number" line="687">                lmresulr.encode('latin-1').decode('unicode_escape')
+</span><span class="code-line line-number" line="688">                lmresulr=lmresulr.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="689">                lmresulr=lmresulr.encode('utf8').decode('unicode_escape')
+</span><span class="code-line line-number" line="690">                self.ui.textEdit.setPlainText(lmresulr)
+</span><span class="code-line line-number" line="691">                self.ui.mishi2.setPlainText("")
+</span><span class="code-line line-number" line="692">            else:
+</span><span class="code-line line-number" line="693">                QMessageBox.about(self.ui,'解方程结果',"密匙错误")
+</span><span class="code-line line-number" line="694">
+</span><span class="code-line line-number" line="695">        else:
+</span><span class="code-line line-number" line="696">            QMessageBox.about(self.ui,'解方程结果',"请输入密匙    ")
+</span><span class="code-line line-number" line="697">    def win2(self):
+</span><span class="code-line line-number" line="698">        self.ui.close()
+</span><span class="code-line line-number" line="699">        windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="700">        windowsmenu.ui.show()
+</span><span class="code-line line-number" line="701">        app.exec_()
+</span><span class="code-line line-number" line="702">from pynput.keyboard import Key
+</span><span class="code-line line-number" line="703">from pynput.keyboard import Controller as Kb
+</span><span class="code-line line-number" line="704">import keyboard  
+</span><span class="code-line line-number" line="705">kb=Kb()
+</span><span class="code-line line-number" line="706">class Window6:
+</span><span class="code-line line-number" line="707">    def __init__(self):
+</span><span class="code-line line-number" line="708">        self.ui = QUiLoader().load('win6.ui')#动态加载ui
+</span><span class="code-line line-number" line="709">        self.ui.btstart.clicked.connect(lambda:self.send_message())
+</span><span class="code-line line-number" line="710">        keyboard.add_hotkey("f5",lambda:self.send_message())
+</span><span class="code-line line-number" line="711">        self.ui.btmenu.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="712">    def send_message(self):
+</span><span class="code-line line-number" line="713">        jiange=self.ui.spj.value()
+</span><span class="code-line line-number" line="714">        number=self.ui.spn.value()
+</span><span class="code-line line-number" line="715">        string=self.ui.neirong.toPlainText()
+</span><span class="code-line line-number" line="716">        time.sleep(4)
+</span><span class="code-line line-number" line="717">        for i in range(0,number):
+</span><span class="code-line line-number" line="718">            kb.type(string)
+</span><span class="code-line line-number" line="719">            time.sleep(jiange)
+</span><span class="code-line line-number" line="720">            kb.press(Key.enter)
+</span><span class="code-line line-number" line="721">            kb.release(Key.enter)
+</span><span class="code-line line-number" line="722">    def win2(self):
+</span><span class="code-line line-number" line="723">        self.ui.close()
+</span><span class="code-line line-number" line="724">        self.windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="725">        self.windowsmenu.ui.show()
+</span><span class="code-line line-number" line="726">        app.exec_()
+</span><span class="code-line line-number" line="727">class Windowshop:
+</span><span class="code-line line-number" line="728">    def __init__(self):
+</span><span class="code-line line-number" line="729">        self.ui = QUiLoader().load('shop.ui')#动态加载ui
+</span><span class="code-line line-number" line="730">        
+</span><span class="code-line line-number" line="731">        self.ui.btq.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="732">        self.ui.pifubai.clicked.connect(lambda:self.shopping(1,10))
+</span><span class="code-line line-number" line="733">        self.ui.pifuyin.clicked.connect(lambda:self.shopping(2,10))
+</span><span class="code-line line-number" line="734">        self.ui.pifutian.clicked.connect(lambda:self.shopping(3,10))
+</span><span class="code-line line-number" line="735">        
+</span><span class="code-line line-number" line="736">        with open('settings.json') as f:
+</span><span class="code-line line-number" line="737">            sett =json.load(f)
+</span><span class="code-line line-number" line="738">        self.ui.jinbi.setText(str(sett))
+</span><span class="code-line line-number" line="739">        
+</span><span class="code-line line-number" line="740">        
+</span><span class="code-line line-number" line="741">    def shopping(self,w,j):
+</span><span class="code-line line-number" line="742">        with open('skin.json',) as f:
+</span><span class="code-line line-number" line="743">            sta=json.load(f)
+</span><span class="code-line line-number" line="744">        if sta[w]=="Flase":
+</span><span class="code-line line-number" line="745">            jinbi=self.ui.jinbi.text()
+</span><span class="code-line line-number" line="746">            if int(jinbi) &gt;= j:
+</span><span class="code-line line-number" line="747">                jinbi=str((int(jinbi)-j))
+</span><span class="code-line line-number" line="748">                with open('settings.json', 'w') as f:
+</span><span class="code-line line-number" line="749">                    json.dump(jinbi,f)
+</span><span class="code-line line-number" line="750">                with open('skin.json',) as f:
+</span><span class="code-line line-number" line="751">                    asd=json.load(f)
+</span><span class="code-line line-number" line="752">                asd[w]='True'
+</span><span class="code-line line-number" line="753">                with open('skin.json','w') as ad:
+</span><span class="code-line line-number" line="754">
+</span><span class="code-line line-number" line="755">                    json.dump(asd,ad)
+</span><span class="code-line line-number" line="756">                QMessageBox.about(self.ui,'温馨提示',"购买成功！   ")
+</span><span class="code-line line-number" line="757">
+</span><span class="code-line line-number" line="758">            else:
+</span><span class="code-line line-number" line="759">                QMessageBox.about(self.ui,'温馨提示',"您的金币不足哦   ")
+</span><span class="code-line line-number" line="760">            self.ui.jinbi.setText(str(jinbi))
+</span><span class="code-line line-number" line="761">        else:
+</span><span class="code-line line-number" line="762">            QMessageBox.about(self.ui,'温馨提示',"您已拥有此皮肤，无需重复购买   ")
+</span><span class="code-line line-number" line="763">            
+</span><span class="code-line line-number" line="764">            
+</span><span class="code-line line-number" line="765">        
+</span><span class="code-line line-number" line="766">        
+</span><span class="code-line line-number" line="767">
+</span><span class="code-line line-number" line="768">    def win2(self):
+</span><span class="code-line line-number" line="769">        self.ui.close()
+</span><span class="code-line line-number" line="770">        self.windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="771">        self.windowsmenu.ui.show()
+</span><span class="code-line line-number" line="772">        app.exec_()
+</span><span class="code-line line-number" line="773">
+</span><span class="code-line line-number" line="774">class Windowsettings:
+</span><span class="code-line line-number" line="775">    def __init__(self):
+</span><span class="code-line line-number" line="776">        self.ui = QUiLoader().load('settings.ui')#动态加载ui
+</span><span class="code-line line-number" line="777">        self.ui.btq.clicked.connect(lambda:self.win2())
+</span><span class="code-line line-number" line="778">    def win2(self):
+</span><span class="code-line line-number" line="779">        self.ui.close()
+</span><span class="code-line line-number" line="780">        windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="781">        windowsmenu.ui.show()
+</span><span class="code-line line-number" line="782">        app.exec_()
+</span><span class="code-line line-number" line="783">        
+</span><span class="code-line line-number" line="784">
+</span><span class="code-line line-number" line="785">class Windowmenu:
+</span><span class="code-line line-number" line="786">    def __init__(self):
+</span><span class="code-line line-number" line="787">        self.ui = QUiLoader().load('menu.ui')#动态加载ui
+</span><span class="code-line line-number" line="788">        self.ui.btq.clicked.connect(lambda:self.come_lastwin())
+</span><span class="code-line line-number" line="789">        self.ui.btjisuanqi.clicked.connect(lambda:self.come_win1())
+</span><span class="code-line line-number" line="790">        self.ui.btgj.clicked.connect(lambda:self.come_win2())
+</span><span class="code-line line-number" line="791">        self.ui.btjyfyq.clicked.connect(lambda:self.come_win3())
+</span><span class="code-line line-number" line="792">        self.ui.btslove.clicked.connect(lambda:self.come_win4())
+</span><span class="code-line line-number" line="793">        self.ui.btluanma.clicked.connect(lambda:self.come_win5())
+</span><span class="code-line line-number" line="794">        self.ui.btsetting.clicked.connect(lambda:self.come_settings())
+</span><span class="code-line line-number" line="795">        self.ui.bts.clicked.connect(lambda:self.come_win6())
+</span><span class="code-line line-number" line="796">        self.ui.btshop.clicked.connect(lambda:self.come_shop())
+</span><span class="code-line line-number" line="797">        self.ui.btn.clicked.connect(lambda:self.come_xngd())
+</span><span class="code-line line-number" line="798">
+</span><span class="code-line line-number" line="799">    def come_win1(self):
+</span><span class="code-line line-number" line="800">        global lastwin
+</span><span class="code-line line-number" line="801">        lastwin='win1'
+</span><span class="code-line line-number" line="802">        self.ui.close()
+</span><span class="code-line line-number" line="803">        windows1 = Window1()
+</span><span class="code-line line-number" line="804">        windows1.ui.show()
+</span><span class="code-line line-number" line="805">    def come_win2(self):
+</span><span class="code-line line-number" line="806">        global lastwin
+</span><span class="code-line line-number" line="807">        lastwin='win2'
+</span><span class="code-line line-number" line="808">        self.ui.close()
+</span><span class="code-line line-number" line="809">        windows2 = Window2()
+</span><span class="code-line line-number" line="810">        windows2.ui.show()
+</span><span class="code-line line-number" line="811">    def come_win3(self):
+</span><span class="code-line line-number" line="812">        global lastwin
+</span><span class="code-line line-number" line="813">        lastwin = 'win3'
+</span><span class="code-line line-number" line="814">        self.ui.close()
+</span><span class="code-line line-number" line="815">        windows3 = Window3()
+</span><span class="code-line line-number" line="816">        windows3.ui.show()
+</span><span class="code-line line-number" line="817">
+</span><span class="code-line line-number" line="818">        
+</span><span class="code-line line-number" line="819">    def come_win4(self):
+</span><span class="code-line line-number" line="820">        
+</span><span class="code-line line-number" line="821">        global lastwin
+</span><span class="code-line line-number" line="822">        lastwin = 'win4'
+</span><span class="code-line line-number" line="823">        self.ui.close()
+</span><span class="code-line line-number" line="824">        windows4 = Window4()
+</span><span class="code-line line-number" line="825">        windows4.ui.show()
+</span><span class="code-line line-number" line="826">        牛逼666
+</span><span class="code-line line-number" line="827">    def come_win5(self):
+</span><span class="code-line line-number" line="828">        
+</span><span class="code-line line-number" line="829">        global lastwin
+</span><span class="code-line line-number" line="830">        lastwin = 'win5'
+</span><span class="code-line line-number" line="831">        self.ui.close()
+</span><span class="code-line line-number" line="832">        windows5= Window5()
+</span><span class="code-line line-number" line="833">        windows5.ui.show()
+</span><span class="code-line line-number" line="834">        牛逼666
+</span><span class="code-line line-number" line="835"> 
+</span><span class="code-line line-number" line="836">    def come_win6(self):
+</span><span class="code-line line-number" line="837">        
+</span><span class="code-line line-number" line="838">        global lastwin
+</span><span class="code-line line-number" line="839">        lastwin = 'win6'
+</span><span class="code-line line-number" line="840">        self.ui.close()
+</span><span class="code-line line-number" line="841">        windows6= Window6()
+</span><span class="code-line line-number" line="842">        windows6.ui.show()
+</span><span class="code-line line-number" line="843">
+</span><span class="code-line line-number" line="844">
+</span><span class="code-line line-number" line="845">
+</span><span class="code-line line-number" line="846">    def come_settings(self):
+</span><span class="code-line line-number" line="847">        global lastwin
+</span><span class="code-line line-number" line="848">        lastwin='settings'
+</span><span class="code-line line-number" line="849">        self.ui.close()
+</span><span class="code-line line-number" line="850">        windowssettings=Windowsettings()
+</span><span class="code-line line-number" line="851">        windowssettings.ui.show()
+</span><span class="code-line line-number" line="852">    def come_shop(self):
+</span><span class="code-line line-number" line="853">        global lastwin
+</span><span class="code-line line-number" line="854">        self.ui.close()
+</span><span class="code-line line-number" line="855">        lastwin='shop'
+</span><span class="code-line line-number" line="856">        windowsshop=Windowshop()
+</span><span class="code-line line-number" line="857">        windowsshop.ui.show()
+</span><span class="code-line line-number" line="858">    def come_xngd(self):
+</span><span class="code-line line-number" line="859">        QMessageBox.about(self.ui,'温馨提示',"10分数=1金币\n程序有点bug，关闭游戏会卡死，请关闭程序,金币会加的.    ")
+</span><span class="code-line line-number" line="860">        a=main()
+</span><span class="code-line line-number" line="861">        b=int(a/10)
+</span><span class="code-line line-number" line="862">        with open('settings.json') as f:
+</span><span class="code-line line-number" line="863">            sett =json.load(f)
+</span><span class="code-line line-number" line="864">        jinbi=b+int(sett)
+</span><span class="code-line line-number" line="865">        with open('settings.json', 'w') as f:
+</span><span class="code-line line-number" line="866">            json.dump(str(jinbi),f)
+</span><span class="code-line line-number" line="867">        
+</span><span class="code-line line-number" line="868">
+</span><span class="code-line line-number" line="869">
+</span><span class="code-line line-number" line="870">    def come_lastwin(self):
+</span><span class="code-line line-number" line="871">        if lastwin=='win1':
+</span><span class="code-line line-number" line="872">            self.come_win1()
+</span><span class="code-line line-number" line="873">        elif lastwin=='win2':
+</span><span class="code-line line-number" line="874">            self.come_win2()
+</span><span class="code-line line-number" line="875">        elif lastwin=='win3':
+</span><span class="code-line line-number" line="876">            self.come_win3()
+</span><span class="code-line line-number" line="877">        elif lastwin=='win4':
+</span><span class="code-line line-number" line="878">            self.come_win4()
+</span><span class="code-line line-number" line="879">        elif lastwin=='win5':
+</span><span class="code-line line-number" line="880">            self.come_win5()
+</span><span class="code-line line-number" line="881">        elif lastwin=='win6':
+</span><span class="code-line line-number" line="882">            self.come_win6()
+</span><span class="code-line line-number" line="883">        elif lastwin=='shop':
+</span><span class="code-line line-number" line="884">            self.come_shop()
+</span><span class="code-line line-number" line="885">        elif lastwin=='settings':
+</span><span class="code-line line-number" line="886">            self.come_settings()
+</span><span class="code-line line-number" line="887">
+</span><span class="code-line line-number" line="888">
+</span><span class="code-line line-number" line="889">        
+</span><span class="code-line line-number" line="890">if __name__ == "__main__":
+</span><span class="code-line line-number" line="891">    app = QApplication()
+</span><span class="code-line line-number" line="892">    windowsmenu = Windowmenu()
+</span><span class="code-line line-number" line="893">    windowsmenu.ui.show()
+</span><span class="code-line line-number" line="894">    app.exec_()
+</span></code></pre>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+    <h2>开发工具</h2>
+    <ul>
+    <li>集成开发环境：Pycharm</li>
+    <li>Python</li>
+    <li>Pyside2</li>
+    <li>Pilow(PIL)</li>
+    </ul>
+    <h2>功能</h2>
+    <ol>
+    <li><strong>文本加密为图片</strong></li>
+    </ol>
+    <p>用户输入一段文字，程序将提取每个字符的 Unicode 序号，分别取出高位和低位，作为一个像素点的绿色（G）和蓝色（B）通道的值。随机生成红色（R）通道的值以增加随机性。最后，将这些像素点组合成一张图片，以达到加密的功能。</p>
+    <ol start="2">
+    <li><strong>图片解密为文本</strong></li>
+    </ol>
+    <p>用户在图形化界面中选择一张加密后的图片，程序依次读取图片每个像素点的绿色（G）和蓝色（B）通道的值，分别作为高位和低位进行组合，再利用 chr() 函数得到该数字对应的字符。最后，将所有字符组合在一起还原为原始文本。</p>
+    <ol start="3">
+    <li><strong>图中字</strong></li>
+    </ol>
+    <p>用户输入图片和文字，软件生成一张图片，将原图片中每个像素点替换为用户输入的文字。</p>
+    <h2>如图</h2>
+    <img src="../../image/passage3/2.png" alt="3" style="zoom:67%;">
+    <img src="../../image/passage3/2.png" alt="3" style="zoom:67%;">
+    <p><strong>我们再把生成的图片（文件会自动生成到该软件路径下的“保存的图片”文件夹）给还原一下试试</strong></p>
+    <img src="../../image/passage3/3.png" alt="3" style="zoom:67%;">
+    <p><strong>可见，我们成功地从图片还原出了我与地坛的全文</strong></p>
+    <p>接下来我们看看图中字功能</p>
+    <img src="../../image/passage3/4.png" alt="4" style="zoom:67%;">
+    <p><strong>这里我用我的微信头像（三叶）生成一下，生成的图片如下</strong></p>
+    <img src="../../image/passage3/5.png" alt="5" style="zoom:67%;">
+    <p><strong>看起来还挺正常的，但是我们放大看，就能看到其实这张图片都是由“三叶”两个字组成的</strong></p>
+    <img src="../../image/passage3/6.png" alt="6" style="zoom:67%;">
+    <p><strong>源码放了main.py，但是还有一个main.ui是我用qt designer做的，没有这个也没办法运行，也没有上传github（懒）如果想玩就加我qq吧：2141703630，（注释是AI帮我生成的，因为我现在看不懂我以前写的代码了）</strong></p>
+    <p>​</p>
+    <pre><code class="code-highlight"><span class="code-line line-number" line="1">from PySide2.QtWidgets import QApplication, QFileDialog, QMessageBox
+    </span><span class="code-line line-number" line="2">from PySide2.QtUiTools import QUiLoader
+    </span><span class="code-line line-number" line="3">from PIL import Image
+    </span><span class="code-line line-number" line="4">import math
+    </span><span class="code-line line-number" line="5">import random
+    </span><span class="code-line line-number" line="6">from PySide2.QtGui import QPixmap, QIcon
+    </span><span class="code-line line-number" line="7">from PySide2.QtCore import Qt, QThread, QMutex
+    </span><span class="code-line line-number" line="8">import os
+    </span><span class="code-line line-number" line="9">from PIL import Image, ImageDraw, ImageFont
+    </span><span class="code-line line-number" line="10">import time
+    </span><span class="code-line line-number" line="11">
+    </span><span class="code-line line-number" line="12"># 创建一个互斥锁对象qmut_1，用于在多线程环境下对共享资源的访问进行控制，
+    </span><span class="code-line line-number" line="13"># 确保同一时间只有一个线程能够访问特定的资源，避免出现数据冲突等问题。
+    </span><span class="code-line line-number" line="14">qmut_1 = QMutex()
+    </span><span class="code-line line-number" line="15">
+    </span><span class="code-line line-number" line="16">
+    </span><span class="code-line line-number" line="17">class Worker2(QThread):
+    </span><span class="code-line line-number" line="18">    """
+    </span><span class="code-line line-number" line="19">    Worker2类继承自QThread，主要用于在单独的线程中处理图片加载及在界面上显示的相关操作。
+    </span><span class="code-line line-number" line="20">
+    </span><span class="code-line line-number" line="21">    在多线程编程中，将这类耗时的操作放在单独线程执行，可防止阻塞主线程，
+    </span><span class="code-line line-number" line="22">    使得程序的界面在图片加载过程中依然能够保持响应，提供更好的用户体验。
+    </span><span class="code-line line-number" line="23">
+    </span><span class="code-line line-number" line="24">    Attributes:
+    </span><span class="code-line line-number" line="25">        window: 与该线程相关联的窗口对象，通过它可以访问窗口中的各种属性和控件，
+    </span><span class="code-line line-number" line="26">                以便在图片加载成功后能正确地将图片设置到对应的界面控件上进行显示。
+    </span><span class="code-line line-number" line="27">    """
+    </span><span class="code-line line-number" line="28">    def __init__(self, window):
+    </span><span class="code-line line-number" line="29">        super(Worker2, self).__init__()
+    </span><span class="code-line line-number" line="30">        self.window = window
+    </span><span class="code-line line-number" line="31">
+    </span><span class="code-line line-number" line="32">    def run(self):
+    </span><span class="code-line line-number" line="33">        """
+    </span><span class="code-line line-number" line="34">        重写QThread类的run方法，此方法中的代码会在该线程启动时自动执行。
+    </span><span class="code-line line-number" line="35">
+    </span><span class="code-line line-number" line="36">        该方法的主要任务是加载指定路径的图片，并将其设置到界面上特定的QLabel控件（lbnew）中显示。
+    </span><span class="code-line line-number" line="37">        如果图片加载失败，会尝试多次重新加载。
+    </span><span class="code-line line-number" line="38">        """
+    </span><span class="code-line line-number" line="39">        qmut_1.lock()
+    </span><span class="code-line line-number" line="40">        pic_path = "保存的图片/" + self.window.fill + ".png"
+    </span><span class="code-line line-number" line="41">        pixmap = QPixmap(pic_path)
+    </span><span class="code-line line-number" line="42">        if not pixmap.isNull():
+    </span><span class="code-line line-number" line="43">            self.window.window.ui.lbnew.setPixmap(pixmap)
+    </span><span class="code-line line-number" line="44">        else:
+    </span><span class="code-line line-number" line="45">            print(f"无法加载图片: {pic_path}")
+    </span><span class="code-line line-number" line="46">
+    </span><span class="code-line line-number" line="47">            # 当图片加载失败时，尝试进行多次重新加载操作。每次重新加载前等待0.1秒，
+    </span><span class="code-line line-number" line="48">            # 这样做是为了给系统一些时间来处理可能的资源分配或其他相关问题，增加加载成功的几率。
+    </span><span class="code-line line-number" line="49">            for _ in range(3):
+    </span><span class="code-line line-number" line="50">                time.sleep(0.1)
+    </span><span class="code-line line-number" line="51">                print(f"正在尝试重新加载图片: {pic_path}")
+    </span><span class="code-line line-number" line="52">                pixmap = QPixmap(pic_path)
+    </span><span class="code-line line-number" line="53">                if not pixmap.isNull():
+    </span><span class="code-line line-number" line="54">                    self.window.window.ui.lbnew.setPixmap(pixmap)
+    </span><span class="code-line line-number" line="55">                    break
+    </span><span class="code-line line-number" line="56">
+    </span><span class="code-line line-number" line="57">            # 如果经过多次尝试后图片仍然无法加载成功，就弹出一个错误提示框告知用户加载失败的情况。
+    </span><span class="code-line line-number" line="58">            if pixmap.isNull():
+    </span><span class="code-line line-number" line="59">                QMessageBox.warning(self.window.window.ui, "错误", "无法加载图片。")
+    </span><span class="code-line line-number" line="60">        qmut_1.unlock()
+    </span><span class="code-line line-number" line="61">
+    </span><span class="code-line line-number" line="62">
+    </span><span class="code-line line-number" line="63">class Worker1(QThread):
+    </span><span class="code-line line-number" line="64">    """
+    </span><span class="code-line line-number" line="65">    Worker1类同样继承自QThread，主要负责在单独的线程中执行一系列复杂的图片处理操作。
+    </span><span class="code-line line-number" line="66">
+    </span><span class="code-line line-number" line="67">    它会根据输入的文本内容以及源图像生成一张新的图片，处理完成后通过调用Worker2类的方法，
+    </span><span class="code-line line-number" line="68">    将生成的图片显示在界面上。
+    </span><span class="code-line line-number" line="69">
+    </span><span class="code-line line-number" line="70">    Attributes:
+    </span><span class="code-line line-number" line="71">        window: 与该线程相关联的窗口对象，通过它可以获取窗口中的各种输入信息（如文本框内容），
+    </span><span class="code-line line-number" line="72">                以及访问其他相关的控件和属性，以此来完成整个图片处理任务。
+    </span><span class="code-line line-number" line="73">        fill: 要保存的图片文件名（不包含扩展名），该文件名是从窗口的相关文本框中获取的，
+    </span><span class="code-line line-number" line="74">              用于指定生成图片的保存名称。
+    </span><span class="code-line line-number" line="75">        worker: Worker2类的一个实例，用于在图片处理完成后，将处理好的图片在界面上进行显示操作。
+    </span><span class="code-line line-number" line="76">    """
+    </span><span class="code-line line-number" line="77">    def __init__(self, window):
+    </span><span class="code-line line-number" line="78">        super(Worker1, self).__init__()
+    </span><span class="code-line line-number" line="79">        self.window = window
+    </span><span class="code-line line-number" line="80">        self.fill = self.window.ui.edt_name.text()
+    </span><span class="code-line line-number" line="81">        self.worker = Worker2(self)
+    </span><span class="code-line line-number" line="82">
+    </span><span class="code-line line-number" line="83">    def run(self):
+    </span><span class="code-line line-number" line="84">        """
+    </span><span class="code-line line-number" line="85">        重写QThread类的run方法，在这里定义了具体的图片处理逻辑流程。
+    </span><span class="code-line line-number" line="86">
+    </span><span class="code-line line-number" line="87">        包括设置图片处理所需的一些参数（如子图尺寸、字体等），打开源图像，
+    </span><span class="code-line line-number" line="88">        依据源图像的像素信息和输入的文本内容生成新的图片，最后保存图片并在界面上显示出来。
+    </span><span class="code-line line-number" line="89">        """
+    </span><span class="code-line line-number" line="90">        self.fill = self.window.ui.edt_name.text()
+    </span><span class="code-line line-number" line="91">
+    </span><span class="code-line line-number" line="92">        # 定义子图的尺寸，这里将子图的宽度和高度都设置为16像素。
+    </span><span class="code-line line-number" line="93">        # 在后续的图片处理过程中，会基于这个固定尺寸对源图像进行分割处理，
+    </span><span class="code-line line-number" line="94">        # 以及在每个子图上进行文字绘制等相关操作。
+    </span><span class="code-line line-number" line="95">        CHILD_W = CHILD_H = 16
+    </span><span class="code-line line-number" line="96">
+    </span><span class="code-line line-number" line="97">        # 从窗口的相关文本框中获取要输出到图片中的文本内容，这个文本将会作为图片处理的一部分，
+    </span><span class="code-line line-number" line="98">        # 例如可能会根据文本的字符依次绘制到图片的特定位置上。
+    </span><span class="code-line line-number" line="99">        txt = self.window.ui.edt_fill.text()
+    </span><span class="code-line line-number" line="100">
+    </span><span class="code-line line-number" line="101">        font_path = 'AliPuHui-Bold.ttf'
+    </span><span class="code-line line-number" line="102">        font_size = CHILD_W
+    </span><span class="code-line line-number" line="103">        try:
+    </span><span class="code-line line-number" line="104">            font = ImageFont.truetype(font_path, font_size)
+    </span><span class="code-line line-number" line="105">        except OSError:
+    </span><span class="code-line line-number" line="106">            print(f"无法加载字体: {font_path}")
+    </span><span class="code-line line-number" line="107">            font = ImageFont.load_default()
+    </span><span class="code-line line-number" line="108">            # 如果无法加载指定的字体文件，就弹出一个警告提示框告知用户，
+    </span><span class="code-line line-number" line="109">            # 同时告知用户程序将使用默认字体来继续后续的图片处理操作。
+    </span><span class="code-line line-number" line="110">            QMessageBox.warning(self.window.window.ui, "警告", "无法加载指定字体，使用默认字体。")
+    </span><span class="code-line line-number" line="111">
+    </span><span class="code-line line-number" line="112">        imgSrc_path = self.window.fileName[0]
+    </span><span class="code-line line-number" line="113">        try:
+    </span><span class="code-line line-number" line="114">            imgSrc = Image.open(imgSrc_path, "r")
+    </span><span class="code-line line-number" line="115">        except FileNotFoundError:
+    </span><span class="code-line line-number" line="116">            print(f"无法找到源图像: {imgSrc_path}")
+    </span><span class="code-line line-number" line="117">            QMessageBox.warning(self.window.window.ui, "错误", "无法找到源图像。")
+    </span><span class="code-line line-number" line="118">            return
+    </span><span class="code-line line-number" line="119">
+    </span><span class="code-line line-number" line="120">        w, h = imgSrc.size
+    </span><span class="code-line line-number" line="121">
+    </span><span class="code-line line-number" line="122">        imgChild = Image.new("RGB", (CHILD_W, CHILD_H))
+    </span><span class="code-line line-number" line="123">
+    </span><span class="code-line line-number" line="124">        imgDst = Image.new("RGB", (CHILD_W * w, CHILD_H * h))
+    </span><span class="code-line line-number" line="125">
+    </span><span class="code-line line-number" line="126">        textW, textH = font.getsize("迷")
+    </span><span class="code-line line-number" line="127">        offsetX = (CHILD_W - textW) &gt;&gt; 1
+    </span><span class="code-line line-number" line="128">        offsetY = (CHILD_H - textH) &gt;&gt; 1
+    </span><span class="code-line line-number" line="129">
+    </span><span class="code-line line-number" line="130">        charIndex = 0
+    </span><span class="code-line line-number" line="131">        draw = ImageDraw.Draw(imgChild)
+    </span><span class="code-line line-number" line="132">
+    </span><span class="code-line line-number" line="133">        print("开始处理图片...")
+    </span><span class="code-line line-number" line="134">
+    </span><span class="code-line line-number" line="135">        for y in range(h):
+    </span><span class="code-line line-number" line="136">            for x in range(w):
+    </span><span class="code-line line-number" line="137">                draw.rectangle((0, 0, CHILD_W, CHILD_H), fill='lightgray')
+    </span><span class="code-line line-number" line="138">
+    </span><span class="code-line line-number" line="139">                if charIndex &lt; len(txt):
+    </span><span class="code-line line-number" line="140">                    draw.text((offsetX, offsetY), txt[charIndex], font=font, fill=imgSrc.getpixel((x, y)))
+    </span><span class="code-line line-number" line="141">                else:
+    </span><span class="code-line line-number" line="142">                    draw.text((offsetX, offsetY), " ", font=font, fill=imgSrc.getpixel((x, y)))
+    </span><span class="code-line line-number" line="143">
+    </span><span class="code-line line-number" line="144">                imgDst.paste(imgChild, (x * CHILD_W, y * CHILD_H))
+    </span><span class="code-line line-number" line="145">
+    </span><span class="code-line line-number" line="146">                charIndex += 1
+    </span><span class="code-line line-number" line="147">                if charIndex == len(txt):
+    </span><span class="code-line line-number" line="148">                    charIndex = 0
+    </span><span class="code-line line-number" line="149">
+    </span><span class="code-line line-number" line="150">                print(str((x, y)))
+    </span><span class="code-line line-number" line="151">
+    </span><span class="code-line line-number" line="152">        save_path = "保存的图片/" + self.fill + ".png"
+    </span><span class="code-line line-number" line="153">        try:
+    </span><span class="code-line line-number" line="154">            imgDst.save(save_path)
+    </span><span class="code-line line-number" line="155">        except OSError:
+    </span><span class="code-line line-number" line="156">            print(f"无法保存处理后的图片: {save_path}")
+    </span><span class="code-line line-number" line="157">            QMessageBox.warning(self.window.window.ui, "错误", "无法保存处理后的图片。")
+    </span><span class="code-line line-number" line="158">
+    </span><span class="code-line line-number" line="159">        self.worker.run()
+    </span><span class="code-line line-number" line="160">
+    </span><span class="code-line line-number" line="161">        for _ in range(2):
+    </span><span class="code-line line-number" line="162">            print(f"图片处理完成后的额外操作，第 {_ + 1} 次循环")
+    </span><span class="code-line line-number" line="163">            time.sleep(0.1)
+    </span><span class="code-line line-number" line="164">
+    </span><span class="code-line line-number" line="165">        time.sleep(0.2)
+    </span><span class="code-line line-number" line="166">
+    </span><span class="code-line line-number" line="167">
+    </span><span class="code-line line-number" line="168">class Stats:
+    </span><span class="code-line line-number" line="169">    """
+    </span><span class="code-line line-number" line="170">    Stats类主要用于管理应用程序的主窗口界面以及与之相关的各种操作逻辑。
+    </span><span class="code-line line-number" line="171">
+    </span><span class="code-line line-number" line="172">    它负责初始化窗口界面，将各个按钮的点击事件连接到对应的处理方法上，
+    </span><span class="code-line line-number" line="173">    并且通过创建Worker1类的实例来执行图片处理相关的后台线程任务。
+    </span><span class="code-line line-number" line="174">
+    </span><span class="code-line line-number" line="175">    Attributes:
+    </span><span class="code-line line-number" line="176">        ui: 通过QUiLoader加载的主窗口界面对象，这个对象包含了各种各样用于显示和交互的控件，
+    </span><span class="code-line line-number" line="177">            比如按钮、文本框、标签等。通过这些控件，用户可以与程序进行各种交互操作，
+    </span><span class="code-line line-number" line="178">            例如输入信息、触发操作、查看结果等。
+    </span><span class="code-line line-number" line="179">        fileName: 用于存储当前选择的文件名称或路径，在涉及文件操作（如打开、保存等）的方法中，
+    </span><span class="code-line line-number" line="180">                会使用到这个变量来确定具体要操作的文件。
+    </span><span class="code-line line-number" line="181">        worker1: Worker1类的一个实例，用于在后台线程中执行图片处理相关的任务，
+    </span><span class="code-line line-number" line="182">                例如根据用户在界面上输入的内容生成新的图片，或者对已经选择的图片进行特定处理等。
+    </span><span class="code-line line-number" line="183">    """
+    </span><span class="code-line line-number" line="184">    def __init__(self):
+    </span><span class="code-line line-number" line="185">        self.ui = QUiLoader().load('main.ui')
+    </span><span class="code-line line-number" line="186">        self.ui.bt1.clicked.connect(self.do1)
+    </span><span class="code-line line-number" line="187">        self.ui.bt2.clicked.connect(self.do2)
+    </span><span class="code-line line-number" line="188">        self.ui.bt3.clicked.connect(self.do3)
+    </span><span class="code-line line-number" line="189">        self.ui.bt_chose.clicked.connect(self.open_file)
+    </span><span class="code-line line-number" line="190">        self.ui.bt_enter.clicked.connect(self.font_in_png)
+    </span><span class="code-line line-number" line="191">        self.ui.lb1.setScaledContents(True)
+    </span><span class="code-line line-number" line="192">        self.ui.lb2.setScaledContents(True)
+    </span><span class="code-line line-number" line="193">        self.ui.lbnew.setScaledContents(True)
+    </span><span class="code-line line-number" line="194">        self.fileName = ''
+    </span><span class="code-line line-number" line="195">        self.worker1 = Worker1(self)
+    </span><span class="code-line line-number" line="196">
+    </span><span class="code-line line-number" line="197">    def do1(self):
+    </span><span class="code-line line-number" line="198">        """
+    </span><span class="code-line line-number" line="199">        do1方法是与窗口中名为bt1的按钮点击事件相关联的处理方法。
+    </span><span class="code-line line-number" line="200">
+    </span><span class="code-line line-number" line="201">        该方法的主要功能是将用户在界面的edit1文本框中输入的文本内容进行编码，
+    </span><span class="code-line line-number" line="202">        并根据编码结果生成一张图片，然后将生成的图片保存到指定路径下，
+    </span><span class="code-line line-number" line="203">        最后尝试在界面的特定QLabel控件（lb1）上显示该图片。
+    </span><span class="code-line line-number" line="204">        如果图片显示失败，还会对图片进行一些额外的处理（如旋转）并再次尝试显示。
+    </span><span class="code-line line-number" line="205">        """
+    </span><span class="code-line line-number" line="206">        def encode():
+    </span><span class="code-line line-number" line="207">            text = self.ui.edit1.toPlainText()
+    </span><span class="code-line line-number" line="208">            str_len = len(text)
+    </span><span class="code-line line-number" line="209">            width = math.ceil(str_len ** 0.5)
+    </span><span class="code-line line-number" line="210">            im = Image.new("RGB", (width, width), 0x0)
+    </span><span class="code-line line-number" line="211">            x, y = 0, 0
+    </span><span class="code-line line-number" line="212">
+    </span><span class="code-line line-number" line="213">            for i in text:
+    </span><span class="code-line line-number" line="214">                index = ord(i)
+    </span><span class="code-line line-number" line="215">                r = random.randint(0, 255)
+    </span><span class="code-line line-number" line="216">                g = (index &amp; 0xFF00) &gt;&gt; 8
+    </span><span class="code-line line-number" line="217">                b = index &amp; 0xFF
+    </span><span class="code-line line-number" line="218">                rgb = (r, g, b)
+    </span><span class="code-line line-number" line="219">                im.putpixel((x, y), rgb)
+    </span><span class="code-line line-number" line="220">
+    </span><span class="code-line line-number" line="221">                if x == width - 1:
+    </span><span class="code-line line-number" line="222">                    x = 0
+    </span><span class="code-line line-number" line="223">                    y += 1
+    </span><span class="code-line line-number" line="224">                else:
+    </span><span class="code-line line-number" line="225">                    x += 1
+    </span><span class="code-line line-number" line="226">
+    </span><span class="code-line line-number" line="227">            return im
+    </span><span class="code-line line-number" line="228">
+    </span><span class="code-line line-number" line="229">        im = encode()
+    </span><span class="code-line line-number" line="230">
+    </span><span class="code-line line-number" line="231">        if not os.path.exists('保存的图片'):
+    </span><span class="code-line line-number" line="232">            os.mkdir('保存的图片')
+    </span><span class="code-line line-number" line="233">
+    </span><span class="code-line line-number" line="234">        save_path = "保存的图片/" + self.ui.name_edit.text() + ".bmp"
+    </span><span class="code-line line-number" line="235">        try:
+    </span><span class="code-line line-number" line="236">            im.save(save_path)
+    </span><span class="code-line line-number" line="237">        except OSError:
+    </span><span class="code-line line-number" line="238">            print(f"无法保存编码后的图片: {save_path}")
+    </span><span class="code-line line-number" line="239">            QMessageBox.warning(self.ui, "错误", "无法保存编码后的图片。")
+    </span><span class="code-line line-number" line="240">
+    </span><span class="code-line line-number" line="241">        pixmap = QPixmap(save_path)
+    </span><span class="code-line line-number" line="242">        if not pixmap.isNull():
+    </span><span class="code-line line-number" line="243">            self.ui.lb1.setPixmap(pixmap)
+    </span><span class="code-line line-number" line="244">        else:
+    </span><span class="code-line line-number" line="245">            print(f"无法加载编码后的图片: {save_path}")
+    </span><span class="code-line line-number" line="246">
+    </span><span class="code-line line-number" line="247">            for _ in range(3):
+    </span><span class="code-line line-number" line="248">                r = random.randint(0, 180)
+    </span><span class="code-line line-number" line="249">                im = im.rotate(r)
+    </span><span class="code-line line-number" line="250">                save_path = "保存的图片/" + self.ui.name_edit.text() + f"_rotated_{r}.bmp"
+    </span><span class="code-line line-number" line="251">                try:
+    </span><span class="code-line line-number" line="252">                    im.save(save_path)
+    </span><span class="code-line line-number" line="253">                    pixmap = QPixmap(save_path)
+    </span><span class="code-line line-number" line="254">                    if not pixmap.isNull():
+    </span><span class="code-line line-number" line="255">                        self.ui.lb1.setPixmap(pixmap)
+    </span><span class="code-line line-number" line="256">                        break
+    </span><span class="code-line line-number" line="257">                except OSError:
+    </span><span class="code-line line-number" line="258">                    print(f"无法保存旋转后的图片: {save_path}")
+    </span><span class="code-line line-number" line="259">                if pixmap.isNull():
+    </span><span class="code-line line-number" line="260">                    QMessageBox.warning(self.ui, "错误", "无法加载编码后的图片，且多次尝试旋转后仍无法加载。")
+    </span><span class="code-line line-number" line="261">
+    </span><span class="code-line line-number" line="262">    def do2(self):
+    </span><span class="code-line line-number" line="263">        """
+    </span><span class="code-line line-number" line="264">        do2方法是与窗口中名为bt2的按钮点击事件相关联的处理方法。
+    </span><span class="code-line line-number" line="265">
+    </span><span class="code-line line-number" line="266">        该方法主要实现了通过文件对话框让用户选择一张图片的功能，
+    </span><span class="code-line line-number" line="267">        并将用户选择的图片在界面的特定QLabel控件（lb2）上进行显示。
+    </span><span class="code-line line-number" line="268">        如果图片加载失败，会弹出一个错误提示框告知用户加载失败的情况。
+    </span><span class="code-line line-number" line="269">        此外，还会对选择的图片文件名进行一些额外的处理（如创建一个新文件并写入相关内容），
+    </span><span class="code-line line-number" line="270">        虽然这些额外处理可能在实际应用中的作用不是特别大，但可以作为一种示例展示相关操作。
+    </span><span class="code-line line-number" line="271">        """
+    </span><span class="code-line line-number" line="272">        self.fileName = QFileDialog.getOpenFileName(self.ui, r'选择要转换的图片', '保存的图片/', '图像文件(*.jpg *.bmp *.png)')
+    </span><span class="code-line line-number" line="273">
+    </span><span class="code-line line-number" line="274">        pixmap = QPixmap(self.fileName[0])
+    </span><span class="code-line line-number" line="275">        if not pixmap.isNull():
+    </span><span class="code-line line-number" line="276">            self.ui.lb2.setPixmap(pixmap)
+    </span><span class="code-line line-number" line="277">        else:
+    </span><span class="code-line line-number" line="278">            print(f"无法加载选择的图片: {self.fileName[0]}")
+    </span><span class="code-line line-number" line="279">            QMessageBox.warning(self.ui, "错误", "无法加载选择的图片。")
+    </span><span class="code-line line-number" line="280">
+    </span><span class="code-line line-number" line="281">        file_name = self.fileName[0]
+    </span><span class="code-line line-number" line="282">        file_name_parts = file_name.split('.')
+    </span><span class="code-line line-number" line="283">        new_file_name = file_name_parts[0] + "_modified." + file_name_parts[1]
+    </span><span class="code-line line-number" line="284">        try:
+    </span><span class="code-line line-number" line="285">            with open(new_file_name, 'w') as f:
+    </span><span class="code-line line-number" line="286">                f.write("这是对选择图片文件名的额外处理内容，可能没什么实际作用\n")
+    </span><span class="code-line line-number" line="287">        except OSError:
+    </span><span class="code-line line-number" line="288">            print(f"无法创建或写入新文件: {new_file_name}")
+    </span><span class="code-line line-number" line="289">            QMessageBox.warning(self.ui, "错误", "无法创建或写入新文件。")
+    </span><span class="code-line line-number" line="290">
+    </span><span class="code-line line-number" line="291">    def do3(self):
+    </span><span class="code-line line-number" line="292">        """
+    </span><span class="code-line line-number" line="293">        do3方法是与窗口中名为bt3的按钮点击事件相关联的处理方法。
+    </span><span class="code-line line-number" line="294">
+    </span><span class="code-line line-number" line="295">        该方法主要实现了对之前通过文件对话框选择的一张图片进行解码操作的功能，
+    </span><span class="code-line line-number" line="296">        它会将图片中的像素信息还原为文本内容，并将解码后的文本显示在界面的特定文本框（edit2）中。
+    </span><span class="code-line line-number" line="297">        此外，还会对解码后的文本进行一些简单的变换（如反转字符串）后再进行显示，
+    </span><span class="code-line line-number" line="298">        这可能是为了展示对解码结果的进一步处理或者满足某种特定的需求。
+    </span><span class="code-line line-number" line="299">        """
+    </span><span class="code-line line-number" line="300">        def decode():
+    </span><span class="code-line line-number" line="301">            im_path = self.fileName[0]
+    </span><span class="code-line line-number" line="302">            try:
+    </span><span class="code-line line-number" line="303">                im = Image.open(im_path, "r")
+    </span><span class="code-line line-number" line="304">            except FileNotFoundError:
+    </span><span class="code-line line-number" line="305">                print(f"无法找到要解码的图片: {im_path}")
+    </span><span class="code-line line-number" line="306">                QMessageBox.warning(self.ui, "错误", "无法找到要解码的图片。")
+    </span><span class="code-line line-number" line="307">                return
+    </span><span class="code-line line-number" line="308">
+    </span><span class="code-line line-number" line="309">            width, height = im.size
+    </span><span class="code-line line-number" line="310">            lst = []
+    </span><span class="code-line line-number" line="311">            out = ''
+    </span><span class="code-line line-number" line="312">
+    </span><span class="code-line line-number" line="313">            for y in range(height):
+    </span><span class="code-line line-number" line="314">                for x in range(width):
+    </span><span class="code-line line-number" line="315">                    red, green, blue = im.getpixel((x, y))
+    </span><span class="code-line line-number" line="316">                    if (blue | green | red) == 0:
+    </span><span class="code-line line-number" line="317">                        break
+    </span><span class="code-line line-number" line="318">                    index = (green &lt;&lt; 8) + blue
+    </span><span class="code-line line-number" line="319">                    lst.append(chr(index))
+    </span><span class="code-line line-number" line="320">
+    </span><span class="code-line line-number" line="321">            for i in lst:
+    </span><span class="code-line line-number" line="322">                out += i
+    </span><span class="code-line line-number" line="323">
+    </span><span class="code-line line-number" line="324">            return out
+    </span><span class="code-line line-number" line="325">
+    </span><span class="code-line line-number" line="326">        all_text = decode()
+    </span><span class="code-line line-number" line="327">
+    </span><span class="code-line line-number" line="328">        self.ui.edit2.setPlainText(all_text)
+    </span><span class="code-line line-number" line="329">
+    </span><span class="code-line line-number" line="330">        all_text = all_text[::-1]
+    </span><span class="code-line line-number" line="331">        self.ui.edit2.setPlainText(all_text)
+    </span><span class="code-line line-number" line="332">
+    </span><span class="code-line line-number" line="333">    def font_in_png(self):
+    </span><span class="code-line line-number" line="334">        """
+    </span><span class="code-line line-number" line="335">        font_in_png方法是与窗口中名为bt_enter的按钮点击事件相关联的处理方法。
+    </span><span class="code-line line-number" line="336">
+    </span><span class="code-line line-number" line="337">        该方法的主要作用是启动Worker1线程来执行图片处理相关的任务，
+    </span><span class="code-line line-number" line="338">        具体的图片处理操作在Worker1类的run方法中已经详细定义。
+    </span><span class="code-line line-number" line="339">        """
+    </span><span class="code-line line-number" line="340">        self.worker1.run()
+    </span><span class="code-line line-number" line="341">
+    </span><span class="code-line line-number" line="342">    def open_file(self):
+    </span><span class="code-line line-number" line="343">        """
+    </span><span class="code-line line-number" line="344">        open_file方法是与窗口中名为bt_chose的按钮点击事件相关联的处理方法。
+    </span><span class="code-line line-number" line="345">
+    </span><span class="code-line line-number" line="346">        该方法主要实现了通过文件对话框让用户选择一张要转换的图片的功能，
+    </span><span class="code-line line-number" line="347">        并将用户选择的文件名称或路径存储在fileName变量中，以便后续的图片处理操作能够使用到该信息。
+    </span><span class="code-line line-number" line="348">        """
+    </span><span class="code-line line-number" line="349">        self.fileName = QFileDialog.getOpenFileName(self.ui, r'选择要转换的图片', '保存的图片/', '图像文件(*.jpg *.bmp *.png)')
+    </span><span class="code-line line-number" line="350">
+    </span><span class="code-line line-number" line="351">
+    </span><span class="code-line line-number" line="352">def main():
+    </span><span class="code-line line-number" line="353">    app = QApplication([])
+    </span><span class="code-line line-number" line="354">    app.setWindowIcon(QIcon('logo.png'))
+    </span><span class="code-line line-number" line="355">    stats = Stats()
+    </span><span class="code-line line-number" line="356">    stats.ui.show()
+    </span><span class="code-line line-number" line="357">    app.exec_()
+    </span><span class="code-line line-number" line="358">
+    </span><span class="code-line line-number" line="359">
+    </span><span class="code-line line-number" line="360">if __name__ == '__main__':
+    </span><span class="code-line line-number" line="361">    main()
+    </span></code></pre>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
