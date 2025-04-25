@@ -57,14 +57,14 @@
 </span><span class="code-line line-number" line="9">int sum(int x)//求1~x的所有和
 </span><span class="code-line line-number" line="10">{
 </span><span class="code-line line-number" line="11">    int res = 0;
-</span><span class="code-line line-number" line="12">    for (int i = x ; i &lt;= N ; i += lowbit(i))
+</span><span class="code-line line-number" line="12">    for (int i = x ; i ; i -= lowbit(i))
 </span><span class="code-line line-number" line="13">        res += tr[i];
 </span><span class="code-line line-number" line="14">    return res;
 </span><span class="code-line line-number" line="15">}
 </span><span class="code-line line-number" line="16">
 </span><span class="code-line line-number" line="17">void add(int x,int c)//在x位置加上c
 </span><span class="code-line line-number" line="18">{
-</span><span class="code-line line-number" line="19">    for(int i = x ; i ; i -= lowbit(i))
+</span><span class="code-line line-number" line="19">    for(int i = x ; i &lt;= N ; i += lowbit(i))
 </span><span class="code-line line-number" line="20">        tr[i] += c;
 </span><span class="code-line line-number" line="21">}
 </span></code></pre>
@@ -73,9 +73,12 @@
 </span><span class="code-line line-number" line="2">void build()
 </span><span class="code-line line-number" line="3">{
 </span><span class="code-line line-number" line="4">    for (int i = 1 ; i &lt; N ;i++)
-</span><span class="code-line line-number" line="5">    tr[i] = a[i] - a[i - lowbit(i) - 1];
+</span><span class="code-line line-number" line="5">    tr[i] = a[i] - a[i - lowbit(i)];
 </span><span class="code-line line-number" line="6">}
 </span></code></pre>
+
+
+
 </div>
                 <div class="rin-tr"></div>
 
