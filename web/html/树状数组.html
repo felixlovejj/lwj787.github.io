@@ -69,6 +69,13 @@
 </span><span class="code-line line-number" line="21">}
 </span></code></pre>
 <p>树状数组还可以通过变成差分数组来实现区间修改、单点查询</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">//O(N)建立树状数组方式，a为前缀和数组
+</span><span class="code-line line-number" line="2">void build()
+</span><span class="code-line line-number" line="3">{
+</span><span class="code-line line-number" line="4">    for (int i = 1 ; i &lt; N ;i++)
+</span><span class="code-line line-number" line="5">    tr[i] = a[i] - a[i - lowbit(i) - 1];
+</span><span class="code-line line-number" line="6">}
+</span></code></pre>
 </div>
                 <div class="rin-tr"></div>
 
