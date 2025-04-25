@@ -1,0 +1,112 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+    <h1>并查集</h1>
+<p>模板：</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">int h[N];
+</span><span class="code-line line-number" line="2">for(int i = 0; i &lt; n ; i++)
+</span><span class="code-line line-number" line="3">	h[i] = i; //初始化
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5">int find(int x)//查找+路径压缩
+</span><span class="code-line line-number" line="6">{
+</span><span class="code-line line-number" line="7">	if(h[x] == x) return x;
+</span><span class="code-line line-number" line="8">	return h[x] = find(h[x]);
+</span><span class="code-line line-number" line="9">}
+</span></code></pre>
+<h1>带权并查集</h1>
+<p>普通的并查集只能维护每个节点所在集合的编号，带权并查集则可以维护集合内任意一点到所在集合根的距离。</p>
+<p>简单来说，带权并查集支持如下两种操作：</p>
+<ul>
+<li>在点 u 和 v 之间连一条边权为 w 的边（u,v 在不同的连通块内）。</li>
+<li>查询点 u 与该连通块的根（即并查集的根）的距离。</li>
+</ul>
+<h3>find</h3>
+<pre class="language-cpp"><code class="language-cpp code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token keyword">if</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="4">        <span class="token keyword">return</span> x<span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5">    <span class="token keyword">int</span> fa <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//先保存下来父节点</span>
+</span><span class="code-line line-number" line="6">    dis<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> dis<span class="token punctuation">[</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//把到父结点的距离加上父节点到上个结点的距离</span>
+</span><span class="code-line line-number" line="7">    <span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> fa<span class="token punctuation">;</span><span class="token comment">//合并</span>
+</span><span class="code-line line-number" line="8"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><code>f[x]</code>：点 x 的父亲节点。</p>
+<p><code>dis[x]</code>：点 x 到其 <strong>父亲节点</strong>（注意不是根节点）的距离。</p>
+<p>请一定注意 <code>dis</code> 数组的定义，如果我们要询问 x 到根路径的权值和，只需要先调用一遍 <code>find</code> 函数（由于使用了路径压缩，此时 x 的父亲就为并查集的根）即可。</p>
+<h3>merge</h3>
+<pre class="language-cpp"><code class="language-cpp code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token keyword">int</span> fx <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> fy <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4">    <span class="token keyword">if</span> <span class="token punctuation">(</span>fx <span class="token operator">==</span> fy<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="5">        <span class="token keyword">return</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6">    f<span class="token punctuation">[</span>fx<span class="token punctuation">]</span> <span class="token operator">=</span> fy<span class="token punctuation">,</span> dis<span class="token punctuation">[</span>fx<span class="token punctuation">]</span> <span class="token operator">=</span> c <span class="token operator">+</span> dis<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">-</span> dis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><code>merge(x, y, c)</code>：在点 x 和点 y 直接连一条权值为 c 的边，同时将 x 所在的连通块合并到 y 上。</p>
+<p>例题：洛谷P1525</p>
+<h1>扩展域并查集</h1>
+<p>本人认为可以用带权并查集来替代</p>
+<p>但是扩展域并查集是对每个结点i，规定i+n为其对立结点（虚拟的）,以此来确定关系。</p>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
