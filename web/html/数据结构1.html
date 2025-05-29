@@ -1,0 +1,910 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">#include &lt;cstdio&gt;
+</span><span class="code-line line-number" line="2">#include &lt;cstdlib&gt;
+</span><span class="code-line line-number" line="3">#include &lt;cstring&gt;
+</span><span class="code-line line-number" line="4">#include &lt;iostream&gt;
+</span><span class="code-line line-number" line="5">#include &lt;algorithm&gt;
+</span><span class="code-line line-number" line="6">#include &lt;unordered_map&gt; //如果要用O(N)复杂度解决和为k的数组的函数，需要用到哈希表
+</span><span class="code-line line-number" line="7">#define TRUE 1
+</span><span class="code-line line-number" line="8">#define FALSE 0
+</span><span class="code-line line-number" line="9">#define OK 1
+</span><span class="code-line line-number" line="10">#define ERROR 0
+</span><span class="code-line line-number" line="11">#define INFEASIBLE -1
+</span><span class="code-line line-number" line="12">#define OVERFLOW -2
+</span><span class="code-line line-number" line="13">#define LIST_INIT_SIZE 100
+</span><span class="code-line line-number" line="14">#define LISTINCREMENT 10
+</span><span class="code-line line-number" line="15">using namespace std;
+</span><span class="code-line line-number" line="16">typedef int status;
+</span><span class="code-line line-number" line="17">typedef int ElemType; // 数据元素类型定义
+</span><span class="code-line line-number" line="18">typedef int ElemType;
+</span><span class="code-line line-number" line="19">typedef struct
+</span><span class="code-line line-number" line="20">{ // 顺序表（顺序结构）的定义
+</span><span class="code-line line-number" line="21">    ElemType *elem;
+</span><span class="code-line line-number" line="22">    int length;
+</span><span class="code-line line-number" line="23">    int listsize;
+</span><span class="code-line line-number" line="24">} SqList;
+</span><span class="code-line line-number" line="25">
+</span><span class="code-line line-number" line="26">typedef struct
+</span><span class="code-line line-number" line="27">{ // 线性表的管理表定义
+</span><span class="code-line line-number" line="28">    struct
+</span><span class="code-line line-number" line="29">    {
+</span><span class="code-line line-number" line="30">        char name[50];
+</span><span class="code-line line-number" line="31">        SqList L;
+</span><span class="code-line line-number" line="32">    } elem[100];
+</span><span class="code-line line-number" line="33">    int length;
+</span><span class="code-line line-number" line="34">    int listsize;
+</span><span class="code-line line-number" line="35">} LISTS;
+</span><span class="code-line line-number" line="36">bool condition = false;
+</span><span class="code-line line-number" line="37">char NowName[50];//存储当前操作的线性表的名称
+</span><span class="code-line line-number" line="38">void visit(ElemType a);
+</span><span class="code-line line-number" line="39">bool compare(ElemType a,ElemType b);
+</span><span class="code-line line-number" line="40">int SubArrayNum(SqList &amp;L,int num,ElemType &amp;e);
+</span><span class="code-line line-number" line="41">int MaxSubArray(SqList &amp;L,ElemType &amp;e);
+</span><span class="code-line line-number" line="42">status InitList(SqList &amp;L);// 初始化线性表
+</span><span class="code-line line-number" line="43">status DestroyList(SqList &amp;L);// 销毁线性表
+</span><span class="code-line line-number" line="44">status ClearList(SqList &amp;L);// 清空线性表
+</span><span class="code-line line-number" line="45">status ListEmpty(SqList L);// 判断线性表是否为空
+</span><span class="code-line line-number" line="46">status ListLength(SqList L);// 获取线性表长度
+</span><span class="code-line line-number" line="47">status GetElem(SqList L, int i, ElemType &amp;e);// 获取线性表第i个元素
+</span><span class="code-line line-number" line="48">int LocateElem(SqList L, ElemType e,bool compare(ElemType a,ElemType b));// 查找元素在线性表中的位置
+</span><span class="code-line line-number" line="49">status PriorElem(SqList L, ElemType e, ElemType &amp;pre);// 获取元素的前驱
+</span><span class="code-line line-number" line="50">status NextElem(SqList L, ElemType e, ElemType &amp;next);// 获取元素的后继
+</span><span class="code-line line-number" line="51">status ListInsert(SqList &amp;L, int i, ElemType e);// 在线性表第i个元素之前插入元素
+</span><span class="code-line line-number" line="52">status ListDelete(SqList &amp;L, int i, ElemType &amp;e);// 删除线性表第i个元素
+</span><span class="code-line line-number" line="53">status ListTraverse(SqList L,void visit(ElemType e));// 遍历线性表并显示元素
+</span><span class="code-line line-number" line="54">status SaveList(SqList L, char FileName[]);// 将线性表元素保存到文件
+</span><span class="code-line line-number" line="55">status LoadList(SqList &amp;L, char FileName[]);// 从文件加载线性表元素
+</span><span class="code-line line-number" line="56">status AddList(LISTS &amp;Lists, char ListName[]);// 在管理表中增加一个空线性表
+</span><span class="code-line line-number" line="57">status RemoveList(LISTS &amp;Lists, char ListName[]);// 从管理表中删除一个线性表
+</span><span class="code-line line-number" line="58">status SortList(SqList &amp;L,int l,int r);// 对线性表排序
+</span><span class="code-line line-number" line="59">int ManageList(LISTS Lists, char ListName[]);// 在管理表中查找一个线性表
+</span><span class="code-line line-number" line="60">int ShowLists(LISTS &amp;L);
+</span><span class="code-line line-number" line="61">
+</span><span class="code-line line-number" line="62">
+</span><span class="code-line line-number" line="63">LISTS Lists;
+</span><span class="code-line line-number" line="64">SqList L_now;
+</span><span class="code-line line-number" line="65">SqList *L = &amp;L_now;//定义L用于指向当前操作的线性表
+</span><span class="code-line line-number" line="66">int main()//框架部分
+</span><span class="code-line line-number" line="67">{
+</span><span class="code-line line-number" line="68">    int Status_Now,idx;
+</span><span class="code-line line-number" line="69">    int cur_e;
+</span><span class="code-line line-number" line="70">    char name[50];
+</span><span class="code-line line-number" line="71">    Lists.length = 0;
+</span><span class="code-line line-number" line="72">    (*L).elem = NULL;
+</span><span class="code-line line-number" line="73">    int op = 1;
+</span><span class="code-line line-number" line="74">    while (op)
+</span><span class="code-line line-number" line="75">    {
+</span><span class="code-line line-number" line="76">        system("cls");
+</span><span class="code-line line-number" line="77">        printf("\n\n");
+</span><span class="code-line line-number" line="78">        printf("      Menu for Linear Table On Sequence Structure \n");
+</span><span class="code-line line-number" line="79">        printf("-------------------------------------------------\n");
+</span><span class="code-line line-number" line="80">        printf("          1. InitList       12. ListTrabverse\n");
+</span><span class="code-line line-number" line="81">        printf("          2. DestroyList    13. MaxSubArray\n");
+</span><span class="code-line line-number" line="82">        printf("          3. ClearList      14. SubArrayNum\n");
+</span><span class="code-line line-number" line="83">        printf("          4. ListEmpty      15. SortList\n");
+</span><span class="code-line line-number" line="84">        printf("          5. ListLength     16. LoadList\n");
+</span><span class="code-line line-number" line="85">        printf("          6. GetElem        17. SaveList\n");
+</span><span class="code-line line-number" line="86">        printf("          7. LocateElem     18. AddList\n");
+</span><span class="code-line line-number" line="87">        printf("          8. PriorElem      19. ManageList\n");
+</span><span class="code-line line-number" line="88">        printf("          9. NextElem       20. RemoveList \n");
+</span><span class="code-line line-number" line="89">        printf("          10. ListInsert    21. ShowLists\n");
+</span><span class="code-line line-number" line="90">        printf("          11. ListDelete    0. Exit \n");
+</span><span class="code-line line-number" line="91">        printf("-------------------------------------------------\n");
+</span><span class="code-line line-number" line="92">        printf("    请选择你的操作[0~21]:");
+</span><span class="code-line line-number" line="93">        scanf("%d", &amp;op);
+</span><span class="code-line line-number" line="94">        switch (op)
+</span><span class="code-line line-number" line="95">        {
+</span><span class="code-line line-number" line="96">        case 1:
+</span><span class="code-line line-number" line="97">            if (InitList(*L) == OK)
+</span><span class="code-line line-number" line="98">                printf("线性表创建成功!\n");
+</span><span class="code-line line-number" line="99">            else
+</span><span class="code-line line-number" line="100">                printf("线性表创建失败!\n");
+</span><span class="code-line line-number" line="101">            getchar();
+</span><span class="code-line line-number" line="102">            getchar();
+</span><span class="code-line line-number" line="103">            break;
+</span><span class="code-line line-number" line="104">        case 2:
+</span><span class="code-line line-number" line="105">            if (DestroyList(*L) == OK)
+</span><span class="code-line line-number" line="106">                printf("线性表销毁成功!\n");
+</span><span class="code-line line-number" line="107">            else
+</span><span class="code-line line-number" line="108">                printf("线性表销毁失败!\n");
+</span><span class="code-line line-number" line="109">            getchar();
+</span><span class="code-line line-number" line="110">            getchar();
+</span><span class="code-line line-number" line="111">            break;
+</span><span class="code-line line-number" line="112">        case 3:
+</span><span class="code-line line-number" line="113">            if (ClearList(*L) == OK)
+</span><span class="code-line line-number" line="114">                printf("线性表清空成功!\n");
+</span><span class="code-line line-number" line="115">            else
+</span><span class="code-line line-number" line="116">                printf("线性表清空失败!\n");
+</span><span class="code-line line-number" line="117">            getchar();
+</span><span class="code-line line-number" line="118">            getchar();
+</span><span class="code-line line-number" line="119">            break;
+</span><span class="code-line line-number" line="120">        case 4:
+</span><span class="code-line line-number" line="121">            Status_Now = ListEmpty(*L);
+</span><span class="code-line line-number" line="122">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="123">                printf("线性表不存在!\n");
+</span><span class="code-line line-number" line="124">            else if(Status_Now == TRUE)
+</span><span class="code-line line-number" line="125">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="126">            else 
+</span><span class="code-line line-number" line="127">                printf("线性表不为空!\n");
+</span><span class="code-line line-number" line="128">            getchar();
+</span><span class="code-line line-number" line="129">            getchar();
+</span><span class="code-line line-number" line="130">            break;
+</span><span class="code-line line-number" line="131">        case 5:
+</span><span class="code-line line-number" line="132">            Status_Now = ListLength(*L);
+</span><span class="code-line line-number" line="133">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="134">                printf("线性表不存在\n");
+</span><span class="code-line line-number" line="135">            else 
+</span><span class="code-line line-number" line="136">                printf("线性表长度为%d!\n",Status_Now);
+</span><span class="code-line line-number" line="137">            getchar();
+</span><span class="code-line line-number" line="138">            getchar();
+</span><span class="code-line line-number" line="139">            break;
+</span><span class="code-line line-number" line="140">        case 6:
+</span><span class="code-line line-number" line="141">            int i,e;
+</span><span class="code-line line-number" line="142">            printf("请输入要查询的元素的序号\n");
+</span><span class="code-line line-number" line="143">            cin &gt;&gt; i;
+</span><span class="code-line line-number" line="144">            Status_Now = GetElem(*L,i,e);
+</span><span class="code-line line-number" line="145">            if (Status_Now == OK)
+</span><span class="code-line line-number" line="146">                printf("线性表第%d个元素为 %d!\n",i,e);
+</span><span class="code-line line-number" line="147">            else if (Status_Now == ERROR)
+</span><span class="code-line line-number" line="148">                printf("访问元素位置不合法\n");
+</span><span class="code-line line-number" line="149">            else 
+</span><span class="code-line line-number" line="150">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="151">            getchar();
+</span><span class="code-line line-number" line="152">            getchar();
+</span><span class="code-line line-number" line="153">            break;
+</span><span class="code-line line-number" line="154">        case 7:
+</span><span class="code-line line-number" line="155">            printf("请输入要查询的元素的值\n");
+</span><span class="code-line line-number" line="156">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="157">            Status_Now = LocateElem(*L,e,compare);
+</span><span class="code-line line-number" line="158">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="159">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="160">            else if (Status_Now == 0)
+</span><span class="code-line line-number" line="161">                printf("线性表不存在该元素\n");
+</span><span class="code-line line-number" line="162">            else 
+</span><span class="code-line line-number" line="163">                printf("线性表值为%d的元素序号为%d!\n",i,e);
+</span><span class="code-line line-number" line="164">            getchar();
+</span><span class="code-line line-number" line="165">            getchar();
+</span><span class="code-line line-number" line="166">            break;
+</span><span class="code-line line-number" line="167">        case 8:
+</span><span class="code-line line-number" line="168">            int pre_e;
+</span><span class="code-line line-number" line="169">            printf("请输入要查询前驱的元素的值\n");
+</span><span class="code-line line-number" line="170">            cin &gt;&gt; cur_e;
+</span><span class="code-line line-number" line="171">            Status_Now = PriorElem(*L,cur_e,pre_e);
+</span><span class="code-line line-number" line="172">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="173">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="174">            else if (Status_Now == 0)
+</span><span class="code-line line-number" line="175">                printf("线性表不存在该元素的前驱元素\n");
+</span><span class="code-line line-number" line="176">            else 
+</span><span class="code-line line-number" line="177">                printf("线性表值为%d的元素的前驱元素为%d!\n",cur_e,pre_e);
+</span><span class="code-line line-number" line="178">            getchar();
+</span><span class="code-line line-number" line="179">            getchar();
+</span><span class="code-line line-number" line="180">            break;
+</span><span class="code-line line-number" line="181">        case 9:
+</span><span class="code-line line-number" line="182">            int next_e;
+</span><span class="code-line line-number" line="183">            printf("请输入要查询后继的元素的值\n");
+</span><span class="code-line line-number" line="184">            cin &gt;&gt; cur_e;
+</span><span class="code-line line-number" line="185">            Status_Now = NextElem(*L,cur_e,next_e);
+</span><span class="code-line line-number" line="186">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="187">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="188">            else if (Status_Now == 0)
+</span><span class="code-line line-number" line="189">                printf("线性表不存在该元素的后继元素\n");
+</span><span class="code-line line-number" line="190">            else 
+</span><span class="code-line line-number" line="191">                printf("线性表值为%d的元素的后继元素为%d!\n",cur_e,next_e);
+</span><span class="code-line line-number" line="192">            getchar();
+</span><span class="code-line line-number" line="193">            getchar();
+</span><span class="code-line line-number" line="194">            break;
+</span><span class="code-line line-number" line="195">        case 10:
+</span><span class="code-line line-number" line="196">            printf("请输入要在第几个位置前插入元素\n");
+</span><span class="code-line line-number" line="197">            cin &gt;&gt; i;
+</span><span class="code-line line-number" line="198">            printf("请输入要插入元素的值\n");
+</span><span class="code-line line-number" line="199">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="200">            Status_Now = ListInsert(*L,i,e);
+</span><span class="code-line line-number" line="201">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="202">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="203">            else if (Status_Now == ERROR)
+</span><span class="code-line line-number" line="204">                printf("插入位置不合法\n");
+</span><span class="code-line line-number" line="205">            else 
+</span><span class="code-line line-number" line="206">                printf("插入成功!\n");
+</span><span class="code-line line-number" line="207">            getchar();
+</span><span class="code-line line-number" line="208">            getchar();
+</span><span class="code-line line-number" line="209">            break;
+</span><span class="code-line line-number" line="210">        case 11:
+</span><span class="code-line line-number" line="211">            printf("请输入要删除在第几个位置的元素\n");
+</span><span class="code-line line-number" line="212">            cin &gt;&gt; i;
+</span><span class="code-line line-number" line="213">            Status_Now = ListDelete(*L,i,e);
+</span><span class="code-line line-number" line="214">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="215">                printf("线性表为空!\n");
+</span><span class="code-line line-number" line="216">            else if (Status_Now == ERROR)
+</span><span class="code-line line-number" line="217">                printf("删除位置不合法\n");
+</span><span class="code-line line-number" line="218">            else 
+</span><span class="code-line line-number" line="219">                printf("删除成功，删除的元素值为%d\n",e);
+</span><span class="code-line line-number" line="220">            getchar();
+</span><span class="code-line line-number" line="221">            getchar();
+</span><span class="code-line line-number" line="222">            break;
+</span><span class="code-line line-number" line="223">        case 12:
+</span><span class="code-line line-number" line="224">            if (!ListTraverse(*L,visit))
+</span><span class="code-line line-number" line="225">                printf("线性表是空表!\n");
+</span><span class="code-line line-number" line="226">            getchar();
+</span><span class="code-line line-number" line="227">            getchar();
+</span><span class="code-line line-number" line="228">            break;
+</span><span class="code-line line-number" line="229">        case 13:
+</span><span class="code-line line-number" line="230">            if (MaxSubArray(*L,e) == INFEASIBLE)
+</span><span class="code-line line-number" line="231">                printf("线性表是空表!\n");
+</span><span class="code-line line-number" line="232">            else 
+</span><span class="code-line line-number" line="233">                cout &lt;&lt; "线性表的最大连续子数组和为" &lt;&lt; e &lt;&lt; endl;
+</span><span class="code-line line-number" line="234">            getchar();
+</span><span class="code-line line-number" line="235">            getchar();
+</span><span class="code-line line-number" line="236">            break;
+</span><span class="code-line line-number" line="237">        case 14:
+</span><span class="code-line line-number" line="238">            int num;
+</span><span class="code-line line-number" line="239">            cout &lt;&lt; "请输入想查找的子数组的和"&lt;&lt;endl;
+</span><span class="code-line line-number" line="240">            cin &gt;&gt; num;
+</span><span class="code-line line-number" line="241">            if (SubArrayNum(*L,num,e) == INFEASIBLE)
+</span><span class="code-line line-number" line="242">                printf("线性表是空表!\n");
+</span><span class="code-line line-number" line="243">            else 
+</span><span class="code-line line-number" line="244">                cout &lt;&lt; "和为" &lt;&lt; num &lt;&lt; "的子数组有" &lt;&lt; e &lt;&lt; "个" &lt;&lt; endl;
+</span><span class="code-line line-number" line="245">            getchar();
+</span><span class="code-line line-number" line="246">            getchar();
+</span><span class="code-line line-number" line="247">            break;
+</span><span class="code-line line-number" line="248">        case 15:
+</span><span class="code-line line-number" line="249">            if (SortList(*L,0,(*L).length-1) == INFEASIBLE)
+</span><span class="code-line line-number" line="250">                printf("线性表是空表!\n");
+</span><span class="code-line line-number" line="251">            else 
+</span><span class="code-line line-number" line="252">                cout &lt;&lt; "线性表排序成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="253">            getchar();
+</span><span class="code-line line-number" line="254">            getchar();
+</span><span class="code-line line-number" line="255">            break;
+</span><span class="code-line line-number" line="256">        case 16:
+</span><span class="code-line line-number" line="257">            cout &lt;&lt; "请输入读取文件名称"&lt;&lt;endl;
+</span><span class="code-line line-number" line="258">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="259">            if (LoadList(*L,name) == INFEASIBLE)
+</span><span class="code-line line-number" line="260">                printf("线性表已存在!\n");
+</span><span class="code-line line-number" line="261">            else 
+</span><span class="code-line line-number" line="262">                cout &lt;&lt; "读取成功" &lt;&lt; endl;
+</span><span class="code-line line-number" line="263">            getchar();
+</span><span class="code-line line-number" line="264">            getchar();
+</span><span class="code-line line-number" line="265">            break;
+</span><span class="code-line line-number" line="266">        case 17:
+</span><span class="code-line line-number" line="267">            cout &lt;&lt; "请输入保存文件名称"&lt;&lt;endl;
+</span><span class="code-line line-number" line="268">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="269">            if (SaveList(*L,name) == INFEASIBLE)
+</span><span class="code-line line-number" line="270">                printf("线性表是空表或不存在!\n");
+</span><span class="code-line line-number" line="271">            else 
+</span><span class="code-line line-number" line="272">                cout &lt;&lt; "保存成功" &lt;&lt; endl;
+</span><span class="code-line line-number" line="273">            getchar();
+</span><span class="code-line line-number" line="274">            getchar();
+</span><span class="code-line line-number" line="275">            break;
+</span><span class="code-line line-number" line="276">        case 18: 
+</span><span class="code-line line-number" line="277">            cout &lt;&lt; "请输入创建线性表名称"&lt;&lt;endl;
+</span><span class="code-line line-number" line="278">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="279">            if (ManageList(Lists,name) != 0)
+</span><span class="code-line line-number" line="280">                printf("已存在该名称的线性表!\n");
+</span><span class="code-line line-number" line="281">            else if(AddList(Lists,name) != ERROR)
+</span><span class="code-line line-number" line="282">                cout &lt;&lt; "创建成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="283">            else 
+</span><span class="code-line line-number" line="284">                cout &lt;&lt; "线性表数已超出上限!";
+</span><span class="code-line line-number" line="285">            getchar();
+</span><span class="code-line line-number" line="286">            getchar();
+</span><span class="code-line line-number" line="287">            break;
+</span><span class="code-line line-number" line="288">        case 19: 
+</span><span class="code-line line-number" line="289">            cout &lt;&lt; "请输入想要管理的线性表名称"&lt;&lt;endl;
+</span><span class="code-line line-number" line="290">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="291">            strcpy(NowName,name);
+</span><span class="code-line line-number" line="292">            idx = ManageList(Lists,name);
+</span><span class="code-line line-number" line="293">            if (idx != 0)
+</span><span class="code-line line-number" line="294">            {
+</span><span class="code-line line-number" line="295">                condition = true;
+</span><span class="code-line line-number" line="296">                cout &lt;&lt; "成功找到名称为" &lt;&lt; name &lt;&lt; "的线性表!";
+</span><span class="code-line line-number" line="297">                L = &amp;Lists.elem[idx-1].L;
+</span><span class="code-line line-number" line="298">            }
+</span><span class="code-line line-number" line="299">            else 
+</span><span class="code-line line-number" line="300">                cout &lt;&lt; "不存在该名称的线性表!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="301">            getchar();
+</span><span class="code-line line-number" line="302">            getchar();
+</span><span class="code-line line-number" line="303">            break;
+</span><span class="code-line line-number" line="304">        case 20: 
+</span><span class="code-line line-number" line="305">            cout &lt;&lt; "请输入想删除的线性表名称"&lt;&lt;endl;
+</span><span class="code-line line-number" line="306">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="307">            if (RemoveList(Lists,name) == ERROR)
+</span><span class="code-line line-number" line="308">                printf("不存在该名称的线性表!\n");
+</span><span class="code-line line-number" line="309">            else 
+</span><span class="code-line line-number" line="310">                cout &lt;&lt; "删除成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="311">            getchar();
+</span><span class="code-line line-number" line="312">            getchar();
+</span><span class="code-line line-number" line="313">            break;
+</span><span class="code-line line-number" line="314">        case 21:
+</span><span class="code-line line-number" line="315">            ShowLists(Lists);
+</span><span class="code-line line-number" line="316">            getchar();
+</span><span class="code-line line-number" line="317">            getchar();
+</span><span class="code-line line-number" line="318">            break;
+</span><span class="code-line line-number" line="319">        case 0:
+</span><span class="code-line line-number" line="320">            break;
+</span><span class="code-line line-number" line="321">        default:
+</span><span class="code-line line-number" line="322">            cout &lt;&lt; "输入错误，请重新输入!" &lt;&lt;endl;
+</span><span class="code-line line-number" line="323">            getchar();
+</span><span class="code-line line-number" line="324">            getchar();
+</span><span class="code-line line-number" line="325">            break;
+</span><span class="code-line line-number" line="326">        } // end of switch
+</span><span class="code-line line-number" line="327">    } // end of while
+</span><span class="code-line line-number" line="328">    printf("欢迎下次再使用本系统!\n");
+</span><span class="code-line line-number" line="329">}
+</span><span class="code-line line-number" line="330">
+</span><span class="code-line line-number" line="331">void visit(ElemType a)//输出元素
+</span><span class="code-line line-number" line="332">{
+</span><span class="code-line line-number" line="333">    cout &lt;&lt; a &lt;&lt; " ";
+</span><span class="code-line line-number" line="334">}
+</span><span class="code-line line-number" line="335">
+</span><span class="code-line line-number" line="336">bool compare(ElemType a,ElemType b)//比较元素值是否相等
+</span><span class="code-line line-number" line="337">{
+</span><span class="code-line line-number" line="338">    if(a == b)
+</span><span class="code-line line-number" line="339">        return true;
+</span><span class="code-line line-number" line="340">    else 
+</span><span class="code-line line-number" line="341">        return false;
+</span><span class="code-line line-number" line="342">}
+</span><span class="code-line line-number" line="343">status InitList(SqList &amp;L)
+</span><span class="code-line line-number" line="344">// 线性表L不存在，构造一个空的线性表，返回OK，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="345">{
+</span><span class="code-line line-number" line="346">    if (L.elem == NULL)//线性表L不存在
+</span><span class="code-line line-number" line="347">    {
+</span><span class="code-line line-number" line="348">        L.elem = (ElemType *)malloc(sizeof(ElemType) * LIST_INIT_SIZE);//用malloc分配一块内存
+</span><span class="code-line line-number" line="349">        L.length = 0;//长度初始化为0
+</span><span class="code-line line-number" line="350">        L.listsize = LIST_INIT_SIZE;//设置线性表的最大长度
+</span><span class="code-line line-number" line="351">        return OK;
+</span><span class="code-line line-number" line="352">    }
+</span><span class="code-line line-number" line="353">    else//线性表已存在
+</span><span class="code-line line-number" line="354">    {
+</span><span class="code-line line-number" line="355">        return INFEASIBLE;
+</span><span class="code-line line-number" line="356">    }
+</span><span class="code-line line-number" line="357">}
+</span><span class="code-line line-number" line="358">
+</span><span class="code-line line-number" line="359">status DestroyList(SqList &amp;L)
+</span><span class="code-line line-number" line="360">// 如果线性表L存在，销毁线性表L，释放数据元素的空间，返回OK，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="361">{
+</span><span class="code-line line-number" line="362">    if(!condition)//如果现在不为多线性表模式
+</span><span class="code-line line-number" line="363">    {
+</span><span class="code-line line-number" line="364">        if (L.elem == NULL)//线性表不存在
+</span><span class="code-line line-number" line="365">        {
+</span><span class="code-line line-number" line="366">            return INFEASIBLE;
+</span><span class="code-line line-number" line="367">        }
+</span><span class="code-line line-number" line="368">        else
+</span><span class="code-line line-number" line="369">        {
+</span><span class="code-line line-number" line="370">            free(L.elem);//释放动态分配的内存
+</span><span class="code-line line-number" line="371">            L.elem = NULL;
+</span><span class="code-line line-number" line="372">            return OK;
+</span><span class="code-line line-number" line="373">        }
+</span><span class="code-line line-number" line="374">    }
+</span><span class="code-line line-number" line="375">    else
+</span><span class="code-line line-number" line="376">    {
+</span><span class="code-line line-number" line="377">        RemoveList(Lists,NowName);//调用多线性表管理的删除函数
+</span><span class="code-line line-number" line="378">        return OK;
+</span><span class="code-line line-number" line="379">    }
+</span><span class="code-line line-number" line="380">}
+</span><span class="code-line line-number" line="381">
+</span><span class="code-line line-number" line="382">status ClearList(SqList &amp;L)
+</span><span class="code-line line-number" line="383">// 如果线性表L存在，删除线性表L中的所有元素，返回OK，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="384">{
+</span><span class="code-line line-number" line="385">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="386">    {
+</span><span class="code-line line-number" line="387">        return INFEASIBLE;//线性表不存在
+</span><span class="code-line line-number" line="388">    }
+</span><span class="code-line line-number" line="389">    else
+</span><span class="code-line line-number" line="390">    {
+</span><span class="code-line line-number" line="391">        L.length = 0;//将长度标记为0
+</span><span class="code-line line-number" line="392">        return OK;
+</span><span class="code-line line-number" line="393">    }
+</span><span class="code-line line-number" line="394">}
+</span><span class="code-line line-number" line="395">
+</span><span class="code-line line-number" line="396">status ListEmpty(SqList L)
+</span><span class="code-line line-number" line="397">// 如果线性表L存在，判断线性表L是否为空，空就返回TRUE，否则返回FALSE；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="398">{
+</span><span class="code-line line-number" line="399">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="400">    {
+</span><span class="code-line line-number" line="401">        return INFEASIBLE;//线性表不存在
+</span><span class="code-line line-number" line="402">    }
+</span><span class="code-line line-number" line="403">    else
+</span><span class="code-line line-number" line="404">    {
+</span><span class="code-line line-number" line="405">        if (L.length == 0)//判断长度是否为0
+</span><span class="code-line line-number" line="406">        {
+</span><span class="code-line line-number" line="407">            return TRUE;
+</span><span class="code-line line-number" line="408">        }
+</span><span class="code-line line-number" line="409">        else
+</span><span class="code-line line-number" line="410">        {
+</span><span class="code-line line-number" line="411">            return FALSE;
+</span><span class="code-line line-number" line="412">        }
+</span><span class="code-line line-number" line="413">    }
+</span><span class="code-line line-number" line="414">}
+</span><span class="code-line line-number" line="415">
+</span><span class="code-line line-number" line="416">status ListLength(SqList L)
+</span><span class="code-line line-number" line="417">// 如果线性表L存在，返回线性表L的长度，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="418">{
+</span><span class="code-line line-number" line="419">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="420">    {
+</span><span class="code-line line-number" line="421">        return INFEASIBLE;//线性表不存在
+</span><span class="code-line line-number" line="422">    }
+</span><span class="code-line line-number" line="423">    else
+</span><span class="code-line line-number" line="424">    {
+</span><span class="code-line line-number" line="425">        return L.length;//返回线性表的长度
+</span><span class="code-line line-number" line="426">    }
+</span><span class="code-line line-number" line="427">}
+</span><span class="code-line line-number" line="428">
+</span><span class="code-line line-number" line="429">status GetElem(SqList L, int i, ElemType &amp;e)
+</span><span class="code-line line-number" line="430">// 如果线性表L存在，获取线性表L的第i个元素，保存在e中，返回OK；如果i不合法，返回ERROR；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="431">{
+</span><span class="code-line line-number" line="432">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="433">    {
+</span><span class="code-line line-number" line="434">        return INFEASIBLE;//线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="435">    }
+</span><span class="code-line line-number" line="436">    else
+</span><span class="code-line line-number" line="437">    {
+</span><span class="code-line line-number" line="438">        if (i &gt; L.length || i &lt;= 0)//i不合法，返回ERROR
+</span><span class="code-line line-number" line="439">        {
+</span><span class="code-line line-number" line="440">            return ERROR;
+</span><span class="code-line line-number" line="441">        }
+</span><span class="code-line line-number" line="442">        else
+</span><span class="code-line line-number" line="443">        {
+</span><span class="code-line line-number" line="444">            e = L.elem[i - 1];//将e赋值为查找的值
+</span><span class="code-line line-number" line="445">            return OK;
+</span><span class="code-line line-number" line="446">        }
+</span><span class="code-line line-number" line="447">    }
+</span><span class="code-line line-number" line="448">}
+</span><span class="code-line line-number" line="449">
+</span><span class="code-line line-number" line="450">int LocateElem(SqList L, ElemType e,bool compare(ElemType a,ElemType b))
+</span><span class="code-line line-number" line="451">// 如果线性表L存在，查找元素e在线性表L中的位置序号并返回该序号；如果e不存在，返回0；当线性表L不存在时，返回INFEASIBLE（即-1）。
+</span><span class="code-line line-number" line="452">{
+</span><span class="code-line line-number" line="453">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="454">    {
+</span><span class="code-line line-number" line="455">        return INFEASIBLE;//线性表不存在
+</span><span class="code-line line-number" line="456">    }
+</span><span class="code-line line-number" line="457">    else
+</span><span class="code-line line-number" line="458">    {
+</span><span class="code-line line-number" line="459">        for (int i = 0; i &lt; L.length; i++)
+</span><span class="code-line line-number" line="460">        {
+</span><span class="code-line line-number" line="461">            if (compare(L.elem[i],e))//对比遍历到的元素与想查找元素是否相等
+</span><span class="code-line line-number" line="462">            {
+</span><span class="code-line line-number" line="463">                return i + 1;//返回该元素的位置
+</span><span class="code-line line-number" line="464">            }
+</span><span class="code-line line-number" line="465">        }
+</span><span class="code-line line-number" line="466">        return 0;//未找到，返回0
+</span><span class="code-line line-number" line="467">    }
+</span><span class="code-line line-number" line="468">}
+</span><span class="code-line line-number" line="469">
+</span><span class="code-line line-number" line="470">status PriorElem(SqList L, ElemType e, ElemType &amp;pre)
+</span><span class="code-line line-number" line="471">{
+</span><span class="code-line line-number" line="472">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="473">    {
+</span><span class="code-line line-number" line="474">        return INFEASIBLE;//线性表不存在
+</span><span class="code-line line-number" line="475">    }
+</span><span class="code-line line-number" line="476">    else
+</span><span class="code-line line-number" line="477">    {
+</span><span class="code-line line-number" line="478">        for (int i = 1; i &lt; L.length; i++)
+</span><span class="code-line line-number" line="479">        {
+</span><span class="code-line line-number" line="480">            if (L.elem[i] == e)//找到值为e的元素
+</span><span class="code-line line-number" line="481">            {
+</span><span class="code-line line-number" line="482">                pre = L.elem[i - 1];//返回e的上一个元素
+</span><span class="code-line line-number" line="483">                return OK;
+</span><span class="code-line line-number" line="484">            }
+</span><span class="code-line line-number" line="485">        }
+</span><span class="code-line line-number" line="486">        return ERROR;//未找到，返回ERROR
+</span><span class="code-line line-number" line="487">    }
+</span><span class="code-line line-number" line="488">
+</span><span class="code-line line-number" line="489">}
+</span><span class="code-line line-number" line="490">
+</span><span class="code-line line-number" line="491">status NextElem(SqList L, ElemType e, ElemType &amp;next)
+</span><span class="code-line line-number" line="492">// 如果线性表L存在，获取线性表L元素e的后继，保存在next中，返回OK；如果没有后继，返回ERROR；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="493">{
+</span><span class="code-line line-number" line="494">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="495">    {
+</span><span class="code-line line-number" line="496">        return INFEASIBLE;//线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="497">    }
+</span><span class="code-line line-number" line="498">    else
+</span><span class="code-line line-number" line="499">    {
+</span><span class="code-line line-number" line="500">        for (int i = 0; i &lt; L.length - 1; i++)
+</span><span class="code-line line-number" line="501">        {
+</span><span class="code-line line-number" line="502">            if (L.elem[i] == e)//找到值为e的元素
+</span><span class="code-line line-number" line="503">            {
+</span><span class="code-line line-number" line="504">                next = L.elem[i + 1];//找到了值为e的元素，返回它的下一个元素
+</span><span class="code-line line-number" line="505">                return OK;
+</span><span class="code-line line-number" line="506">            }
+</span><span class="code-line line-number" line="507">        }
+</span><span class="code-line line-number" line="508">        return ERROR;//未找到，返回ERROR
+</span><span class="code-line line-number" line="509">    }
+</span><span class="code-line line-number" line="510">}
+</span><span class="code-line line-number" line="511">
+</span><span class="code-line line-number" line="512">status ListInsert(SqList &amp;L, int i, ElemType e)
+</span><span class="code-line line-number" line="513">// 如果线性表L存在，将元素e插入到线性表L的第i个元素之前，返回OK；当插入位置不正确时，返回ERROR；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="514">{
+</span><span class="code-line line-number" line="515">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="516">    {
+</span><span class="code-line line-number" line="517">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="518">    }
+</span><span class="code-line line-number" line="519">    else
+</span><span class="code-line line-number" line="520">    {
+</span><span class="code-line line-number" line="521">        if (i &lt;= 0 || i &gt; L.length + 1)
+</span><span class="code-line line-number" line="522">        {
+</span><span class="code-line line-number" line="523">            return ERROR; // 插入位置不合法，返回ERROR
+</span><span class="code-line line-number" line="524">        }
+</span><span class="code-line line-number" line="525">        else
+</span><span class="code-line line-number" line="526">        {
+</span><span class="code-line line-number" line="527">            if (L.length == L.listsize) // 如果插入之前顺序表长度已经达到最大值，则进行扩容
+</span><span class="code-line line-number" line="528">            {
+</span><span class="code-line line-number" line="529">                L.listsize += LISTINCREMENT;
+</span><span class="code-line line-number" line="530">                ElemType *temp = (ElemType *)malloc(sizeof(ElemType) * L.listsize); // 申请一块新的空间
+</span><span class="code-line line-number" line="531">                if(temp == NULL)
+</span><span class="code-line line-number" line="532">                {
+</span><span class="code-line line-number" line="533">                    cout &lt;&lt; "申请空间过多，已溢出！"&lt;&lt;endl;//处理溢出
+</span><span class="code-line line-number" line="534">                    return ERROR;
+</span><span class="code-line line-number" line="535">                }
+</span><span class="code-line line-number" line="536">                for (int i = 0; i &lt; L.listsize - LISTINCREMENT; i++)
+</span><span class="code-line line-number" line="537">                    temp[i] = L.elem[i]; // 将原线性表的内容复制到新申请的空间
+</span><span class="code-line line-number" line="538">                free(L.elem);            // 释放原线性表申请的空间，防止内存泄漏
+</span><span class="code-line line-number" line="539">                L.elem = temp;           // 将L.elem指向新申请的空间
+</span><span class="code-line line-number" line="540">            }
+</span><span class="code-line line-number" line="541">            for (int t = L.length; t &gt;= i; t--) // 从后往前进行复制顺序表元素，注意是从后往前的顺序，防止覆盖
+</span><span class="code-line line-number" line="542">            {
+</span><span class="code-line line-number" line="543">                L.elem[t] = L.elem[t - 1];
+</span><span class="code-line line-number" line="544">            }
+</span><span class="code-line line-number" line="545">            L.elem[i - 1] = e;
+</span><span class="code-line line-number" line="546">            L.length++; // 把顺序表的长度+1
+</span><span class="code-line line-number" line="547">            return OK;
+</span><span class="code-line line-number" line="548">        }
+</span><span class="code-line line-number" line="549">    }
+</span><span class="code-line line-number" line="550">}
+</span><span class="code-line line-number" line="551">
+</span><span class="code-line line-number" line="552">status ListDelete(SqList &amp;L, int i, ElemType &amp;e)
+</span><span class="code-line line-number" line="553">// 如果线性表L存在，删除线性表L的第i个元素，并保存在e中，返回OK；当删除位置不正确时，返回ERROR；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="554">{
+</span><span class="code-line line-number" line="555">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="556">    {
+</span><span class="code-line line-number" line="557">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="558">    }
+</span><span class="code-line line-number" line="559">    else
+</span><span class="code-line line-number" line="560">    {
+</span><span class="code-line line-number" line="561">        if (i &lt;= 0 || i &gt; L.length)
+</span><span class="code-line line-number" line="562">        {
+</span><span class="code-line line-number" line="563">            return ERROR; // 删除位置不正确
+</span><span class="code-line line-number" line="564">        }
+</span><span class="code-line line-number" line="565">        else
+</span><span class="code-line line-number" line="566">        {
+</span><span class="code-line line-number" line="567">            // 我们只需要从第i个位置开始，依次将后面的元素前移，注意要从前往后来遍历，防止覆盖
+</span><span class="code-line line-number" line="568">            e = L.elem[i - 1]; // 先把该位置的元素保存在e中
+</span><span class="code-line line-number" line="569">            for (int t = i - 1; t &lt; L.length - 1; t++)
+</span><span class="code-line line-number" line="570">            {
+</span><span class="code-line line-number" line="571">                L.elem[t] = L.elem[t + 1];
+</span><span class="code-line line-number" line="572">            }
+</span><span class="code-line line-number" line="573">            L.length--;
+</span><span class="code-line line-number" line="574">            return OK;
+</span><span class="code-line line-number" line="575">        }
+</span><span class="code-line line-number" line="576">    }
+</span><span class="code-line line-number" line="577">}
+</span><span class="code-line line-number" line="578">
+</span><span class="code-line line-number" line="579">status ListTraverse(SqList L,void visit(ElemType e))
+</span><span class="code-line line-number" line="580">// 如果线性表L存在，依次显示线性表中的元素，每个元素间空一格，返回OK；如果线性表L不存在，返回INFEASIBLE。
+</span><span class="code-line line-number" line="581">{
+</span><span class="code-line line-number" line="582">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="583">    {
+</span><span class="code-line line-number" line="584">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="585">    }
+</span><span class="code-line line-number" line="586">    else
+</span><span class="code-line line-number" line="587">    {
+</span><span class="code-line line-number" line="588">        for (int i = 0; i &lt; L.length ; i++)
+</span><span class="code-line line-number" line="589">        {
+</span><span class="code-line line-number" line="590">            visit(L.elem[i]);
+</span><span class="code-line line-number" line="591">        }
+</span><span class="code-line line-number" line="592">        return OK;
+</span><span class="code-line line-number" line="593">    }
+</span><span class="code-line line-number" line="594">}
+</span><span class="code-line line-number" line="595">
+</span><span class="code-line line-number" line="596">status SaveList(SqList L, char FileName[])
+</span><span class="code-line line-number" line="597">// 如果线性表L存在，将线性表L的的元素写到FileName文件中，返回OK，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="598">{
+</span><span class="code-line line-number" line="599">    if (L.elem == NULL || L.length == 0) 
+</span><span class="code-line line-number" line="600">    {
+</span><span class="code-line line-number" line="601">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="602">    }
+</span><span class="code-line line-number" line="603">    else
+</span><span class="code-line line-number" line="604">    {
+</span><span class="code-line line-number" line="605">        FILE *fp; // 创建文件指针对象
+</span><span class="code-line line-number" line="606">        fp = fopen(FileName, "w");
+</span><span class="code-line line-number" line="607">        for (int i = 0; i &lt; L.length; i++)
+</span><span class="code-line line-number" line="608">        {
+</span><span class="code-line line-number" line="609">            fprintf(fp, "%d ", L.elem[i]); // 将L的元素写入文件中
+</span><span class="code-line line-number" line="610">        }
+</span><span class="code-line line-number" line="611">        fclose(fp); // 关闭文件
+</span><span class="code-line line-number" line="612">        return OK;
+</span><span class="code-line line-number" line="613">    }
+</span><span class="code-line line-number" line="614">}
+</span><span class="code-line line-number" line="615">status LoadList(SqList &amp;L, char FileName[])
+</span><span class="code-line line-number" line="616">// 如果线性表L不存在，将FileName文件中的数据读入到线性表L中，返回OK，否则返回INFEASIBLE。
+</span><span class="code-line line-number" line="617">{
+</span><span class="code-line line-number" line="618">    if (L.elem == NULL||condition) // 线性表不存在，接下来将FileName文件中的数据读入到线性表L中
+</span><span class="code-line line-number" line="619">    {
+</span><span class="code-line line-number" line="620">        L.elem = (ElemType *)malloc(sizeof(ElemType) * LIST_INIT_SIZE);
+</span><span class="code-line line-number" line="621">        L.length = 0;
+</span><span class="code-line line-number" line="622">        L.listsize = LIST_INIT_SIZE;
+</span><span class="code-line line-number" line="623">        FILE *fp;
+</span><span class="code-line line-number" line="624">        fp = fopen(FileName, "r"); // 用只读模式打开文件
+</span><span class="code-line line-number" line="625">        L.length = 0;
+</span><span class="code-line line-number" line="626">        while (fscanf(fp, "%d", &amp;L.elem[L.length]) != EOF) // 当读入字符不是EOF时，继续读取
+</span><span class="code-line line-number" line="627">        {
+</span><span class="code-line line-number" line="628">            L.length++;
+</span><span class="code-line line-number" line="629">            if (L.length == L.listsize) // 如果插入之前顺序表长度已经达到最大值，则进行扩容
+</span><span class="code-line line-number" line="630">            {
+</span><span class="code-line line-number" line="631">                L.listsize += LISTINCREMENT;
+</span><span class="code-line line-number" line="632">                ElemType *temp = (ElemType *)malloc(sizeof(ElemType) * L.listsize); // 申请一块新的空间
+</span><span class="code-line line-number" line="633">                for (int i = 0; i &lt; L.listsize - LISTINCREMENT; i++)
+</span><span class="code-line line-number" line="634">                    temp[i] = L.elem[i]; // 将原线性表的内容复制到新申请的空间
+</span><span class="code-line line-number" line="635">                free(L.elem);            // 释放原线性表申请的空间，防止内存泄漏
+</span><span class="code-line line-number" line="636">                L.elem = temp;           // 将L.elem指向新申请的空间
+</span><span class="code-line line-number" line="637">            }
+</span><span class="code-line line-number" line="638">        }
+</span><span class="code-line line-number" line="639">        fclose(fp);
+</span><span class="code-line line-number" line="640">        return OK; // 写入后返回OK
+</span><span class="code-line line-number" line="641">    }
+</span><span class="code-line line-number" line="642">    else
+</span><span class="code-line line-number" line="643">    {
+</span><span class="code-line line-number" line="644">        return INFEASIBLE; // 线性表L存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="645">    }
+</span><span class="code-line line-number" line="646">}
+</span><span class="code-line line-number" line="647">
+</span><span class="code-line line-number" line="648">status AddList(LISTS &amp;Lists, char ListName[])
+</span><span class="code-line line-number" line="649">// 在Lists中增加一个名称为ListName的空线性表
+</span><span class="code-line line-number" line="650">{
+</span><span class="code-line line-number" line="651">    if(Lists.length &gt;= 100)//线性表数量大于等于100，达到上限
+</span><span class="code-line line-number" line="652">    {
+</span><span class="code-line line-number" line="653">        return ERROR;
+</span><span class="code-line line-number" line="654">    }
+</span><span class="code-line line-number" line="655">    strcpy(Lists.elem[Lists.length].name, ListName);//将ListName作为新线性表的name属性
+</span><span class="code-line line-number" line="656">    Lists.elem[Lists.length].L.elem = NULL;
+</span><span class="code-line line-number" line="657">    InitList(Lists.elem[Lists.length].L); // 利用我们编写的InitList函数来初始化线性表
+</span><span class="code-line line-number" line="658">    Lists.length++;//线性表的数量+1
+</span><span class="code-line line-number" line="659">    return OK;
+</span><span class="code-line line-number" line="660">}
+</span><span class="code-line line-number" line="661">
+</span><span class="code-line line-number" line="662">status RemoveList(LISTS &amp;Lists, char ListName[])
+</span><span class="code-line line-number" line="663">// Lists中删除一个名称为ListName的线性表
+</span><span class="code-line line-number" line="664">{
+</span><span class="code-line line-number" line="665">    bool flag = false;
+</span><span class="code-line line-number" line="666">    for (int i = 0; i &lt; Lists.length; i++) // 遍历Lists，尝试找到名称为ListName的线性表
+</span><span class="code-line line-number" line="667">    {
+</span><span class="code-line line-number" line="668">        if (strcmp(Lists.elem[i].name, ListName) == 0) // 名称比较，如果名称相同则删除该线性表，具体方式是后面每一个线性表都往前移动一个位置，注意遍历顺序要从前往后，防止覆盖
+</span><span class="code-line line-number" line="669">        {
+</span><span class="code-line line-number" line="670">            if(&amp;Lists.elem[i].L == L)//如果删除的是当前正在操作的线性表，则需要重新选择线性表
+</span><span class="code-line line-number" line="671">            {
+</span><span class="code-line line-number" line="672">                L = &amp;L_now;
+</span><span class="code-line line-number" line="673">                cout &lt;&lt; "当前正在查看的线性表被删除，请重新选择线性表，否则为默认线性表!\n";
+</span><span class="code-line line-number" line="674">                condition = false;//将状态标记为非管理多线性表
+</span><span class="code-line line-number" line="675">            }
+</span><span class="code-line line-number" line="676">            for (int j = i; j &lt; Lists.length; j++)
+</span><span class="code-line line-number" line="677">            {
+</span><span class="code-line line-number" line="678">                Lists.elem[j] = Lists.elem[j + 1];
+</span><span class="code-line line-number" line="679">                if(&amp;Lists.elem[j].L == L || !flag)
+</span><span class="code-line line-number" line="680">                {
+</span><span class="code-line line-number" line="681">                    L = &amp;Lists.elem[j + 1].L;
+</span><span class="code-line line-number" line="682">                    flag = true;//标记已经删除过
+</span><span class="code-line line-number" line="683">                }
+</span><span class="code-line line-number" line="684">            }
+</span><span class="code-line line-number" line="685">            Lists.length--;//删除后，线性表数量-1
+</span><span class="code-line line-number" line="686">            return OK;
+</span><span class="code-line line-number" line="687">        }
+</span><span class="code-line line-number" line="688">    }
+</span><span class="code-line line-number" line="689">    return ERROR; // 未找到该名称的线性表，返回ERROR
+</span><span class="code-line line-number" line="690">}
+</span><span class="code-line line-number" line="691">
+</span><span class="code-line line-number" line="692">int ManageList(LISTS Lists, char ListName[])
+</span><span class="code-line line-number" line="693">// 在Lists中查找一个名称为ListName的线性表，后续对其进行操作，成功返回逻辑序号，否则返回0
+</span><span class="code-line line-number" line="694">{
+</span><span class="code-line line-number" line="695">    for (int i = 0; i &lt; Lists.length; i++)
+</span><span class="code-line line-number" line="696">    {
+</span><span class="code-line line-number" line="697">        if (strcmp(Lists.elem[i].name, ListName) == 0)
+</span><span class="code-line line-number" line="698">        {
+</span><span class="code-line line-number" line="699">            return i + 1;
+</span><span class="code-line line-number" line="700">        }
+</span><span class="code-line line-number" line="701">    }
+</span><span class="code-line line-number" line="702">    return 0;
+</span><span class="code-line line-number" line="703">}
+</span><span class="code-line line-number" line="704">
+</span><span class="code-line line-number" line="705">int MaxSubArray(SqList &amp;L,ElemType &amp;e)
+</span><span class="code-line line-number" line="706">{
+</span><span class="code-line line-number" line="707">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="708">    {
+</span><span class="code-line line-number" line="709">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="710">    }
+</span><span class="code-line line-number" line="711">    //初始条件是线性表L已存在且非空，请找出一个具有最大和的连续子数组（子数组最少包含一个元素），操作结果是其最大和；
+</span><span class="code-line line-number" line="712">    int Max = -0x3f3f3f3f,NowSum = 0;//初始化最大值为一个极小值，NowSum用于存储当前连续子数组的和
+</span><span class="code-line line-number" line="713">    for (int i = 0 ; i &lt; L.length;i++)
+</span><span class="code-line line-number" line="714">    {
+</span><span class="code-line line-number" line="715">        NowSum += L.elem[i];
+</span><span class="code-line line-number" line="716">        if(NowSum &gt; Max)
+</span><span class="code-line line-number" line="717">        {
+</span><span class="code-line line-number" line="718">            Max = NowSum;//更新最大值
+</span><span class="code-line line-number" line="719">        }
+</span><span class="code-line line-number" line="720">        if(NowSum &lt; 0)//当前子数组的和小于0时，说明该子数组对最大和没有贡献，因此舍弃该子数组，从下一个元素重新开始计算
+</span><span class="code-line line-number" line="721">        {
+</span><span class="code-line line-number" line="722">            NowSum = 0;
+</span><span class="code-line line-number" line="723">        }
+</span><span class="code-line line-number" line="724">    }
+</span><span class="code-line line-number" line="725">    e = Max;
+</span><span class="code-line line-number" line="726">    return OK;
+</span><span class="code-line line-number" line="727">}
+</span><span class="code-line line-number" line="728">
+</span><span class="code-line line-number" line="729">int ShowLists(LISTS &amp;L)
+</span><span class="code-line line-number" line="730">{
+</span><span class="code-line line-number" line="731">    if(L.length == 0 )
+</span><span class="code-line line-number" line="732">    {
+</span><span class="code-line line-number" line="733">        cout &lt;&lt; "没有线性表"&lt;&lt;endl;
+</span><span class="code-line line-number" line="734">        return ERROR;
+</span><span class="code-line line-number" line="735">    }
+</span><span class="code-line line-number" line="736">    cout &lt;&lt; "有如下线性表:" &lt;&lt; endl;
+</span><span class="code-line line-number" line="737">    for (int i = 0 ; i &lt; L.length ; i++)
+</span><span class="code-line line-number" line="738">    {
+</span><span class="code-line line-number" line="739">        cout &lt;&lt; L.elem[i].name &lt;&lt;endl;
+</span><span class="code-line line-number" line="740">    }
+</span><span class="code-line line-number" line="741">    return OK;
+</span><span class="code-line line-number" line="742">}
+</span><span class="code-line line-number" line="743">
+</span><span class="code-line line-number" line="744">int SubArrayNum(SqList &amp;L,int num,ElemType &amp;e)
+</span><span class="code-line line-number" line="745">{
+</span><span class="code-line line-number" line="746">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="747">    {
+</span><span class="code-line line-number" line="748">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="749">    }
+</span><span class="code-line line-number" line="750">    //初始条件是线性表L已存在且非空, 操作结果是该数组中和为k的连续子数组的个数；
+</span><span class="code-line line-number" line="751">    //我们有不同的方法来解决这个问题
+</span><span class="code-line line-number" line="752">    /*法一 暴力枚举，复杂度为O(N^3)复杂度过高，所以不采取
+</span><span class="code-line line-number" line="753">    int cnt = 0;
+</span><span class="code-line line-number" line="754">    for (int i = 0 ; i &lt; L.length;i++)//枚举左端点
+</span><span class="code-line line-number" line="755">    {
+</span><span class="code-line line-number" line="756">        for (int j = i ; j &lt; L.length;j++)//枚举右端点
+</span><span class="code-line line-number" line="757">        {
+</span><span class="code-line line-number" line="758">            int sum = 0;
+</span><span class="code-line line-number" line="759">            for (int k = i ; k &lt;= j;k++)//相加
+</span><span class="code-line line-number" line="760">            {
+</span><span class="code-line line-number" line="761">                sum += L.elem[k];
+</span><span class="code-line line-number" line="762">            }
+</span><span class="code-line line-number" line="763">            if(sum == num)
+</span><span class="code-line line-number" line="764">            {
+</span><span class="code-line line-number" line="765">                cnt++;
+</span><span class="code-line line-number" line="766">            }
+</span><span class="code-line line-number" line="767">        }
+</span><span class="code-line line-number" line="768">    }
+</span><span class="code-line line-number" line="769">    return cnt;
+</span><span class="code-line line-number" line="770">    */
+</span><span class="code-line line-number" line="771">
+</span><span class="code-line line-number" line="772">
+</span><span class="code-line line-number" line="773">​    /*//法二，改进的暴力枚举，复杂度O(N^2)
+</span><span class="code-line line-number" line="774">​    int cnt = 0;
+</span><span class="code-line line-number" line="775">​    for (int i = 0 ; i &lt; L.length ;i++)
+</span><span class="code-line line-number" line="776">​    {
+</span><span class="code-line line-number" line="777">​        int sum = 0;//和初始化为0
+</span><span class="code-line line-number" line="778">​        for (int j = i; j &lt; length ; j++)
+</span><span class="code-line line-number" line="779">​        {
+</span><span class="code-line line-number" line="780">​            sum += L.elem[j];
+</span><span class="code-line line-number" line="781">​            if(sum == num)//如果和为k就把cnt+1
+</span><span class="code-line line-number" line="782">​                cnt++;
+</span><span class="code-line line-number" line="783">​        }
+</span><span class="code-line line-number" line="784">​    }
+</span><span class="code-line line-number" line="785">​    */
+</span><span class="code-line line-number" line="786">​    //法三 前缀和，复杂度O(N^2),还可以借助哈希表进行优化，优化到O(N)时间复杂度，但是会增加空间开销
+</span><span class="code-line line-number" line="787">​    int cnt = 0;
+</span><span class="code-line line-number" line="788">​    int sum[L.length];
+</span><span class="code-line line-number" line="789">​    sum[0] = L.elem[0];
+</span><span class="code-line line-number" line="790">​    for (int i = 1 ; i &lt; L.length;i++)//计算前缀和数组
+</span><span class="code-line line-number" line="791">​    {
+</span><span class="code-line line-number" line="792">​        sum[i] = sum[i - 1] + L.elem[i];
+</span><span class="code-line line-number" line="793">​    }
+</span><span class="code-line line-number" line="794">​    for (int i = 0 ; i &lt; L.length;i++)//枚举左端点 
+</span><span class="code-line line-number" line="795">​    {
+</span><span class="code-line line-number" line="796">​        for (int j = i ; j &lt; L.length;j++)//枚举右端点
+</span><span class="code-line line-number" line="797">​        {
+</span><span class="code-line line-number" line="798">​            if(sum[j] - ((i == 0)? 0 : sum[i - 1]) == num)
+</span><span class="code-line line-number" line="799">​            {
+</span><span class="code-line line-number" line="800">​                cnt++;
+</span><span class="code-line line-number" line="801">​            }
+</span><span class="code-line line-number" line="802">​        }
+</span><span class="code-line line-number" line="803">​    }
+</span><span class="code-line line-number" line="804">​    e = cnt;
+</span><span class="code-line line-number" line="805">​    return OK;
+</span><span class="code-line line-number" line="806">
+</span><span class="code-line line-number" line="807">​    /*法四，前缀和+哈希表，复杂度O(N)
+</span><span class="code-line line-number" line="808">​    int cnt = 0;
+</span><span class="code-line line-number" line="809">​    int sum = 0;
+</span><span class="code-line line-number" line="810">​    unordered_map &lt;int,int&gt;Sum_Map;
+</span><span class="code-line line-number" line="811">​    for (int i = 0 ; i &lt; L.length ; i++)
+</span><span class="code-line line-number" line="812">​    {
+</span><span class="code-line line-number" line="813">​        sum += L.elem[i];
+</span><span class="code-line line-number" line="814">​        if(Sum_Map.find(sum - num) != Sum_Map.end())
+</span><span class="code-line line-number" line="815">​        {
+</span><span class="code-line line-number" line="816">​            cnt += Sum_Map[sum - num];
+</span><span class="code-line line-number" line="817">​        }
+</span><span class="code-line line-number" line="818">​        Sum_Map[sum]++;
+</span><span class="code-line line-number" line="819">​    }
+</span><span class="code-line line-number" line="820">​    return cnt;
+</span><span class="code-line line-number" line="821">​    */
+</span><span class="code-line line-number" line="822">}
+</span><span class="code-line line-number" line="823">
+</span><span class="code-line line-number" line="824">status SortList(SqList &amp;L,int l,int r)
+</span><span class="code-line line-number" line="825">{
+</span><span class="code-line line-number" line="826">    //初始条件是线性表L已存在且非空，操作结果是将L中的所有线性表按最大和从大到小排序
+</span><span class="code-line line-number" line="827">    //我们采用快速排序，平均时间复杂度为O(NlogN)
+</span><span class="code-line line-number" line="828">    //如果使用STL中的排序，则使用sort函数，但是这里我们自行实现排序函数
+</span><span class="code-line line-number" line="829">    if (L.elem == NULL)
+</span><span class="code-line line-number" line="830">    {
+</span><span class="code-line line-number" line="831">        return INFEASIBLE; // 线性表不存在，返回INFEASIBLE
+</span><span class="code-line line-number" line="832">    }
+</span><span class="code-line line-number" line="833">    int x = L.elem[l], i = l - 1,j = r + 1;//  选择第一个元素作为基准值
+</span><span class="code-line line-number" line="834">    if (l &gt;= r) return OK;//  如果左边界大于等于右边界，则返回
+</span><span class="code-line line-number" line="835">    while (i &lt; j){//  循环遍历数组，将小于基准值的元素放在左边，大于基准值的元素放在右边
+</span><span class="code-line line-number" line="836">        do i++; while (L.elem[i] &lt; x); //  从L.elem[i]开始，找到第一个大于等于x的元素
+</span><span class="code-line line-number" line="837">        do j-- ; while (L.elem[j] &gt; x);// 从右往左找到第一个小于等于x的元素
+</span><span class="code-line line-number" line="838">        if (i&lt;j) swap(L.elem[i],L.elem[j]); //交换两个元素
+</span><span class="code-line line-number" line="839">    }
+</span><span class="code-line line-number" line="840">        SortList(L,l,j); //  递归调用，对左半部分和右半部分进行排序
+</span><span class="code-line line-number" line="841">        SortList(L,j+1,r);
+</span><span class="code-line line-number" line="842">    return OK;
+</span><span class="code-line line-number" line="843">}
+</span></code></pre>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

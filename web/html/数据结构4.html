@@ -1,0 +1,1124 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">#include "stdio.h"
+</span><span class="code-line line-number" line="2">#include "stdlib.h"
+</span><span class="code-line line-number" line="3">#include &lt;cstring&gt;
+</span><span class="code-line line-number" line="4">#include &lt;iostream&gt;
+</span><span class="code-line line-number" line="5">#include &lt;algorithm&gt;
+</span><span class="code-line line-number" line="6">#include &lt;queue&gt;
+</span><span class="code-line line-number" line="7">using namespace std;
+</span><span class="code-line line-number" line="8">#define TRUE 1
+</span><span class="code-line line-number" line="9">#define FALSE 0
+</span><span class="code-line line-number" line="10">#define OK 1
+</span><span class="code-line line-number" line="11">#define ERROR 0
+</span><span class="code-line line-number" line="12">#define INFEASIBLE -1
+</span><span class="code-line line-number" line="13">#define OVERFLOW -2
+</span><span class="code-line line-number" line="14">#define MAX_VERTEX_NUM 20
+</span><span class="code-line line-number" line="15">typedef int status;
+</span><span class="code-line line-number" line="16">typedef int KeyType;
+</span><span class="code-line line-number" line="17">typedef enum
+</span><span class="code-line line-number" line="18">{
+</span><span class="code-line line-number" line="19">    DG,
+</span><span class="code-line line-number" line="20">    DN,
+</span><span class="code-line line-number" line="21">    UDG,
+</span><span class="code-line line-number" line="22">    UDN
+</span><span class="code-line line-number" line="23">} GraphKind;
+</span><span class="code-line line-number" line="24">typedef struct
+</span><span class="code-line line-number" line="25">{
+</span><span class="code-line line-number" line="26">    KeyType key;
+</span><span class="code-line line-number" line="27">    char others[20];
+</span><span class="code-line line-number" line="28">} VertexType; // 顶点类型定义
+</span><span class="code-line line-number" line="29">
+</span><span class="code-line line-number" line="30">typedef struct ArcNode
+</span><span class="code-line line-number" line="31">{                            // 表结点类型定义
+</span><span class="code-line line-number" line="32">    int adjvex;              // 顶点位置编号
+</span><span class="code-line line-number" line="33">    struct ArcNode *nextarc; // 下一个表结点指针
+</span><span class="code-line line-number" line="34">} ArcNode;
+</span><span class="code-line line-number" line="35">typedef struct VNode
+</span><span class="code-line line-number" line="36">{                      // 头结点及其数组类型定义
+</span><span class="code-line line-number" line="37">    VertexType data;   // 顶点信息
+</span><span class="code-line line-number" line="38">    ArcNode *firstarc; // 指向第一条弧
+</span><span class="code-line line-number" line="39">} VNode, AdjList[MAX_VERTEX_NUM];
+</span><span class="code-line line-number" line="40">typedef struct
+</span><span class="code-line line-number" line="41">{                       // 邻接表的类型定义
+</span><span class="code-line line-number" line="42">    AdjList vertices;   // 头结点数组
+</span><span class="code-line line-number" line="43">    int vexnum, arcnum; // 顶点数、弧数
+</span><span class="code-line line-number" line="44">    GraphKind kind;     // 图的类型
+</span><span class="code-line line-number" line="45">} ALGraph;
+</span><span class="code-line line-number" line="46">typedef struct
+</span><span class="code-line line-number" line="47">{ // 线性表的管理表定义
+</span><span class="code-line line-number" line="48">    struct
+</span><span class="code-line line-number" line="49">    {
+</span><span class="code-line line-number" line="50">        char name[50];
+</span><span class="code-line line-number" line="51">        ALGraph G;
+</span><span class="code-line line-number" line="52">    } elem[100];
+</span><span class="code-line line-number" line="53">    int length;
+</span><span class="code-line line-number" line="54">    int listsize;
+</span><span class="code-line line-number" line="55">} Graphs;
+</span><span class="code-line line-number" line="56">status CreateCraph(ALGraph&amp; G, VertexType V[], KeyType VR[][2]);
+</span><span class="code-line line-number" line="57">status DestroyGraph(ALGraph&amp; G);
+</span><span class="code-line line-number" line="58">int LocateVex(ALGraph G, KeyType u);
+</span><span class="code-line line-number" line="59">status PutVex(ALGraph&amp; G, KeyType u, VertexType value);
+</span><span class="code-line line-number" line="60">int FirstAdjVex(ALGraph G, KeyType u);
+</span><span class="code-line line-number" line="61">int NextAdjVex(ALGraph G, KeyType v, KeyType w);
+</span><span class="code-line line-number" line="62">status InsertVex(ALGraph&amp; G, VertexType v);
+</span><span class="code-line line-number" line="63">status DeleteVex(ALGraph&amp; G, KeyType v);
+</span><span class="code-line line-number" line="64">status InsertArc(ALGraph&amp; G, KeyType v, KeyType w);
+</span><span class="code-line line-number" line="65">status DeleteArc(ALGraph&amp; G, KeyType v, KeyType w);
+</span><span class="code-line line-number" line="66">status DFS(ALGraph&amp; G, int i, void (*visit)(VertexType), bool visited[]);
+</span><span class="code-line line-number" line="67">status DFSTraverse(ALGraph&amp; G, void (*visit)(VertexType));
+</span><span class="code-line line-number" line="68">status BFSTraverse(ALGraph&amp; G, void (*visit)(VertexType));
+</span><span class="code-line line-number" line="69">status SaveGraph(ALGraph G, char FileName[]);
+</span><span class="code-line line-number" line="70">status LoadGraph(ALGraph&amp; G, char FileName[]);
+</span><span class="code-line line-number" line="71">status VerticesSetLessThanK(ALGraph G, int v, int k);
+</span><span class="code-line line-number" line="72">status ShortestPathLength(ALGraph G, int v, int w);
+</span><span class="code-line line-number" line="73">status ShowGraph(Graphs&amp; gs);
+</span><span class="code-line line-number" line="74">status AddGraph(Graphs&amp; gs, char name[]);
+</span><span class="code-line line-number" line="75">status ManageGraph(Graphs&amp; gs, char name[]);
+</span><span class="code-line line-number" line="76">status ConnectedComponentsNums(ALGraph G);
+</span><span class="code-line line-number" line="77">status check1(VertexType V[]);
+</span><span class="code-line line-number" line="78">void deleteVR(KeyType VR[][2], int i, int&amp; num);
+</span><span class="code-line line-number" line="79">status check2(VertexType V[], KeyType VR[][2]);
+</span><span class="code-line line-number" line="80">void visit(VertexType v);
+</span><span class="code-line line-number" line="81">status bfs(ALGraph&amp; g, int v, std::vector&lt;int&gt;&amp; dis);
+</span><span class="code-line line-number" line="82">Graphs gs;
+</span><span class="code-line line-number" line="83">ALGraph *g;
+</span><span class="code-line line-number" line="84">int main(){
+</span><span class="code-line line-number" line="85">    int op = 1,num = -1;
+</span><span class="code-line line-number" line="86">    int i, e, ans, j; 
+</span><span class="code-line line-number" line="87">    VertexType V[100];
+</span><span class="code-line line-number" line="88">	KeyType VR[100][2]; 
+</span><span class="code-line line-number" line="89">    VertexType value;
+</span><span class="code-line line-number" line="90">    char FileName[100], Name[100];
+</span><span class="code-line line-number" line="91">    while(op){
+</span><span class="code-line line-number" line="92">        system("cls");
+</span><span class="code-line line-number" line="93">        printf("\n\n");
+</span><span class="code-line line-number" line="94">        printf("                                    Menu for Graphy  \n");
+</span><span class="code-line line-number" line="95">        printf("          ---------------------------------------------------------\n");
+</span><span class="code-line line-number" line="96">        printf("    	  1. CreateCraph            12. BFSTraverse\n");
+</span><span class="code-line line-number" line="97">        printf("    	  2. DestroyGraph           13. VerticesSetLessThanK \n");
+</span><span class="code-line line-number" line="98">        printf("    	  3. LocateVex              14. ShortestPathLength \n");
+</span><span class="code-line line-number" line="99">        printf("    	  4. PutVex                 15. ConnectedComponentsNums \n");
+</span><span class="code-line line-number" line="100">        printf("    	  5. FirstAdjVex            16. SaveGraph\n");
+</span><span class="code-line line-number" line="101">        printf("    	  6. NextAdjVex             17. LoadGraph\n");
+</span><span class="code-line line-number" line="102">        printf("          7. InsertVex              18. AddGraph\n");
+</span><span class="code-line line-number" line="103">        printf("          8. DeleteVex              19. ManageGraph \n");
+</span><span class="code-line line-number" line="104">        printf("          9. InsertArc              20. ShowGraph\n");
+</span><span class="code-line line-number" line="105">        printf("          10. DeleteArc             0. Exit\n");
+</span><span class="code-line line-number" line="106">        printf("          11. DFSTraverse           \n");
+</span><span class="code-line line-number" line="107">        printf("          ---------------------------------------------------------\n");
+</span><span class="code-line line-number" line="108">        printf("请选择你的操作[0~20]:");
+</span><span class="code-line line-number" line="109">        scanf("%d",&amp;op);
+</span><span class="code-line line-number" line="110">        switch (op)
+</span><span class="code-line line-number" line="111">        {
+</span><span class="code-line line-number" line="112">        case 1:
+</span><span class="code-line line-number" line="113">            if(!gs.length)
+</span><span class="code-line line-number" line="114">            {
+</span><span class="code-line line-number" line="115">                printf("请输入图的名字：");
+</span><span class="code-line line-number" line="116">                scanf("%s",Name);
+</span><span class="code-line line-number" line="117">                strcpy(gs.elem[gs.length].name,Name);
+</span><span class="code-line line-number" line="118">                num = gs.length;
+</span><span class="code-line line-number" line="119">                gs.length++;
+</span><span class="code-line line-number" line="120">            }
+</span><span class="code-line line-number" line="121">            i = 0;
+</span><span class="code-line line-number" line="122">            printf("请输入顶点序列(-1 nil作为结束标志)：");
+</span><span class="code-line line-number" line="123">            do
+</span><span class="code-line line-number" line="124">            {
+</span><span class="code-line line-number" line="125">                scanf("%d%s", &amp;V[i].key, V[i].others);
+</span><span class="code-line line-number" line="126">            } while (V[i++].key != -1);
+</span><span class="code-line line-number" line="127">            i = 0;
+</span><span class="code-line line-number" line="128">            printf("请输入关系对序列，以-1 -1结束：");
+</span><span class="code-line line-number" line="129">            do
+</span><span class="code-line line-number" line="130">            {
+</span><span class="code-line line-number" line="131">                scanf("%d%d", &amp;VR[i][0], &amp;VR[i][1]);
+</span><span class="code-line line-number" line="132">            } while (VR[i++][0] != -1);
+</span><span class="code-line line-number" line="133">            if (CreateCraph(gs.elem[num].G, V, VR) == OK)
+</span><span class="code-line line-number" line="134">                printf("图创建成功！\n");
+</span><span class="code-line line-number" line="135">            else
+</span><span class="code-line line-number" line="136">                printf("图创建失败！\n");
+</span><span class="code-line line-number" line="137">            getchar();
+</span><span class="code-line line-number" line="138">            getchar();
+</span><span class="code-line line-number" line="139">            break;
+</span><span class="code-line line-number" line="140">        case 2:
+</span><span class="code-line line-number" line="141">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="142">            {
+</span><span class="code-line line-number" line="143">                printf("图为空！\n");
+</span><span class="code-line line-number" line="144">                getchar();
+</span><span class="code-line line-number" line="145">                getchar();
+</span><span class="code-line line-number" line="146">                break;
+</span><span class="code-line line-number" line="147">            }
+</span><span class="code-line line-number" line="148">            ans = DestroyGraph(gs.elem[num].G);
+</span><span class="code-line line-number" line="149">            if (ans == OK)
+</span><span class="code-line line-number" line="150">            {
+</span><span class="code-line line-number" line="151">                printf("图销毁成功！\n");
+</span><span class="code-line line-number" line="152">                for (int i = num + 1 ; i &lt; gs.length;i++)
+</span><span class="code-line line-number" line="153">                {
+</span><span class="code-line line-number" line="154">                    gs.elem[i-1] = gs.elem[i];
+</span><span class="code-line line-number" line="155">                }
+</span><span class="code-line line-number" line="156">                gs.length--;
+</span><span class="code-line line-number" line="157">            }
+</span><span class="code-line line-number" line="158">            else
+</span><span class="code-line line-number" line="159">                printf("图销毁失败！\n");
+</span><span class="code-line line-number" line="160">            getchar();
+</span><span class="code-line line-number" line="161">            getchar();
+</span><span class="code-line line-number" line="162">            break;
+</span><span class="code-line line-number" line="163">        case 3:
+</span><span class="code-line line-number" line="164">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="165">            {
+</span><span class="code-line line-number" line="166">                printf("图为空！\n");
+</span><span class="code-line line-number" line="167">                getchar();
+</span><span class="code-line line-number" line="168">                getchar();
+</span><span class="code-line line-number" line="169">                break;
+</span><span class="code-line line-number" line="170">            }
+</span><span class="code-line line-number" line="171">            printf("请输入想要查找的顶点关键字：");
+</span><span class="code-line line-number" line="172">            scanf("%d", &amp;e);
+</span><span class="code-line line-number" line="173">            ans = LocateVex(gs.elem[num].G, e);
+</span><span class="code-line line-number" line="174">            if (ans != -1)
+</span><span class="code-line line-number" line="175">                printf("图中关键字为%d的顶点的位序为%d\n", e, ans);
+</span><span class="code-line line-number" line="176">            else
+</span><span class="code-line line-number" line="177">                printf("图中不存在该顶点！\n");
+</span><span class="code-line line-number" line="178">            getchar();
+</span><span class="code-line line-number" line="179">            getchar();
+</span><span class="code-line line-number" line="180">            break;
+</span><span class="code-line line-number" line="181">        case 4:
+</span><span class="code-line line-number" line="182">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="183">            {
+</span><span class="code-line line-number" line="184">                printf("图为空！\n");
+</span><span class="code-line line-number" line="185">                getchar();
+</span><span class="code-line line-number" line="186">                getchar();
+</span><span class="code-line line-number" line="187">                break;
+</span><span class="code-line line-number" line="188">            }
+</span><span class="code-line line-number" line="189">            printf("请输入想要修改的顶点的关键字：");
+</span><span class="code-line line-number" line="190">            scanf("%d", &amp;e);
+</span><span class="code-line line-number" line="191">            printf("将其顶点值修改为：");
+</span><span class="code-line line-number" line="192">            scanf("%d %s", &amp;value.key, value.others);
+</span><span class="code-line line-number" line="193">            ans = PutVex(gs.elem[num].G, e, value);
+</span><span class="code-line line-number" line="194">            if (ans == ERROR)
+</span><span class="code-line line-number" line="195">                printf("赋值操作失败！\n");
+</span><span class="code-line line-number" line="196">            else if (ans == OK)
+</span><span class="code-line line-number" line="197">                printf("已将关键字为%d的顶点值修改为%d,%s\n", e, value.key, value.others);
+</span><span class="code-line line-number" line="198">            getchar();
+</span><span class="code-line line-number" line="199">            getchar();
+</span><span class="code-line line-number" line="200">            break;
+</span><span class="code-line line-number" line="201">        case 5:
+</span><span class="code-line line-number" line="202">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="203">            {
+</span><span class="code-line line-number" line="204">                printf("图为空！\n");
+</span><span class="code-line line-number" line="205">                getchar();
+</span><span class="code-line line-number" line="206">                getchar();
+</span><span class="code-line line-number" line="207">                break;
+</span><span class="code-line line-number" line="208">            }
+</span><span class="code-line line-number" line="209">            printf("请输入想要查找其第一邻接点的顶点：");
+</span><span class="code-line line-number" line="210">            scanf("%d", &amp;e);
+</span><span class="code-line line-number" line="211">            ans = FirstAdjVex(gs.elem[num].G, e);
+</span><span class="code-line line-number" line="212">            if (ans != -1)
+</span><span class="code-line line-number" line="213">                printf("顶点%d的第一邻接点的位序为%d\n关键字为：%d关键信息为：%s\n", e, ans, gs.elem[num].G.vertices[ans].data.key, gs.elem[num].G.vertices[ans].data.others);
+</span><span class="code-line line-number" line="214">            else
+</span><span class="code-line line-number" line="215">                printf("顶点%d没有第一邻接点！\n", e);
+</span><span class="code-line line-number" line="216">            getchar();
+</span><span class="code-line line-number" line="217">            getchar();
+</span><span class="code-line line-number" line="218">            break;
+</span><span class="code-line line-number" line="219">        case 6:
+</span><span class="code-line line-number" line="220">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="221">            {
+</span><span class="code-line line-number" line="222">                printf("图为空！\n");
+</span><span class="code-line line-number" line="223">                getchar();
+</span><span class="code-line line-number" line="224">                getchar();
+</span><span class="code-line line-number" line="225">                break;
+</span><span class="code-line line-number" line="226">            }
+</span><span class="code-line line-number" line="227">            printf("请输入两个顶点的关键字：");
+</span><span class="code-line line-number" line="228">            scanf("%d %d", &amp;e, &amp;j);
+</span><span class="code-line line-number" line="229">            ans = NextAdjVex(gs.elem[num].G, e, j);
+</span><span class="code-line line-number" line="230">            if (ans != -1)
+</span><span class="code-line line-number" line="231">                printf("顶点%d相对于顶点%d的下一个邻接顶点位序为%d\n关键字为：%d关键信息为：%s\n", e, j, ans, gs.elem[num].G.vertices[ans].data.key, gs.elem[num].G.vertices[ans].data.others);
+</span><span class="code-line line-number" line="232">            else
+</span><span class="code-line line-number" line="233">                printf("无下一邻接顶点！\n");
+</span><span class="code-line line-number" line="234">            getchar();
+</span><span class="code-line line-number" line="235">            getchar();
+</span><span class="code-line line-number" line="236">            break;
+</span><span class="code-line line-number" line="237">        case 7:
+</span><span class="code-line line-number" line="238">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="239">            {
+</span><span class="code-line line-number" line="240">                printf("图为空！\n");
+</span><span class="code-line line-number" line="241">                getchar();
+</span><span class="code-line line-number" line="242">                getchar();
+</span><span class="code-line line-number" line="243">                break;
+</span><span class="code-line line-number" line="244">            }
+</span><span class="code-line line-number" line="245">            printf("请输入想要插入的关键字和关键信息：");
+</span><span class="code-line line-number" line="246">            scanf("%d %s", &amp;value.key, value.others);
+</span><span class="code-line line-number" line="247">            ans = InsertVex(gs.elem[num].G, value);
+</span><span class="code-line line-number" line="248">            if (ans == OK)
+</span><span class="code-line line-number" line="249">                printf("顶点 %d %s 已成功插入图中\n", value.key, value.others);
+</span><span class="code-line line-number" line="250">            else if (ans == ERROR)
+</span><span class="code-line line-number" line="251">                printf("插入失败！\n");
+</span><span class="code-line line-number" line="252">            getchar();
+</span><span class="code-line line-number" line="253">            getchar();
+</span><span class="code-line line-number" line="254">            break;
+</span><span class="code-line line-number" line="255">        case 8:
+</span><span class="code-line line-number" line="256">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="257">            {
+</span><span class="code-line line-number" line="258">                printf("图为空！\n");
+</span><span class="code-line line-number" line="259">                getchar();
+</span><span class="code-line line-number" line="260">                getchar();
+</span><span class="code-line line-number" line="261">                break;
+</span><span class="code-line line-number" line="262">            }
+</span><span class="code-line line-number" line="263">            printf("请输入想要删除的顶点的关键字：");
+</span><span class="code-line line-number" line="264">            scanf("%d", &amp;e);
+</span><span class="code-line line-number" line="265">            ans = DeleteVex(gs.elem[num].G, e);
+</span><span class="code-line line-number" line="266">            if (ans == OK)
+</span><span class="code-line line-number" line="267">                printf("关键字为%d的顶点已从图中删除\n", e);
+</span><span class="code-line line-number" line="268">            else if (ans == ERROR)
+</span><span class="code-line line-number" line="269">                printf("删除失败！\n");
+</span><span class="code-line line-number" line="270">            getchar();
+</span><span class="code-line line-number" line="271">            getchar();
+</span><span class="code-line line-number" line="272">            break;
+</span><span class="code-line line-number" line="273">        case 9:
+</span><span class="code-line line-number" line="274">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="275">            {
+</span><span class="code-line line-number" line="276">                printf("图为空！\n");
+</span><span class="code-line line-number" line="277">                getchar();
+</span><span class="code-line line-number" line="278">                getchar();
+</span><span class="code-line line-number" line="279">                break;
+</span><span class="code-line line-number" line="280">            }
+</span><span class="code-line line-number" line="281">            printf("请输入想要插入的弧：");
+</span><span class="code-line line-number" line="282">            scanf("%d %d", &amp;e, &amp;j);
+</span><span class="code-line line-number" line="283">            ans = InsertArc(gs.elem[num].G, e, j);
+</span><span class="code-line line-number" line="284">            if (ans == OK)
+</span><span class="code-line line-number" line="285">                printf("插入成功！\n");
+</span><span class="code-line line-number" line="286">            else if (ans == ERROR)
+</span><span class="code-line line-number" line="287">                printf("插入失败！\n");
+</span><span class="code-line line-number" line="288">            getchar();
+</span><span class="code-line line-number" line="289">            getchar();
+</span><span class="code-line line-number" line="290">            break;
+</span><span class="code-line line-number" line="291">        case 10:
+</span><span class="code-line line-number" line="292">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="293">            {
+</span><span class="code-line line-number" line="294">                printf("图为空！\n");
+</span><span class="code-line line-number" line="295">                getchar();
+</span><span class="code-line line-number" line="296">                getchar();
+</span><span class="code-line line-number" line="297">                break;
+</span><span class="code-line line-number" line="298">            }
+</span><span class="code-line line-number" line="299">            printf("请输入要删除弧的两个端点：");
+</span><span class="code-line line-number" line="300">            scanf("%d %d", &amp;e, &amp;j);
+</span><span class="code-line line-number" line="301">            ans = DeleteArc(gs.elem[num].G, e, j);
+</span><span class="code-line line-number" line="302">            if (ans == OK)
+</span><span class="code-line line-number" line="303">                printf("删除成功！\n");
+</span><span class="code-line line-number" line="304">            else if (ans == ERROR)
+</span><span class="code-line line-number" line="305">                printf("删除失败！\n");
+</span><span class="code-line line-number" line="306">            getchar();
+</span><span class="code-line line-number" line="307">            getchar();
+</span><span class="code-line line-number" line="308">            break;
+</span><span class="code-line line-number" line="309">        case 11:
+</span><span class="code-line line-number" line="310">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="311">            {
+</span><span class="code-line line-number" line="312">                printf("图为空！\n");
+</span><span class="code-line line-number" line="313">                getchar();
+</span><span class="code-line line-number" line="314">                getchar();
+</span><span class="code-line line-number" line="315">                break;
+</span><span class="code-line line-number" line="316">            }
+</span><span class="code-line line-number" line="317">            printf("深度优先搜索遍历：\n");
+</span><span class="code-line line-number" line="318">            DFSTraverse(gs.elem[num].G, visit);
+</span><span class="code-line line-number" line="319">            printf("\n");
+</span><span class="code-line line-number" line="320">            getchar();
+</span><span class="code-line line-number" line="321">            getchar();
+</span><span class="code-line line-number" line="322">            break;
+</span><span class="code-line line-number" line="323">        case 12:
+</span><span class="code-line line-number" line="324">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="325">            {
+</span><span class="code-line line-number" line="326">                printf("图为空！\n");
+</span><span class="code-line line-number" line="327">                getchar();
+</span><span class="code-line line-number" line="328">                getchar();
+</span><span class="code-line line-number" line="329">                break;
+</span><span class="code-line line-number" line="330">            }
+</span><span class="code-line line-number" line="331">            printf("广度优先搜索遍历：\n");
+</span><span class="code-line line-number" line="332">            BFSTraverse(gs.elem[num].G, visit);
+</span><span class="code-line line-number" line="333">            printf("\n");
+</span><span class="code-line line-number" line="334">            getchar();
+</span><span class="code-line line-number" line="335">            getchar();
+</span><span class="code-line line-number" line="336">            break;
+</span><span class="code-line line-number" line="337">        case 13:
+</span><span class="code-line line-number" line="338">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="339">            {
+</span><span class="code-line line-number" line="340">                printf("图为空！\n");
+</span><span class="code-line line-number" line="341">                getchar();
+</span><span class="code-line line-number" line="342">                getchar();
+</span><span class="code-line line-number" line="343">                break;
+</span><span class="code-line line-number" line="344">            }
+</span><span class="code-line line-number" line="345">            printf("请输入顶点和距离：");
+</span><span class="code-line line-number" line="346">            scanf("%d %d", &amp;e, &amp;j);
+</span><span class="code-line line-number" line="347">            VerticesSetLessThanK(gs.elem[num].G, e, j);
+</span><span class="code-line line-number" line="348">            getchar();
+</span><span class="code-line line-number" line="349">            getchar();
+</span><span class="code-line line-number" line="350">            break;
+</span><span class="code-line line-number" line="351">        case 14:
+</span><span class="code-line line-number" line="352">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="353">            {
+</span><span class="code-line line-number" line="354">                printf("图为空！\n");
+</span><span class="code-line line-number" line="355">                getchar();
+</span><span class="code-line line-number" line="356">                getchar();
+</span><span class="code-line line-number" line="357">                break;
+</span><span class="code-line line-number" line="358">            }
+</span><span class="code-line line-number" line="359">            printf("请输入顶点v和顶点w：");
+</span><span class="code-line line-number" line="360">            scanf("%d %d", &amp;e, &amp;j);
+</span><span class="code-line line-number" line="361">            if (e == j)
+</span><span class="code-line line-number" line="362">            {
+</span><span class="code-line line-number" line="363">                printf("请不要输入两个相同的结点！\n");
+</span><span class="code-line line-number" line="364">            }
+</span><span class="code-line line-number" line="365">            ans = ShortestPathLength(gs.elem[num].G, e, j);
+</span><span class="code-line line-number" line="366">            if (ans == -1)
+</span><span class="code-line line-number" line="367">            {
+</span><span class="code-line line-number" line="368">                printf("两者间不存在路径！\n");
+</span><span class="code-line line-number" line="369">                getchar();
+</span><span class="code-line line-number" line="370">                getchar();
+</span><span class="code-line line-number" line="371">                break;
+</span><span class="code-line line-number" line="372">            }
+</span><span class="code-line line-number" line="373">            if (ans == ERROR)
+</span><span class="code-line line-number" line="374">            {
+</span><span class="code-line line-number" line="375">                printf("两顶点不都存在！\n");
+</span><span class="code-line line-number" line="376">                getchar();
+</span><span class="code-line line-number" line="377">                getchar();
+</span><span class="code-line line-number" line="378">                break;
+</span><span class="code-line line-number" line="379">            }
+</span><span class="code-line line-number" line="380">            printf("两节点之间的最短路径为：%d\n", ans);
+</span><span class="code-line line-number" line="381">            getchar();
+</span><span class="code-line line-number" line="382">            getchar();
+</span><span class="code-line line-number" line="383">            break;
+</span><span class="code-line line-number" line="384">            
+</span><span class="code-line line-number" line="385">        case 15:
+</span><span class="code-line line-number" line="386">            if (!gs.elem[num].G.vexnum)
+</span><span class="code-line line-number" line="387">            {
+</span><span class="code-line line-number" line="388">                printf("图为空！\n");
+</span><span class="code-line line-number" line="389">                getchar();
+</span><span class="code-line line-number" line="390">                getchar();
+</span><span class="code-line line-number" line="391">                break;
+</span><span class="code-line line-number" line="392">            }
+</span><span class="code-line line-number" line="393">            ans = ConnectedComponentsNums(gs.elem[num].G);
+</span><span class="code-line line-number" line="394">            printf("连通分量包含%d个！\n", ans);
+</span><span class="code-line line-number" line="395">            getchar();
+</span><span class="code-line line-number" line="396">            getchar();
+</span><span class="code-line line-number" line="397">            break;
+</span><span class="code-line line-number" line="398">        case 16:
+</span><span class="code-line line-number" line="399">            printf("请输入要保存的文件名称：");
+</span><span class="code-line line-number" line="400">            scanf("%s", FileName);
+</span><span class="code-line line-number" line="401">            ans = SaveGraph(gs.elem[num].G, FileName);
+</span><span class="code-line line-number" line="402">            if (ans == INFEASIBLE)
+</span><span class="code-line line-number" line="403">                printf("文件保存失败！\n");
+</span><span class="code-line line-number" line="404">            else if (ans == ERROR)
+</span><span class="code-line line-number" line="405">                printf("文件保存失败！\n");
+</span><span class="code-line line-number" line="406">            else
+</span><span class="code-line line-number" line="407">                printf("文件保存成功！\n");
+</span><span class="code-line line-number" line="408">            getchar();
+</span><span class="code-line line-number" line="409">            getchar();
+</span><span class="code-line line-number" line="410">            break;
+</span><span class="code-line line-number" line="411">        case 17:
+</span><span class="code-line line-number" line="412">            printf("请输入要加载的文件名称：");
+</span><span class="code-line line-number" line="413">            scanf("%s", FileName);
+</span><span class="code-line line-number" line="414">            if (LoadGraph(gs.elem[num].G, FileName) == INFEASIBLE)
+</span><span class="code-line line-number" line="415">            printf("文件加载失败！\n");
+</span><span class="code-line line-number" line="416">            else
+</span><span class="code-line line-number" line="417">            printf("文件加载成功！\n");
+</span><span class="code-line line-number" line="418">            getchar();
+</span><span class="code-line line-number" line="419">            getchar();
+</span><span class="code-line line-number" line="420">            break;           
+</span><span class="code-line line-number" line="421">        case 18:
+</span><span class="code-line line-number" line="422">            if (gs.length == 100)
+</span><span class="code-line line-number" line="423">            {
+</span><span class="code-line line-number" line="424">                printf("多图表管理已满，请清除某些图后再操作！\n");
+</span><span class="code-line line-number" line="425">                getchar();
+</span><span class="code-line line-number" line="426">                getchar();
+</span><span class="code-line line-number" line="427">                break;
+</span><span class="code-line line-number" line="428">            }
+</span><span class="code-line line-number" line="429">                printf("请输入新增图的名称：");
+</span><span class="code-line line-number" line="430">                scanf("%s", Name);
+</span><span class="code-line line-number" line="431">                ans = AddGraph(gs, Name);
+</span><span class="code-line line-number" line="432">                if (ans == INFEASIBLE)
+</span><span class="code-line line-number" line="433">                printf("该名称的图已经存在!\n");
+</span><span class="code-line line-number" line="434">                else
+</span><span class="code-line line-number" line="435">                printf("%s已成功添加！\n", Name);
+</span><span class="code-line line-number" line="436">                getchar();
+</span><span class="code-line line-number" line="437">                getchar();
+</span><span class="code-line line-number" line="438">                break;
+</span><span class="code-line line-number" line="439">        case 19:
+</span><span class="code-line line-number" line="440">            printf("请选择要管理的图的名称");
+</span><span class="code-line line-number" line="441">            scanf("%s",Name);
+</span><span class="code-line line-number" line="442">            ans = ManageGraph(gs,Name);
+</span><span class="code-line line-number" line="443">            if (ans != -1)
+</span><span class="code-line line-number" line="444">            {
+</span><span class="code-line line-number" line="445">                printf("选取成功！\n");
+</span><span class="code-line line-number" line="446">                num = ans;
+</span><span class="code-line line-number" line="447">            }
+</span><span class="code-line line-number" line="448">            else
+</span><span class="code-line line-number" line="449">                printf("不存在该图！\n");
+</span><span class="code-line line-number" line="450">            getchar();
+</span><span class="code-line line-number" line="451">            getchar();
+</span><span class="code-line line-number" line="452">            break;
+</span><span class="code-line line-number" line="453">        case 20:
+</span><span class="code-line line-number" line="454">                if(ShowGraph(gs) == ERROR) printf("多图表为空！\n");
+</span><span class="code-line line-number" line="455">                getchar();getchar();
+</span><span class="code-line line-number" line="456">                break;
+</span><span class="code-line line-number" line="457">        case 0:
+</span><span class="code-line line-number" line="458">            break;
+</span><span class="code-line line-number" line="459">        default:
+</span><span class="code-line line-number" line="460">            cout &lt;&lt; "输入错误，请重新输入!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="461">            getchar();
+</span><span class="code-line line-number" line="462">            getchar();
+</span><span class="code-line line-number" line="463">            break;
+</span><span class="code-line line-number" line="464">        } // end of switch
+</span><span class="code-line line-number" line="465">    } // end of while
+</span><span class="code-line line-number" line="466">    printf("欢迎下次再使用本系统！\n");
+</span><span class="code-line line-number" line="467">    return 0;
+</span><span class="code-line line-number" line="468">} // end of main()
+</span><span class="code-line line-number" line="469">
+</span><span class="code-line line-number" line="470">bool visited[MAX_VERTEX_NUM];
+</span><span class="code-line line-number" line="471">status check1(VertexType V[])
+</span><span class="code-line line-number" line="472">{
+</span><span class="code-line line-number" line="473">    // 判断结点集里是否有重复结点
+</span><span class="code-line line-number" line="474">    int i = 0;
+</span><span class="code-line line-number" line="475">    if (V[i].key == -1)
+</span><span class="code-line line-number" line="476">        return 1;
+</span><span class="code-line line-number" line="477">    while (V[i].key != -1)
+</span><span class="code-line line-number" line="478">    {
+</span><span class="code-line line-number" line="479">        for (int j = 0; j &lt; i; j++)
+</span><span class="code-line line-number" line="480">            if (V[j].key == V[i].key)
+</span><span class="code-line line-number" line="481">                return 1;
+</span><span class="code-line line-number" line="482">        i++;
+</span><span class="code-line line-number" line="483">    }
+</span><span class="code-line line-number" line="484">    if (i &gt; 20)
+</span><span class="code-line line-number" line="485">        return 1;
+</span><span class="code-line line-number" line="486">    return 0;
+</span><span class="code-line line-number" line="487">}
+</span><span class="code-line line-number" line="488">
+</span><span class="code-line line-number" line="489">void deleteVR(KeyType VR[][2], int i, int &amp;num)
+</span><span class="code-line line-number" line="490">{
+</span><span class="code-line line-number" line="491">    for (int k = i; k &lt;= num; k++)
+</span><span class="code-line line-number" line="492">    {
+</span><span class="code-line line-number" line="493">        VR[k][0] = VR[k + 1][0];
+</span><span class="code-line line-number" line="494">        VR[k][1] = VR[k + 1][1];
+</span><span class="code-line line-number" line="495">    }
+</span><span class="code-line line-number" line="496">    num--;
+</span><span class="code-line line-number" line="497">    return;
+</span><span class="code-line line-number" line="498">}
+</span><span class="code-line line-number" line="499">
+</span><span class="code-line line-number" line="500">status check2(VertexType V[], KeyType VR[][2])
+</span><span class="code-line line-number" line="501">{
+</span><span class="code-line line-number" line="502">    // 判断是否有重复，错乱，多余的边
+</span><span class="code-line line-number" line="503">    int flag = 0;
+</span><span class="code-line line-number" line="504">    for (int i = 0; VR[i][0] != -1; i++)
+</span><span class="code-line line-number" line="505">    {
+</span><span class="code-line line-number" line="506">        for (int j = 0; V[j].key != -1; j++)
+</span><span class="code-line line-number" line="507">        {
+</span><span class="code-line line-number" line="508">            if (VR[i][0] == V[j].key)
+</span><span class="code-line line-number" line="509">            {
+</span><span class="code-line line-number" line="510">                flag = 1;
+</span><span class="code-line line-number" line="511">                break;
+</span><span class="code-line line-number" line="512">            }
+</span><span class="code-line line-number" line="513">        }
+</span><span class="code-line line-number" line="514">        if (!flag)
+</span><span class="code-line line-number" line="515">            return 1;
+</span><span class="code-line line-number" line="516">        flag = 0;
+</span><span class="code-line line-number" line="517">    }
+</span><span class="code-line line-number" line="518">    for (int i = 0; VR[i][1] != -1; i++)
+</span><span class="code-line line-number" line="519">    {
+</span><span class="code-line line-number" line="520">        for (int j = 0; V[j].key != -1; j++)
+</span><span class="code-line line-number" line="521">        {
+</span><span class="code-line line-number" line="522">            if (VR[i][1] == V[j].key)
+</span><span class="code-line line-number" line="523">            {
+</span><span class="code-line line-number" line="524">                flag = 1;
+</span><span class="code-line line-number" line="525">                break;
+</span><span class="code-line line-number" line="526">            }
+</span><span class="code-line line-number" line="527">        }
+</span><span class="code-line line-number" line="528">        if (!flag)
+</span><span class="code-line line-number" line="529">            return 1;
+</span><span class="code-line line-number" line="530">        flag = 0;
+</span><span class="code-line line-number" line="531">    }
+</span><span class="code-line line-number" line="532">    int i = 0, num = 0;
+</span><span class="code-line line-number" line="533">    while (VR[num++][0] != -1)
+</span><span class="code-line line-number" line="534">        ;
+</span><span class="code-line line-number" line="535">    while (VR[i][0] != -1)
+</span><span class="code-line line-number" line="536">    {
+</span><span class="code-line line-number" line="537">        if (VR[i][0] == VR[i][1])
+</span><span class="code-line line-number" line="538">        {
+</span><span class="code-line line-number" line="539">            deleteVR(VR, i, num);
+</span><span class="code-line line-number" line="540">            continue;
+</span><span class="code-line line-number" line="541">        }
+</span><span class="code-line line-number" line="542">        for (int j = 0; j &lt; i; j++)
+</span><span class="code-line line-number" line="543">        {
+</span><span class="code-line line-number" line="544">            if (VR[j][0] == VR[i][0] &amp;&amp; VR[j][1] == VR[i][1])
+</span><span class="code-line line-number" line="545">            {
+</span><span class="code-line line-number" line="546">                deleteVR(VR, i, num);
+</span><span class="code-line line-number" line="547">                i--;
+</span><span class="code-line line-number" line="548">                break;
+</span><span class="code-line line-number" line="549">            }
+</span><span class="code-line line-number" line="550">            if (VR[j][0] == VR[i][1] &amp;&amp; VR[j][1] == VR[i][0])
+</span><span class="code-line line-number" line="551">            {
+</span><span class="code-line line-number" line="552">                deleteVR(VR, i, num);
+</span><span class="code-line line-number" line="553">                i--;
+</span><span class="code-line line-number" line="554">                break;
+</span><span class="code-line line-number" line="555">            }
+</span><span class="code-line line-number" line="556">        }
+</span><span class="code-line line-number" line="557">        i++;
+</span><span class="code-line line-number" line="558">    }
+</span><span class="code-line line-number" line="559">    return 0;
+</span><span class="code-line line-number" line="560">}
+</span><span class="code-line line-number" line="561">
+</span><span class="code-line line-number" line="562">status CreateCraph(ALGraph &amp;G,VertexType V[],KeyType VR[][2])
+</span><span class="code-line line-number" line="563">/*根据V和VR构造图T并返回OK，如果V和VR不正确，返回ERROR
+</span><span class="code-line line-number" line="564">如果有相同的关键字，返回ERROR。*/
+</span><span class="code-line line-number" line="565">{
+</span><span class="code-line line-number" line="566">    if(check1(V)) return ERROR;
+</span><span class="code-line line-number" line="567">    if(check2(V, VR)) return ERROR;
+</span><span class="code-line line-number" line="568">    G.kind = UDG;
+</span><span class="code-line line-number" line="569">    G.vexnum = 0, G.arcnum = 0;
+</span><span class="code-line line-number" line="570">    int m;
+</span><span class="code-line line-number" line="571">    while(V[G.vexnum].key != -1){
+</span><span class="code-line line-number" line="572">        G.vertices[G.vexnum].data.key = V[G.vexnum].key;
+</span><span class="code-line line-number" line="573">        strcpy(G.vertices[G.vexnum].data.others, V[G.vexnum].others);
+</span><span class="code-line line-number" line="574">        G.vexnum++;
+</span><span class="code-line line-number" line="575">    }
+</span><span class="code-line line-number" line="576">    for(int i = 0; i &lt; G.vexnum; i++){
+</span><span class="code-line line-number" line="577">        G.vertices[i].firstarc = NULL;
+</span><span class="code-line line-number" line="578">    }
+</span><span class="code-line line-number" line="579">    while(VR[G.arcnum][0] != -1){
+</span><span class="code-line line-number" line="580">        for(int i = 0; i &lt; G.vexnum; i++){
+</span><span class="code-line line-number" line="581">            if(G.vertices[i].data.key == VR[G.arcnum][0]){
+</span><span class="code-line line-number" line="582">                for(m = 0; m &lt; G.vexnum; m++){
+</span><span class="code-line line-number" line="583">                    if(G.vertices[m].data.key == VR[G.arcnum][1])
+</span><span class="code-line line-number" line="584">                        break;
+</span><span class="code-line line-number" line="585">                }
+</span><span class="code-line line-number" line="586">                ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
+</span><span class="code-line line-number" line="587">                t-&gt;adjvex = m;
+</span><span class="code-line line-number" line="588">                t-&gt;nextarc = G.vertices[i].firstarc;
+</span><span class="code-line line-number" line="589">                G.vertices[i].firstarc = t;
+</span><span class="code-line line-number" line="590">            }
+</span><span class="code-line line-number" line="591">            if(G.vertices[i].data.key == VR[G.arcnum][1]){
+</span><span class="code-line line-number" line="592">                for(m = 0; m &lt; G.vexnum; m++){
+</span><span class="code-line line-number" line="593">                    if(G.vertices[m].data.key == VR[G.arcnum][0])
+</span><span class="code-line line-number" line="594">                        break;
+</span><span class="code-line line-number" line="595">                }
+</span><span class="code-line line-number" line="596">                ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
+</span><span class="code-line line-number" line="597">                t-&gt;adjvex = m;
+</span><span class="code-line line-number" line="598">                t-&gt;nextarc = G.vertices[i].firstarc;
+</span><span class="code-line line-number" line="599">                G.vertices[i].firstarc = t;
+</span><span class="code-line line-number" line="600">            }
+</span><span class="code-line line-number" line="601">        }
+</span><span class="code-line line-number" line="602">        G.arcnum++;
+</span><span class="code-line line-number" line="603">    }
+</span><span class="code-line line-number" line="604">    return OK;
+</span><span class="code-line line-number" line="605">}
+</span><span class="code-line line-number" line="606">
+</span><span class="code-line line-number" line="607">status DestroyGraph(ALGraph &amp;G)
+</span><span class="code-line line-number" line="608">/*销毁无向图G,删除G的全部顶点和边*/
+</span><span class="code-line line-number" line="609">{
+</span><span class="code-line line-number" line="610">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="611">    {
+</span><span class="code-line line-number" line="612">        auto t = G.vertices[i].firstarc;
+</span><span class="code-line line-number" line="613">        while (t)
+</span><span class="code-line line-number" line="614">        {
+</span><span class="code-line line-number" line="615">            auto k = t-&gt;nextarc;
+</span><span class="code-line line-number" line="616">            free(t);
+</span><span class="code-line line-number" line="617">            t = k;
+</span><span class="code-line line-number" line="618">        }
+</span><span class="code-line line-number" line="619">        G.vertices[i].firstarc = NULL;
+</span><span class="code-line line-number" line="620">    }
+</span><span class="code-line line-number" line="621">    G.vexnum = 0;
+</span><span class="code-line line-number" line="622">    G.arcnum = 0;
+</span><span class="code-line line-number" line="623">    return OK;
+</span><span class="code-line line-number" line="624">}
+</span><span class="code-line line-number" line="625">
+</span><span class="code-line line-number" line="626">int LocateVex(ALGraph G, KeyType u)
+</span><span class="code-line line-number" line="627">// 根据u在图G中查找顶点，查找成功返回位序，否则返回-1；
+</span><span class="code-line line-number" line="628">{
+</span><span class="code-line line-number" line="629">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="630">    {
+</span><span class="code-line line-number" line="631">        if (G.vertices[i].data.key == u)
+</span><span class="code-line line-number" line="632">            return i;
+</span><span class="code-line line-number" line="633">    }
+</span><span class="code-line line-number" line="634">    return -1;
+</span><span class="code-line line-number" line="635">}
+</span><span class="code-line line-number" line="636">
+</span><span class="code-line line-number" line="637">status PutVex(ALGraph &amp;G, KeyType u, VertexType value)
+</span><span class="code-line line-number" line="638">// 根据u在图G中查找顶点，查找成功将该顶点值修改成value，返回OK；
+</span><span class="code-line line-number" line="639">// 如果查找失败或关键字不唯一，返回ERROR
+</span><span class="code-line line-number" line="640">{
+</span><span class="code-line line-number" line="641">    int index1 = LocateVex(G, u), index2 = LocateVex(G, value.key);
+</span><span class="code-line line-number" line="642">    if (index1 == -1 || index2 != -1)
+</span><span class="code-line line-number" line="643">        return ERROR;
+</span><span class="code-line line-number" line="644">    for (auto t = G.vertices[index1].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="645">    {
+</span><span class="code-line line-number" line="646">        if (t-&gt;adjvex == index2)
+</span><span class="code-line line-number" line="647">            return ERROR;
+</span><span class="code-line line-number" line="648">    }
+</span><span class="code-line line-number" line="649">    G.vertices[index1].data = value;
+</span><span class="code-line line-number" line="650">    return OK;
+</span><span class="code-line line-number" line="651">}
+</span><span class="code-line line-number" line="652">
+</span><span class="code-line line-number" line="653">int FirstAdjVex(ALGraph G, KeyType u)
+</span><span class="code-line line-number" line="654">// 根据u在图G中查找顶点，查找成功返回顶点u的第一邻接顶点位序，否则返回-1；
+</span><span class="code-line line-number" line="655">{
+</span><span class="code-line line-number" line="656">    int index = LocateVex(G, u);
+</span><span class="code-line line-number" line="657">    if (index == -1)
+</span><span class="code-line line-number" line="658">        return -1;
+</span><span class="code-line line-number" line="659">    return G.vertices[index].firstarc-&gt;adjvex;
+</span><span class="code-line line-number" line="660">    return OK;
+</span><span class="code-line line-number" line="661">}
+</span><span class="code-line line-number" line="662">
+</span><span class="code-line line-number" line="663">int NextAdjVex(ALGraph G, KeyType v, KeyType w)
+</span><span class="code-line line-number" line="664">// v对应G的一个顶点,w对应v的邻接顶点；操作结果是返回v的（相对于w）下一个邻接顶点的位序；如果w是最后一个邻接顶点，或v、w对应顶点不存在，则返回-1。
+</span><span class="code-line line-number" line="665">{
+</span><span class="code-line line-number" line="666">    // 请在这里补充代码，完成本关任务
+</span><span class="code-line line-number" line="667">    int index1 = LocateVex(G, v), index2 = LocateVex(G, w);
+</span><span class="code-line line-number" line="668">    if (index1 == -1)
+</span><span class="code-line line-number" line="669">        return -1;
+</span><span class="code-line line-number" line="670">    auto now = G.vertices[index1].firstarc;
+</span><span class="code-line line-number" line="671">    while (now)
+</span><span class="code-line line-number" line="672">    {
+</span><span class="code-line line-number" line="673">        auto next = now-&gt;nextarc;
+</span><span class="code-line line-number" line="674">        if (now-&gt;adjvex == index2 &amp;&amp; next != NULL)
+</span><span class="code-line line-number" line="675">            return next-&gt;adjvex;
+</span><span class="code-line line-number" line="676">        now = next;
+</span><span class="code-line line-number" line="677">    }
+</span><span class="code-line line-number" line="678">    return -1;
+</span><span class="code-line line-number" line="679">}
+</span><span class="code-line line-number" line="680">
+</span><span class="code-line line-number" line="681">status InsertVex(ALGraph &amp;G, VertexType v)
+</span><span class="code-line line-number" line="682">// 在图G中插入顶点v，成功返回OK,否则返回ERROR
+</span><span class="code-line line-number" line="683">{
+</span><span class="code-line line-number" line="684">    int index = LocateVex(G, v.key);
+</span><span class="code-line line-number" line="685">    if (index != -1 || G.vexnum &gt;= MAX_VERTEX_NUM)
+</span><span class="code-line line-number" line="686">        return ERROR;
+</span><span class="code-line line-number" line="687">    G.vertices[G.vexnum].data = v;
+</span><span class="code-line line-number" line="688">    G.vertices[G.vexnum].firstarc = NULL;
+</span><span class="code-line line-number" line="689">    G.vexnum++;
+</span><span class="code-line line-number" line="690">    return OK;
+</span><span class="code-line line-number" line="691">}
+</span><span class="code-line line-number" line="692">
+</span><span class="code-line line-number" line="693">status DeleteVex(ALGraph &amp;G, KeyType v)
+</span><span class="code-line line-number" line="694">// 在图G中删除关键字v对应的顶点以及相关的弧，成功返回OK,否则返回ERROR
+</span><span class="code-line line-number" line="695">{
+</span><span class="code-line line-number" line="696">    int index;
+</span><span class="code-line line-number" line="697">    if ((index = LocateVex(G, v)) == -1)
+</span><span class="code-line line-number" line="698">        return ERROR;
+</span><span class="code-line line-number" line="699">    if (G.vexnum == 1)
+</span><span class="code-line line-number" line="700">        return ERROR;
+</span><span class="code-line line-number" line="701">    ArcNode *now = NULL, *next = NULL;
+</span><span class="code-line line-number" line="702">    now = G.vertices[index].firstarc;
+</span><span class="code-line line-number" line="703">    int count = 0;
+</span><span class="code-line line-number" line="704">    int temp[100], t[100] = {0};
+</span><span class="code-line line-number" line="705">    t[index] = 1;
+</span><span class="code-line line-number" line="706">    while (now)
+</span><span class="code-line line-number" line="707">    {
+</span><span class="code-line line-number" line="708">        next = now-&gt;nextarc;
+</span><span class="code-line line-number" line="709">        temp[count++] = now-&gt;adjvex;
+</span><span class="code-line line-number" line="710">        t[now-&gt;adjvex] = 1;
+</span><span class="code-line line-number" line="711">        free(now);
+</span><span class="code-line line-number" line="712">        now = next;
+</span><span class="code-line line-number" line="713">    }
+</span><span class="code-line line-number" line="714">    for (int i = 0; i &lt; count; i++)
+</span><span class="code-line line-number" line="715">    {
+</span><span class="code-line line-number" line="716">        now = G.vertices[temp[i]].firstarc;
+</span><span class="code-line line-number" line="717">        if (G.vertices[now-&gt;adjvex].data.key == v)
+</span><span class="code-line line-number" line="718">        {
+</span><span class="code-line line-number" line="719">            G.vertices[temp[i]].firstarc = G.vertices[temp[i]].firstarc-&gt;nextarc;
+</span><span class="code-line line-number" line="720">            free(now);
+</span><span class="code-line line-number" line="721">            now = G.vertices[temp[i]].firstarc;
+</span><span class="code-line line-number" line="722">            while (now)
+</span><span class="code-line line-number" line="723">            {
+</span><span class="code-line line-number" line="724">                if (now-&gt;adjvex &gt; index)
+</span><span class="code-line line-number" line="725">                    now-&gt;adjvex--;
+</span><span class="code-line line-number" line="726">                now = now-&gt;nextarc;
+</span><span class="code-line line-number" line="727">            }
+</span><span class="code-line line-number" line="728">        }
+</span><span class="code-line line-number" line="729">        else
+</span><span class="code-line line-number" line="730">        {
+</span><span class="code-line line-number" line="731">            while (G.vertices[now-&gt;adjvex].data.key != v)
+</span><span class="code-line line-number" line="732">            {
+</span><span class="code-line line-number" line="733">                next = now;
+</span><span class="code-line line-number" line="734">                if (next-&gt;adjvex &gt; index)
+</span><span class="code-line line-number" line="735">                    next-&gt;adjvex--;
+</span><span class="code-line line-number" line="736">                now = now-&gt;nextarc;
+</span><span class="code-line line-number" line="737">            }
+</span><span class="code-line line-number" line="738">            next-&gt;nextarc = now-&gt;nextarc;
+</span><span class="code-line line-number" line="739">            free(now);
+</span><span class="code-line line-number" line="740">            now = next-&gt;nextarc;
+</span><span class="code-line line-number" line="741">            while (now)
+</span><span class="code-line line-number" line="742">            {
+</span><span class="code-line line-number" line="743">                if (now-&gt;adjvex &gt; index)
+</span><span class="code-line line-number" line="744">                    now-&gt;adjvex--;
+</span><span class="code-line line-number" line="745">                now = now-&gt;nextarc;
+</span><span class="code-line line-number" line="746">            }
+</span><span class="code-line line-number" line="747">        }
+</span><span class="code-line line-number" line="748">    }
+</span><span class="code-line line-number" line="749">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="750">    {
+</span><span class="code-line line-number" line="751">        if (t[i])
+</span><span class="code-line line-number" line="752">            continue;
+</span><span class="code-line line-number" line="753">        now = G.vertices[i].firstarc;
+</span><span class="code-line line-number" line="754">        while (now)
+</span><span class="code-line line-number" line="755">        {
+</span><span class="code-line line-number" line="756">            if (now-&gt;adjvex &gt; index)
+</span><span class="code-line line-number" line="757">                now-&gt;adjvex--;
+</span><span class="code-line line-number" line="758">            now = now-&gt;nextarc;
+</span><span class="code-line line-number" line="759">        }
+</span><span class="code-line line-number" line="760">    }
+</span><span class="code-line line-number" line="761">    for (int j = index; j &lt; G.vexnum - 1; j++)
+</span><span class="code-line line-number" line="762">    {
+</span><span class="code-line line-number" line="763">        G.vertices[j] = G.vertices[j + 1];
+</span><span class="code-line line-number" line="764">    }
+</span><span class="code-line line-number" line="765">    G.vexnum--;
+</span><span class="code-line line-number" line="766">    G.arcnum = G.arcnum - count;
+</span><span class="code-line line-number" line="767">    return OK;
+</span><span class="code-line line-number" line="768">}
+</span><span class="code-line line-number" line="769">
+</span><span class="code-line line-number" line="770">status InsertArc(ALGraph &amp;G, KeyType v, KeyType w)
+</span><span class="code-line line-number" line="771">// 在图G中增加弧&lt;v,w&gt;，成功返回OK,否则返回ERROR
+</span><span class="code-line line-number" line="772">{
+</span><span class="code-line line-number" line="773">    int index1 = LocateVex(G, v), index2 = LocateVex(G, w);
+</span><span class="code-line line-number" line="774">    if (index1 == -1 || index2 == -1)
+</span><span class="code-line line-number" line="775">        return ERROR;
+</span><span class="code-line line-number" line="776">    for (auto t = G.vertices[index1].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="777">    {
+</span><span class="code-line line-number" line="778">        if (t-&gt;adjvex == index2)
+</span><span class="code-line line-number" line="779">            return ERROR;
+</span><span class="code-line line-number" line="780">    }
+</span><span class="code-line line-number" line="781">    ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
+</span><span class="code-line line-number" line="782">    t-&gt;adjvex = index2;
+</span><span class="code-line line-number" line="783">    t-&gt;nextarc = G.vertices[index1].firstarc;
+</span><span class="code-line line-number" line="784">    G.vertices[index1].firstarc = t;
+</span><span class="code-line line-number" line="785">    t = (ArcNode *)malloc(sizeof(ArcNode));
+</span><span class="code-line line-number" line="786">    t-&gt;adjvex = index1;
+</span><span class="code-line line-number" line="787">    t-&gt;nextarc = G.vertices[index2].firstarc;
+</span><span class="code-line line-number" line="788">    G.vertices[index2].firstarc = t;
+</span><span class="code-line line-number" line="789">    G.arcnum++;
+</span><span class="code-line line-number" line="790">    return OK;
+</span><span class="code-line line-number" line="791">}
+</span><span class="code-line line-number" line="792">
+</span><span class="code-line line-number" line="793">status DeleteArc(ALGraph &amp;G, KeyType v, KeyType w)
+</span><span class="code-line line-number" line="794">// 在图G中删除弧&lt;v,w&gt;，成功返回OK,否则返回ERROR
+</span><span class="code-line line-number" line="795">{
+</span><span class="code-line line-number" line="796">    int index1 = LocateVex(G, v), index2 = LocateVex(G, w);
+</span><span class="code-line line-number" line="797">    if (index1 == -1 || index2 == -1)
+</span><span class="code-line line-number" line="798">        return ERROR;
+</span><span class="code-line line-number" line="799">    bool flag = false;
+</span><span class="code-line line-number" line="800">    if(G.vertices[index1].firstarc-&gt;adjvex == index2)
+</span><span class="code-line line-number" line="801">    {
+</span><span class="code-line line-number" line="802">        auto next = G.vertices[index1].firstarc-&gt;nextarc;
+</span><span class="code-line line-number" line="803">        free(G.vertices[index1].firstarc);
+</span><span class="code-line line-number" line="804">        G.vertices[index1].firstarc = next;
+</span><span class="code-line line-number" line="805">        flag = true;
+</span><span class="code-line line-number" line="806">    }
+</span><span class="code-line line-number" line="807">    if(G.vertices[index2].firstarc-&gt;adjvex == index1)
+</span><span class="code-line line-number" line="808">    {
+</span><span class="code-line line-number" line="809">        auto next = G.vertices[index2].firstarc-&gt;nextarc;
+</span><span class="code-line line-number" line="810">        free(G.vertices[index2].firstarc);
+</span><span class="code-line line-number" line="811">        G.vertices[index2].firstarc = next;
+</span><span class="code-line line-number" line="812">        flag = true;
+</span><span class="code-line line-number" line="813">    }
+</span><span class="code-line line-number" line="814">    for (auto t = G.vertices[index1].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="815">    {
+</span><span class="code-line line-number" line="816">        if(t-&gt;nextarc &amp;&amp; t-&gt;nextarc-&gt;adjvex == index2)
+</span><span class="code-line line-number" line="817">        {
+</span><span class="code-line line-number" line="818">            auto next = t-&gt;nextarc-&gt;nextarc;
+</span><span class="code-line line-number" line="819">            free(t-&gt;nextarc);
+</span><span class="code-line line-number" line="820">            t-&gt;nextarc = next;
+</span><span class="code-line line-number" line="821">            flag = true;
+</span><span class="code-line line-number" line="822">            break;
+</span><span class="code-line line-number" line="823">        }
+</span><span class="code-line line-number" line="824">    }
+</span><span class="code-line line-number" line="825">    if (!flag)
+</span><span class="code-line line-number" line="826">        return ERROR;
+</span><span class="code-line line-number" line="827">    for (auto t = G.vertices[index2].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="828">    {
+</span><span class="code-line line-number" line="829">        if(t-&gt;nextarc &amp;&amp; t-&gt;nextarc-&gt;adjvex == index1)
+</span><span class="code-line line-number" line="830">        {
+</span><span class="code-line line-number" line="831">            auto next = t-&gt;nextarc-&gt;nextarc;
+</span><span class="code-line line-number" line="832">            free(t-&gt;nextarc);
+</span><span class="code-line line-number" line="833">            t-&gt;nextarc = next;
+</span><span class="code-line line-number" line="834">            break;
+</span><span class="code-line line-number" line="835">        }
+</span><span class="code-line line-number" line="836">    }
+</span><span class="code-line line-number" line="837">    G.arcnum--;
+</span><span class="code-line line-number" line="838">    return OK;
+</span><span class="code-line line-number" line="839">}
+</span><span class="code-line line-number" line="840">
+</span><span class="code-line line-number" line="841">void visit(VertexType v)
+</span><span class="code-line line-number" line="842">{
+</span><span class="code-line line-number" line="843">    printf("%d %s\n", v.key,v.others);
+</span><span class="code-line line-number" line="844">}
+</span><span class="code-line line-number" line="845">
+</span><span class="code-line line-number" line="846">status DFS(ALGraph &amp;G, int i, void (*visit)(VertexType), bool visited[])
+</span><span class="code-line line-number" line="847">{
+</span><span class="code-line line-number" line="848">    visited[i] = true;
+</span><span class="code-line line-number" line="849">    visit(G.vertices[i].data);
+</span><span class="code-line line-number" line="850">    for (auto t = G.vertices[i].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="851">    {
+</span><span class="code-line line-number" line="852">        if (!visited[t-&gt;adjvex])
+</span><span class="code-line line-number" line="853">            DFS(G, t-&gt;adjvex, visit, visited);
+</span><span class="code-line line-number" line="854">    }   
+</span><span class="code-line line-number" line="855">    return OK;
+</span><span class="code-line line-number" line="856">}
+</span><span class="code-line line-number" line="857">status DFSTraverse(ALGraph &amp;G,void (*visit)(VertexType))
+</span><span class="code-line line-number" line="858">//对图G进行深度优先搜索遍历，依次对图中的每一个顶点使用函数visit访问一次，且仅访问一次
+</span><span class="code-line line-number" line="859">{
+</span><span class="code-line line-number" line="860">    bool visited[MAX_VERTEX_NUM] = {false};   
+</span><span class="code-line line-number" line="861">    for(int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="862">    {
+</span><span class="code-line line-number" line="863">        if(!visited[i])
+</span><span class="code-line line-number" line="864">            DFS(G, i, visit, visited);
+</span><span class="code-line line-number" line="865">    }
+</span><span class="code-line line-number" line="866">    return OK;
+</span><span class="code-line line-number" line="867">}
+</span><span class="code-line line-number" line="868">
+</span><span class="code-line line-number" line="869">
+</span><span class="code-line line-number" line="870">status BFSTraverse(ALGraph &amp;G,void (*visit)(VertexType))
+</span><span class="code-line line-number" line="871">//对图G进行广度优先搜索遍历，依次对图中的每一个顶点使用函数visit访问一次，且仅访问一次
+</span><span class="code-line line-number" line="872">{
+</span><span class="code-line line-number" line="873">    bool visited[MAX_VERTEX_NUM] = {false};   
+</span><span class="code-line line-number" line="874">    queue&lt;int&gt; q;
+</span><span class="code-line line-number" line="875">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="876">    {
+</span><span class="code-line line-number" line="877">        if(!visited[i])
+</span><span class="code-line line-number" line="878">        {
+</span><span class="code-line line-number" line="879">            visited[i] = true;
+</span><span class="code-line line-number" line="880">            q.push(i);
+</span><span class="code-line line-number" line="881">            while(!q.empty())
+</span><span class="code-line line-number" line="882">            {
+</span><span class="code-line line-number" line="883">                int index = q.front();
+</span><span class="code-line line-number" line="884">                q.pop();
+</span><span class="code-line line-number" line="885">                visit(G.vertices[index].data);
+</span><span class="code-line line-number" line="886">                for (auto t = G.vertices[index].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="887">                {
+</span><span class="code-line line-number" line="888">                    if (!visited[t-&gt;adjvex])
+</span><span class="code-line line-number" line="889">                    {
+</span><span class="code-line line-number" line="890">                        visited[t-&gt;adjvex] = true;
+</span><span class="code-line line-number" line="891">                        q.push(t-&gt;adjvex);
+</span><span class="code-line line-number" line="892">                    }
+</span><span class="code-line line-number" line="893">                }
+</span><span class="code-line line-number" line="894">            }
+</span><span class="code-line line-number" line="895">        }
+</span><span class="code-line line-number" line="896">    }
+</span><span class="code-line line-number" line="897">    return OK;
+</span><span class="code-line line-number" line="898">}
+</span><span class="code-line line-number" line="899">
+</span><span class="code-line line-number" line="900">status SaveGraph(ALGraph G, char FileName[])
+</span><span class="code-line line-number" line="901">//将图的数据写入到文件FileName中
+</span><span class="code-line line-number" line="902">{
+</span><span class="code-line line-number" line="903">    FILE *fp;
+</span><span class="code-line line-number" line="904">    fp = fopen(FileName, "w");
+</span><span class="code-line line-number" line="905">    fprintf(fp, "%d %d\n", G.vexnum, G.arcnum);
+</span><span class="code-line line-number" line="906">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="907">    {
+</span><span class="code-line line-number" line="908">        fprintf(fp, "%d %s ",G.vertices[i].data.key, G.vertices[i].data.others);
+</span><span class="code-line line-number" line="909">        for (auto t = G.vertices[i].firstarc; t; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="910">        {
+</span><span class="code-line line-number" line="911">            fprintf(fp, "%d ", t-&gt;adjvex);
+</span><span class="code-line line-number" line="912">        }
+</span><span class="code-line line-number" line="913">        fprintf(fp, "-1\n");
+</span><span class="code-line line-number" line="914">    }
+</span><span class="code-line line-number" line="915">    fclose(fp);
+</span><span class="code-line line-number" line="916">    return OK;
+</span><span class="code-line line-number" line="917">}
+</span><span class="code-line line-number" line="918">status LoadGraph(ALGraph &amp;G, char FileName[])
+</span><span class="code-line line-number" line="919">//读入文件FileName的图数据，创建图的邻接表
+</span><span class="code-line line-number" line="920">{
+</span><span class="code-line line-number" line="921">    FILE *fp;
+</span><span class="code-line line-number" line="922">    int edges[100],num = 0;
+</span><span class="code-line line-number" line="923">    fp = fopen(FileName, "r");
+</span><span class="code-line line-number" line="924">    fscanf(fp, "%d %d", &amp;G.vexnum, &amp;G.arcnum);
+</span><span class="code-line line-number" line="925">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="926">    {
+</span><span class="code-line line-number" line="927">        num = 0;
+</span><span class="code-line line-number" line="928">        fscanf(fp, "%d %s",&amp;G.vertices[i].data.key, G.vertices[i].data.others);
+</span><span class="code-line line-number" line="929">        G.vertices[i].firstarc = NULL;
+</span><span class="code-line line-number" line="930">        int t;
+</span><span class="code-line line-number" line="931">        while (fscanf(fp, "%d", &amp;edges[num]) &amp;&amp; edges[num++] != -1);
+</span><span class="code-line line-number" line="932">        num--;
+</span><span class="code-line line-number" line="933">        num--;
+</span><span class="code-line line-number" line="934">        for (int j = 0; j &lt;= (num - 1) / 2; j++)
+</span><span class="code-line line-number" line="935">        {
+</span><span class="code-line line-number" line="936">            auto temp =edges[j];
+</span><span class="code-line line-number" line="937">            edges[j] = edges[num - j];
+</span><span class="code-line line-number" line="938">            edges[num - j ] = temp;
+</span><span class="code-line line-number" line="939">        }
+</span><span class="code-line line-number" line="940">        num ++;
+</span><span class="code-line line-number" line="941">        for (int j = 0 ; j &lt; num; j++)
+</span><span class="code-line line-number" line="942">        {
+</span><span class="code-line line-number" line="943">                ArcNode *t = (ArcNode*)malloc(sizeof(ArcNode));
+</span><span class="code-line line-number" line="944">                t-&gt;adjvex = edges[j];
+</span><span class="code-line line-number" line="945">                t-&gt;nextarc = G.vertices[i].firstarc;
+</span><span class="code-line line-number" line="946">                G.vertices[i].firstarc = t;
+</span><span class="code-line line-number" line="947">        }
+</span><span class="code-line line-number" line="948">    }
+</span><span class="code-line line-number" line="949">    fclose(fp);
+</span><span class="code-line line-number" line="950">    return OK;
+</span><span class="code-line line-number" line="951">}
+</span><span class="code-line line-number" line="952">
+</span><span class="code-line line-number" line="953">
+</span><span class="code-line line-number" line="954">
+</span><span class="code-line line-number" line="955">status bfs(ALGraph &amp;g,int v,vector&lt;int&gt; &amp;dis)
+</span><span class="code-line line-number" line="956">{
+</span><span class="code-line line-number" line="957">    queue&lt;int&gt; q;
+</span><span class="code-line line-number" line="958">    q.push(v);
+</span><span class="code-line line-number" line="959">    dis[v] = 0;
+</span><span class="code-line line-number" line="960">    bool vis[100];
+</span><span class="code-line line-number" line="961">    memset(vis,false,sizeof vis);
+</span><span class="code-line line-number" line="962">    while(!q.empty())
+</span><span class="code-line line-number" line="963">    {
+</span><span class="code-line line-number" line="964">        int index = q.front();
+</span><span class="code-line line-number" line="965">        q.pop();
+</span><span class="code-line line-number" line="966">        vis[index] = true;
+</span><span class="code-line line-number" line="967">        for (auto t = g.vertices[index].firstarc; t!= NULL; t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="968">        {
+</span><span class="code-line line-number" line="969">            if (!vis[t-&gt;adjvex])
+</span><span class="code-line line-number" line="970">            {
+</span><span class="code-line line-number" line="971">                dis[t-&gt;adjvex] = dis[index] + 1;
+</span><span class="code-line line-number" line="972">                q.push(t-&gt;adjvex);
+</span><span class="code-line line-number" line="973">                vis[t-&gt;adjvex] = true;
+</span><span class="code-line line-number" line="974">            }
+</span><span class="code-line line-number" line="975">        }
+</span><span class="code-line line-number" line="976">    }
+</span><span class="code-line line-number" line="977">    return OK;
+</span><span class="code-line line-number" line="978">}
+</span><span class="code-line line-number" line="979">status VerticesSetLessThanK(ALGraph G,int v, int k)
+</span><span class="code-line line-number" line="980">{
+</span><span class="code-line line-number" line="981">    vector&lt;int&gt; dis(G.vexnum,999999);
+</span><span class="code-line line-number" line="982">    bfs(G,v,dis);
+</span><span class="code-line line-number" line="983">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="984">    {
+</span><span class="code-line line-number" line="985">        if (dis[i] &lt; k)
+</span><span class="code-line line-number" line="986">        {
+</span><span class="code-line line-number" line="987">            printf("%d %s    ",G.vertices[i].data.key,G.vertices[i].data.others);
+</span><span class="code-line line-number" line="988">        }
+</span><span class="code-line line-number" line="989">    }
+</span><span class="code-line line-number" line="990">    return OK;
+</span><span class="code-line line-number" line="991">}
+</span><span class="code-line line-number" line="992">
+</span><span class="code-line line-number" line="993">status ShortestPathLength(ALGraph G, int v, int w)
+</span><span class="code-line line-number" line="994">{
+</span><span class="code-line line-number" line="995">    v = LocateVex(G,v);
+</span><span class="code-line line-number" line="996">    w = LocateVex(G,w);
+</span><span class="code-line line-number" line="997">    if(v == -1 || w == -1 ) return ERROR;
+</span><span class="code-line line-number" line="998">    vector &lt;int&gt; dis(G.vexnum,-1);
+</span><span class="code-line line-number" line="999">    bfs(G,v,dis);
+</span><span class="code-line line-number" line="1000">    return dis[w];
+</span><span class="code-line line-number" line="1001">}
+</span><span class="code-line line-number" line="1002">
+</span><span class="code-line line-number" line="1003">status ShowGraph(Graphs &amp;gs)
+</span><span class="code-line line-number" line="1004">{
+</span><span class="code-line line-number" line="1005">    if(gs.length == 0) return ERROR;
+</span><span class="code-line line-number" line="1006">    printf("有如下图：\n");
+</span><span class="code-line line-number" line="1007">    for (int i = 0 ; i &lt; gs.length; i++)
+</span><span class="code-line line-number" line="1008">    {
+</span><span class="code-line line-number" line="1009">        printf("%s\n",gs.elem[i].name);
+</span><span class="code-line line-number" line="1010">    }
+</span><span class="code-line line-number" line="1011">    return OK;
+</span><span class="code-line line-number" line="1012">}
+</span><span class="code-line line-number" line="1013">
+</span><span class="code-line line-number" line="1014">status AddGraph(Graphs &amp;gs, char name[])
+</span><span class="code-line line-number" line="1015">{
+</span><span class="code-line line-number" line="1016">    strcpy(gs.elem[gs.length].name,name);
+</span><span class="code-line line-number" line="1017">    gs.length++;
+</span><span class="code-line line-number" line="1018">    return OK;
+</span><span class="code-line line-number" line="1019">}
+</span><span class="code-line line-number" line="1020">
+</span><span class="code-line line-number" line="1021">status ManageGraph(Graphs &amp;gs,char name[])
+</span><span class="code-line line-number" line="1022">{
+</span><span class="code-line line-number" line="1023">    for (int i = 0; i &lt; gs.length; i++)
+</span><span class="code-line line-number" line="1024">    {
+</span><span class="code-line line-number" line="1025">        if (strcmp(gs.elem[i].name,name) == 0)
+</span><span class="code-line line-number" line="1026">        {
+</span><span class="code-line line-number" line="1027">            return i;
+</span><span class="code-line line-number" line="1028">        }
+</span><span class="code-line line-number" line="1029">    }
+</span><span class="code-line line-number" line="1030">    return ERROR;
+</span><span class="code-line line-number" line="1031">}
+</span><span class="code-line line-number" line="1032">
+</span><span class="code-line line-number" line="1033">void dfs(ALGraph &amp;g,int vis[],int index)
+</span><span class="code-line line-number" line="1034">{
+</span><span class="code-line line-number" line="1035">    if(vis[index]) return;
+</span><span class="code-line line-number" line="1036">    vis[index] = true;
+</span><span class="code-line line-number" line="1037">    for(auto t = g.vertices[index].firstarc; t ;t = t-&gt;nextarc)
+</span><span class="code-line line-number" line="1038">    {
+</span><span class="code-line line-number" line="1039">        dfs(g,vis,t-&gt;adjvex);
+</span><span class="code-line line-number" line="1040">    }
+</span><span class="code-line line-number" line="1041">}
+</span><span class="code-line line-number" line="1042">
+</span><span class="code-line line-number" line="1043">status ConnectedComponentsNums(ALGraph G)
+</span><span class="code-line line-number" line="1044">{
+</span><span class="code-line line-number" line="1045">    int vis[100];
+</span><span class="code-line line-number" line="1046">    memset(vis,0,sizeof vis);
+</span><span class="code-line line-number" line="1047">    int count = 0;
+</span><span class="code-line line-number" line="1048">    for (int i = 0; i &lt; G.vexnum; i++)
+</span><span class="code-line line-number" line="1049">    {
+</span><span class="code-line line-number" line="1050">        if(!vis[i])
+</span><span class="code-line line-number" line="1051">        {
+</span><span class="code-line line-number" line="1052">            dfs(G,vis,i);
+</span><span class="code-line line-number" line="1053">            count++;
+</span><span class="code-line line-number" line="1054">        }
+</span><span class="code-line line-number" line="1055">    }
+</span><span class="code-line line-number" line="1056">    return count;
+</span><span class="code-line line-number" line="1057">}
+</span></code></pre>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

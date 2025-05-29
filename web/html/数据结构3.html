@@ -1,0 +1,873 @@
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="icon" href="../../image/me.jpg">
+
+  </head>
+  <ttt>
+        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+          <div id="rin-bg"></div>
+          <main id="rin-main">
+              <div class="mdui-row">
+                  <div class="mdui-col-xs-12 mdui-col-md-2">
+                      <div class="rin-left">
+                          <div class="rin-logo">
+                              <img src="../../image/me.jpg" alt="娄卫健">
+                          </div>
+                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                          <div class="rin-left-title2"></div>
+                          <div class="rin-left-slogan">「新生实践课作业」</div>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
+                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
+                      </div>
+                  </div>
+                  <div class="mdui-col-xs-12 mdui-col-md-10">
+                      <div class="mdui-card rin-card">
+                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+                            <div class="image-container">
+                              <a href="../../index.html" ">
+                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                              </a>
+                          </div>
+                          <style>
+                            div.image-container a img:hover {
+                                opacity: 0.8;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+                            }
+                        </style>
+
+          
+<div style="color: pink;">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">#include &lt;cstdio&gt;
+</span><span class="code-line line-number" line="2">#include &lt;cstdlib&gt;
+</span><span class="code-line line-number" line="3">#include &lt;iostream&gt;
+</span><span class="code-line line-number" line="4">#include &lt;algorithm&gt;
+</span><span class="code-line line-number" line="5">#include &lt;cstring&gt;
+</span><span class="code-line line-number" line="6">#include &lt;unordered_set&gt;
+</span><span class="code-line line-number" line="7">using namespace std;
+</span><span class="code-line line-number" line="8">#define TRUE 1
+</span><span class="code-line line-number" line="9">#define FALSE 0
+</span><span class="code-line line-number" line="10">#define OK 1
+</span><span class="code-line line-number" line="11">#define ERROR 0
+</span><span class="code-line line-number" line="12">#define INFEASIBLE -1
+</span><span class="code-line line-number" line="13">#define OVERFLOW -2
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15">typedef int status;
+</span><span class="code-line line-number" line="16">typedef int KeyType;
+</span><span class="code-line line-number" line="17">typedef struct
+</span><span class="code-line line-number" line="18">{
+</span><span class="code-line line-number" line="19">    KeyType key;
+</span><span class="code-line line-number" line="20">    char others[20];
+</span><span class="code-line line-number" line="21">} TElemType; // 二叉树结点类型定义
+</span><span class="code-line line-number" line="22">unordered_set&lt;int&gt; st;
+</span><span class="code-line line-number" line="23">typedef struct BiTNode
+</span><span class="code-line line-number" line="24">{ // 二叉链表结点的定义
+</span><span class="code-line line-number" line="25">    TElemType data;
+</span><span class="code-line line-number" line="26">    struct BiTNode *lchild, *rchild;
+</span><span class="code-line line-number" line="27">} BiTNode, *BiTree;
+</span><span class="code-line line-number" line="28">
+</span><span class="code-line line-number" line="29">typedef struct
+</span><span class="code-line line-number" line="30">{ // 线性表的管理表定义
+</span><span class="code-line line-number" line="31">    struct
+</span><span class="code-line line-number" line="32">    {
+</span><span class="code-line line-number" line="33">        char name[50];
+</span><span class="code-line line-number" line="34">        BiTree T;
+</span><span class="code-line line-number" line="35">    } elem[100];
+</span><span class="code-line line-number" line="36">    int length;
+</span><span class="code-line line-number" line="37">    int listsize;
+</span><span class="code-line line-number" line="38">} Trees;
+</span><span class="code-line line-number" line="39">char name[50];
+</span><span class="code-line line-number" line="40">status AddBiTree(Trees&amp; ts, char name[]);
+</span><span class="code-line line-number" line="41">BiTree CreateBiTreeHelper(TElemType definition[]);
+</span><span class="code-line line-number" line="42">status CreateBiTree(BiTree &amp;T, Trees &amp;ts);
+</span><span class="code-line line-number" line="43">status ClearBiTree(BiTree &amp;T);
+</span><span class="code-line line-number" line="44">int BiTreeDepth(BiTree T);
+</span><span class="code-line line-number" line="45">int MaxPathSum(BiTree T);
+</span><span class="code-line line-number" line="46">BiTNode *LocateNode(BiTree T, KeyType e);
+</span><span class="code-line line-number" line="47">status Assign(BiTree &amp;T, KeyType e, TElemType value);
+</span><span class="code-line line-number" line="48">BiTNode *GetSibling(BiTree T, KeyType e);
+</span><span class="code-line line-number" line="49">bool judgee(BiTree &amp;T);
+</span><span class="code-line line-number" line="50">bool judge(BiTree &amp;T);
+</span><span class="code-line line-number" line="51">status InsertNode(BiTree &amp;T, KeyType e, int LR, TElemType c);
+</span><span class="code-line line-number" line="52">status Delete_Node(BiTree &amp;T, KeyType e);
+</span><span class="code-line line-number" line="53">status DeleteNode(BiTree &amp;T, KeyType e);
+</span><span class="code-line line-number" line="54">status PreOrderTraverse(BiTree T, void (*visit)(BiTree));
+</span><span class="code-line line-number" line="55">status InOrderTraverse(BiTree T, void (*visit)(BiTree));
+</span><span class="code-line line-number" line="56">status PostOrderTraverse(BiTree T, void (*visit)(BiTree));
+</span><span class="code-line line-number" line="57">status LevelOrderTraverse(BiTree T, void (*visit)(BiTree));
+</span><span class="code-line line-number" line="58">status Save(BiTree &amp;T, FILE *&amp;fp);
+</span><span class="code-line line-number" line="59">BiTree Load(FILE *&amp;fp);
+</span><span class="code-line line-number" line="60">status DestroyBiTree(BiTree *&amp;T,Trees &amp;ts);
+</span><span class="code-line line-number" line="61">status DestroyBiTree_Helper(BiTree &amp;T);
+</span><span class="code-line line-number" line="62">status BiTreeEmpty(BiTree &amp;T);
+</span><span class="code-line line-number" line="63">status SaveBiTree(BiTree T, char FileName[]);
+</span><span class="code-line line-number" line="64">status LoadBiTree(BiTree &amp;T, char FileName[]);
+</span><span class="code-line line-number" line="65">BiTree LowestCommonAncestor(BiTree &amp;T, int e1, int e2);
+</span><span class="code-line line-number" line="66">void visit(BiTree T);
+</span><span class="code-line line-number" line="67">status InvertTree(BiTree &amp;T);
+</span><span class="code-line line-number" line="68">int ManageBiTree(Trees Ts, char TreeName[]);
+</span><span class="code-line line-number" line="69">int ShowBiTree(Trees Ts);
+</span><span class="code-line line-number" line="70">Trees Ts;
+</span><span class="code-line line-number" line="71">BiTree *T;
+</span><span class="code-line line-number" line="72">int main() // 框架部分
+</span><span class="code-line line-number" line="73">{
+</span><span class="code-line line-number" line="74">    T = NULL;
+</span><span class="code-line line-number" line="75">    Ts.listsize = 200;
+</span><span class="code-line line-number" line="76">    Ts.length = 0;
+</span><span class="code-line line-number" line="77">    int op = 1,Status_Now,e;
+</span><span class="code-line line-number" line="78">    BiTree k;
+</span><span class="code-line line-number" line="79">    TElemType value;
+</span><span class="code-line line-number" line="80">    while (op)
+</span><span class="code-line line-number" line="81">    {
+</span><span class="code-line line-number" line="82">        system("cls");
+</span><span class="code-line line-number" line="83">        printf("\n\n");
+</span><span class="code-line line-number" line="84">        printf("      Menu for Binary Tree On Sequence Structure \n");
+</span><span class="code-line line-number" line="85">        printf("-------------------------------------------------\n");
+</span><span class="code-line line-number" line="86">        printf("    	  1. CreateBiTree         12. InOrderTraverse\n");
+</span><span class="code-line line-number" line="87">        printf("    	  2. DestroyBiTree        13. PostOrderTraverse\n");
+</span><span class="code-line line-number" line="88">        printf("    	  3. ClearBiTree          14. LevelOrderTraverse\n");
+</span><span class="code-line line-number" line="89">        printf("    	  4. BiTreeEmpty          15. MaxPathSum\n");
+</span><span class="code-line line-number" line="90">        printf("    	  5. BiTreeDepth          16. LowestCommonAncestor\n");
+</span><span class="code-line line-number" line="91">        printf("    	  6. LocateNode           17. InvertTree\n");
+</span><span class="code-line line-number" line="92">        printf("    	  7. Assign               18. AddBiTree\nr");
+</span><span class="code-line line-number" line="93">        printf("    	  8. GetSibling           19. ManageBiTee\n");
+</span><span class="code-line line-number" line="94">        printf("    	  9. InsertNode           20. SaveBiTree \n");
+</span><span class="code-line line-number" line="95">        printf("    	  10. DeleteNode          21. LoadBiTree\n");
+</span><span class="code-line line-number" line="96">        printf("    	  11. PreOrderTraverse    22. ShowBiTree \n");
+</span><span class="code-line line-number" line="97">        printf("    	  0. Exit\n");
+</span><span class="code-line line-number" line="98">        printf("-------------------------------------------------\n");
+</span><span class="code-line line-number" line="99">        printf("    请选择你的操作[0~21]:");
+</span><span class="code-line line-number" line="100">        scanf("%d", &amp;op);
+</span><span class="code-line line-number" line="101">        switch (op)
+</span><span class="code-line line-number" line="102">        {
+</span><span class="code-line line-number" line="103">        case 1:
+</span><span class="code-line line-number" line="104">            if(Ts.length == 0)
+</span><span class="code-line line-number" line="105">                {
+</span><span class="code-line line-number" line="106">                    cout &lt;&lt; "请输入创建二叉树名称:" &lt;&lt; endl;
+</span><span class="code-line line-number" line="107">                    cin &gt;&gt; name;
+</span><span class="code-line line-number" line="108">                    strcpy(Ts.elem[0].name,name);
+</span><span class="code-line line-number" line="109">                    T = &amp;Ts.elem[0].T;
+</span><span class="code-line line-number" line="110">                    Ts.length++;
+</span><span class="code-line line-number" line="111">                }
+</span><span class="code-line line-number" line="112">            if(T != NULL)
+</span><span class="code-line line-number" line="113">            {
+</span><span class="code-line line-number" line="114">                if (CreateBiTree(*T,Ts) == OK)
+</span><span class="code-line line-number" line="115">                printf("二叉树创建成功!\n");
+</span><span class="code-line line-number" line="116">            else
+</span><span class="code-line line-number" line="117">                printf("创建失败!\n");
+</span><span class="code-line line-number" line="118">            }
+</span><span class="code-line line-number" line="119">            else
+</span><span class="code-line line-number" line="120">            {
+</span><span class="code-line line-number" line="121">                cout &lt;&lt; "当前未选中二叉树!\n" &lt;&lt;endl; 
+</span><span class="code-line line-number" line="122">            }
+</span><span class="code-line line-number" line="123">            getchar();
+</span><span class="code-line line-number" line="124">            getchar();
+</span><span class="code-line line-number" line="125">            break;
+</span><span class="code-line line-number" line="126">        case 2:
+</span><span class="code-line line-number" line="127">            if (DestroyBiTree(T,Ts) == OK)
+</span><span class="code-line line-number" line="128">                printf("二叉树销毁成功!\n");
+</span><span class="code-line line-number" line="129">            else
+</span><span class="code-line line-number" line="130">                cout &lt;&lt; "当前没有选中二叉树"&lt;&lt;endl;
+</span><span class="code-line line-number" line="131">            getchar();
+</span><span class="code-line line-number" line="132">            getchar();
+</span><span class="code-line line-number" line="133">            break;
+</span><span class="code-line line-number" line="134">        case 3:
+</span><span class="code-line line-number" line="135">            if (ClearBiTree(*T) == OK)
+</span><span class="code-line line-number" line="136">                printf("二叉树清空成功!\n");
+</span><span class="code-line line-number" line="137">            else
+</span><span class="code-line line-number" line="138">                cout &lt;&lt; "当前没有选中二叉树"&lt;&lt;endl;
+</span><span class="code-line line-number" line="139">            getchar();
+</span><span class="code-line line-number" line="140">            getchar();
+</span><span class="code-line line-number" line="141">            break;
+</span><span class="code-line line-number" line="142">        case 4:
+</span><span class="code-line line-number" line="143">            Status_Now = BiTreeEmpty(*T);
+</span><span class="code-line line-number" line="144">            if (Status_Now == INFEASIBLE)
+</span><span class="code-line line-number" line="145">                printf("二叉树为空!\n");
+</span><span class="code-line line-number" line="146">            else if (Status_Now == TRUE)
+</span><span class="code-line line-number" line="147">                printf("二叉树为空!\n");
+</span><span class="code-line line-number" line="148">            else
+</span><span class="code-line line-number" line="149">                printf("二叉树不为空!\n");
+</span><span class="code-line line-number" line="150">            getchar();
+</span><span class="code-line line-number" line="151">            getchar();
+</span><span class="code-line line-number" line="152">            break;
+</span><span class="code-line line-number" line="153">        case 5:
+</span><span class="code-line line-number" line="154">            Status_Now = BiTreeDepth(*T);
+</span><span class="code-line line-number" line="155">                printf("二叉树深度为%d!\n", Status_Now);
+</span><span class="code-line line-number" line="156">            getchar();
+</span><span class="code-line line-number" line="157">            getchar();
+</span><span class="code-line line-number" line="158">            break;
+</span><span class="code-line line-number" line="159">        case 6:
+</span><span class="code-line line-number" line="160">            printf("请输入要查询的元素的key\n");
+</span><span class="code-line line-number" line="161">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="162">            k = LocateNode(*T, e);
+</span><span class="code-line line-number" line="163">            if (k != NULL)
+</span><span class="code-line line-number" line="164">                printf("二叉树key为%d的结点的others为%s!\n", e, k-&gt;data.others);
+</span><span class="code-line line-number" line="165">            else
+</span><span class="code-line line-number" line="166">                printf("未找到key为%d的元素!\n",e);
+</span><span class="code-line line-number" line="167">            getchar();
+</span><span class="code-line line-number" line="168">            getchar();
+</span><span class="code-line line-number" line="169">            break;
+</span><span class="code-line line-number" line="170">        case 7:
+</span><span class="code-line line-number" line="171">            printf("请输入要查询的元素的值:\n");
+</span><span class="code-line line-number" line="172">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="173">            printf("请输入要修改为的元素的key:\n");
+</span><span class="code-line line-number" line="174">            cin &gt;&gt; value.key;
+</span><span class="code-line line-number" line="175">            printf("请输入要修改为的元素的others:\n");
+</span><span class="code-line line-number" line="176">            cin &gt;&gt; value.others;
+</span><span class="code-line line-number" line="177">            Status_Now = Assign(*T, e, value);
+</span><span class="code-line line-number" line="178">            if (Status_Now == ERROR)
+</span><span class="code-line line-number" line="179">                printf("二叉树不存在该元素!\n");
+</span><span class="code-line line-number" line="180">            else
+</span><span class="code-line line-number" line="181">                printf("赋值完毕!");
+</span><span class="code-line line-number" line="182">            getchar();
+</span><span class="code-line line-number" line="183">            getchar();
+</span><span class="code-line line-number" line="184">            break;
+</span><span class="code-line line-number" line="185">        case 8:
+</span><span class="code-line line-number" line="186">            printf("请输入要查询兄弟结点的元素的值\n");
+</span><span class="code-line line-number" line="187">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="188">            k = GetSibling(*T, e);
+</span><span class="code-line line-number" line="189">            if (k == NULL)
+</span><span class="code-line line-number" line="190">                printf("未找到该结点的兄弟结点!\n");
+</span><span class="code-line line-number" line="191">            else
+</span><span class="code-line line-number" line="192">                printf("二叉树key为%d的元素的兄弟结点的key为:%d\nothers为%s!\n",e,k-&gt;data.key,k-&gt;data.others);
+</span><span class="code-line line-number" line="193">            getchar();
+</span><span class="code-line line-number" line="194">            getchar();
+</span><span class="code-line line-number" line="195">            break;
+</span><span class="code-line line-number" line="196">        case 9:
+</span><span class="code-line line-number" line="197">            int LR;
+</span><span class="code-line line-number" line="198">            printf("请输入要插入在的结点的key、LR、插入结点的key和others:\n");
+</span><span class="code-line line-number" line="199">            cin &gt;&gt; e &gt;&gt; LR &gt;&gt; value.key &gt;&gt; value.others;
+</span><span class="code-line line-number" line="200">            Status_Now = InsertNode(*T, e, LR , value);//此处需要修改，如果重复则回溯
+</span><span class="code-line line-number" line="201">            if (Status_Now == OK)
+</span><span class="code-line line-number" line="202">                printf("插入完成!\n");
+</span><span class="code-line line-number" line="203">            else
+</span><span class="code-line line-number" line="204">                printf("插入失败!\n");
+</span><span class="code-line line-number" line="205">            getchar();
+</span><span class="code-line line-number" line="206">            getchar();
+</span><span class="code-line line-number" line="207">            break;
+</span><span class="code-line line-number" line="208">        case 10:
+</span><span class="code-line line-number" line="209">            printf("请输入要删除的结点的key\n");
+</span><span class="code-line line-number" line="210">            cin &gt;&gt; e;
+</span><span class="code-line line-number" line="211">            Status_Now = DeleteNode(*T, e);
+</span><span class="code-line line-number" line="212">            if (Status_Now == ERROR)
+</span><span class="code-line line-number" line="213">                printf("删除失败!\n");
+</span><span class="code-line line-number" line="214">            else
+</span><span class="code-line line-number" line="215">                printf("删除成功!\n");
+</span><span class="code-line line-number" line="216">            getchar();
+</span><span class="code-line line-number" line="217">            getchar();
+</span><span class="code-line line-number" line="218">            break;
+</span><span class="code-line line-number" line="219">        case 11:
+</span><span class="code-line line-number" line="220">            PreOrderTraverse(*T,visit);
+</span><span class="code-line line-number" line="221">            getchar();
+</span><span class="code-line line-number" line="222">            getchar();
+</span><span class="code-line line-number" line="223">            break;
+</span><span class="code-line line-number" line="224">        case 12:
+</span><span class="code-line line-number" line="225">            InOrderTraverse(*T,visit);
+</span><span class="code-line line-number" line="226">            getchar();
+</span><span class="code-line line-number" line="227">            getchar();
+</span><span class="code-line line-number" line="228">            break;
+</span><span class="code-line line-number" line="229">        case 13:
+</span><span class="code-line line-number" line="230">            PostOrderTraverse(*T,visit);
+</span><span class="code-line line-number" line="231">            getchar();
+</span><span class="code-line line-number" line="232">            getchar();
+</span><span class="code-line line-number" line="233">            break;
+</span><span class="code-line line-number" line="234">        case 14:
+</span><span class="code-line line-number" line="235">            LevelOrderTraverse(*T,visit);
+</span><span class="code-line line-number" line="236">            getchar();
+</span><span class="code-line line-number" line="237">            getchar();
+</span><span class="code-line line-number" line="238">            break;
+</span><span class="code-line line-number" line="239">        case 15:
+</span><span class="code-line line-number" line="240">            e = MaxPathSum(*T);
+</span><span class="code-line line-number" line="241">            cout &lt;&lt; "最大路径和为:" &lt;&lt; e &lt;&lt; endl;
+</span><span class="code-line line-number" line="242">            getchar();
+</span><span class="code-line line-number" line="243">            getchar();
+</span><span class="code-line line-number" line="244">            break;
+</span><span class="code-line line-number" line="245">        case 16:
+</span><span class="code-line line-number" line="246">            int e1,e2;
+</span><span class="code-line line-number" line="247">            cout &lt;&lt; "请输入e1、e2结点的key:\n";
+</span><span class="code-line line-number" line="248">            cin &gt;&gt; e1 &gt;&gt; e2;
+</span><span class="code-line line-number" line="249">            if(LocateNode(*T,e1) == NULL || LocateNode(*T,e2) == NULL)
+</span><span class="code-line line-number" line="250">                cout &lt;&lt; "不存在e1或e2结点" &lt;&lt; endl;
+</span><span class="code-line line-number" line="251">            else
+</span><span class="code-line line-number" line="252">            {
+</span><span class="code-line line-number" line="253">                k = LowestCommonAncestor(*T,e1,e2);
+</span><span class="code-line line-number" line="254">                cout &lt;&lt; "e1、e2结点的最近公共祖先的key和others分别为" &lt;&lt; k-&gt;data.key &lt;&lt; "、" &lt;&lt; k-&gt;data.others &lt;&lt; endl;
+</span><span class="code-line line-number" line="255">            }
+</span><span class="code-line line-number" line="256">            getchar();
+</span><span class="code-line line-number" line="257">            getchar();
+</span><span class="code-line line-number" line="258">            break;
+</span><span class="code-line line-number" line="259">        case 17:
+</span><span class="code-line line-number" line="260">            
+</span><span class="code-line line-number" line="261">            InvertTree(*T);
+</span><span class="code-line line-number" line="262">            cout &lt;&lt; "反转完成";
+</span><span class="code-line line-number" line="263">            getchar();
+</span><span class="code-line line-number" line="264">            getchar();
+</span><span class="code-line line-number" line="265">            break;
+</span><span class="code-line line-number" line="266">        case 18:
+</span><span class="code-line line-number" line="267">            cout &lt;&lt; "请输入新二叉树名称" &lt;&lt; endl;
+</span><span class="code-line line-number" line="268">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="269">            if (ManageBiTree(Ts, name) != 0)
+</span><span class="code-line line-number" line="270">                printf("已存在该名称的线性表!\n");
+</span><span class="code-line line-number" line="271">            else if (AddBiTree(Ts, name) != ERROR)
+</span><span class="code-line line-number" line="272">                cout &lt;&lt; "创建成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="273">            else
+</span><span class="code-line line-number" line="274">                cout &lt;&lt; "二叉树数已超出上限!";
+</span><span class="code-line line-number" line="275">            getchar();
+</span><span class="code-line line-number" line="276">            getchar();
+</span><span class="code-line line-number" line="277">            break;
+</span><span class="code-line line-number" line="278">        case 19:
+</span><span class="code-line line-number" line="279">            cout &lt;&lt; "请输入想要管理的二叉树名称" &lt;&lt; endl;
+</span><span class="code-line line-number" line="280">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="281">            e = ManageBiTree(Ts, name);
+</span><span class="code-line line-number" line="282">            if (e != 0)
+</span><span class="code-line line-number" line="283">            {
+</span><span class="code-line line-number" line="284">                cout &lt;&lt; "成功找到名称为" &lt;&lt; name &lt;&lt; "的二叉树!";
+</span><span class="code-line line-number" line="285">                T = &amp;Ts.elem[e-1].T;
+</span><span class="code-line line-number" line="286">            }
+</span><span class="code-line line-number" line="287">            else
+</span><span class="code-line line-number" line="288">                cout &lt;&lt; "不存在该名称的二叉树!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="289">            getchar();
+</span><span class="code-line line-number" line="290">            getchar();
+</span><span class="code-line line-number" line="291">            break;
+</span><span class="code-line line-number" line="292">        case 20:
+</span><span class="code-line line-number" line="293">            cout &lt;&lt; "请输入想保存的文件名称" &lt;&lt; endl;
+</span><span class="code-line line-number" line="294">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="295">            if (SaveBiTree(*T, name) != OK)
+</span><span class="code-line line-number" line="296">                printf("保存失败!\n");
+</span><span class="code-line line-number" line="297">            else
+</span><span class="code-line line-number" line="298">                cout &lt;&lt; "保存成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="299">            getchar();
+</span><span class="code-line line-number" line="300">            getchar();
+</span><span class="code-line line-number" line="301">            break;
+</span><span class="code-line line-number" line="302">        case 21:
+</span><span class="code-line line-number" line="303">            cout &lt;&lt; "请输入想加载的文件名称" &lt;&lt; endl;
+</span><span class="code-line line-number" line="304">            cin &gt;&gt; name;
+</span><span class="code-line line-number" line="305">            if (LoadBiTree(*T, name) != OK)
+</span><span class="code-line line-number" line="306">                printf("加载失败!\n");
+</span><span class="code-line line-number" line="307">            else
+</span><span class="code-line line-number" line="308">                cout &lt;&lt; "加载成功!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="309">            getchar();
+</span><span class="code-line line-number" line="310">            getchar();
+</span><span class="code-line line-number" line="311">            break;
+</span><span class="code-line line-number" line="312">        case 22:
+</span><span class="code-line line-number" line="313">            ShowBiTree(Ts);
+</span><span class="code-line line-number" line="314">            getchar();
+</span><span class="code-line line-number" line="315">            getchar();
+</span><span class="code-line line-number" line="316">        case 0:
+</span><span class="code-line line-number" line="317">            break;
+</span><span class="code-line line-number" line="318">        default:
+</span><span class="code-line line-number" line="319">            cout &lt;&lt; "输入错误，请重新输入!" &lt;&lt; endl;
+</span><span class="code-line line-number" line="320">            getchar();
+</span><span class="code-line line-number" line="321">            getchar();
+</span><span class="code-line line-number" line="322">            break;
+</span><span class="code-line line-number" line="323">        } // end of switch
+</span><span class="code-line line-number" line="324">    } // end of while
+</span><span class="code-line line-number" line="325">    printf("欢迎下次再使用本系统!\n");
+</span><span class="code-line line-number" line="326">}
+</span><span class="code-line line-number" line="327">
+</span><span class="code-line line-number" line="328">status AddBiTree(Trees &amp;ts,char name[])
+</span><span class="code-line line-number" line="329">{
+</span><span class="code-line line-number" line="330">    if(ts.length == ts.listsize)
+</span><span class="code-line line-number" line="331">    {
+</span><span class="code-line line-number" line="332">        cout &lt;&lt; "树存储数量已达上限!" &lt;&lt;endl;
+</span><span class="code-line line-number" line="333">        return ERROR;
+</span><span class="code-line line-number" line="334">    }
+</span><span class="code-line line-number" line="335">    else 
+</span><span class="code-line line-number" line="336">    {
+</span><span class="code-line line-number" line="337">        strcpy(ts.elem[ts.length].name,name);
+</span><span class="code-line line-number" line="338">        ts.elem[ts.length].T = NULL;
+</span><span class="code-line line-number" line="339">        ts.length++;
+</span><span class="code-line line-number" line="340">    }
+</span><span class="code-line line-number" line="341">    return OK;
+</span><span class="code-line line-number" line="342">}
+</span><span class="code-line line-number" line="343">
+</span><span class="code-line line-number" line="344">bool cmp(TElemType a, TElemType b)
+</span><span class="code-line line-number" line="345">{
+</span><span class="code-line line-number" line="346">    return a.key &lt; b.key;
+</span><span class="code-line line-number" line="347">}
+</span><span class="code-line line-number" line="348">int idx = 0;
+</span><span class="code-line line-number" line="349">BiTree CreateBiTreeHelper(TElemType definition[])
+</span><span class="code-line line-number" line="350">{
+</span><span class="code-line line-number" line="351">    BiTree T = new BiTNode;
+</span><span class="code-line line-number" line="352">    TElemType elem = definition[idx++];
+</span><span class="code-line line-number" line="353">    if (elem.key == -1 || elem.key == 0)
+</span><span class="code-line line-number" line="354">    {
+</span><span class="code-line line-number" line="355">        T = NULL;
+</span><span class="code-line line-number" line="356">    }
+</span><span class="code-line line-number" line="357">    else
+</span><span class="code-line line-number" line="358">    {
+</span><span class="code-line line-number" line="359">        T-&gt;data = elem;
+</span><span class="code-line line-number" line="360">        T-&gt;lchild = CreateBiTreeHelper(definition);
+</span><span class="code-line line-number" line="361">        T-&gt;rchild = CreateBiTreeHelper(definition);
+</span><span class="code-line line-number" line="362">    }
+</span><span class="code-line line-number" line="363">    return T;
+</span><span class="code-line line-number" line="364">}
+</span><span class="code-line line-number" line="365">
+</span><span class="code-line line-number" line="366">status CreateBiTree(BiTree &amp;T,Trees &amp;ts)
+</span><span class="code-line line-number" line="367">/*根据带空枝的二叉树先根遍历序列definition构造一棵二叉树，将根节点指针赋值给T并返回OK，
+</span><span class="code-line line-number" line="368">如果有相同的关键字，返回ERROR。此题允许通过增加其它函数辅助实现本关任务*/
+</span><span class="code-line line-number" line="369">{
+</span><span class="code-line line-number" line="370">    int i = 0;
+</span><span class="code-line line-number" line="371">    cout &lt;&lt; "请输入definitions:" &lt;&lt; endl;
+</span><span class="code-line line-number" line="372">    TElemType definition[100];
+</span><span class="code-line line-number" line="373">    do
+</span><span class="code-line line-number" line="374">    {
+</span><span class="code-line line-number" line="375">        scanf("%d%s", &amp;definition[i].key, definition[i].others);
+</span><span class="code-line line-number" line="376">    } while (definition[i++].key != -1);
+</span><span class="code-line line-number" line="377">    idx = 0;
+</span><span class="code-line line-number" line="378">    T = CreateBiTreeHelper(definition);
+</span><span class="code-line line-number" line="379">    sort(definition, definition + idx, cmp);
+</span><span class="code-line line-number" line="380">    i = 0;
+</span><span class="code-line line-number" line="381">    while (definition[i].key == 0)
+</span><span class="code-line line-number" line="382">        i++;
+</span><span class="code-line line-number" line="383">    while (i &lt; idx)
+</span><span class="code-line line-number" line="384">    {
+</span><span class="code-line line-number" line="385">        if (definition[i].key == definition[i - 1].key)
+</span><span class="code-line line-number" line="386">            return ERROR;
+</span><span class="code-line line-number" line="387">        i++;
+</span><span class="code-line line-number" line="388">    }
+</span><span class="code-line line-number" line="389">    return OK;
+</span><span class="code-line line-number" line="390">}
+</span><span class="code-line line-number" line="391">
+</span><span class="code-line line-number" line="392">status ClearBiTree(BiTree &amp;T)
+</span><span class="code-line line-number" line="393">{
+</span><span class="code-line line-number" line="394">    if (T == NULL)
+</span><span class="code-line line-number" line="395">    {
+</span><span class="code-line line-number" line="396">        return OK;
+</span><span class="code-line line-number" line="397">    }
+</span><span class="code-line line-number" line="398">    ClearBiTree(T-&gt;lchild);
+</span><span class="code-line line-number" line="399">    ClearBiTree(T-&gt;rchild);
+</span><span class="code-line line-number" line="400">    free(T);
+</span><span class="code-line line-number" line="401">    T = NULL;
+</span><span class="code-line line-number" line="402">    return OK;
+</span><span class="code-line line-number" line="403">}
+</span><span class="code-line line-number" line="404">
+</span><span class="code-line line-number" line="405">int BiTreeDepth(BiTree T)
+</span><span class="code-line line-number" line="406">// 求二叉树T的深度
+</span><span class="code-line line-number" line="407">{
+</span><span class="code-line line-number" line="408">    int dep = 0;
+</span><span class="code-line line-number" line="409">    if (T != NULL)
+</span><span class="code-line line-number" line="410">    {
+</span><span class="code-line line-number" line="411">        dep++;
+</span><span class="code-line line-number" line="412">        dep = max(dep + BiTreeDepth(T-&gt;lchild), dep + BiTreeDepth(T-&gt;rchild));
+</span><span class="code-line line-number" line="413">        return dep;
+</span><span class="code-line line-number" line="414">    }
+</span><span class="code-line line-number" line="415">    else
+</span><span class="code-line line-number" line="416">        return 0;
+</span><span class="code-line line-number" line="417">}
+</span><span class="code-line line-number" line="418">
+</span><span class="code-line line-number" line="419">BiTNode *LocateNode(BiTree T, KeyType e)
+</span><span class="code-line line-number" line="420">// 查找结点
+</span><span class="code-line line-number" line="421">{
+</span><span class="code-line line-number" line="422">    if (T == NULL)
+</span><span class="code-line line-number" line="423">        return NULL;
+</span><span class="code-line line-number" line="424">    else
+</span><span class="code-line line-number" line="425">    {
+</span><span class="code-line line-number" line="426">        if (T-&gt;data.key == e)
+</span><span class="code-line line-number" line="427">            return T;
+</span><span class="code-line line-number" line="428">        auto t = LocateNode(T-&gt;lchild, e);
+</span><span class="code-line line-number" line="429">        if (t != NULL)
+</span><span class="code-line line-number" line="430">            return t;
+</span><span class="code-line line-number" line="431">        t = LocateNode(T-&gt;rchild, e);
+</span><span class="code-line line-number" line="432">        if (t != NULL)
+</span><span class="code-line line-number" line="433">            return t;
+</span><span class="code-line line-number" line="434">        return NULL;
+</span><span class="code-line line-number" line="435">    }
+</span><span class="code-line line-number" line="436">}
+</span><span class="code-line line-number" line="437">
+</span><span class="code-line line-number" line="438">status Assign(BiTree &amp;T, KeyType e, TElemType value)
+</span><span class="code-line line-number" line="439">// 实现结点赋值。此题允许通过增加其它函数辅助实现本关任务
+</span><span class="code-line line-number" line="440">{
+</span><span class="code-line line-number" line="441">    auto t = LocateNode(T, e); // 先找到key为e的结点
+</span><span class="code-line line-number" line="442">    if (t == NULL)
+</span><span class="code-line line-number" line="443">        return ERROR; // 如果未找到，返回ERROR
+</span><span class="code-line line-number" line="444">    else              // 找到结点
+</span><span class="code-line line-number" line="445">    {
+</span><span class="code-line line-number" line="446">        auto tt = LocateNode(T, value.key); // 判断欲赋值的key是否已经存在，如果已经存在，则返回ERROR
+</span><span class="code-line line-number" line="447">        if (tt == NULL || tt == t)
+</span><span class="code-line line-number" line="448">        {
+</span><span class="code-line line-number" line="449">            t-&gt;data.key = value.key; // 不存在，修改，返回OK
+</span><span class="code-line line-number" line="450">            strcpy(t-&gt;data.others,value.others);
+</span><span class="code-line line-number" line="451">            return OK;
+</span><span class="code-line line-number" line="452">        }
+</span><span class="code-line line-number" line="453">        else
+</span><span class="code-line line-number" line="454">            return ERROR;
+</span><span class="code-line line-number" line="455">    }
+</span><span class="code-line line-number" line="456">}
+</span><span class="code-line line-number" line="457">
+</span><span class="code-line line-number" line="458">BiTNode *GetSibling(BiTree T, KeyType e)
+</span><span class="code-line line-number" line="459">// 实现获得兄弟结点
+</span><span class="code-line line-number" line="460">{
+</span><span class="code-line line-number" line="461">    if (T == NULL)
+</span><span class="code-line line-number" line="462">        return NULL; // 如果是空结点，直接返回NULL
+</span><span class="code-line line-number" line="463">    if (T-&gt;lchild != NULL &amp;&amp; T-&gt;lchild-&gt;data.key == e)
+</span><span class="code-line line-number" line="464">        return T-&gt;rchild; // 如果左孩子结点不为空，判断左节点的key是否为e，如果是则返回右孩子结点
+</span><span class="code-line line-number" line="465">    if (T-&gt;rchild != NULL &amp;&amp; T-&gt;rchild-&gt;data.key == e)
+</span><span class="code-line line-number" line="466">        return T-&gt;lchild;              // 如果右孩子结点不为空，判断右节点的key是否为e，如果是则返回左孩子结点
+</span><span class="code-line line-number" line="467">    auto t = GetSibling(T-&gt;lchild, e); // 递归，分别查看左、右孩子结点是否能找到，能找到就返回找到的值
+</span><span class="code-line line-number" line="468">    if (t != NULL)
+</span><span class="code-line line-number" line="469">        return t;
+</span><span class="code-line line-number" line="470">    t = GetSibling(T-&gt;rchild, e);
+</span><span class="code-line line-number" line="471">    if (t != NULL)
+</span><span class="code-line line-number" line="472">        return t;
+</span><span class="code-line line-number" line="473">    return NULL; // 均没有找到，则返回NULL
+</span><span class="code-line line-number" line="474">}
+</span><span class="code-line line-number" line="475">
+</span><span class="code-line line-number" line="476">bool judgee(BiTree &amp;T)
+</span><span class="code-line line-number" line="477">{
+</span><span class="code-line line-number" line="478">    if (T == NULL)
+</span><span class="code-line line-number" line="479">        return 0;
+</span><span class="code-line line-number" line="480">    if (st.count(T-&gt;data.key))
+</span><span class="code-line line-number" line="481">        return 1;
+</span><span class="code-line line-number" line="482">    st.insert(T-&gt;data.key);
+</span><span class="code-line line-number" line="483">    if (judgee(T-&gt;lchild))
+</span><span class="code-line line-number" line="484">        return 1;
+</span><span class="code-line line-number" line="485">    if (judgee(T-&gt;rchild))
+</span><span class="code-line line-number" line="486">        return 1;
+</span><span class="code-line line-number" line="487">    return 0;
+</span><span class="code-line line-number" line="488">}
+</span><span class="code-line line-number" line="489">
+</span><span class="code-line line-number" line="490">bool judge(BiTree &amp;T)
+</span><span class="code-line line-number" line="491">{
+</span><span class="code-line line-number" line="492">    st.clear();
+</span><span class="code-line line-number" line="493">    auto res = judgee(T);
+</span><span class="code-line line-number" line="494">    return res;
+</span><span class="code-line line-number" line="495">}
+</span><span class="code-line line-number" line="496">
+</span><span class="code-line line-number" line="497">status InsertNode(BiTree &amp;T, KeyType e, int LR, TElemType c)
+</span><span class="code-line line-number" line="498">// 插入结点
+</span><span class="code-line line-number" line="499">{
+</span><span class="code-line line-number" line="500">    auto t = LocateNode(T, e);
+</span><span class="code-line line-number" line="501">    if (t == NULL)
+</span><span class="code-line line-number" line="502">        return ERROR;
+</span><span class="code-line line-number" line="503">    else
+</span><span class="code-line line-number" line="504">    {
+</span><span class="code-line line-number" line="505">        auto temp = new BiTNode;
+</span><span class="code-line line-number" line="506">        temp-&gt;lchild = NULL;
+</span><span class="code-line line-number" line="507">        temp-&gt;data = c;
+</span><span class="code-line line-number" line="508">        if (LR == 0)
+</span><span class="code-line line-number" line="509">        {
+</span><span class="code-line line-number" line="510">            temp-&gt;rchild = t-&gt;lchild;
+</span><span class="code-line line-number" line="511">            t-&gt;lchild = temp;
+</span><span class="code-line line-number" line="512">        }
+</span><span class="code-line line-number" line="513">        else if (LR == 1)
+</span><span class="code-line line-number" line="514">        {
+</span><span class="code-line line-number" line="515">            temp-&gt;rchild = t-&gt;rchild;
+</span><span class="code-line line-number" line="516">            t-&gt;rchild = temp;
+</span><span class="code-line line-number" line="517">        }
+</span><span class="code-line line-number" line="518">        else
+</span><span class="code-line line-number" line="519">        {
+</span><span class="code-line line-number" line="520">            temp-&gt;rchild = T;
+</span><span class="code-line line-number" line="521">            T = temp;
+</span><span class="code-line line-number" line="522">        }
+</span><span class="code-line line-number" line="523">        if (judge(T))
+</span><span class="code-line line-number" line="524">            return ERROR;
+</span><span class="code-line line-number" line="525">        return OK;
+</span><span class="code-line line-number" line="526">    }
+</span><span class="code-line line-number" line="527">}
+</span><span class="code-line line-number" line="528">
+</span><span class="code-line line-number" line="529">status Delete_Node(BiTree &amp;T, KeyType e)
+</span><span class="code-line line-number" line="530">// 删除结点。
+</span><span class="code-line line-number" line="531">{
+</span><span class="code-line line-number" line="532">    if (T == NULL)
+</span><span class="code-line line-number" line="533">        return ERROR;// 如果是空结点，直接返回ERROR
+</span><span class="code-line line-number" line="534">    if ((T-&gt;lchild != NULL &amp;&amp; T-&gt;lchild-&gt;data.key == e )|| (T-&gt;rchild != NULL &amp;&amp; T-&gt;rchild-&gt;data.key == e)) // 如果左结点值为e或右结点值为e
+</span><span class="code-line line-number" line="535">    {
+</span><span class="code-line line-number" line="536">        auto t = ((T-&gt;lchild-&gt;data.key == e) ? T-&gt;lchild : T-&gt;rchild);                        // t为值为e的结点
+</span><span class="code-line line-number" line="537">        if ((t-&gt;lchild == NULL &amp;&amp; t-&gt;rchild != NULL )|| (t-&gt;rchild == NULL &amp;&amp; t-&gt;lchild != NULL)) // 如果t的度为1
+</span><span class="code-line line-number" line="538">        {
+</span><span class="code-line line-number" line="539">            auto tt = ((t-&gt;lchild == NULL) ? (t-&gt;rchild) : (t-&gt;lchild));        // tt为t不为空的结点
+</span><span class="code-line line-number" line="540">            ((T-&gt;lchild-&gt;data.key == e) ? (T-&gt;lchild = tt) : (T-&gt;rchild = tt)); // 令T值为e的结点为tt
+</span><span class="code-line line-number" line="541">            free(t);                                                            // 释放t的空间
+</span><span class="code-line line-number" line="542">        }
+</span><span class="code-line line-number" line="543">        else if (t-&gt;lchild == NULL &amp;&amp; t-&gt;rchild == NULL) // 如果t度为0
+</span><span class="code-line line-number" line="544">        {
+</span><span class="code-line line-number" line="545">            (T-&gt;lchild-&gt;data.key == e) ? (T-&gt;lchild = NULL) : (T-&gt;rchild = NULL); // 将的原本为t的子树标记为NULL
+</span><span class="code-line line-number" line="546">            free(t);// 直接释放t
+</span><span class="code-line line-number" line="547">        }
+</span><span class="code-line line-number" line="548">        else // t的度为2
+</span><span class="code-line line-number" line="549">        {
+</span><span class="code-line line-number" line="550">            (T-&gt;lchild-&gt;data.key == e) ? (T-&gt;lchild = t-&gt;lchild) : (T-&gt;rchild = t-&gt;lchild); // t的左子树来代替t的位置
+</span><span class="code-line line-number" line="551">            auto tt = t-&gt;lchild;
+</span><span class="code-line line-number" line="552">            while (tt-&gt;rchild != NULL)
+</span><span class="code-line line-number" line="553">                tt = tt-&gt;rchild;    // 在左子树中找到最右结点
+</span><span class="code-line line-number" line="554">            tt-&gt;rchild = t-&gt;rchild; // 最右结点的右子树赋值为t的右子树
+</span><span class="code-line line-number" line="555">            free(t);                // 释放t
+</span><span class="code-line line-number" line="556">        }
+</span><span class="code-line line-number" line="557">        return OK;
+</span><span class="code-line line-number" line="558">    }
+</span><span class="code-line line-number" line="559">    auto t = Delete_Node(T-&gt;lchild, e); // 递归，分别查看左、右孩子结点是否能找到，能找到就返回找到的值
+</span><span class="code-line line-number" line="560">    if (t)
+</span><span class="code-line line-number" line="561">        return OK;
+</span><span class="code-line line-number" line="562">    t = Delete_Node(T-&gt;rchild, e);
+</span><span class="code-line line-number" line="563">    if (t)
+</span><span class="code-line line-number" line="564">        return OK;
+</span><span class="code-line line-number" line="565">    return ERROR; // 均没有找到，则返回NULL
+</span><span class="code-line line-number" line="566">}
+</span><span class="code-line line-number" line="567">
+</span><span class="code-line line-number" line="568">status DeleteNode(BiTree &amp;T, KeyType e)
+</span><span class="code-line line-number" line="569">{
+</span><span class="code-line line-number" line="570">    int res = 0;
+</span><span class="code-line line-number" line="571">    auto t = new BiTNode; // 为了使操作简单，我们加入虚拟根结点
+</span><span class="code-line line-number" line="572">    auto tt = T;
+</span><span class="code-line line-number" line="573">    t-&gt;data.key = -1;
+</span><span class="code-line line-number" line="574">    t-&gt;lchild = tt; // 虚拟根节点度为1，左子树为T，右子树为NULL
+</span><span class="code-line line-number" line="575">    t-&gt;rchild = NULL;
+</span><span class="code-line line-number" line="576">    if (Delete_Node(t, e))
+</span><span class="code-line line-number" line="577">        res = OK;
+</span><span class="code-line line-number" line="578">    T = t-&gt;lchild; // 令T为虚拟根节点的左子树
+</span><span class="code-line line-number" line="579">    free(t);       // 释放t
+</span><span class="code-line line-number" line="580">    return res;
+</span><span class="code-line line-number" line="581">}
+</span><span class="code-line line-number" line="582">
+</span><span class="code-line line-number" line="583">status PreOrderTraverse(BiTree T, void (*visit)(BiTree))
+</span><span class="code-line line-number" line="584">// 先序遍历二叉树T
+</span><span class="code-line line-number" line="585">{
+</span><span class="code-line line-number" line="586">    int top = 0;
+</span><span class="code-line line-number" line="587">    BiTree st[500]; // 栈
+</span><span class="code-line line-number" line="588">    st[top++] = T;  // 将根节点加入栈
+</span><span class="code-line line-number" line="589">    while (top)
+</span><span class="code-line line-number" line="590">    {
+</span><span class="code-line line-number" line="591">        auto t = st[--top]; // 若栈中还有结点，取出栈顶
+</span><span class="code-line line-number" line="592">        while (t != NULL)   // 一直向左遍历孩子结点，不断将右孩子结点加入栈
+</span><span class="code-line line-number" line="593">        {
+</span><span class="code-line line-number" line="594">            st[top++] = t-&gt;rchild;
+</span><span class="code-line line-number" line="595">            visit(t);
+</span><span class="code-line line-number" line="596">            t = t-&gt;lchild; // 如此向左遍历
+</span><span class="code-line line-number" line="597">        }
+</span><span class="code-line line-number" line="598">    }
+</span><span class="code-line line-number" line="599">    return OK; // 遍历完成， 返回OK
+</span><span class="code-line line-number" line="600">}
+</span><span class="code-line line-number" line="601">
+</span><span class="code-line line-number" line="602">status InOrderTraverse(BiTree T, void (*visit)(BiTree))
+</span><span class="code-line line-number" line="603">// 中序遍历二叉树T
+</span><span class="code-line line-number" line="604">{
+</span><span class="code-line line-number" line="605">    if (T == NULL)
+</span><span class="code-line line-number" line="606">        return 0; // 当遍历的该结点为空结点时返回
+</span><span class="code-line line-number" line="607">    else
+</span><span class="code-line line-number" line="608">    {
+</span><span class="code-line line-number" line="609">        InOrderTraverse(T-&gt;lchild, visit); // 遍历左子树
+</span><span class="code-line line-number" line="610">        visit(T);                          // 遍历根节点
+</span><span class="code-line line-number" line="611">        InOrderTraverse(T-&gt;rchild, visit); // 遍历右子树
+</span><span class="code-line line-number" line="612">    }
+</span><span class="code-line line-number" line="613">    return OK;
+</span><span class="code-line line-number" line="614">}
+</span><span class="code-line line-number" line="615">
+</span><span class="code-line line-number" line="616">status PostOrderTraverse(BiTree T, void (*visit)(BiTree))
+</span><span class="code-line line-number" line="617">// 后序遍历二叉树T
+</span><span class="code-line line-number" line="618">{
+</span><span class="code-line line-number" line="619">    if (T == NULL)
+</span><span class="code-line line-number" line="620">        return 0; // 当遍历的该结点为空结点时返回
+</span><span class="code-line line-number" line="621">    else
+</span><span class="code-line line-number" line="622">    {
+</span><span class="code-line line-number" line="623">        PostOrderTraverse(T-&gt;lchild, visit); // 遍历左子树
+</span><span class="code-line line-number" line="624">        PostOrderTraverse(T-&gt;rchild, visit); // 遍历右子树
+</span><span class="code-line line-number" line="625">        visit(T);                            // 遍历根节点
+</span><span class="code-line line-number" line="626">    }
+</span><span class="code-line line-number" line="627">    return OK;
+</span><span class="code-line line-number" line="628">}
+</span><span class="code-line line-number" line="629">
+</span><span class="code-line line-number" line="630">status LevelOrderTraverse(BiTree T, void (*visit)(BiTree))
+</span><span class="code-line line-number" line="631">// 按层遍历二叉树T
+</span><span class="code-line line-number" line="632">{
+</span><span class="code-line line-number" line="633">    int head = 0, rear = 0;
+</span><span class="code-line line-number" line="634">    BiTree queue[500];
+</span><span class="code-line line-number" line="635">    queue[rear++] = T;
+</span><span class="code-line line-number" line="636">    while (head &lt; rear) // 若队列非空
+</span><span class="code-line line-number" line="637">    {
+</span><span class="code-line line-number" line="638">        auto t = queue[head++]; // 取出队首元素
+</span><span class="code-line line-number" line="639">        visit(t);
+</span><span class="code-line line-number" line="640">        if (t-&gt;lchild != NULL)
+</span><span class="code-line line-number" line="641">            queue[rear++] = t-&gt;lchild; // 将左子树加入队尾
+</span><span class="code-line line-number" line="642">        if (t-&gt;rchild != NULL)
+</span><span class="code-line line-number" line="643">            queue[rear++] = t-&gt;rchild; // 将右子树加入队尾
+</span><span class="code-line line-number" line="644">    }
+</span><span class="code-line line-number" line="645">    return OK; // 遍历完成，返回OK
+</span><span class="code-line line-number" line="646">}
+</span><span class="code-line line-number" line="647">
+</span><span class="code-line line-number" line="648">status Save(BiTree &amp;T, FILE *&amp;fp)
+</span><span class="code-line line-number" line="649">{
+</span><span class="code-line line-number" line="650">    if (T == NULL)
+</span><span class="code-line line-number" line="651">        fprintf(fp, " 0 NULL ");
+</span><span class="code-line line-number" line="652">    else
+</span><span class="code-line line-number" line="653">    {
+</span><span class="code-line line-number" line="654">        fprintf(fp, " %d %s ", T-&gt;data.key, T-&gt;data.others);
+</span><span class="code-line line-number" line="655">        Save(T-&gt;lchild, fp);
+</span><span class="code-line line-number" line="656">        Save(T-&gt;rchild, fp);
+</span><span class="code-line line-number" line="657">    }
+</span><span class="code-line line-number" line="658">    return OK;
+</span><span class="code-line line-number" line="659">}
+</span><span class="code-line line-number" line="660">BiTree Load(FILE *&amp;fp)
+</span><span class="code-line line-number" line="661">{
+</span><span class="code-line line-number" line="662">    int key;
+</span><span class="code-line line-number" line="663">    char others[20];
+</span><span class="code-line line-number" line="664">    fscanf(fp, "%d %s", &amp;key, others);
+</span><span class="code-line line-number" line="665">    if (key != 0)
+</span><span class="code-line line-number" line="666">    {
+</span><span class="code-line line-number" line="667">        auto t = new BiTNode;
+</span><span class="code-line line-number" line="668">        t-&gt;data.key = key;
+</span><span class="code-line line-number" line="669">        strcpy(t-&gt;data.others, others);
+</span><span class="code-line line-number" line="670">        t-&gt;lchild = Load(fp);
+</span><span class="code-line line-number" line="671">        t-&gt;rchild = Load(fp);
+</span><span class="code-line line-number" line="672">        return t;
+</span><span class="code-line line-number" line="673">    }
+</span><span class="code-line line-number" line="674">    else
+</span><span class="code-line line-number" line="675">        return NULL;
+</span><span class="code-line line-number" line="676">}
+</span><span class="code-line line-number" line="677">
+</span><span class="code-line line-number" line="678">status DestroyBiTree(BiTree* &amp;T,Trees &amp;ts)
+</span><span class="code-line line-number" line="679">{
+</span><span class="code-line line-number" line="680">    for (int i = 0; i &lt; ts.length;i++)
+</span><span class="code-line line-number" line="681">    {
+</span><span class="code-line line-number" line="682">        if(&amp;(ts.elem[i].T) == T)
+</span><span class="code-line line-number" line="683">        {
+</span><span class="code-line line-number" line="684">            DestroyBiTree_Helper(*T);
+</span><span class="code-line line-number" line="685">            for (int j = i + 1; j &lt; ts.length ; j++)
+</span><span class="code-line line-number" line="686">            {
+</span><span class="code-line line-number" line="687">                ts.elem[j - 1].T = ts.elem[j].T;
+</span><span class="code-line line-number" line="688">                strcpy(ts.elem[j - 1].name,ts.elem[j].name);
+</span><span class="code-line line-number" line="689">            }
+</span><span class="code-line line-number" line="690">            *T = NULL;
+</span><span class="code-line line-number" line="691">            ts.length--;
+</span><span class="code-line line-number" line="692">            return OK;
+</span><span class="code-line line-number" line="693">        }
+</span><span class="code-line line-number" line="694">    }    
+</span><span class="code-line line-number" line="695">    return ERROR;
+</span><span class="code-line line-number" line="696">}
+</span><span class="code-line line-number" line="697">
+</span><span class="code-line line-number" line="698">status DestroyBiTree_Helper(BiTree &amp;T)
+</span><span class="code-line line-number" line="699">{
+</span><span class="code-line line-number" line="700">   if (T)
+</span><span class="code-line line-number" line="701">   {
+</span><span class="code-line line-number" line="702">        DestroyBiTree_Helper(T-&gt;lchild);
+</span><span class="code-line line-number" line="703">        DestroyBiTree_Helper(T-&gt;rchild);
+</span><span class="code-line line-number" line="704">        free(T);
+</span><span class="code-line line-number" line="705">        T=NULL;
+</span><span class="code-line line-number" line="706">   }
+</span><span class="code-line line-number" line="707">   return OK;
+</span><span class="code-line line-number" line="708">}
+</span><span class="code-line line-number" line="709">
+</span><span class="code-line line-number" line="710">status BiTreeEmpty(BiTree &amp;T)
+</span><span class="code-line line-number" line="711">{
+</span><span class="code-line line-number" line="712">    if(T == NULL)
+</span><span class="code-line line-number" line="713">        return INFEASIBLE;
+</span><span class="code-line line-number" line="714">    else if(T -&gt; data.key == 0)
+</span><span class="code-line line-number" line="715">        return TRUE;
+</span><span class="code-line line-number" line="716">    else 
+</span><span class="code-line line-number" line="717">        return FALSE;
+</span><span class="code-line line-number" line="718">}
+</span><span class="code-line line-number" line="719">
+</span><span class="code-line line-number" line="720">status SaveBiTree(BiTree T, char FileName[])
+</span><span class="code-line line-number" line="721">// 将二叉树的结点数据写入到文件FileName中
+</span><span class="code-line line-number" line="722">{
+</span><span class="code-line line-number" line="723">    FILE *fp;
+</span><span class="code-line line-number" line="724">    fp = fopen(FileName, "w");
+</span><span class="code-line line-number" line="725">    Save(T, fp);
+</span><span class="code-line line-number" line="726">    fclose(fp);
+</span><span class="code-line line-number" line="727">    return OK;
+</span><span class="code-line line-number" line="728">}
+</span><span class="code-line line-number" line="729">status LoadBiTree(BiTree &amp;T, char FileName[])
+</span><span class="code-line line-number" line="730">// 读入文件FileName的结点数据，创建二叉树
+</span><span class="code-line line-number" line="731">{
+</span><span class="code-line line-number" line="732">    FILE *fp;
+</span><span class="code-line line-number" line="733">    fp = fopen(FileName, "r");
+</span><span class="code-line line-number" line="734">    T = Load(fp);
+</span><span class="code-line line-number" line="735">    fclose(fp);
+</span><span class="code-line line-number" line="736">    return OK;
+</span><span class="code-line line-number" line="737">}
+</span><span class="code-line line-number" line="738">
+</span><span class="code-line line-number" line="739">BiTree LowestCommonAncestor(BiTree &amp;T,int e1,int e2)
+</span><span class="code-line line-number" line="740">{
+</span><span class="code-line line-number" line="741">    if(T == NULL || T-&gt;data.key == e1 || T-&gt;data.key == e2) return T;
+</span><span class="code-line line-number" line="742">    auto l = LowestCommonAncestor(T-&gt;lchild,e1,e2);
+</span><span class="code-line line-number" line="743">    auto r = LowestCommonAncestor(T-&gt;rchild,e1,e2);
+</span><span class="code-line line-number" line="744">    if(l == NULL) return r;
+</span><span class="code-line line-number" line="745">    if(r == NULL) return l;
+</span><span class="code-line line-number" line="746">    return T;
+</span><span class="code-line line-number" line="747">}
+</span><span class="code-line line-number" line="748">
+</span><span class="code-line line-number" line="749">void visit(BiTree T)
+</span><span class="code-line line-number" line="750">{
+</span><span class="code-line line-number" line="751">    cout &lt;&lt; T-&gt;data.key &lt;&lt; " " &lt;&lt; T-&gt;data.others &lt;&lt;" ";
+</span><span class="code-line line-number" line="752">}
+</span><span class="code-line line-number" line="753">
+</span><span class="code-line line-number" line="754">status InvertTree(BiTree &amp;T)
+</span><span class="code-line line-number" line="755">{
+</span><span class="code-line line-number" line="756">    if(T == NULL)
+</span><span class="code-line line-number" line="757">        return OK;
+</span><span class="code-line line-number" line="758">    auto t = T-&gt;lchild;
+</span><span class="code-line line-number" line="759">    T-&gt;lchild = T-&gt;rchild;
+</span><span class="code-line line-number" line="760">    T-&gt;rchild = t;
+</span><span class="code-line line-number" line="761">    InvertTree(T-&gt;lchild);
+</span><span class="code-line line-number" line="762">    InvertTree(T-&gt;rchild);
+</span><span class="code-line line-number" line="763">    return OK;
+</span><span class="code-line line-number" line="764">}
+</span><span class="code-line line-number" line="765">
+</span><span class="code-line line-number" line="766">int ManageBiTree(Trees Ts, char TreeName[])
+</span><span class="code-line line-number" line="767">// 在Ts中查找一个名称为TreeName的二叉树，后续对其进行操作，成功返回逻辑序号，否则返回0
+</span><span class="code-line line-number" line="768">{
+</span><span class="code-line line-number" line="769">    for (int i = 0; i &lt; Ts.length; i++)
+</span><span class="code-line line-number" line="770">    {
+</span><span class="code-line line-number" line="771">        if (strcmp(Ts.elem[i].name, TreeName) == 0)
+</span><span class="code-line line-number" line="772">        {
+</span><span class="code-line line-number" line="773">            return i + 1;
+</span><span class="code-line line-number" line="774">        }
+</span><span class="code-line line-number" line="775">    }
+</span><span class="code-line line-number" line="776">    return 0;
+</span><span class="code-line line-number" line="777">}
+</span><span class="code-line line-number" line="778">
+</span><span class="code-line line-number" line="779">int ShowBiTree(Trees Ts)
+</span><span class="code-line line-number" line="780">{
+</span><span class="code-line line-number" line="781">    if(Ts.length == 0 )
+</span><span class="code-line line-number" line="782">    {
+</span><span class="code-line line-number" line="783">        cout &lt;&lt; "没有二叉树"&lt;&lt;endl;
+</span><span class="code-line line-number" line="784">        return ERROR;
+</span><span class="code-line line-number" line="785">    }
+</span><span class="code-line line-number" line="786">    cout &lt;&lt; "有如下二叉树:" &lt;&lt; endl;
+</span><span class="code-line line-number" line="787">    for (int i = 0 ; i &lt; Ts.length ; i++)
+</span><span class="code-line line-number" line="788">    {
+</span><span class="code-line line-number" line="789">        cout &lt;&lt; Ts.elem[i].name &lt;&lt;endl;
+</span><span class="code-line line-number" line="790">    }
+</span><span class="code-line line-number" line="791">    return OK;
+</span><span class="code-line line-number" line="792">}
+</span><span class="code-line line-number" line="793">
+</span><span class="code-line line-number" line="794">int MaxPathSum(BiTree T)
+</span><span class="code-line line-number" line="795">// 求二叉树T的最大路径
+</span><span class="code-line line-number" line="796">{
+</span><span class="code-line line-number" line="797">    int dep = 0;//初始化树的最大路径为0
+</span><span class="code-line line-number" line="798">    if (T != NULL)
+</span><span class="code-line line-number" line="799">    {
+</span><span class="code-line line-number" line="800">        dep += T-&gt;data.key;//路径加上当前结点的key
+</span><span class="code-line line-number" line="801">        dep = max(dep + MaxPathSum(T-&gt;lchild), dep + MaxPathSum(T-&gt;rchild));//路径长度为左右子树最大路径+当前路径长度
+</span><span class="code-line line-number" line="802">        return dep;//返回结果
+</span><span class="code-line line-number" line="803">    }
+</span><span class="code-line line-number" line="804">    else
+</span><span class="code-line line-number" line="805">        return 0;
+</span><span class="code-line line-number" line="806">}
+</span></code></pre>
+</div>
+                <div class="rin-tr"></div>
+
+                <div class="rin-card-part" id="last">
+                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                    <div class="rin-card-content">华中科技大学</div>
+                </div>
+
+                <div class="rin-card-part" id="footer">
+                    <div class="rin-card-content">Made with love by 娄卫健 <a
+                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
