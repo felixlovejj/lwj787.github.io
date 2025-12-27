@@ -1,47 +1,249 @@
-/* 侧边栏折叠组件样式（可复用） */
-/* 使用更接近全宽，让右侧内容与屏幕右侧间距变小 */
-#site-wrapper{display:flex;min-height:0;position:relative;width:95%;max-width:1600px;margin:0 auto;padding:0}
-
-/*
-	在 JS 尚未把 .mdui-row 替换为 #site-wrapper 时，保持列宽与最终布局一致，
-	避免页面初始渲染与 JS 执行后出现宽度跳变（闪烁问题）。
-	这些规则只在包含 sidebar.css 的页面生效。
+/* sidebar.css - clean, minimal, and specific overrides for sidebar layout
+     Goals:
+     - left sidebar fixed at 200px
+     - reduce gutter between left and right columns
+     - right card sits close to left card when sidebar present
+     - when sidebar collapsed, right card centers and is constrained for balanced gaps
+     - avoid modifying library files; use page-level overrides with specificity
 */
-.mdui-row{display:flex;align-items:flex-start;box-sizing:border-box}
-.mdui-row>.mdui-col-md-2{flex:0 0 220px;max-width:220px;box-sizing:border-box}
-.mdui-row>.mdui-col-md-10{flex:1 1 auto;min-width:0;box-sizing:border-box}
 
-/*
-	When columns are moved into #site-sidebar and #site-content, ensure their internal
-	layout isn't influenced by library.css floats or unexpected margins.
+#site-wrapper {
+    display: flex;
+    width: 100%;
+    margin: 0 !important;
+    /* global page edge contract: 20px left and 20px right */
+    padding: 0 20px !important;
+    box-sizing: border-box;
+}
+
+/* Expanded spacing tweak: left card sits +8px further from the page left edge.
+   Keep right edge contract at 20px. */
+body:not(.sidebar-collapsed) #site-wrapper {
+    padding-left: 13px !important;
+    padding-right: 40px !important;
+}
+
+/* Fallback (more reliable than body state):
+   - Expanded: when #site-sidebar is NOT collapsed, left padding = 28px
+   - Collapsed: keep the original 20px/20px contract
 */
-#site-sidebar, #site-sidebar *{float:none !important;display:block !important;box-sizing:border-box !important}
-#site-sidebar .rin-left{margin:0;padding:6px 8px}
-#site-sidebar .rin-logo{margin:0;padding:0}
-#site-sidebar .rin-logo img{display:block;margin:0 auto 8px 0 !important}
+#site-wrapper:has(#site-sidebar:not(.collapsed)) {
+    padding-left: 6px !important;
+    padding-right: 40px !important;
+}
 
-/* Limit right card width to avoid overly wide content after JS runs */
-#site-content .rin-card{max-width:1200px;margin:0 auto;padding:20px 16px}
-/* 固定侧边栏宽度以保留原有左侧布局（头像、横向标题等） */
-/* sidebar: allow visible overflow so avatar/button not clipped; animate width/padding/min-width */
-/* smoother transitions and explicit properties to animate both collapse and expand */
-#site-sidebar{transition:width .3s ease,padding .3s ease,min-width .3s ease,opacity .2s ease;overflow:visible;position:relative;width:220px;min-width:220px;box-sizing:border-box;padding:6px;z-index:9999}
-#site-sidebar.collapsed{width:0!important;min-width:0!important;padding:0!important;opacity:0}
-/* 右侧内容区，内部卡片限制最大宽度并居中，保证大屏下右侧内容与屏幕右边距离合适 */
-/* 右侧内容区：减小左右内边距以减少与屏幕边缘的距离 */
-#site-content{flex:1;transition:all .3s ease;padding:0 16px;box-sizing:border-box}
-/* 保持右侧内容居中且与屏幕右侧距离稳定：使用 margin auto 并受 #site-wrapper 宽度约束 */
-/* 使右侧卡片在可用空间下尽可能扩展，收起左侧后宽度可增长 */
-#site-content .rin-card{max-width:1400px;width:100%;margin:0;padding:20px 12px;transition:all .3s ease}
+#site-wrapper:has(#site-sidebar.collapsed) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
 
-/* 确保左侧头像在 sidebar 中始终可见（覆盖可能的媒体查询） */
-#site-sidebar .rin-logo img{display:block!important;max-width:180px !important;width:180px !important;height:auto !important;visibility:visible!important;opacity:1!important;z-index:10000;transition:opacity .25s ease,transform .25s ease}
-/* 保持左侧标题水平排列 */
-#site-sidebar .rin-left-title{white-space:nowrap;display:inline-block !important}
+/* Force #rin-main to stop behaving like the centered flex-column from index.css */
+#rin-main {
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    display: block !important;
+    justify-content: initial !important;
+    flex-flow: initial !important;
+}
 
-/* 折叠按钮样式：放在左侧区块的右侧中间（相对于 #site-sidebar） */
-.sidebar-toggle-btn{position:fixed;left:calc((100% - 95%)/2 + 220px - 8px);/* initial approximate: wrapper left + sidebar width - offset */top:25%;transform:translateY(-50%);z-index:999;width:28px;height:28px;border-radius:14px;background:#2196f3;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:left .18s linear,top .18s linear}
-/* 返回按钮样式（小型） */
-.page-back-btn{position:absolute;left:8px;top:8px;z-index:60;width:28px;height:28px;border-radius:4px;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
-/* 适配 mdui 左侧容器内定位 */
-.rin-left{position:relative}
+/* Keep wrapper left-aligned */
+#site-wrapper {
+    justify-content: flex-start !important;
+}
+
+/* reduce gutter between columns (make sure it wins over MDUI/grid rules) */
+#rin-main>.mdui-row,
+#rin-main .mdui-row {
+    display: flex !important;
+    gap: 36px !important;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+/* extra-safe: ensure the actual two-column container uses the intended gap even if some page adds
+   a generic `.mdui-row { ... }` rule without gap. */
+#rin-main>.mdui-row {
+    column-gap: 36px !important;
+    row-gap: 0 !important;
+}
+
+/* left column */
+.mdui-row>.mdui-col-md-2,
+.mdui-col-md-2 {
+    flex: 0 0 240px !important;
+    max-width: 240px !important;
+    box-sizing: border-box;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* right column */
+.mdui-row>.mdui-col-md-10,
+.mdui-col-md-10,
+#site-content {
+    flex: 1 1 auto !important;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: flex-start;
+    /* keep card next to left column */
+    /* push card next to left column when sidebar present */
+    align-items: flex-start;
+    /* edge spacing handled by #site-wrapper padding */
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Right card spacing contract:
+   - Expanded: card sits next to left column with a small gap (handled by .mdui-row gap)
+     and keeps right edge 20px.
+   - Collapsed: card has 20px left + 20px right.
+*/
+/* Expanded (sidebar visible): padding comes from baseline rin-card rules below. */
+
+/* tighten left column inner padding so left card content sits closer to its right edge */
+#site-sidebar .rin-left,
+.mdui-col-md-2 .rin-left {
+    margin: 0;
+    padding: 6px 8px !important;
+}
+
+/* keep avatar readable: fixed width to avoid scaling down in tight layouts */
+#site-sidebar .rin-logo img {
+    display: block;
+    margin: 0 auto 8px 0 !important;
+    width: 180px !important;
+    max-width: 180px !important;
+}
+
+#site-sidebar {
+    transition: width .28s ease, padding .28s ease, opacity .2s ease;
+    overflow: visible;
+    position: relative;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 6px;
+    z-index: 9999;
+}
+
+#site-sidebar.collapsed,
+.mdui-col-md-2.collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    opacity: 0;
+}
+
+/* right card baseline (single source of truth)
+   - expanded: padding 20px and enforce right edge via container padding-right
+   - collapsed: overridden below to width calc(100% - 40px) and padding 20px
+*/
+#site-content .rin-card,
+#right-content .rin-card {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 20px 20px;
+}
+
+/* Expand-only: shift the right card 10px to the right (requested).
+   Keep collapsed mode unaffected (20px edge contract). */
+body:not(.sidebar-collapsed) #right-content .rin-card,
+body:not(.sidebar-collapsed) #site-content .rin-card {
+    margin-left: 10px !important;
+}
+
+/* center right column when left collapsed */
+.mdui-col-md-2.collapsed+.mdui-col-md-10,
+#site-sidebar.collapsed+#site-content,
+.mdui-col-md-2.collapsed+#right-content {
+    /* Do NOT center in collapsed mode; wrapper padding already guarantees 20px edges.
+         Centering here can create extra left gap and break the 20px contract. */
+    justify-content: flex-start !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.mdui-col-md-2.collapsed+.mdui-col-md-10 .rin-card,
+#site-sidebar.collapsed+#site-content .rin-card,
+.mdui-col-md-2.collapsed+#right-content .rin-card {
+    /* wrapper already adds 20px left/right, so card just fills the content area */
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px 20px !important;
+}
+
+/* minimal toggle button styling; left position is set by JS */
+.sidebar-toggle-btn {
+    position: fixed;
+    left: auto;
+    top: 25%;
+    transform: none;
+    z-index: 100000;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    background: #2196f3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    transition: left .18s linear, top .18s linear;
+    pointer-events: auto
+}
+
+.sidebar-toggle-btn:hover {
+    background: #1976d2
+}
+
+.sidebar-toggle-btn:active {
+    transform: translateY(-50%) scale(.96)
+}
+
+.page-back-btn {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    z-index: 60;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .35);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.rin-left {
+    position: relative
+}
+
+/* Left card text: keep key titles on one line */
+#site-sidebar .rin-left-title,
+.mdui-col-md-2 .rin-left-title,
+#site-sidebar .rin-left-slogan,
+.mdui-col-md-2 .rin-left-slogan {
+    white-space: nowrap;
+}
+
+/* Left card buttons: centered, moderate width */
+#site-sidebar .rin-left .rin-btn,
+.mdui-col-md-2 .rin-left .rin-btn {
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80%;
+    max-width: 190px;
+    min-width: 150px;
+    text-align: center;
+}

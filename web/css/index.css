@@ -42,8 +42,9 @@
     color: white;
     padding-bottom: 2px;
 }
+
 .rin-btn-left {
-    width:100%;
+    width: 100%;
     margin-top: 5px;
 }
 
@@ -115,19 +116,22 @@
 
 .rin-btn {
     color: white;
-    margin-right: 10px;
-    min-width: 100px !important;
+    margin-right: 14px;
+    min-width: 160px !important;
+    /* increased from 100px ~1.6x */
 }
 
 @media only screen and (min-width: 420px) and (max-width: 1024px) {
     .rin-left-title {
-        font-size: 35px!important;
+        font-size: 35px !important;
     }
+
     .rin-left-title2 {
-        font-size: 25px!important;
+        font-size: 25px !important;
     }
+
     .rin-left-slogan {
-        font-size: 20px!important;
+        font-size: 20px !important;
     }
 }
 
@@ -135,20 +139,25 @@
     .rin-btn {
         margin-bottom: 10px;
     }
+
     .rin-logo img {
-        display:none;
+        display: none;
     }
+
     .rin-left-title {
         font-size: 30px;
     }
+
     .rin-left-title2 {
         font-size: 20px;
     }
+
     .rin-left-slogan {
         font-size: 15px;
     }
+
     .rin-btn-left {
-        width:auto;
+        width: auto;
         /*margin-top: 5px;*/
     }
 }
@@ -195,27 +204,32 @@
     margin-bottom: 20px;
 }
 
-.rin-card-article{
-    padding:15px;
+.rin-card-article {
+    padding: 15px;
     /*margin-bottom: 10px;*/
 }
-.rin-article-title{
+
+.rin-article-title {
     color: white;
     font-size: 18px;
 }
-.rin-article-content{
-    padding-top:10px;
+
+.rin-article-content {
+    padding-top: 10px;
     color: white;
     font-size: 14px;
 }
-#works a{
-    text-decoration:none;
+
+#works a {
+    text-decoration: none;
 }
-#article a{
-    text-decoration:none;
+
+#article a {
+    text-decoration: none;
 }
-.rin-article-more{
-    text-decoration:none;
+
+.rin-article-more {
+    text-decoration: none;
     color: white;
     font-size: 13px;
     margin-left: 5px;

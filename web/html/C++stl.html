@@ -1,5 +1,5 @@
-
 <html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <title>娄卫健的个人主页</title>
@@ -8,46 +8,50 @@
     <link rel="stylesheet" href="../../web/css/library.css">
     <link rel="stylesheet" href="../../web/css/main.css">
     <link rel="stylesheet" href="../../web/css/index.css">
-        <link rel="stylesheet" href="../../web/css/sidebar.css">
+    <link rel="stylesheet" href="../../web/css/sidebar.css">
     <link rel="icon" href="../../image/me.jpg">
 
-  </head>
-  <ttt>
-        <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
-          <div id="rin-bg"></div>
-          <main id="rin-main">
-              <div class="mdui-row">
-                  <div class="mdui-col-xs-12 mdui-col-md-2">
-                      <div class="rin-left">
-                          <div class="rin-logo">
-                              <img src="../../image/me.jpg" alt="娄卫健">
-                          </div>
-                          <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
-                          <div class="rin-left-title2"></div>
-                          <div class="rin-left-slogan">「新生实践课作业」</div>
-                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://owomoe.net/other/7.html" target="_blank"><span class="iconfont iconabout"></span> 班级主页</a>
-                          <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize" href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span class="iconfont iconabout"></span> 寝室主页</a>
-                      </div>
-                  </div>
-                  <div class="mdui-col-xs-12 mdui-col-md-10">
-                      <div class="mdui-card rin-card">
-                          <div class="rin-card-part" id="introduce" style="margin-top: 0;">
+</head>
+<ttt>
+
+    <body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+        <div id="rin-bg"></div>
+        <main id="rin-main">
+            <div class="mdui-row">
+                <div class="mdui-col-xs-12 mdui-col-md-2">
+                    <div class="rin-left">
+                        <div class="rin-logo">
+                            <img src="../../image/me.jpg" alt="娄卫健">
+                        </div>
+                        <div class="rin-left-title">娄卫健&nbsp;的&nbsp;主&nbsp;页</div>
+                        <div class="rin-left-title2"></div>
+                        <div class="rin-left-slogan">「新生实践课作业」</div>
+                        <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                            href="https://owomoe.net/other/7.html" target="_blank"><span
+                                class="iconfont iconabout"></span> 班级主页</a>
+                        <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                            href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span
+                                class="iconfont iconabout"></span> 寝室主页</a>
+                    </div>
+                </div>
+                <div class="mdui-col-xs-12 mdui-col-md-10">
+                    <div class="mdui-card rin-card">
+                        <div class="rin-card-part" id="introduce" style="margin-top: 0;">
                             <div class="image-container">
-                              <a href="../../index.html" ">
-                                  <img src="../../image/back.png" alt="back" style="width: 20px; height: auto;">
-                              </a>
-                          </div>
-                          <style>
-                            div.image-container a img:hover {
-                                opacity: 0.8;
-                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
-                            }
-                        </style>
+                                <a href="../../index.html" ">
+                                  <img src=" ../../image/back.png" alt="back" style="width: 20px; height: auto;">
+                                </a>
+                            </div>
+                            <style>
+                                div.image-container a img:hover {
+                                    opacity: 0.8;
+                                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                                }
+                            </style>
 
-          
-<div style="color: pink;">
-    <h2>vector</h2>
 
+                            <div style="color: pink;">
+                                <h2>vector</h2>
 
 
 
@@ -166,9 +170,128 @@
 
 
 
-<table><thead><tr><th>代码</th><th>算法复杂度</th><th>返回值类型</th><th>含义</th></tr></thead><tbody><tr><td>c.front()</td><td>O ( 1 )</td><td>引用</td><td>返回容器中的第一个数据</td></tr><tr><td>c.back()</td><td>O ( 1 )</td><td>引用</td><td>返回容器中的最后一个数据</td></tr><tr><td>c.at(idx)</td><td></td><td>引用</td><td>返回 c[idx] ，会进行边界检查，如果越界会报错，比直接使用 [] 更好一些，常在项目中使用</td></tr><tr><td>c.size()</td><td>O ( 1 )</td><td></td><td>返回实际数据个数（unsigned类型）</td></tr><tr><td>c.begin()</td><td>O ( 1 )</td><td>迭代器</td><td>返回首元素的迭代器（通俗来说就是地址）</td></tr><tr><td>c.end()</td><td>O ( 1 )</td><td>迭代器</td><td>返回最后一个元素后一个位置的迭代器（地址）</td></tr><tr><td>c.empty()</td><td>O ( 1 )</td><td>bool</td><td>判断是否为空，为空返回真，反之返回假</td></tr><tr><td>c.reserve(sz)</td><td></td><td></td><td>为数组提前分配sz的内存大小，即改变了 capacity 的大小，主要是为了防止在 push_back 过程中多次的内存拷贝</td></tr><tr><td>c.assign(beg, end)</td><td></td><td></td><td>将另外一个容器[x.begin(), x.end()) 里的内容拷贝到c中</td></tr><tr><td>c.assign(n, val)</td><td></td><td></td><td>将n 个val值拷贝到c数组中，这会清除掉容器中以前的内容，c数组的size将变为n，capacity 不会改变</td></tr><tr><td>c.pop_back()</td><td>O ( 1 )</td><td></td><td>删除最后一个数据</td></tr><tr><td>c.push_back(element)</td><td>O ( 1 )</td><td></td><td>在尾部加一个数据</td></tr><tr><td>c.emplace_back(ele)</td><td>O ( 1 )</td><td></td><td>在数组中加入一个数据，和 push_back 功能基本一样，在某些情况下比它效率更高，支持传入多个构造参数</td></tr><tr><td>c.clear()</td><td>O ( N )</td><td></td><td>清除容器中的所有元素</td></tr><tr><td>c.resize(n, v)</td><td></td><td></td><td>改变数组大小为n,n个空间数值赋为v，如果没有默认赋值为0</td></tr><tr><td>c.insert(pos, x)</td><td>O ( N )</td><td></td><td>向任意迭代器pos插入一个元素x</td></tr><tr><td>例：c.insert(c.begin() + 2, -1)</td><td></td><td></td><td>将-1插入c[2]的位置</td></tr><tr><td>c.erase(first, last)</td><td>O ( N )</td><td></td><td>删除[first, last)的所有元素</td></tr></tbody></table>
-<h2>Stack</h2>
 
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>算法复杂度</th>
+                                            <th>返回值类型</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>c.front()</td>
+                                            <td>O ( 1 )</td>
+                                            <td>引用</td>
+                                            <td>返回容器中的第一个数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.back()</td>
+                                            <td>O ( 1 )</td>
+                                            <td>引用</td>
+                                            <td>返回容器中的最后一个数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.at(idx)</td>
+                                            <td></td>
+                                            <td>引用</td>
+                                            <td>返回 c[idx] ，会进行边界检查，如果越界会报错，比直接使用 [] 更好一些，常在项目中使用</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.size()</td>
+                                            <td>O ( 1 )</td>
+                                            <td></td>
+                                            <td>返回实际数据个数（unsigned类型）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.begin()</td>
+                                            <td>O ( 1 )</td>
+                                            <td>迭代器</td>
+                                            <td>返回首元素的迭代器（通俗来说就是地址）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.end()</td>
+                                            <td>O ( 1 )</td>
+                                            <td>迭代器</td>
+                                            <td>返回最后一个元素后一个位置的迭代器（地址）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.empty()</td>
+                                            <td>O ( 1 )</td>
+                                            <td>bool</td>
+                                            <td>判断是否为空，为空返回真，反之返回假</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.reserve(sz)</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>为数组提前分配sz的内存大小，即改变了 capacity 的大小，主要是为了防止在 push_back 过程中多次的内存拷贝</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.assign(beg, end)</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>将另外一个容器[x.begin(), x.end()) 里的内容拷贝到c中</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.assign(n, val)</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>将n 个val值拷贝到c数组中，这会清除掉容器中以前的内容，c数组的size将变为n，capacity 不会改变</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.pop_back()</td>
+                                            <td>O ( 1 )</td>
+                                            <td></td>
+                                            <td>删除最后一个数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.push_back(element)</td>
+                                            <td>O ( 1 )</td>
+                                            <td></td>
+                                            <td>在尾部加一个数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.emplace_back(ele)</td>
+                                            <td>O ( 1 )</td>
+                                            <td></td>
+                                            <td>在数组中加入一个数据，和 push_back 功能基本一样，在某些情况下比它效率更高，支持传入多个构造参数</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.clear()</td>
+                                            <td>O ( N )</td>
+                                            <td></td>
+                                            <td>清除容器中的所有元素</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.resize(n, v)</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>改变数组大小为n,n个空间数值赋为v，如果没有默认赋值为0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.insert(pos, x)</td>
+                                            <td>O ( N )</td>
+                                            <td></td>
+                                            <td>向任意迭代器pos插入一个元素x</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：c.insert(c.begin() + 2, -1)</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>将-1插入c[2]的位置</td>
+                                        </tr>
+                                        <tr>
+                                            <td>c.erase(first, last)</td>
+                                            <td>O ( N )</td>
+                                            <td></td>
+                                            <td>删除[first, last)的所有元素</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2>Stack</h2>
 
 
 
@@ -197,9 +320,38 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td>s.push(ele)</td><td>元素ele入栈，增加元素 O ( 1 )</td></tr><tr><td>s.pop()</td><td>移除栈顶元素 O  ( 1 )</td></tr><tr><td>s.top()</td><td>取得栈顶元素（但不删除）O ( 1 )</td></tr><tr><td>s.empty()</td><td>检测栈内是否为空，空为真 O ( 1 )</td></tr><tr><td>s.size()</td><td>返回栈内元素的个数  O ( 1 )</td></tr></tbody></table>
-<h2>qeque</h2>
 
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>s.push(ele)</td>
+                                            <td>元素ele入栈，增加元素 O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.pop()</td>
+                                            <td>移除栈顶元素 O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.top()</td>
+                                            <td>取得栈顶元素（但不删除）O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.empty()</td>
+                                            <td>检测栈内是否为空，空为真 O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.size()</td>
+                                            <td>返回栈内元素的个数 O ( 1 )</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2>qeque</h2>
 
 
 
@@ -232,9 +384,42 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td>q.front()</td><td>返回队首元素 O  ( 1 ) O(1)O(1)</td></tr><tr><td>q.back()</td><td>返回队尾元素 O  ( 1 ) O(1)O(1)</td></tr><tr><td>q.push(element)</td><td>尾部添加一个元素element  进队O ( 1 ) O(1)O(1)</td></tr><tr><td>q.pop()</td><td>删除第一个元素 出队 O ( 1 ) O(1)O(1)</td></tr><tr><td>q.size()</td><td>返回队列中元素个数，返回值类型unsigned int O ( 1 ) O(1)O(1)</td></tr><tr><td>q.empty()</td><td>判断是否为空，队列为空，返回true O ( 1 ) O(1)O(1)</td></tr></tbody></table>
-<h2>deque</h2>
 
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>q.front()</td>
+                                            <td>返回队首元素 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.back()</td>
+                                            <td>返回队尾元素 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.push(element)</td>
+                                            <td>尾部添加一个元素element 进队O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.pop()</td>
+                                            <td>删除第一个元素 出队 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.size()</td>
+                                            <td>返回队列中元素个数，返回值类型unsigned int O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.empty()</td>
+                                            <td>判断是否为空，队列为空，返回true O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2>deque</h2>
 
 
 
@@ -275,9 +460,50 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td>push_back(x)/push_front(x)</td><td>把x插入队尾后 / 队首 O ( 1 ) O(1)O(1)</td></tr><tr><td>back()/front()</td><td>返回队尾 / 队首元素 O ( 1 ) O(1)O(1)</td></tr><tr><td>pop_back()  / pop_front()</td><td>删除队尾 / 队首元素 O ( 1 ) O(1)O(1)</td></tr><tr><td>erase(iterator  it)</td><td>删除双端队列中的某一个元素</td></tr><tr><td>erase(iterator  first,iterator last)</td><td>删除双端队列中[first,last)中的元素</td></tr><tr><td>empty()</td><td>判断deque是否空 O ( 1 ) O(1)O(1)</td></tr><tr><td>size()</td><td>返回deque的元素数量 O ( 1 ) O(1)O(1)</td></tr><tr><td>clear()</td><td>清空deque</td></tr></tbody></table>
-<h2><strong>priority_queue</strong></h2>
 
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>push_back(x)/push_front(x)</td>
+                                            <td>把x插入队尾后 / 队首 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>back()/front()</td>
+                                            <td>返回队尾 / 队首元素 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pop_back() / pop_front()</td>
+                                            <td>删除队尾 / 队首元素 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(iterator it)</td>
+                                            <td>删除双端队列中的某一个元素</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(iterator first,iterator last)</td>
+                                            <td>删除双端队列中[first,last)中的元素</td>
+                                        </tr>
+                                        <tr>
+                                            <td>empty()</td>
+                                            <td>判断deque是否空 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>size()</td>
+                                            <td>返回deque的元素数量 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>clear()</td>
+                                            <td>清空deque</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2><strong>priority_queue</strong></h2>
 
 
 
@@ -314,15 +540,53 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td>q.top()</td><td>访问队首元素 O  ( 1 ) O(1)O(1)</td></tr><tr><td>q.push()</td><td>入队 O ( l  o g N ) O(logN)O(logN)</td></tr><tr><td>q.pop()</td><td>堆顶（队首）元素出队 O ( l o g N ) O(logN)O(logN)</td></tr><tr><td>q.size()</td><td>队列元素个数 O  ( 1 ) O(1)O(1)</td></tr><tr><td>q.empty()</td><td>是否为空 O (  1 ) O(1)O(1)</td></tr><tr><td>注意没有clear()！</td><td>不提供该方法</td></tr><tr><td>优先队列只能通过top()访问队首元素（优先级最高的元素）</td><td></td></tr></tbody></table>
-<pre><code class="language-c++ code-highlight"><span class="code-line line-number" line="1">priority_queue&lt;int&gt; pq; *//* *默认大根堆, 即每次取出的元素是队列中的最大值*
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>q.top()</td>
+                                            <td>访问队首元素 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.push()</td>
+                                            <td>入队 O ( l o g N ) O(logN)O(logN)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.pop()</td>
+                                            <td>堆顶（队首）元素出队 O ( l o g N ) O(logN)O(logN)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.size()</td>
+                                            <td>队列元素个数 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>q.empty()</td>
+                                            <td>是否为空 O ( 1 ) O(1)O(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>注意没有clear()！</td>
+                                            <td>不提供该方法</td>
+                                        </tr>
+                                        <tr>
+                                            <td>优先队列只能通过top()访问队首元素（优先级最高的元素）</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-c++ code-highlight"><span class="code-line line-number" line="1">priority_queue&lt;int&gt; pq; *//* *默认大根堆, 即每次取出的元素是队列中的最大值*
 </span><span class="code-line line-number" line="2">priority_queue&lt;int, vector&lt;int&gt;, greater&lt;i //定义的比较结构体
 </span><span class="code-line line-number" line="3">//注意：cmp是个结构体 
 </span><span class="code-line line-number" line="4">struct cmp {//自定义堆的排序规则 
 </span><span class="code-line line-number" line="5">   bool operator()(const Point&amp; a,const Point&amp; b) {
 </span><span class="code-line line-number" line="6">      return a.x &lt; b.x;
 </span></code></pre>
-<h2>map</h2>
+                                <h2>map</h2>
 
 
 
@@ -408,8 +672,95 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th><th>复杂度</th></tr></thead><tbody><tr><td>mp.find(key)</td><td>返回键为key的映射的迭代器  注意：用find函数来定位数据出现位置，它返回一个迭代器。当数据存在时，返回数据所在位置的迭代器，数据不存在时，返回m p . e n d ( )</td><td>O ( l o g N )</td></tr><tr><td>mp.erase(it)</td><td>删除迭代器对应的键和值</td><td>O ( l o g N )</td></tr><tr><td>mp.erase(key)</td><td>根据映射的键删除键和值</td><td>O ( l o g N )</td></tr><tr><td>mp.erase(first,last)</td><td>删除左闭右开区间迭代器对应的键和值</td><td>O ( l a s t − f i r s t )</td></tr><tr><td>mp.size()</td><td>返回映射的对数</td><td>O ( 1 )</td></tr><tr><td>mp.clear()</td><td>清空map中的所有元素</td><td>O ( N )</td></tr><tr><td>mp.insert()</td><td>插入元素，插入时要构造键值对</td><td>O ( l o g N )</td></tr><tr><td>mp.empty()</td><td>如果map为空，返回true，否则返回false</td><td>O ( 1 )</td></tr><tr><td>mp.begin()</td><td>返回指向map第一个元素的迭代器（地址）</td><td>O ( 1 )</td></tr><tr><td>mp.end()</td><td>返回指向map尾部的迭代器（最后一个元素的下一个地址）</td><td>O ( 1 )</td></tr><tr><td>mp.rbegin()</td><td>返回指向map最后一个元素的迭代器（地址）</td><td>O ( 1 )</td></tr><tr><td>mp.rend()</td><td>返回指向map第一个元素前面(上一个）的逆向迭代器（地址）</td><td>O ( 1 )</td></tr><tr><td>mp.count(key)</td><td>查看元素是否存在，因为map中键是唯一的，所以存在返回1，不存在返回0</td><td>O(log n)</td></tr><tr><td>mp.lower_bound()</td><td>返回一个迭代器，指向键值&gt;= key的第一个元素</td><td></td></tr><tr><td>mp.upper_bound()</td><td>返回一个迭代器，指向键值&gt; key的第一个元素</td><td></td></tr></tbody></table>
-<h2>set</h2>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                            <th>复杂度</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>mp.find(key)</td>
+                                            <td>返回键为key的映射的迭代器
+                                                注意：用find函数来定位数据出现位置，它返回一个迭代器。当数据存在时，返回数据所在位置的迭代器，数据不存在时，返回m p . e n d (
+                                                )</td>
+                                            <td>O ( l o g N )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.erase(it)</td>
+                                            <td>删除迭代器对应的键和值</td>
+                                            <td>O ( l o g N )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.erase(key)</td>
+                                            <td>根据映射的键删除键和值</td>
+                                            <td>O ( l o g N )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.erase(first,last)</td>
+                                            <td>删除左闭右开区间迭代器对应的键和值</td>
+                                            <td>O ( l a s t − f i r s t )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.size()</td>
+                                            <td>返回映射的对数</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.clear()</td>
+                                            <td>清空map中的所有元素</td>
+                                            <td>O ( N )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.insert()</td>
+                                            <td>插入元素，插入时要构造键值对</td>
+                                            <td>O ( l o g N )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.empty()</td>
+                                            <td>如果map为空，返回true，否则返回false</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.begin()</td>
+                                            <td>返回指向map第一个元素的迭代器（地址）</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.end()</td>
+                                            <td>返回指向map尾部的迭代器（最后一个元素的下一个地址）</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.rbegin()</td>
+                                            <td>返回指向map最后一个元素的迭代器（地址）</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.rend()</td>
+                                            <td>返回指向map第一个元素前面(上一个）的逆向迭代器（地址）</td>
+                                            <td>O ( 1 )</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.count(key)</td>
+                                            <td>查看元素是否存在，因为map中键是唯一的，所以存在返回1，不存在返回0</td>
+                                            <td>O(log n)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.lower_bound()</td>
+                                            <td>返回一个迭代器，指向键值&gt;= key的第一个元素</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>mp.upper_bound()</td>
+                                            <td>返回一个迭代器，指向键值&gt; key的第一个元素</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2>set</h2>
 
 
 
@@ -500,8 +851,98 @@
 
 
 
-<table><thead><tr><th>代码</th><th>复杂度</th><th>含义</th></tr></thead><tbody><tr><td>s.begin()</td><td>O ( 1 ) O(1)O(1)</td><td>返回set容器的第一个元素的地址（迭代器）</td></tr><tr><td>s.end()</td><td>O ( 1 ) O(1)O(1)</td><td>返回set容器的最后一个元素的下一个地址（迭代器）</td></tr><tr><td>s.rbegin()</td><td>O ( 1 ) O(1)O(1)</td><td>返回逆序迭代器，指向容器元素最后一个位置</td></tr><tr><td>s.rend()</td><td>O ( 1 ) O(1)O(1)</td><td>返回逆序迭代器，指向容器第一个元素前面的位置</td></tr><tr><td>s.clear()</td><td>O ( N ) O(N)O(N)</td><td>删除set容器中的所有的元素,无返回值</td></tr><tr><td>s.empty()</td><td>O ( 1 ) O(1)O(1)</td><td>判断set容器是否为空</td></tr><tr><td>s.insert(element)</td><td>O ( l o g N )  O(logN)O(logN)</td><td>插入一个元素</td></tr><tr><td>s.size()</td><td>O ( 1 ) O(1)O(1)</td><td>返回当前set容器中的元素个数</td></tr><tr><td>erase(iterator)</td><td>O ( l o g N )  O(logN)O(logN)</td><td>删除定位器iterator指向的值</td></tr><tr><td>erase(first, second）</td><td></td><td>删除定位器first和second之间的值</td></tr><tr><td>erase(key_value)</td><td>O ( l o g N )  O(logN)O(logN)</td><td>删除键值key_value的值</td></tr><tr><td>查找</td><td></td><td></td></tr><tr><td>s.find(element)</td><td></td><td>查找set中的某一元素，有则返回该元素对应的迭代器，无则返回结束迭代器</td></tr><tr><td>s.count(element)</td><td></td><td>查找set中的元素出现的个数，由于set中元素唯一，此函数相当于查询element是否出现</td></tr><tr><td>s.lower_bound(k)</td><td>O ( l o g N )  O(logN)O(logN)</td><td>返回大于等于k的第一个元素的迭代器</td></tr><tr><td>s.upper_bound(k)</td><td>O ( l o g N )  O(logN)O(logN)</td><td>返回大于k的第一个元素的迭代器</td></tr></tbody></table>
-<h2>string</h2>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>复杂度</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>s.begin()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>返回set容器的第一个元素的地址（迭代器）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.end()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>返回set容器的最后一个元素的下一个地址（迭代器）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.rbegin()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>返回逆序迭代器，指向容器元素最后一个位置</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.rend()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>返回逆序迭代器，指向容器第一个元素前面的位置</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.clear()</td>
+                                            <td>O ( N ) O(N)O(N)</td>
+                                            <td>删除set容器中的所有的元素,无返回值</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.empty()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>判断set容器是否为空</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.insert(element)</td>
+                                            <td>O ( l o g N ) O(logN)O(logN)</td>
+                                            <td>插入一个元素</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.size()</td>
+                                            <td>O ( 1 ) O(1)O(1)</td>
+                                            <td>返回当前set容器中的元素个数</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(iterator)</td>
+                                            <td>O ( l o g N ) O(logN)O(logN)</td>
+                                            <td>删除定位器iterator指向的值</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(first, second）</td>
+                                            <td></td>
+                                            <td>删除定位器first和second之间的值</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(key_value)</td>
+                                            <td>O ( l o g N ) O(logN)O(logN)</td>
+                                            <td>删除键值key_value的值</td>
+                                        </tr>
+                                        <tr>
+                                            <td>查找</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find(element)</td>
+                                            <td></td>
+                                            <td>查找set中的某一元素，有则返回该元素对应的迭代器，无则返回结束迭代器</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.count(element)</td>
+                                            <td></td>
+                                            <td>查找set中的元素出现的个数，由于set中元素唯一，此函数相当于查询element是否出现</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.lower_bound(k)</td>
+                                            <td>O ( l o g N ) O(logN)O(logN)</td>
+                                            <td>返回大于等于k的第一个元素的迭代器</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.upper_bound(k)</td>
+                                            <td>O ( l o g N ) O(logN)O(logN)</td>
+                                            <td>返回大于k的第一个元素的迭代器</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h2>string</h2>
 
 
 
@@ -619,24 +1060,145 @@
 
 
 
-<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td>s.push_back()</td><td>在末尾插入</td></tr><tr><td>例：s.push_back('a')</td><td>末尾插入一个字符a</td></tr><tr><td>s.insert(pos,element)</td><td>在pos位置插入element</td></tr><tr><td>例：s.insert(s.begin(),'1')</td><td>在第一个位置插入1字符</td></tr><tr><td>s.append(str)</td><td>在s字符串结尾添加str字符串</td></tr><tr><td>例：s.append("abc")</td><td>在s字符串末尾添加字符串“abc”</td></tr><tr><td>erase(iterator p)</td><td>删除字符串中p所指的字符</td></tr><tr><td>erase(iterator first, iterator last)</td><td>删除字符串中迭代器区间[first,last)上所有字符</td></tr><tr><td>erase(pos, len)</td><td>删除字符串中从索引位置pos开始的len个字符</td></tr><tr><td>clear()</td><td>删除字符串中所有字符</td></tr><tr><td>s.replace(pos,n,str)</td><td>把当前字符串从索引pos开始的n个字符替换为str</td></tr><tr><td>s.replace(pos,n,n1,c)</td><td>把当前字符串从索引pos开始的n个字符替换为n1个字符c</td></tr><tr><td>s.replace(it1,it2,str)</td><td>把当前字符串[it1,it2)区间替换为str it1 ,it2为迭代器哦</td></tr><tr><td>stoi(s)            将字符串 s 转化为 int 类型                  stoll(s)            将字符串 s 转化为 long long int 类型                  stod(s)            将字符串 s 转化为 double 类型                  stold(s)            将字符串 s 转化为 long double 类型           s.push_back()</td><td>在末尾插入</td></tr><tr><td>例：s.push_back('a')</td><td>末尾插入一个字符a</td></tr><tr><td>s.insert(pos,element)</td><td>在pos位置插入element</td></tr><tr><td>例：s.insert(s.begin(),'1')</td><td>在第一个位置插入1字符</td></tr><tr><td>s.append(str)</td><td>在s字符串结尾添加str字符串</td></tr><tr><td>例：s.append("abc")</td><td>在s字符串末尾添加字符串“abc”</td></tr><tr><td>s.substr(pos,n)            截取从pos索引开始的n个字符           s.find (str, pos)</td><td>在当前字符串的pos索引位置（默认为0）开始，查找子串str，返回找到的位置索引，-1表示查找不到子串</td></tr><tr><td>s.find (c, pos)</td><td>在当前字符串的pos索引位置（默认为0）开始，查找字符c，返回找到的位置索引，-1表示查找不到字符</td></tr><tr><td>s.rfind (str, pos)</td><td>在当前字符串的pos索引位置开始，反向查找子串s，返回找到的位置索引，-1表示查找不到子串</td></tr><tr><td>s.rfind (c,pos)</td><td>在当前字符串的pos索引位置开始，反向查找字符c，返回找到的位置索引，-1表示查找不到字符</td></tr><tr><td>s.find_first_of (str, pos)</td><td>在当前字符串的pos索引位置（默认为0）开始，查找子串s的字符，返回找到的位置索引，-1表示查找不到字符</td></tr><tr><td>s.find_first_not_of (str,pos)</td><td>在当前字符串的pos索引位置（默认为0）开始，查找第一个不位于子串s的字符，返回找到的位置索引，-1表示查找不到字符</td></tr><tr><td>s.find_last_of(str, pos)</td><td>在当前字符串的pos索引位置开始，查找最后一个位于子串s的字符，返回找到的位置索引，-1表示查找不到字符</td></tr><tr><td>s.find_last_not_of ( str, pos)</td><td>在当前字符串的pos索引位置开始，查找最后一个不位于子串s的字符，返回找到的位置索引，-1表示查找不到子串</td></tr></tbody></table>
-</div>
-                <div class="rin-tr"></div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>代码</th>
+                                            <th>含义</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>s.push_back()</td>
+                                            <td>在末尾插入</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.push_back('a')</td>
+                                            <td>末尾插入一个字符a</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.insert(pos,element)</td>
+                                            <td>在pos位置插入element</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.insert(s.begin(),'1')</td>
+                                            <td>在第一个位置插入1字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.append(str)</td>
+                                            <td>在s字符串结尾添加str字符串</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.append("abc")</td>
+                                            <td>在s字符串末尾添加字符串“abc”</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(iterator p)</td>
+                                            <td>删除字符串中p所指的字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(iterator first, iterator last)</td>
+                                            <td>删除字符串中迭代器区间[first,last)上所有字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>erase(pos, len)</td>
+                                            <td>删除字符串中从索引位置pos开始的len个字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>clear()</td>
+                                            <td>删除字符串中所有字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.replace(pos,n,str)</td>
+                                            <td>把当前字符串从索引pos开始的n个字符替换为str</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.replace(pos,n,n1,c)</td>
+                                            <td>把当前字符串从索引pos开始的n个字符替换为n1个字符c</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.replace(it1,it2,str)</td>
+                                            <td>把当前字符串[it1,it2)区间替换为str it1 ,it2为迭代器哦</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stoi(s) 将字符串 s 转化为 int 类型 stoll(s) 将字符串 s 转化为 long long int 类型 stod(s)
+                                                将字符串 s 转化为 double 类型 stold(s) 将字符串 s 转化为 long double 类型 s.push_back()
+                                            </td>
+                                            <td>在末尾插入</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.push_back('a')</td>
+                                            <td>末尾插入一个字符a</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.insert(pos,element)</td>
+                                            <td>在pos位置插入element</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.insert(s.begin(),'1')</td>
+                                            <td>在第一个位置插入1字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.append(str)</td>
+                                            <td>在s字符串结尾添加str字符串</td>
+                                        </tr>
+                                        <tr>
+                                            <td>例：s.append("abc")</td>
+                                            <td>在s字符串末尾添加字符串“abc”</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.substr(pos,n) 截取从pos索引开始的n个字符 s.find (str, pos)</td>
+                                            <td>在当前字符串的pos索引位置（默认为0）开始，查找子串str，返回找到的位置索引，-1表示查找不到子串</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find (c, pos)</td>
+                                            <td>在当前字符串的pos索引位置（默认为0）开始，查找字符c，返回找到的位置索引，-1表示查找不到字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.rfind (str, pos)</td>
+                                            <td>在当前字符串的pos索引位置开始，反向查找子串s，返回找到的位置索引，-1表示查找不到子串</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.rfind (c,pos)</td>
+                                            <td>在当前字符串的pos索引位置开始，反向查找字符c，返回找到的位置索引，-1表示查找不到字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find_first_of (str, pos)</td>
+                                            <td>在当前字符串的pos索引位置（默认为0）开始，查找子串s的字符，返回找到的位置索引，-1表示查找不到字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find_first_not_of (str,pos)</td>
+                                            <td>在当前字符串的pos索引位置（默认为0）开始，查找第一个不位于子串s的字符，返回找到的位置索引，-1表示查找不到字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find_last_of(str, pos)</td>
+                                            <td>在当前字符串的pos索引位置开始，查找最后一个位于子串s的字符，返回找到的位置索引，-1表示查找不到字符</td>
+                                        </tr>
+                                        <tr>
+                                            <td>s.find_last_not_of ( str, pos)</td>
+                                            <td>在当前字符串的pos索引位置开始，查找最后一个不位于子串s的字符，返回找到的位置索引，-1表示查找不到子串</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="rin-tr"></div>
 
-                <div class="rin-card-part" id="last">
-                    <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
-                    <div class="rin-card-content">华中科技大学</div>
+                            <div class="rin-card-part" id="last">
+                                <div class="rin-card-title2">娄卫健的个人主页(新生实践课)</div>
+                                <div class="rin-card-content">华中科技大学</div>
+                            </div>
+
+                            <div class="rin-card-part" id="footer">
+                                <div class="rin-card-content">Made with love by 娄卫健 <a
+                                        href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link"
+                                        target="_blank">添加作者qq</a></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+        </main>
+        <script src="assets/js/main.js"></script>
+        <script src="../../web/js/sidebar.js"></script>
+    </body>
 
-                <div class="rin-card-part" id="footer">
-                    <div class="rin-card-content">Made with love by 娄卫健 <a
-                            href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link" target="_blank">添加作者qq</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-<script src="assets/js/main.js"></script>
-<script src="../../web/js/sidebar.js"></script>
-</body>
 </html>

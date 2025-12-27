@@ -12,7 +12,11 @@
     <link rel="icon" href="../../image/me.jpg">
     <style>
         /* 仅作用于此页面右侧内容，不修改全局 CSS */
-        #right-content .rin-card { color: #fff; font-size: 2em; }
+        #right-content .rin-card {
+            color: #fff;
+            font-size: 2em;
+        }
+
         /* 确保常见文本元素也继承白色，避免被其他规则覆盖 */
         #right-content .rin-card h1,
         #right-content .rin-card h2,
@@ -21,17 +25,21 @@
         #right-content .rin-card h5,
         #right-content .rin-card p,
         #right-content .rin-card li,
-        #right-content .rin-card a { color: #fff; }
+        #right-content .rin-card a {
+            color: #fff;
+        }
 
         /* 使 Markdown 生成的代码块自动换行并可在窄屏显示 */
         #right-content .rin-card pre,
         #right-content .rin-card pre code,
         #right-content .rin-card code,
-        #right-content .rin-card .code-highlight { 
-            white-space: pre-wrap !important; /* 保留换行并允许换行 */
+        #right-content .rin-card .code-highlight {
+            white-space: pre-wrap !important;
+            /* 保留换行并允许换行 */
             word-break: break-word !important;
             overflow-wrap: anywhere !important;
-            font-size: 0.9em; /* 代码字体相对于正文稍小 */
+            font-size: 0.9em;
+            /* 代码字体相对于正文稍小 */
         }
 
         /* 如果希望覆盖第三方库的颜色优先级问题，可在此加上 !important（现在仅在必要元素使用） */
@@ -40,14 +48,27 @@
         #right-content .rin-card table.md-table-right th,
         #right-content .rin-card table.md-table-right td {
             color: #ffffff !important;
-            font-size: 1em !important; /* 相对于右侧 2em 基准，这里使用 1em 以匹配正文视觉比例 */
+            font-size: 1em !important;
+            /* 相对于右侧 2em 基准，这里使用 1em 以匹配正文视觉比例 */
         }
 
-    /* Inline critical layout rules to prevent initial float-based render flash on this page only. */
-    /* These ensure the initial layout matches the final JS-restructured layout until sidebar.css loads and sidebar.js runs. */
-    .mdui-row{display:flex;align-items:flex-start;box-sizing:border-box}
-    .mdui-row>.mdui-col-md-2{flex:0 0 220px;max-width:220px}
-    .mdui-row>.mdui-col-md-10{flex:1 1 auto;min-width:0}
+        /* Inline critical layout rules to prevent initial float-based render flash on this page only. */
+        /* These ensure the initial layout matches the final JS-restructured layout until sidebar.css loads and sidebar.js runs. */
+        .mdui-row {
+            display: flex;
+            align-items: flex-start;
+            box-sizing: border-box
+        }
+
+        .mdui-row>.mdui-col-md-2 {
+            flex: 0 0 220px;
+            max-width: 220px
+        }
+
+        .mdui-row>.mdui-col-md-10 {
+            flex: 1 1 auto;
+            min-width: 0
+        }
     </style>
 </head>
 
@@ -71,12 +92,28 @@
                             class="iconfont iconabout"></span> 寝室主页</a>
                     <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
                         href="https://felixlovejj.github.io/helpstu.github.io/" target="_blank"><span
-                            class="iconfont iconabout"></span> 学习笔记</a>
+                            class="iconfont iconabout"></span> 微积分讲解</a>
+
+                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                        href="../pdf/娄卫健C语言讲解.pdf" download><span class="iconfont iconabout"></span> 下载PDF</a>
 
                 </div>
             </div>
             <div id="right-content" class="mdui-col-xs-12 mdui-col-md-10">
+
                 <div class="mdui-card rin-card">
+                    <div class="image-container">
+                        <a href="../../index.html" ">
+                                                      <img src=" ../../image/back.png" alt="back"
+                            style="width: 20px; height: auto;">
+                        </a>
+                    </div>
+                    <style>
+                        div.image-container a img:hover {
+                            opacity: 0.8;
+                            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                        }
+                    </style>
                     <h1>C语言考试题型/知识点总结</h1>
                     <h4>2025.12.30 娄卫健</h4>
                     <h2>一、计算表达式的值（10 分）</h2>
