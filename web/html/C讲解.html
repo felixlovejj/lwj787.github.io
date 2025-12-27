@@ -11,36 +11,56 @@
     <link rel="stylesheet" href="../../web/css/sidebar.css">
     <link rel="icon" href="../../image/me.jpg">
     <style>
-        /* 仅作用于此页面右侧内容，不修改全局 CSS */
+        /* 仅作用于此页面：改为白底黑字（不修改全局 CSS） */
         #right-content .rin-card {
-            color: #fff;
             /* slightly larger than normal */
             font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.96) !important;
+            color: #111 !important;
         }
 
-        /* 确保常见文本元素也继承白色，避免被其他规则覆盖 */
+        /* 常见文本元素：强制深色文字，避免被全局主题覆盖 */
         #right-content .rin-card h1,
         #right-content .rin-card h2,
         #right-content .rin-card h3,
         #right-content .rin-card h4,
         #right-content .rin-card h5,
         #right-content .rin-card p,
-        #right-content .rin-card li,
-        #right-content .rin-card a {
-            color: #fff;
+        #right-content .rin-card li {
+            color: #111 !important;
         }
 
-        /* 使 Markdown 生成的代码块自动换行并可在窄屏显示 */
+        /* 链接：深色可读，并带一点主题色 */
+        #right-content .rin-card a {
+            color: #1565c0 !important;
+        }
+
+        #right-content .rin-card a:visited {
+            color: #5e35b1 !important;
+        }
+
+        /* Markdown 代码：
+           - 行内 code：不加深背景（只保留颜色/换行策略）
+           - 代码块 pre：背景可以加深一点（更易阅读）
+        */
+        #right-content .rin-card code {
+            color: #111 !important;
+            background: transparent !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            font-size: 0.95em;
+        }
+
         #right-content .rin-card pre,
         #right-content .rin-card pre code,
-        #right-content .rin-card code,
         #right-content .rin-card .code-highlight {
+            color: #111 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
             white-space: pre-wrap !important;
-            /* 保留换行并允许换行 */
             word-break: break-word !important;
             overflow-wrap: anywhere !important;
             font-size: 0.9em;
-            /* 代码字体相对于正文稍小 */
         }
 
         /* 如果希望覆盖第三方库的颜色优先级问题，可在此加上 !important（现在仅在必要元素使用） */
@@ -48,9 +68,22 @@
         #right-content .rin-card table.md-table-right,
         #right-content .rin-card table.md-table-right th,
         #right-content .rin-card table.md-table-right td {
-            color: #ffffff !important;
+            color: #111 !important;
             font-size: 1em !important;
             /* 相对于右侧 2em 基准，这里使用 1em 以匹配正文视觉比例 */
+        }
+
+    /* 左卡颜色由“可切换主题”控制（避免原背景模式出现白块） */
+
+        /* Strong fallback: win against global theme/card defaults if any rule still forces white text or dark card */
+        body #right-content .mdui-card.rin-card,
+        body #right-content .rin-card {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        body #right-content .mdui-card.rin-card * {
+            color: inherit;
         }
 
         /* Inline critical layout rules to prevent initial float-based render flash on this page only. */
@@ -69,6 +102,165 @@
         .mdui-row>.mdui-col-md-10 {
             flex: 1 1 auto;
             min-width: 0
+        }
+
+        /* =====================
+           本页专用 - 可切换主题：
+           - 默认（不加 class）：原背景图 + 原白字
+           - page-white：纯白背景 + 纯黑字
+           ===================== */
+
+        body.page-white,
+        body.page-white html {
+            background: #ffffff !important;
+            background-image: none !important;
+            color: #111 !important;
+        }
+
+        body.page-white #rin-bg,
+        body.page-white #rin-bg:before,
+        body.page-white #rin-bg:after {
+            background: none !important;
+            background-image: none !important;
+            content: none !important;
+            filter: none !important;
+            opacity: 0 !important;
+        }
+
+        body.page-white #rin-main {
+            background: #ffffff !important;
+            background-image: none !important;
+        }
+
+        /* 白底状态下：右侧内容卡片白底黑字（包括 markdown 区） */
+        body.page-white #right-content .rin-card {
+            background: rgba(255, 255, 255, 0.96) !important;
+            color: #111 !important;
+        }
+
+        body.page-white #right-content .rin-card h1,
+        body.page-white #right-content .rin-card h2,
+        body.page-white #right-content .rin-card h3,
+        body.page-white #right-content .rin-card h4,
+        body.page-white #right-content .rin-card h5,
+        body.page-white #right-content .rin-card p,
+        body.page-white #right-content .rin-card li {
+            color: #111 !important;
+        }
+
+        body.page-white #right-content .rin-card code {
+            color: #111 !important;
+            background: transparent !important;
+        }
+
+        body.page-white #right-content .rin-card pre,
+        body.page-white #right-content .rin-card pre code,
+        body.page-white #right-content .rin-card .code-highlight {
+            color: #111 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        body.page-white #right-content .rin-card table.md-table-right,
+        body.page-white #right-content .rin-card table.md-table-right th,
+        body.page-white #right-content .rin-card table.md-table-right td {
+            color: #111 !important;
+        }
+
+        /* 白底状态下：左卡提亮 + 黑字 */
+        body.page-white #rin-main .rin-left {
+            background: rgba(255, 255, 255, 0.92) !important;
+            color: #111 !important;
+        }
+
+        body.page-white #rin-main .rin-left,
+        body.page-white #rin-main .rin-left .rin-left-title,
+        body.page-white #rin-main .rin-left .rin-left-title2,
+        body.page-white #rin-main .rin-left .rin-left-slogan,
+        body.page-white #rin-main .rin-left p,
+        body.page-white #rin-main .rin-left a {
+            color: #111 !important;
+        }
+
+        body.page-white #rin-main .rin-left .rin-btn,
+        body.page-white #rin-main .rin-left .rin-btn * {
+            color: #111 !important;
+        }
+
+        /* 白底状态下：分区感（边框/阴影） */
+        body.page-white #rin-main .rin-left,
+        body.page-white #right-content .rin-card {
+            border: 1px solid rgba(0, 0, 0, 0.12) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* 选中文本样式：纯白模式选中文字为黑色；图片背景模式保持原来的白/浅色逻辑 */
+        body.page-white ::selection {
+            color: #111 !important;
+            background: rgba(255, 64, 129, 0.35) !important;
+        }
+
+        body:not(.page-white) ::selection {
+            color: #e0e0e0 !important;
+            background: rgba(255, 64, 129, 0.35) !important;
+        }
+
+        body:not(.page-white) #rin-main .rin-left {
+            background: rgba(66, 66, 66, 0.30) !important;
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #rin-main .rin-left .rin-left-title,
+        body:not(.page-white) #rin-main .rin-left .rin-left-title2,
+        body:not(.page-white) #rin-main .rin-left .rin-left-slogan,
+        body:not(.page-white) #rin-main .rin-left p,
+        body:not(.page-white) #rin-main .rin-left a,
+        body:not(.page-white) #rin-main .rin-left .rin-btn,
+        body:not(.page-white) #rin-main .rin-left .rin-btn * {
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        /* =====================
+           原背景图模式（默认主题）兜底：避免残留白底/黑字
+           ===================== */
+        body:not(.page-white) #right-content .rin-card {
+            background-color: rgba(66, 66, 66, 0.30) !important;
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card h1,
+        body:not(.page-white) #right-content .rin-card h2,
+        body:not(.page-white) #right-content .rin-card h3,
+        body:not(.page-white) #right-content .rin-card h4,
+        body:not(.page-white) #right-content .rin-card h5,
+        body:not(.page-white) #right-content .rin-card p,
+        body:not(.page-white) #right-content .rin-card li {
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card a {
+            color: #90caf9 !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card a:visited {
+            color: #ce93d8 !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card code {
+            color: rgba(255, 255, 255, 0.92) !important;
+            background: transparent !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card pre,
+        body:not(.page-white) #right-content .rin-card pre code,
+        body:not(.page-white) #right-content .rin-card .code-highlight {
+            color: rgba(255, 255, 255, 0.92) !important;
+            background: rgba(0, 0, 0, 0.35) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card table.md-table-right,
+        body:not(.page-white) #right-content .rin-card table.md-table-right th,
+        body:not(.page-white) #right-content .rin-card table.md-table-right td {
+            color: rgba(255, 255, 255, 0.92) !important;
         }
     </style>
 </head>
@@ -97,6 +289,11 @@
 
                     <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
                         href="../pdf/娄卫健C语言讲解.pdf" download><span class="iconfont iconabout"></span> 下载PDF</a>
+
+                    <button id="bg-toggle" type="button"
+                        class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize">
+                        <span class="iconfont iconabout"></span> 切换背景
+                    </button>
 
                 </div>
             </div>
@@ -1073,6 +1270,47 @@
     </main>
     <script src="web/js/mdui.min.js"></script>
     <script src="../../web/js/sidebar.js"></script>
+    <script>
+        (function () {
+            // 仅此页使用的开关（避免影响其它页面）
+            var STORAGE_KEY = 'C讲解.pageWhite';
+
+            function setButtonText() {
+                var btn = document.getElementById('bg-toggle');
+                if (!btn) return;
+                btn.textContent = '切换背景';
+            }
+
+            function applyState(isWhite) {
+                document.body.classList.toggle('page-white', !!isWhite);
+                setButtonText();
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var saved = null;
+                try {
+                    saved = localStorage.getItem(STORAGE_KEY);
+                } catch (e) {
+                    saved = null;
+                }
+                // 默认：纯白模式（即使没有 localStorage 也走 page-white）
+                var isWhite = saved === null ? true : (saved === '1');
+                applyState(isWhite);
+
+                var btn = document.getElementById('bg-toggle');
+                if (!btn) return;
+                btn.addEventListener('click', function () {
+                    var next = !document.body.classList.contains('page-white');
+                    applyState(next);
+                    try {
+                        localStorage.setItem(STORAGE_KEY, next ? '1' : '0');
+                    } catch (e) {
+                        // ignore
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
