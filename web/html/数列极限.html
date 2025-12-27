@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>数列极限</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+  <style>
+   body {
+       font-size: 250%;
+   }
+</style>
+<style>
+   body {
+       font-size: 250%;
+   }
+   button {
+       background-color: #4CAF50; /* 按钮背景颜色 */
+       border: none; /* 去除边框 */
+       color: white; /* 文字颜色 */
+       padding: 15px 32px; /* 内边距，上下15px，左右32px */
+       text-align: center; /* 文字居中对齐 */
+       text-decoration: none; /* 去除下划线 */
+       display: inline-block; /* 使其能在一行内显示（如果需要多个按钮并排等情况） */
+       font-size: 16px; /* 按钮文字大小 */
+       margin: 4px 2px; /* 外边距，上下4px，左右2px */
+       cursor: pointer; /* 鼠标悬停显示手型指针 */
+   }
+</style>
+
+</head>
+<body>
+  <div id="content"></div>
+  <button onclick="window.location.href='../index.html'" type="button">函数极限</button>
+    <button onclick="window.location.href='数列极限.html'" type="button">渐近线</button>
+    <div id="content"></div>
+  <script type="text/x-mathjax-config;executed=true">
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+            displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+            skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX", "TeX"], //可选字体
+            showMathMenu: false //关闭右击菜单显示
+        }
+    });
+    //下面第三个参数可以不写，默认对整个html内的latex进行翻译
+    window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
+</script>
+<ol>
+    <li>
+    <h2>取不同子列</h2>
+    <p><img src="../image/QQ_1733229347008.png" alt="QQ_1733229347008"></p>
+    </li>
+    </ol>
+    <p>​	<img src="../image/QQ_1733229371541.png" alt="QQ_1733229371541"></p>
+    <p><img src="../image/QQ_1733229405035.png" alt="QQ_1733229405035"></p>
+    <ol start="2">
+    <li>
+    <h2>施笃兹（Stolz）定理(不建议使用)</h2>
+    <p><img src="../image/QQ_1733229594881.png" alt="QQ_1733229594881"></p>
+    <p><img src="../image/QQ_1733229624603.png" alt="QQ_1733229624603"></p>
+    <ol start="3">
+    <li>
+    <h2>两边夹（同函数极限，略去）</h2>
+    <p><img src="../image/QQ_1733229684773.png" alt="QQ_1733229684773"></p>
+    <h4>话又说回来，再讲一点吧</h4>
+    </li>
+    </ol>
+    </li>
+    </ol>
+    <p><img src="../image/QQ_1733229783065.png" alt="QQ_1733229783065">
+    $$
+    \lim_{x\to\infty}\frac{\ln(n!)}{n\ln n}\\=\lim_{x\to \infty}\frac{\ln 1+\ln 2+\dots+\ln n }{n \ln n}\
+    $$
+    <img src="../image/QQ_1733229886275.png" alt="QQ_1733229886275"></p>
+    <ol start="4">
+    <li>
+    <h2>单调有界准则</h2>
+    <p><img src="../image/QQ_1733230091641.png" alt="QQ_1733230091641"></p>
+    <p><img src="../image/QQ_1733230120759.png" alt="QQ_1733230120759"></p>
+    </li>
+    <li>
+    <h2>压缩映射原理</h2>
+    </li>
+    </ol>
+    <p><img src="../image/QQ_1733230156599.png" alt="QQ_1733230156599"></p>
+    <p>这个数列压根<strong>没有单调性</strong></p>
+    <p>怎么做呢？</p>
+    <p>先用**“歪门邪道”**算出答案</p>
+    <p><img src="../image/QQ_1733230416005.png" alt="QQ_1733230416005"></p>
+    <p><img src="../image/QQ_1733230421523.png" alt="QQ_1733230421523"></p>
+    <p><img src="../image/QQ_1733230448908.png" alt="QQ_1733230448908"></p>
+    <p>2022年全国乙卷T4</p>
+    <p><img src="../image/QQ_1733230248807.png" alt="QQ_1733230248807"></p>
+    <ol start="6">
+    <li>
+    <h2>柯西收敛准则</h2>
+    </li>
+    </ol>
+    <p><img src="../image/QQ_1733311997410.png" alt="QQ_1733311997410"></p>
+    <p><img src="../image/QQ_1733312020640.png" alt="QQ_1733312020640"></p>
+    <p><img src="../image/QQ_1733312035739.png" alt="QQ_1733312035739"></p>
+    <ol start="7">
+    <li>
+    <h2>利用积分定义</h2>
+    <p><img src="../image/QQ_1733312133045.png" alt="QQ_1733312133045"></p>
+    </li>
+    </ol>
+    <p><img src="../image/QQ_1733312179167.png" alt="QQ_1733312179167"></p>
+    <p><img src="../image/QQ_1733312212106.png" alt="QQ_1733312212106"></p>
+    <p><img src="../image/QQ_1733312353708.png" alt="QQ_1733312353708"></p>
+    <p><img src="../image/QQ_1733312414362.png" alt="QQ_1733312414362"></p>
+    <p><img src="../image/QQ_1733312442295.png" alt="QQ_1733312442295"></p>
+    <p><img src="../image/QQ_1733312453605.png" alt="QQ_1733312453605"></p>
+    <p><img src="../image/QQ_1733312477509.png" alt="QQ_1733312477509"></p>
+    <ol start="8">
+    <li>
+    <h2>利用幂级数求和（略）</h2>
+    </li>
+    <li>
+    <h2>利用等价无穷大</h2>
+    </li>
+    <li></li>
+    </ol>
+
+</body>
+</html>

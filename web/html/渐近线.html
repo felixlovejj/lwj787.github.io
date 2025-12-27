@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>函数极限</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+  <style>
+   body {
+       font-size: 250%;
+   }
+</style>
+<style>
+   body {
+       font-size: 250%;
+   }
+   button {
+       background-color: #4CAF50; /* 按钮背景颜色 */
+       border: none; /* 去除边框 */
+       color: white; /* 文字颜色 */
+       padding: 15px 32px; /* 内边距，上下15px，左右32px */
+       text-align: center; /* 文字居中对齐 */
+       text-decoration: none; /* 去除下划线 */
+       display: inline-block; /* 使其能在一行内显示（如果需要多个按钮并排等情况） */
+       font-size: 16px; /* 按钮文字大小 */
+       margin: 4px 2px; /* 外边距，上下4px，左右2px */
+       cursor: pointer; /* 鼠标悬停显示手型指针 */
+   }
+</style>
+
+</head>
+<body>
+  <div id="content"></div>
+  <button onclick="window.location.href='../index.html'" type="button">函数极限</button>
+    <button onclick="window.location.href='渐近线.html'" type="button">数列极限</button>
+    <div id="content"></div>
+  <script type="text/x-mathjax-config;executed=true">
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+            displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+            skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX", "TeX"], //可选字体
+            showMathMenu: false //关闭右击菜单显示
+        }
+    });
+    //下面第三个参数可以不写，默认对整个html内的latex进行翻译
+    window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
+</script>
+<h2>没什么好说的，会了前两个求极限的方法，就是轻轻松松</h2>
+<ol>
+<li>
+<h3>2020-2021期中</h3>
+<p>$$
+y=\arcsin x (1+\arcsin \frac2x)斜渐近线方程
+$$</p>
+</li>
+<li>
+<h3>2018-2019启明期末</h3>
+<p><img src="../image/QQ_1733232799509.png" alt="QQ_1733232799509"></p>
+</li>
+<li>
+<h3>2012-2013文华学院期末</h3>
+<p><img src="../image/QQ_1733232898237.png" alt="QQ_1733232898237"></p>
+</li>
+<li>
+<h3>2016-1017启明期末</h3>
+<p><img src="../image/QQ_1733232997405.png" alt="QQ_1733232997405"></p>
+<p>祝同学们期末都能取得好成绩！</p>
+</li>
+</ol>
+
+</body>
+</html>
