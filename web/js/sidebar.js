@@ -183,15 +183,49 @@
         var rightControl = qs('#right-content .page-control', root);
         if (rightControl) {
             // 添加返回按钮在右Control左上角（针对非 index 页面）
-            if (!location.pathname.endsWith('index.html')) {
-                var back = document.createElement('a');
-                back.className = 'page-back-btn';
-                back.href = '../';
-                back.innerHTML = '←';
-                // 插入到 rightControl 的父容器
-                var parent = rightControl.parentElement;
-                if (parent) parent.appendChild(back);
-            }
+            // 优先使用 history.back()，若无可回退历史则使用 document.referrer，最后兜底到上级目录 '../'
+            // 避免在 index 页或当已经存在相同按钮时重复创建
+            try {
+                var isIndex = /(^|\/)index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+                if (!isIndex) {
+                    // avoid duplicate
+                    var existingBack = document.querySelector('.page-back-btn');
+                    if (!existingBack) {
+                        var back = document.createElement('a');
+                        back.className = 'page-back-btn';
+                        back.href = 'javascript:void(0)';
+                        back.innerHTML = '←';
+
+                        back.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            // If there is a meaningful history state, go back
+                            try {
+                                if (window.history && history.length > 1) {
+                                    history.back();
+                                    return;
+                                }
+                            } catch (err) { }
+
+                            // Fallback to referrer if it's from a different origin or non-empty
+                            try {
+                                if (document.referrer && document.referrer !== '') {
+                                    // If referrer is same origin and points to index.html or directory, navigate there
+                                    // otherwise just go to referrer
+                                    var ref = document.referrer;
+                                    window.location.href = ref;
+                                    return;
+                                }
+                            } catch (err) { }
+
+                            // Final fallback: parent directory
+                            try { window.location.href = '../'; } catch (err) { /* last resort: do nothing */ }
+                        }, { passive: true });
+
+                        var parent = rightControl.parentElement;
+                        if (parent) parent.appendChild(back);
+                    }
+                }
+            } catch (e) { }
         }
     }
 
