@@ -186,7 +186,7 @@
             if (!location.pathname.endsWith('index.html')) {
                 var back = document.createElement('a');
                 back.className = 'page-back-btn';
-                back.href = '../../index.html';
+                back.href = '../';
                 back.innerHTML = '←';
                 // 插入到 rightControl 的父容器
                 var parent = rightControl.parentElement;
