@@ -73,7 +73,7 @@
             /* 相对于右侧 2em 基准，这里使用 1em 以匹配正文视觉比例 */
         }
 
-    /* 左卡颜色由“可切换主题”控制（避免原背景模式出现白块） */
+        /* 左卡颜色由“可切换主题”控制（避免原背景模式出现白块） */
 
         /* Strong fallback: win against global theme/card defaults if any rule still forces white text or dark card */
         body #right-content .mdui-card.rin-card,
@@ -1255,7 +1255,18 @@
                         <li>字符串结束符<code>'\0'</code>的遗漏。</li>
                         <li>函数返回值缺失、类型不匹配。</li>
                     </ul>
-
+                    <!-- Giscus comments: 将 REPO_ID 和 CATEGORY_ID 替换为你的仓库和 Discussion 分类的 ID。
+                             步骤：在 GitHub 仓库启用 Discussions，创建一个 Category（例如 "Comments"），
+                             然后使用 giscus 配置页面或 GraphQL 查询获取 repo_id 和 category_id。 -->
+                    <div id="giscus_thread" style="margin-top:24px;">
+                        <script src="https://giscus.app/client.js" data-repo="felixlovejj/lwj787.github.io"
+                            data-repo-id="R_kgDONQTHmA" data-category="Announcements"
+                            data-category-id="DIC_kwDONQTHmM4C0TLt" data-mapping="pathname" data-strict="0"
+                            data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top"
+                            data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy"
+                            crossorigin="anonymous" async>
+                            </script>
+                    </div>
 
                     <div class="rin-tr"></div>
 
@@ -1268,6 +1279,8 @@
             </div>
         </div>
     </main>
+
+
     <script src="web/js/mdui.min.js"></script>
     <script src="../../web/js/sidebar.js"></script>
     <script>
