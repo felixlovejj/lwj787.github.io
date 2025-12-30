@@ -12,6 +12,14 @@
     <link rel="icon" href="image/me.jpg">
 
     <style>
+        /* 使用系统字体栈，避免因缺失 Roboto 字体文件导致本地预览大量 404 */
+        html,
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+                "Noto Sans", "Liberation Sans", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB",
+                sans-serif;
+        }
+
         /* 访问量：左卡片内一行显示，默认（背景图模式）白字 */
         .rin-left .site-visit {
             display: inline-flex;

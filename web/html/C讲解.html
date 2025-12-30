@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="../../web/css/sidebar.css">
     <link rel="icon" href="../../image/me.jpg">
     <style>
+        /* 使用系统字体栈，避免因缺失 Roboto 字体文件导致本地预览大量 404 */
+        html,
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+                "Noto Sans", "Liberation Sans", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB",
+                sans-serif;
+        }
+
         /* 左卡片访问量：一行显示 + 自动跟随本页主题切换 */
         #rin-main .rin-left .site-visit {
             display: inline-flex;
@@ -1512,7 +1520,7 @@
     </main>
 
 
-    <script src="web/js/mdui.min.js"></script>
+    <script src="../../web/js/mdui.min.js"></script>
     <script src="../../web/js/sidebar.js"></script>
     <script>
         (function () {
@@ -1559,8 +1567,6 @@
     <!-- PV 统计：Busuanzi（无后端，GitHub Pages 可用） -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="../../web/js/visit-counter.js"></script>
-
-    <script src="web/js/mdui.min.js"></script>
 </body>
 
 </html>
