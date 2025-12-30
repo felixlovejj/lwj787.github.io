@@ -26,6 +26,15 @@
                     <div class="rin-left-title">felix&nbsp;的&nbsp;主&nbsp;页</div>
                     <div class="rin-left-title2"></div>
                     <div class="rin-left-slogan">「个人主页」</div>
+
+                    <!-- 访问量（显示值 = 实际 + 50；与 C讲解 单独统计） -->
+                    <div class="site-visit" data-counter-key="home"
+                        style="margin: 12px 0 6px; font-size: 14px; line-height: 1.4;">
+                        <span style="opacity: 0.9;">访问量：</span>
+                        <span class="site-visit-value">加载中...</span>
+                        <!-- busuanzi 会把页面 PV 写入这个 span（隐藏原始值，只显示 +50 后的值） -->
+                        <span class="site-visit-raw busuanzi_value_page_pv" style="display:none"></span>
+                    </div>
                     <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
                         href="https://gyb-cloud.github.io/gyb--/cs2409.html" target="_blank"><span
                             class="iconfont iconabout"></span> 班级主页</a>
@@ -318,6 +327,10 @@
                 <!-- Giscus comments for index page: mapping=url ensures this page has its own discussion -->
 
     </main>
+    <!-- PV 统计：Busuanzi（无后端，GitHub Pages 可用） -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="web/js/visit-counter.js"></script>
+
     <script src="web/js/mdui.min.js"></script>
     <script src="web/js/sidebar.js"></script>
 </body>
