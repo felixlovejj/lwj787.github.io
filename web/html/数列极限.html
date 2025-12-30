@@ -1,51 +1,272 @@
-<!doctype html>
-<html>
+<html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8" />
-    <title>数列极限</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+    <meta charset="utf-8">
+    <title>娄卫健的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../web/css/library.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="stylesheet" href="../../web/css/sidebar.css">
+    <link rel="icon" href="../../../image/vjf/me.jpg">
     <style>
-        body {
-            font-size: 250%;
-        }
-    </style>
-    <style>
-        body {
-            font-size: 250%;
+        /* 仅作用于此页面：改为白底黑字（不修改全局 CSS） */
+        #right-content .rin-card {
+            /* slightly larger than normal */
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.96) !important;
+            color: #111 !important;
         }
 
-        button {
-            background-color: #4CAF50;
-            /* 按钮背景颜色 */
-            border: none;
-            /* 去除边框 */
-            color: white;
-            /* 文字颜色 */
-            padding: 15px 32px;
-            /* 内边距，上下15px，左右32px */
-            text-align: center;
-            /* 文字居中对齐 */
-            text-decoration: none;
-            /* 去除下划线 */
-            display: inline-block;
-            /* 使其能在一行内显示（如果需要多个按钮并排等情况） */
-            font-size: 16px;
-            /* 按钮文字大小 */
-            margin: 4px 2px;
-            /* 外边距，上下4px，左右2px */
-            cursor: pointer;
-            /* 鼠标悬停显示手型指针 */
+        /* 常见文本元素：强制深色文字，避免被全局主题覆盖 */
+        #right-content .rin-card h1,
+        #right-content .rin-card h2,
+        #right-content .rin-card h3,
+        #right-content .rin-card h4,
+        #right-content .rin-card h5,
+        #right-content .rin-card p,
+        #right-content .rin-card li {
+            color: #111 !important;
+        }
+
+        /* 链接：深色可读，并带一点主题色 */
+        #right-content .rin-card a {
+            color: #1565c0 !important;
+        }
+
+        #right-content .rin-card a:visited {
+            color: #5e35b1 !important;
+        }
+
+        /* Markdown 代码：
+           - 行内 code：不加深背景（只保留颜色/换行策略）
+           - 代码块 pre：背景可以加深一点（更易阅读）
+        */
+        #right-content .rin-card code {
+            color: #111 !important;
+            background: transparent !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            font-size: 0.95em;
+        }
+
+        #right-content .rin-card pre,
+        #right-content .rin-card pre code,
+        #right-content .rin-card .code-highlight {
+            color: #111 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            font-size: 0.9em;
+        }
+
+        /* 如果希望覆盖第三方库的颜色优先级问题，可在此加上 !important（现在仅在必要元素使用） */
+        /* 针对 Markdown 转来的表格，强制继承右侧颜色和字号 */
+        #right-content .rin-card table.md-table-right,
+        #right-content .rin-card table.md-table-right th,
+        #right-content .rin-card table.md-table-right td {
+            color: #111 !important;
+            font-size: 1em !important;
+            /* 相对于右侧 2em 基准，这里使用 1em 以匹配正文视觉比例 */
+        }
+
+        /* 左卡颜色由“可切换主题”控制（避免原背景模式出现白块） */
+
+        /* Strong fallback: win against global theme/card defaults if any rule still forces white text or dark card */
+        body #right-content .mdui-card.rin-card,
+        body #right-content .rin-card {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        body #right-content .mdui-card.rin-card * {
+            color: inherit;
+        }
+
+        /* Inline critical layout rules to prevent initial float-based render flash on this page only. */
+        /* These ensure the initial layout matches the final JS-restructured layout until sidebar.css loads and sidebar.js runs. */
+        .mdui-row {
+            display: flex;
+            align-items: flex-start;
+            box-sizing: border-box
+        }
+
+        .mdui-row>.mdui-col-md-2 {
+            flex: 0 0 220px;
+            max-width: 220px
+        }
+
+        .mdui-row>.mdui-col-md-10 {
+            flex: 1 1 auto;
+            min-width: 0
+        }
+
+        /* =====================
+           本页专用 - 可切换主题：
+           - 默认（不加 class）：原背景图 + 原白字
+           - page-white：纯白背景 + 纯黑字
+           ===================== */
+
+        body.page-white,
+        body.page-white html {
+            background: #ffffff !important;
+            background-image: none !important;
+            color: #111 !important;
+        }
+
+        body.page-white #rin-bg,
+        body.page-white #rin-bg:before,
+        body.page-white #rin-bg:after {
+            background: none !important;
+            background-image: none !important;
+            content: none !important;
+            filter: none !important;
+            opacity: 0 !important;
+        }
+
+        body.page-white #rin-main {
+            background: #ffffff !important;
+            background-image: none !important;
+        }
+
+        /* 白底状态下：右侧内容卡片白底黑字（包括 markdown 区） */
+        body.page-white #right-content .rin-card {
+            background: rgba(255, 255, 255, 0.96) !important;
+            color: #111 !important;
+        }
+
+        body.page-white #right-content .rin-card h1,
+        body.page-white #right-content .rin-card h2,
+        body.page-white #right-content .rin-card h3,
+        body.page-white #right-content .rin-card h4,
+        body.page-white #right-content .rin-card h5,
+        body.page-white #right-content .rin-card p,
+        body.page-white #right-content .rin-card li {
+            color: #111 !important;
+        }
+
+        body.page-white #right-content .rin-card code {
+            color: #111 !important;
+            background: transparent !important;
+        }
+
+        body.page-white #right-content .rin-card pre,
+        body.page-white #right-content .rin-card pre code,
+        body.page-white #right-content .rin-card .code-highlight {
+            color: #111 !important;
+            background: rgba(0, 0, 0, 0.06) !important;
+        }
+
+        body.page-white #right-content .rin-card table.md-table-right,
+        body.page-white #right-content .rin-card table.md-table-right th,
+        body.page-white #right-content .rin-card table.md-table-right td {
+            color: #111 !important;
+        }
+
+        /* 白底状态下：左卡提亮 + 黑字 */
+        body.page-white #rin-main .rin-left {
+            background: rgba(255, 255, 255, 0.92) !important;
+            color: #111 !important;
+        }
+
+        body.page-white #rin-main .rin-left,
+        body.page-white #rin-main .rin-left .rin-left-title,
+        body.page-white #rin-main .rin-left .rin-left-title2,
+        body.page-white #rin-main .rin-left .rin-left-slogan,
+        body.page-white #rin-main .rin-left p,
+        body.page-white #rin-main .rin-left a {
+            color: #111 !important;
+        }
+
+        body.page-white #rin-main .rin-left .rin-btn,
+        body.page-white #rin-main .rin-left .rin-btn * {
+            color: #111 !important;
+        }
+
+        /* 白底状态下：分区感（边框/阴影） */
+        body.page-white #rin-main .rin-left,
+        body.page-white #right-content .rin-card {
+            border: 1px solid rgba(0, 0, 0, 0.12) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* 选中文本样式：纯白模式选中文字为黑色；图片背景模式保持原来的白/浅色逻辑 */
+        body.page-white ::selection {
+            color: #111 !important;
+            background: rgba(255, 64, 129, 0.35) !important;
+        }
+
+        body:not(.page-white) ::selection {
+            color: #e0e0e0 !important;
+            background: rgba(255, 64, 129, 0.35) !important;
+        }
+
+        body:not(.page-white) #rin-main .rin-left {
+            background: rgba(66, 66, 66, 0.30) !important;
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #rin-main .rin-left .rin-left-title,
+        body:not(.page-white) #rin-main .rin-left .rin-left-title2,
+        body:not(.page-white) #rin-main .rin-left .rin-left-slogan,
+        body:not(.page-white) #rin-main .rin-left p,
+        body:not(.page-white) #rin-main .rin-left a,
+        body:not(.page-white) #rin-main .rin-left .rin-btn,
+        body:not(.page-white) #rin-main .rin-left .rin-btn * {
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        /* =====================
+           原背景图模式（默认主题）兜底：避免残留白底/黑字
+           ===================== */
+        body:not(.page-white) #right-content .rin-card {
+            background-color: rgba(66, 66, 66, 0.30) !important;
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card h1,
+        body:not(.page-white) #right-content .rin-card h2,
+        body:not(.page-white) #right-content .rin-card h3,
+        body:not(.page-white) #right-content .rin-card h4,
+        body:not(.page-white) #right-content .rin-card h5,
+        body:not(.page-white) #right-content .rin-card p,
+        body:not(.page-white) #right-content .rin-card li {
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card a {
+            color: #90caf9 !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card a:visited {
+            color: #ce93d8 !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card code {
+            color: rgba(255, 255, 255, 0.92) !important;
+            background: transparent !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card pre,
+        body:not(.page-white) #right-content .rin-card pre code,
+        body:not(.page-white) #right-content .rin-card .code-highlight {
+            color: rgba(255, 255, 255, 0.92) !important;
+            background: rgba(0, 0, 0, 0.35) !important;
+        }
+
+        body:not(.page-white) #right-content .rin-card table.md-table-right,
+        body:not(.page-white) #right-content .rin-card table.md-table-right th,
+        body:not(.page-white) #right-content .rin-card table.md-table-right td {
+            color: rgba(255, 255, 255, 0.92) !important;
         }
     </style>
-
 </head>
 
-<body>
-    <div id="content"></div>
-    <button onclick="window.location.href='../'" type="button">函数极限</button>
-    <button onclick="window.location.href='数列极限.html'" type="button">渐近线</button>
-    <div id="content"></div>
+<body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
     <script type="text/x-mathjax-config;executed=true">
     window.MathJax.Hub.Config({
         showProcessingMessages: false, //关闭js加载过程信息
@@ -64,84 +285,174 @@
     //下面第三个参数可以不写，默认对整个html内的latex进行翻译
     window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
 </script>
-    <ol>
-        <li>
-            <h2>取不同子列</h2>
-            <p><img src="../image/QQ_1733229347008.png" alt="QQ_1733229347008"></p>
-        </li>
-    </ol>
-    <p>​ <img src="../image/QQ_1733229371541.png" alt="QQ_1733229371541"></p>
-    <p><img src="../image/QQ_1733229405035.png" alt="QQ_1733229405035"></p>
-    <ol start="2">
-        <li>
-            <h2>施笃兹（Stolz）定理(不建议使用)</h2>
-            <p><img src="../image/QQ_1733229594881.png" alt="QQ_1733229594881"></p>
-            <p><img src="../image/QQ_1733229624603.png" alt="QQ_1733229624603"></p>
-            <ol start="3">
-                <li>
-                    <h2>两边夹（同函数极限，略去）</h2>
-                    <p><img src="../image/QQ_1733229684773.png" alt="QQ_1733229684773"></p>
-                    <h4>话又说回来，再讲一点吧</h4>
-                </li>
-            </ol>
-        </li>
-    </ol>
-    <p><img src="../image/QQ_1733229783065.png" alt="QQ_1733229783065">
-        $$
-        \lim_{x\to\infty}\frac{\ln(n!)}{n\ln n}\\=\lim_{x\to \infty}\frac{\ln 1+\ln 2+\dots+\ln n }{n \ln n}\
-        $$
-        <img src="../image/QQ_1733229886275.png" alt="QQ_1733229886275">
-    </p>
-    <ol start="4">
-        <li>
-            <h2>单调有界准则</h2>
-            <p><img src="../image/QQ_1733230091641.png" alt="QQ_1733230091641"></p>
-            <p><img src="../image/QQ_1733230120759.png" alt="QQ_1733230120759"></p>
-        </li>
-        <li>
-            <h2>压缩映射原理</h2>
-        </li>
-    </ol>
-    <p><img src="../image/QQ_1733230156599.png" alt="QQ_1733230156599"></p>
-    <p>这个数列压根<strong>没有单调性</strong></p>
-    <p>怎么做呢？</p>
-    <p>先用**“歪门邪道”**算出答案</p>
-    <p><img src="../image/QQ_1733230416005.png" alt="QQ_1733230416005"></p>
-    <p><img src="../image/QQ_1733230421523.png" alt="QQ_1733230421523"></p>
-    <p><img src="../image/QQ_1733230448908.png" alt="QQ_1733230448908"></p>
-    <p>2022年全国乙卷T4</p>
-    <p><img src="../image/QQ_1733230248807.png" alt="QQ_1733230248807"></p>
-    <ol start="6">
-        <li>
-            <h2>柯西收敛准则</h2>
-        </li>
-    </ol>
-    <p><img src="../image/QQ_1733311997410.png" alt="QQ_1733311997410"></p>
-    <p><img src="../image/QQ_1733312020640.png" alt="QQ_1733312020640"></p>
-    <p><img src="../image/QQ_1733312035739.png" alt="QQ_1733312035739"></p>
-    <ol start="7">
-        <li>
-            <h2>利用积分定义</h2>
-            <p><img src="../image/QQ_1733312133045.png" alt="QQ_1733312133045"></p>
-        </li>
-    </ol>
-    <p><img src="../image/QQ_1733312179167.png" alt="QQ_1733312179167"></p>
-    <p><img src="../image/QQ_1733312212106.png" alt="QQ_1733312212106"></p>
-    <p><img src="../image/QQ_1733312353708.png" alt="QQ_1733312353708"></p>
-    <p><img src="../image/QQ_1733312414362.png" alt="QQ_1733312414362"></p>
-    <p><img src="../image/QQ_1733312442295.png" alt="QQ_1733312442295"></p>
-    <p><img src="../image/QQ_1733312453605.png" alt="QQ_1733312453605"></p>
-    <p><img src="../image/QQ_1733312477509.png" alt="QQ_1733312477509"></p>
-    <ol start="8">
-        <li>
-            <h2>利用幂级数求和（略）</h2>
-        </li>
-        <li>
-            <h2>利用等价无穷大</h2>
-        </li>
-        <li></li>
-    </ol>
+    <div id="rin-bg"></div>
+    <main id="rin-main">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12 mdui-col-md-2">
+                <div class="rin-left">
+                    <div class="rin-logo">
+                        <img src="../../../image/vjf/me.jpg" alt="娄卫健">
+                    </div>
+                    <div class="rin-left-title">felix&nbsp;的&nbsp;主&nbsp;页</div>
+                    <div class="rin-left-title2"></div>
+                    <div class="rin-left-slogan">「个人主页」</div>
+                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                        href="https://gyb-cloud.github.io/gyb--/cs2409.html" target="_blank"><span
+                            class="iconfont iconabout"></span> 班级主页</a>
+                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                        href="https://felixlovejj.github.io/hust-cs-326-index.github.io/" target="_blank"><span
+                            class="iconfont iconabout"></span> 寝室主页</a>
+                </div>
+            </div>
+            <div id="right-content" class="mdui-col-xs-12 mdui-col-md-10">
 
+                <div class="mdui-card rin-card">
+                    <div class="image-container">
+                        <a href="../../">
+                            <img src=" ../../../image/vjf/back.png" alt="back" style="width: 20px; height: auto;">
+                        </a>
+                    </div>
+                    <style>
+                        div.image-container a img:hover {
+                            opacity: 0.8;
+                            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                        }
+                    </style>
+                    <ol>
+                        <li>
+                            <h2>取不同子列</h2>
+                            <p><img src="../../image/vjf/QQ_1733229347008.png" alt="QQ_1733229347008"></p>
+                        </li>
+                    </ol>
+                    <p>​ <img src="../../image/vjf/QQ_1733229371541.png" alt="QQ_1733229371541"></p>
+                    <p><img src="../../image/vjf/QQ_1733229405035.png" alt="QQ_1733229405035"></p>
+                    <ol start="2">
+                        <li>
+                            <h2>施笃兹（Stolz）定理(不建议使用)</h2>
+                            <p><img src="../../image/vjf/QQ_1733229594881.png" alt="QQ_1733229594881"></p>
+                            <p><img src="../../image/vjf/QQ_1733229624603.png" alt="QQ_1733229624603"></p>
+                            <ol start="3">
+                                <li>
+                                    <h2>两边夹（同函数极限，略去）</h2>
+                                    <p><img src="../../image/vjf/QQ_1733229684773.png" alt="QQ_1733229684773"></p>
+                                    <h4>话又说回来，再讲一点吧</h4>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                    <p><img src="../../image/vjf/QQ_1733229783065.png" alt="QQ_1733229783065">
+                        $$
+                        \lim_{x\to\infty}\frac{\ln(n!)}{n\ln n}\\=\lim_{x\to \infty}\frac{\ln 1+\ln 2+\dots+\ln n }{n
+                        \ln n}\
+                        $$
+                        <img src="../../image/vjf/QQ_1733229886275.png" alt="QQ_1733229886275">
+                    </p>
+                    <ol start="4">
+                        <li>
+                            <h2>单调有界准则</h2>
+                            <p><img src="../../image/vjf/QQ_1733230091641.png" alt="QQ_1733230091641"></p>
+                            <p><img src="../../image/vjf/QQ_1733230120759.png" alt="QQ_1733230120759"></p>
+                        </li>
+                        <li>
+                            <h2>压缩映射原理</h2>
+                        </li>
+                    </ol>
+                    <p><img src="../../image/vjf/QQ_1733230156599.png" alt="QQ_1733230156599"></p>
+                    <p>这个数列压根<strong>没有单调性</strong></p>
+                    <p>怎么做呢？</p>
+                    <p>先用**“歪门邪道”**算出答案</p>
+                    <p><img src="../../image/vjf/QQ_1733230416005.png" alt="QQ_1733230416005"></p>
+                    <p><img src="../../image/vjf/QQ_1733230421523.png" alt="QQ_1733230421523"></p>
+                    <p><img src="../../image/vjf/QQ_1733230448908.png" alt="QQ_1733230448908"></p>
+                    <p>2022年全国乙卷T4</p>
+                    <p><img src="../../image/vjf/QQ_1733230248807.png" alt="QQ_1733230248807"></p>
+                    <ol start="6">
+                        <li>
+                            <h2>柯西收敛准则</h2>
+                        </li>
+                    </ol>
+                    <p><img src="../../image/vjf/QQ_1733311997410.png" alt="QQ_1733311997410"></p>
+                    <p><img src="../../image/vjf/QQ_1733312020640.png" alt="QQ_1733312020640"></p>
+                    <p><img src="../../image/vjf/QQ_1733312035739.png" alt="QQ_1733312035739"></p>
+                    <ol start="7">
+                        <li>
+                            <h2>利用积分定义</h2>
+                            <p><img src="../../image/vjf/QQ_1733312133045.png" alt="QQ_1733312133045"></p>
+                        </li>
+                    </ol>
+                    <p><img src="../../image/vjf/QQ_1733312179167.png" alt="QQ_1733312179167"></p>
+                    <p><img src="../../image/vjf/QQ_1733312212106.png" alt="QQ_1733312212106"></p>
+                    <p><img src="../../image/vjf/QQ_1733312353708.png" alt="QQ_1733312353708"></p>
+                    <p><img src="../../image/vjf/QQ_1733312414362.png" alt="QQ_1733312414362"></p>
+                    <p><img src="../../image/vjf/QQ_1733312442295.png" alt="QQ_1733312442295"></p>
+                    <p><img src="../../image/vjf/QQ_1733312453605.png" alt="QQ_1733312453605"></p>
+                    <p><img src="../../image/vjf/QQ_1733312477509.png" alt="QQ_1733312477509"></p>
+                    <ol start="8">
+                        <li>
+                            <h2>利用幂级数求和（略）</h2>
+                        </li>
+                        <li>
+                            <h2>利用等价无穷大</h2>
+                        </li>
+                        <li></li>
+                    </ol>
+
+                    <div class="rin-tr"></div>
+
+                    <div class="rin-card-part" id="footer">
+                        <div class="rin-card-content">Made with love by 娄卫健 <a
+                                href="tencent://message/?uin=2141703630&Site=&Menu=yes" id="bg-link"
+                                target="_blank">添加作者qq</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="web/js/mdui.min.js"></script>
+    <script src="../../web/js/sidebar.js"></script>
+    <script>
+        (function () {
+            // 仅此页使用的开关（避免影响其它页面）
+            var STORAGE_KEY = 'C讲解.pageWhite';
+
+            function setButtonText() {
+                var btn = document.getElementById('bg-toggle');
+                if (!btn) return;
+                btn.textContent = '切换背景';
+            }
+
+            function applyState(isWhite) {
+                document.body.classList.toggle('page-white', !!isWhite);
+                setButtonText();
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var saved = null;
+                try {
+                    saved = localStorage.getItem(STORAGE_KEY);
+                } catch (e) {
+                    saved = null;
+                }
+                // 默认：纯白模式（即使没有 localStorage 也走 page-white）
+                var isWhite = saved === null ? true : (saved === '1');
+                applyState(isWhite);
+
+                var btn = document.getElementById('bg-toggle');
+                if (!btn) return;
+                btn.addEventListener('click', function () {
+                    var next = !document.body.classList.contains('page-white');
+                    applyState(next);
+                    try {
+                        localStorage.setItem(STORAGE_KEY, next ? '1' : '0');
+                    } catch (e) {
+                        // ignore
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

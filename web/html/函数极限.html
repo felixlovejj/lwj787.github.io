@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../web/css/main.css">
     <link rel="stylesheet" href="../../web/css/index.css">
     <link rel="stylesheet" href="../../web/css/sidebar.css">
-    <link rel="icon" href="../../../image/vjf/me.jpg">
+    <link rel="icon" href="../../image/me.jpg">
     <style>
         /* 仅作用于此页面：改为白底黑字（不修改全局 CSS） */
         #right-content .rin-card {
@@ -291,7 +291,7 @@
             <div class="mdui-col-xs-12 mdui-col-md-2">
                 <div class="rin-left">
                     <div class="rin-logo">
-                        <img src="../../../image/vjf/me.jpg" alt="娄卫健">
+                        <img src="../../image/me.jpg" alt="娄卫健">
                     </div>
                     <div class="rin-left-title">felix&nbsp;的&nbsp;主&nbsp;页</div>
                     <div class="rin-left-title2"></div>
@@ -309,7 +309,7 @@
                 <div class="mdui-card rin-card">
                     <div class="image-container">
                         <a href="../../">
-                            <img src=" ../../../image/vjf/back.png" alt="back" style="width: 20px; height: auto;">
+                            <img src=" ../../image/back.png" alt="back" style="width: 20px; height: auto;">
                         </a>
                     </div>
                     <style>
@@ -318,28 +318,238 @@
                             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
                         }
                     </style>
-                    <h2>没什么好说的，会了前两个求极限的方法，就是轻轻松松</h2>
+                    <h1>函数极限</h1>
+                    <h2>前言</h2>
+                    <p>极限四则运算法则：</p>
+                    <p><img src="../../image/vjf/QQ_1733136256036.png" alt="QQ_1733136256036"></p>
                     <ol>
                         <li>
-                            <h3>2020-2021期中</h3>
+                            <h2>利用定义证明（略）</h2>
+                        </li>
+                        <li>
+                            <h2>直接代入法（左右极限）</h2>
+                            <ul>
+                                <li>
+                                    <p>前提：函数连续
+                                        $$
+                                        \lim_{x \to 0}f(sinx)=f(\lim_{x \to 0}sinx)
+                                        $$</p>
+                                </li>
+                                <li>
+                                    <p>计算：
+                                        $$
+                                        \lim_{x \to 0}[x]
+                                        \\x\to 0^+:0
+                                        \\x \to 0^-:-1
+                                        \\故极限不存在
+                                        $$</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h2>概念判断法（“有界量”乘以“无穷小量”趋近于0）</h2>
                             <p>$$
-                                y=\arcsin x (1+\arcsin \frac2x)斜渐近线方程
+                                \lim_{x \to +\infty}\frac{x+sinx}{x}
+                                $$</p>
+                            <p>反例：前几天高中同学发来私信：
+                                $$
+                                求：\lim_{x\to\infty}nln(\frac{n-2}{n+1})
+                                $$
+                                违背的规则：乘法规则需要两个极限都存在</p>
+                            <p><img src="../../image/vjf/QQ_1733137096212.png" alt="QQ_1733137096212"><img
+                                    src="../../image/vjf/QQ_1733137148239.png" alt="QQ_1733137148239"></p>
+                            <h3>利用增长速度判断：</h3>
+                            <p><img src="../../image/vjf/QQ_1733137169838.png" alt="QQ_1733137169838"></p>
+                        </li>
+                        <li>
+                            <h2>化无穷大为无穷小</h2>
+                            <p><img src="../../image/vjf/QQ_1733138393964.png" alt="QQ_1733138393964"></p>
+                            <p>对于这种形式的极限，我们可以把分子和分母同时除以函数中出现的x的最高次幂。</p>
+                            <p><img src="../../image/vjf/QQ_1733138455559.png" alt="QQ_1733138455559">
+                                $$
+                                \lim_{x\to
+                                +\infty}\frac{\sqrt{x^2-x+2}}{2x+1}\\=\lim_{x\to+\infty}\frac{\sqrt{1-\frac{1}{x}+\frac{2}{x^2}}}{2+\frac{1}{x}}\\=\frac{1}{2}\\除此之外，有一些题目需要先化为无穷小之后再利用其他方法进行下一步的运算，我们后面继续讲
                                 $$</p>
                         </li>
                         <li>
-                            <h3>2018-2019启明期末</h3>
-                            <p><img src="../../image/vjf/QQ_1733232799509.png" alt="QQ_1733232799509"></p>
+                            <h2>利用重要极限</h2>
                         </li>
                         <li>
-                            <h3>2012-2013文华学院期末</h3>
-                            <p><img src="../../image/vjf/QQ_1733232898237.png" alt="QQ_1733232898237"></p>
+                            <h2>化为导数定义</h2>
+                            <p><img src="../../image/vjf/QQ_1733226794674.png" alt="QQ_1733226794674"></p>
+                            <h3>11月29高中同学在群中提问：不用洛必达怎么写？</h3>
+                            <p>$$
+                                \lim_{x\to0}\frac{(2+x)^{\frac13}-2^{\frac13}}{x}
+                                $$</p>
                         </li>
                         <li>
-                            <h3>2016-1017启明期末</h3>
-                            <p><img src="../../image/vjf/QQ_1733232997405.png" alt="QQ_1733232997405"></p>
-                            <p>祝同学们期末都能取得好成绩！</p>
+                            <h2>两边夹法则</h2>
+                            <h3>2023-2024期中考试</h3>
+                            <p>$$
+                                求极限：l=\lim_{x\to\infty}(-1)^nsin(\sqrt{n^2+1}\pi)\\=\lim_{x\to
+                                \infty}sin((\sqrt{n^2+1}-n)\pi)\\
+                                则l\leq\lim_{x\to\infty}\sqrt{n^2+1}-n=\lim_{x\to\infty}\frac{1}{\sqrt{n^2+1}+n}=0\\
+                                l\geq0
+                                \\故l=0
+                                $$</p>
+                            <h3>2022-2023期中考试</h3>
+                            <p>$$
+                                l=\lim_{n\to
+                                \infty}sin\frac{\pi}{\sqrt{n^2+1}}+sin\frac{\pi}{\sqrt{n^2+2}}+...+sin\frac{\pi}{\sqrt{n^2+n}}\\
+                                l\leq\lim_{n\to \infty}n\times sin\frac{\pi}{\sqrt{n^2+1}}&lt;=\lim_{n\to
+                                \infty}\frac{n\pi}{\sqrt{n^2+1}}=\lim_{n\to \infty}\frac{\pi}{1+\frac{1}{n^2}}
+                                $$</p>
+
+                            <p><img src="../../image/vjf/QQ_1733228930957.png" alt="QQ_1733228930957"></p>
+                            <p><strong>与积分结合</strong></p>
+                            <p><img src="../../image/vjf/QQ_1733229047142.png" alt="QQ_1733229047142"></p>
+                        </li>
+                        <li>
+                            <h2>变形（和差化积、有理化、乘除、加减）</h2>
+                            <p>开始之前，我们需要准备一些常用的变形公式，可以选择性地记一部分</p>
+                            <p><img src="../../image/vjf/QQ_1733138808121.png" alt="QQ_1733138808121"></p>
+                            <p><img src="../../image/vjf/QQ_1733138822339.png" alt="QQ_1733138822339">
+                                $$
+                                求极限：\lim_{n\to\infty}cos\frac{x}{2}cos\frac{x}{2^2}...cos\frac{x}{x^n}\
+                                $$
+                                <img src="../../image/vjf/QQ_1733139031257.png" alt="QQ_1733139031257">
+                            </p>
+                        </li>
+                        <li>
+                            <h2>取对数</h2>
+                            <p>$$
+                                形如：1^\infty 、\infty^0这类的极限，可以取对数来进行运算
+                                $$</p>
+                            <h3>2023-2024期中考试T4</h3>
+                            <p>$$
+                                l=\lim_{x\to0}(\frac{arcsinx}x)^{\frac1{x^2}}\\=exp{{lim_{x\to0}\frac1{x^2}ln}(\frac{arcsinx}{x})}\\接下来怎么求呢？我们在
+                                等价无穷小 中来看
+                                $$</p>
+                        </li>
+                        <li>
+                            <h2>等价无穷小（真神）</h2>
                         </li>
                     </ol>
+                    <p> <img src="../../image/vjf/QQ_1733140127252.png" alt="QQ_1733140127252">
+                        $$
+                        {lim_{x\to0}\frac1{x^2}ln}(\frac{arcsinx}{x})\\=lim_{x\to0}\frac{1}{x^2}ln(\frac{arcsinx-x}x+1)\\=lim_{x\to0}\frac{arcsinx-x}{x^3}\\接下来又该怎么求呢？我们在泰勒展开中找到答案
+                        $$</p>
+                    <h3>sukuna模拟考试<img src="../../image/vjf/QQ_1733142152303.png" alt="QQ_1733142152303">2023-2024期中考试T2
+                    </h3>
+                    <p>$$
+                        \lim_{x\to0}\frac{e^{tanx}-e^{x}}{x-sinx}x
+                        $$</p>
+                    <h3>2022-2024期中T2</h3>
+                    <p>$$
+                        \lim_{x\to0}\frac1{ln(1+x)}(\frac1x-\frac1{sinx})
+                        $$</p>
+                    <p> <strong>结合取对数</strong></p>
+                    <h3>2018-2019期中T3</h3>
+                    <p>$$
+                        \lim_{x\to0^+}{(e^x-1)^{\frac1{lnx}}}
+                        $$</p>
+                    <h3>2018-2019T12</h3>
+                    <p>$$
+                        求无穷小量u(x)={(\frac{1+2cosx}{3})}^{x^3}-1(x\to0)的主部和阶数
+                        $$</p>
+                    <p> <img src="../../image/vjf/QQ_1733140881299.png" alt="QQ_1733140881299"></p>
+                    <h3>2022-2023期末T7</h3>
+                    <p> <img src="../../image/vjf/QQ_1733226072136.png" alt="QQ_1733226072136"></p>
+                    <h3>2021-2022期末T3</h3>
+                    <p> <img src="../../image/vjf/QQ_1733226148319.png" alt="QQ_1733226148319"></p>
+                    <ol start="11">
+                        <li>
+                            <h2>洛必达法则</h2>
+                        </li>
+                    </ol>
+                    <p> <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.YiTmvB_hmzOokRqgQXSfvgHaE3?rs=1&pid=ImgDetMain"
+                            alt="[无聊水][国服相关]通宵挖完了矿，感觉yly像洛必达法则 NGA玩家社区"></p>
+                    <p>注意洛必达和等价无穷小、中值定理、泰勒公式结合使用，提高效率</p>
+                    <ol start="11">
+                        <li>
+                            <h2>中值定理（微分中值定理和积分中值定理）</h2>
+                            <h3>sukuna模拟考试</h3>
+                            <p><img src="../../image/vjf/QQ_1733141782272.png" alt="QQ_1733141782272"></p>
+                            <h3>普通题</h3>
+                            <p><img src="../../image/vjf/QQ_1733142016593.png" alt="QQ_1733142016593"></p>
+                            <p><img src="../../image/vjf/QQ_1733226313699.png" alt="QQ_1733226313699">
+                                $$
+                                \lim_{x\to +\infty}\frac{1}{2}x^2[\ln\arctan (x+1)-\ln \arctan x]\\=\lim_{x\to
+                                +\infty}\frac{x^2}{2}\frac{1}{[1+(x+\theta)^2]\arctan (x+\theta)}\\=\lim_{x\to
+                                +\infty}\frac{x^2}{1+(x+\theta)^2}\times\frac1{2\arctan (x+\theta)}\\=1\times
+                                \frac1{2\times
+                                \frac{\pi}{2}}\\=\frac1\pi
+                                $$</p>
+                            <h3>积分中值定理（<del>暂不涉及</del>已经涉及）</h3>
+                            <h4>课本练习题</h4>
+                            <p><img src="../../image/vjf/QQ_1733312934841.png" alt="QQ_1733312934841"></p>
+                            <p><img src="../../image/vjf/QQ_1733312987081.png" alt="QQ_1733312987081"></p>
+                        </li>
+                        <li>
+                            <h2>泰勒展开</h2>
+                            <p><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.h0l4jRljG6VK9ZD1ElS4zgAAAA?rs=1&pid=ImgDetMain"
+                                    alt="[无聊水][国服相关]通宵挖完了矿，感觉yly像洛必达法则 NGA玩家社区"></p>
+                            <p>$$
+                                \begin{aligned}
+                                e^{x}&amp;=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{1}{2 !} x^{2}+\cdots
+                                \in(-\infty,+\infty)
+                                \\
+                                \sin x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n} }{(2 n+1) !} x^{2 n+1}=x-\frac{1}{3 !}
+                                x^{3}+\frac{1}{5
+                                !} x^{5}+\cdots, x \in(-\infty,+\infty) \\
+                                \cos x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n} }{(2 n) !} x^{2 n}=1-\frac{1}{2 !}
+                                x^{2}+\frac{1}{4 !}
+                                x^{4}+\cdots, x \in(-\infty,+\infty) \\
+                                \ln (1+x)&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n} }{n+1} x^{n+1}=x-\frac{1}{2}
+                                x^{2}+\frac{1}{3}
+                                x^{3}+\cdots, x \in (-1,1] \\
+                                \frac{1}{1-x}&amp;=\sum_{n=0}^{\infty} x^{n}=1+x+x^{2}+x^{3}+\cdots, x \in(-1,1) \\
+                                \frac{1}{1+x}&amp;=\sum_{n=0}^{\infty}(-1)^{n} x^{n}=1-x+x^{2}-x^{3}+\cdots, x
+                                \in(-1,1)\\
+                                (1+x)^{\alpha}&amp;=1+\sum_{n=1}^{\infty} \frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n
+                                !} x^{n}=1+\alpha
+                                x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots, x \in(-1,1) \\
+                                \arctan x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n} }{2 n+1} x^{2 n+1}=x-\frac{1}{3}
+                                x^{3}+\frac{1}{5}
+                                x^{5}+\cdots+ x \in[-1,1] \\
+                                \arcsin x&amp;=\sum_{n=0}^{\infty} \frac{(2 n) !}{4^{n}(n !)^{2}(2 n+1)}
+                                x^{2n+1}=x+\frac{1}{6}
+                                x^{3}+\frac{3}{40} x^{5}+\frac{5}{112} x^{7}+\frac{35}{1152} x^{9}+\cdots+, x
+                                \in(-1,1)\\
+                                \tan x&amp;=\sum_{n=1}^{\infty} \frac{B_{2 n}(-4)^{n}\left(1-4^{n}\right)}{(2 n) !} x^{2
+                                n-1}=x+\frac{1}{3} x^{3}+\frac{2}{15} x^{5}+\frac{17}{315} x^{7}+\frac{62}{2835}
+                                x^{9}+\frac{1382}{155925} x^{11}+\frac{21844}{6081075} x^{13}+\frac{929569}{638512875}
+                                x^{15}+\cdots,x\in (-\frac{\pi}{2},\frac{\pi}{2})\\
+                                (1+x)^{\frac1x}&amp;=e\times (1-\frac x2+\frac{11x^2}{24}+\cdots)+o(x^2), x \in(-1,1) \\
+                                \end{aligned}
+                                $$</p>
+                            <p><img src="../../image/vjf/QQ_1733142099720.png" alt=""></p>
+                            <h3>sukuna期末模拟题</h3>
+                        </li>
+                    </ol>
+                    <p><img src="../../image/vjf/QQ_1733142144991.png" alt="QQ_1733142144991"></p>
+                    <h3>野生题目</h3>
+                    <p><img src="../../image/vjf/QQ_1733226745823.png" alt="QQ_1733226745823"></p>
+                    <ol start="12">
+                        <li>
+                            <h2>化为定积分（重积分）的定义</h2>
+                            <h3>2023-2024期末T14（略）</h3>
+                            <p><img src="../../image/vjf/QQ_1733225970831.png" alt="QQ_1733225970831"></p>
+                            <h3>2022-2023期末T6</h3>
+                            <p><img src="../../image/vjf/QQ_1733226011330.png" alt="QQ_1733226011330"></p>
+                        </li>
+                        <li>
+                            <h2>利用级数求和的方式（略）</h2>
+                        </li>
+                        <li>
+                            <h2>利用常见不等式（略）</h2>
+                        </li>
+                    </ol>
+                    <img src="C:\Users\娄卫健\AppData\Local\Temp\QQ_1733227209257.png" alt="QQ_1733227209257"
+                        style="zoom:80%;" />
+
+                    <p><img src="../../image/vjf/QQ_1733227232938.png" alt="QQ_1733227232938"></p>
+                    <p><img src="../../image/vjf/QQ_1733227256969.png" alt="QQ_1733227256969"></p>
 
                     <div class="rin-tr"></div>
 
