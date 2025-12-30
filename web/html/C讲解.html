@@ -290,6 +290,8 @@
                     <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
                         href="../pdf/娄卫健C语言讲解.pdf" download><span class="iconfont iconabout"></span> 下载PDF</a>
 
+                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize"
+                        href="../pdf/C语言试卷.zip" download><span class="iconfont iconabout"></span> 下载试卷</a>
                     <button id="bg-toggle" type="button"
                         class="mdui-btn mdui-btn-raised rin-btn rin-btn-blue rin-btn-left mdui-text-capitalize">
                         <span class="iconfont iconabout"></span> 切换背景
@@ -440,7 +442,7 @@
 
 
 
-                                    <table class="md-table-right">
+                                    <table>
                                         <thead>
                                             <tr>
                                                 <th><code>\n</code></th>
@@ -493,156 +495,231 @@
                     </ul>
                     <h3>例题</h3>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1. 请根据下面的声明，计算（1）~（5）题表达式的值并填入各题后面的下划线中。
-</span><span class="code-line line-number" line="2">short x=4,y=0xcd,z=0x20;
-</span><span class="code-line line-number" line="3">char s[] = "hello",d;
-</span><span class="code-line line-number" line="4">int a=3,b=4,c=5;
-</span><span class="code-line line-number" line="5">（1）!(a+b)+c-1&amp;&amp;c+b/3 值为：______ 
-</span><span class="code-line line-number" line="6">（2）strlen(s) 值为： ______（补充：sizeof(s)值为：_____）
-</span><span class="code-line line-number" line="7">（3）d=y 值为：______(知识点：赋值运算符,类似还要注意逗号运算符)
-</span><span class="code-line line-number" line="8">（4）c -= a | ++b 值为： ______
-</span><span class="code-line line-number" line="9">（5）x&lt;&lt;2 | y 值为： ______
-</span><span class="code-line line-number" line="10">
-</span><span class="code-line line-number" line="11">
-</span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13">2. 请根据下面的声明，计算（6）~（10）题表达式的值并填入各题后面的下划线中。
-</span><span class="code-line line-number" line="14">struct T{
-</span><span class="code-line line-number" line="15">int a[3];
-</span><span class="code-line line-number" line="16">char *s;
-</span><span class="code-line line-number" line="17">struct T *x;
-</span><span class="code-line line-number" line="18">}b[2]={{{1,2,3},"HELLO",b},{{-1,0,1},"WORLD",b+1}},*p=b; 
-</span><span class="code-line line-number" line="19">（6）++p-&gt;a[1] 值为： ______
-</span><span class="code-line line-number" line="20">（7）(*++p).s 值为： ______
-</span><span class="code-line line-number" line="21">（8）(--(b[1].x))-&gt;a[2] 值为： ______
-</span><span class="code-line line-number" line="22">（9）(p+1)-&gt;a[1]?1:0 值为： ______
-</span><span class="code-line line-number" line="23">（10）(p++)-&gt;a[0] + (b[0].x)-&gt;a[2] 值为：______
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">short x=4,y=0xcd,z=0x20;
+                    </span><span class="code-line line-number" line="3">char s[] = "hello",d;
+                    </span><span class="code-line line-number" line="4">int a=3,b=4,c=5;
+                    </span><span class="code-line line-number" line="5">（1）!(a+b)+c-1&amp;&amp;c+b/3 值为：______ 
+                    </span><span class="code-line line-number" line="6">（2）strlen(s) 值为： ______（补充：sizeof(s)值为：_____）
+                    </span><span class="code-line line-number" line="7">（3）d=y 值为：______(知识点：赋值运算符,类似还要注意逗号运算符)
+                    </span><span class="code-line line-number" line="8">（4）c -= a | ++b 值为： ______
+                    </span><span class="code-line line-number" line="9">（5）x&lt;&lt;2 | y 值为： ______
+                    </span><span class="code-line line-number" line="10">
+                    </span><span class="code-line line-number" line="11">
+                    </span><span class="code-line line-number" line="12">
+                    </span><span class="code-line line-number" line="13">2. 请根据下面的声明，计算（6）~（10）题表达式的值并填入各题后面的下划线中。
+                    </span><span class="code-line line-number" line="14">struct T{
+                    </span><span class="code-line line-number" line="15">int a[3];
+                    </span><span class="code-line line-number" line="16">char *s;
+                    </span><span class="code-line line-number" line="17">struct T *x;
+                    </span><span class="code-line line-number" line="18">}b[2]={{{1,2,3},"HELLO",b},{{-1,0,1},"WORLD",b+1}},*p=b; 
+                    </span><span class="code-line line-number" line="19">（6）++p-&gt;a[1] 值为： ______
+                    </span><span class="code-line line-number" line="20">（7）(*++p).s 值为： ______
+                    </span><span class="code-line line-number" line="21">（8）(--(b[1].x))-&gt;a[2] 值为： ______
+                    </span><span class="code-line line-number" line="22">（9）(p+1)-&gt;a[1]?1:0 值为： ______
+                    </span><span class="code-line line-number" line="23">（10）(p++)-&gt;a[0] + (b[0].x)-&gt;a[2] 值为：______
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1、char stra[ ] = "helloword", strb[15] = { 'h','c','a','f','e','\0' };  
-</span><span class="code-line line-number" line="2">int a = 7, b = 4, c = 3; 
-</span><span class="code-line line-number" line="3">(1)strlen(stra) 的值为：______              
-</span><span class="code-line line-number" line="4">(2) strlen(strb) 的值为：______        
-</span><span class="code-line line-number" line="5">(3) 表达式(a=7, b=3, a&gt;b?a++:b++,a+b)的值为：______           
-</span><span class="code-line line-number" line="6">(4) 表达式 a += a *= a执行完成后，a的值为：______          
-</span><span class="code-line line-number" line="7">(5) 表达式 !(a-b)+c-2 || b + c/2的值为：______          
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">int a = 7, b = 4, c = 3; 
+                    </span><span class="code-line line-number" line="3">(1)strlen(stra) 的值为：______              
+                    </span><span class="code-line line-number" line="4">(2) strlen(strb) 的值为：______        
+                    </span><span class="code-line line-number" line="5">(3) 表达式(a=7, b=3, a&gt;b?a++:b++,a+b)的值为：______           
+                    </span><span class="code-line line-number" line="6">(4) 表达式 a += a *= a执行完成后，a的值为：______          
+                    </span><span class="code-line line-number" line="7">(5) 表达式 !(a-b)+c-2 || b + c/2的值为：______         
+                    </span><span class="code-line line-number" line="8">
+                    </span><span class="code-line line-number" line="9">
+                    </span><span class="code-line line-number" line="10">
+                    </span><span class="code-line line-number" line="11">2. 请根据下面的声明，计算（6）~（10）题表达式的值并填入各题后面的下划线中。   
+                    </span><span class="code-line line-number" line="12">struct st { 
+                    </span><span class="code-line line-number" line="13">int n; 
+                    </span><span class="code-line line-number" line="14">struct st *next;
+                    </span><span class="code-line line-number" line="15">};
+                    </span><span class="code-line line-number" line="16">struct st a[3]={5, &amp;a[1], 7, &amp;a[2], 9, 0 }，*p=&amp;a[0];
+                    </span><span class="code-line line-number" line="17">int b[6] = {2,3,5,6,7,9}, *q = &amp;b[1];
+                    </span><span class="code-line line-number" line="18">#define S(r)  r/r
+                    </span><span class="code-line line-number" line="19">int x=2, y=4;
+                    </span><span class="code-line line-number" line="20">(6)++p-&gt;n 的值为：______               (7) (*p++).n 的值为：______         
+                    </span><span class="code-line line-number" line="21">(8) p-&gt;next-&gt;n 的值为：______          (9) *(q+1)的值为：______              
+                    </span><span class="code-line line-number" line="22">(10)表达式S(x+y)的值为：______     
+                    </span></code></pre>
                     <h2>二、改错题（14 分）（每小问两处错误）</h2>
                     <h3>例题</h3>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1. 求 2/1、3/2、5/3、8/5、13/8、21/13、… 前 30 项之和。
-</span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">int main()
-</span><span class="code-line line-number" line="4">{
-</span><span class="code-line line-number" line="5"> 	int i, t1 = 2, t2 = 1, x;
-</span><span class="code-line line-number" line="6">	float sum = 0;
-</span><span class="code-line line-number" line="7">	for (i = 1; i &lt;= 30; i++) {
-</span><span class="code-line line-number" line="8">		sum += t1 / t2;
-</span><span class="code-line line-number" line="9">        x = t1;
-</span><span class="code-line line-number" line="10">        t1 += t2;
-</span><span class="code-line line-number" line="11">        t2 = x;
-</span><span class="code-line line-number" line="12">	 }
-</span><span class="code-line line-number" line="13">	printf("sum = %d\n", sum);
-</span><span class="code-line line-number" line="14">	return 0;
-</span><span class="code-line line-number" line="15">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">int main()
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5"> 	int i, t1 = 2, t2 = 1, x;
+                    </span><span class="code-line line-number" line="6">	float sum = 0;
+                    </span><span class="code-line line-number" line="7">	for (i = 1; i &lt;= 30; i++) {
+                    </span><span class="code-line line-number" line="8">		sum += t1 / t2;
+                    </span><span class="code-line line-number" line="9">        x = t1;
+                    </span><span class="code-line line-number" line="10">        t1 += t2;
+                    </span><span class="code-line line-number" line="11">        t2 = x;
+                    </span><span class="code-line line-number" line="12">	 }
+                    </span><span class="code-line line-number" line="13">	printf("sum = %d\n", sum);
+                    </span><span class="code-line line-number" line="14">	return 0;
+                    </span><span class="code-line line-number" line="15">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">2. 函数 fun()的功能是计算正整数 num 的各位上的数字平方之和。例如，输入 124，则输出应为21；若输入 326，则输出应为 49。
-</span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">long fun(long num)
-</span><span class="code-line line-number" line="4">{
-</span><span class="code-line line-number" line="5">	long k = 1;
-</span><span class="code-line line-number" line="6">	do{
-</span><span class="code-line line-number" line="7">		k+= (num%10)*(num%10);
-</span><span class="code-line line-number" line="8">		num/= 10;
-</span><span class="code-line line-number" line="9">	} while(num);
-</span><span class="code-line line-number" line="10">}
-</span><span class="code-line line-number" line="11">int main()
-</span><span class="code-line line-number" line="12">{
-</span><span class="code-line line-number" line="13">	long n;
-</span><span class="code-line line-number" line="14">	printf(“ Please enter a number: ”);
-</span><span class="code-line line-number" line="15">	scanf(“ %ld ”, &amp;n);
-</span><span class="code-line line-number" line="16">	printf(“ %ld\n ”, fun(n));
-</span><span class="code-line line-number" line="17">	return 0;
-</span><span class="code-line line-number" line="18">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">long fun(long num)
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">	long k = 1;
+                    </span><span class="code-line line-number" line="6">	do{
+                    </span><span class="code-line line-number" line="7">		k+= (num%10)*(num%10);
+                    </span><span class="code-line line-number" line="8">		num/= 10;
+                    </span><span class="code-line line-number" line="9">	} while(num);
+                    </span><span class="code-line line-number" line="10">}
+                    </span><span class="code-line line-number" line="11">int main()
+                    </span><span class="code-line line-number" line="12">{
+                    </span><span class="code-line line-number" line="13">	long n;
+                    </span><span class="code-line line-number" line="14">	printf(“ Please enter a number: ”);
+                    </span><span class="code-line line-number" line="15">	scanf(“ %ld ”, &amp;n);
+                    </span><span class="code-line line-number" line="16">	printf(“ %ld\n ”, fun(n));
+                    </span><span class="code-line line-number" line="17">	return 0;
+                    </span><span class="code-line line-number" line="18">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">3. 函数 fun( )的功能是将字符串 s 中位于偶数位置（最左边为第 0 位）的字符或 ASCCII 码为奇数的字符放入字符串 t 中。例如，若 s 为 ADFESH，则 t 应是 AFES。
-</span><span class="code-line line-number" line="2">void fun(char s[ ], char t[ ])
-</span><span class="code-line line-number" line="3">{
-</span><span class="code-line line-number" line="4">	int i, j = 0;
-</span><span class="code-line line-number" line="5">	for(i = 0; i&lt;strlen(s); i++)
-</span><span class="code-line line-number" line="6">	if(i%2 = 0 || s[i]%2 != 0)
-</span><span class="code-line line-number" line="7">	t[++j] = s[i];
-</span><span class="code-line line-number" line="8">	t[j] = ’\0’;
-</span><span class="code-line line-number" line="9">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">void fun(char s[ ], char t[ ])
+                    </span><span class="code-line line-number" line="3">{
+                    </span><span class="code-line line-number" line="4">	int i, j = 0;
+                    </span><span class="code-line line-number" line="5">	for(i = 0; i&lt;strlen(s); i++)
+                    </span><span class="code-line line-number" line="6">	if(i%2 = 0 || s[i]%2 != 0)
+                    </span><span class="code-line line-number" line="7">	t[++j] = s[i];
+                    </span><span class="code-line line-number" line="8">	t[j] = ’\0’;
+                    </span><span class="code-line line-number" line="9">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">4. 逆序输出数组元素。
-</span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">#define N 6 
-</span><span class="code-line line-number" line="4">int main()
-</span><span class="code-line line-number" line="5">{ 
-</span><span class="code-line line-number" line="6">	int i,a[N]={2,5,7,14,19,22};
-</span><span class="code-line line-number" line="7">	for(i=N;i&gt;=0;i--) 
-</span><span class="code-line line-number" line="8">	printf("%d ",(a+i));
-</span><span class="code-line line-number" line="9">	return 0;
-</span><span class="code-line line-number" line="10">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">#define N 6 
+                    </span><span class="code-line line-number" line="4">int main()
+                    </span><span class="code-line line-number" line="5">{ 
+                    </span><span class="code-line line-number" line="6">	int i,a[N]={2,5,7,14,19,22};
+                    </span><span class="code-line line-number" line="7">	for(i=N;i&gt;=0;i--) 
+                    </span><span class="code-line line-number" line="8">	printf("%d ",(a+i));
+                    </span><span class="code-line line-number" line="9">	return 0;
+                    </span><span class="code-line line-number" line="10">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">5. 函数 fun 的功能是删除字符串 s 中第一次出现的字符'b'，函数返回一个指向最终的字符串 s 的指针，若字符串 s 中不存在字符'b'，则返回 NULL。例如，输入 qwebrtb，则输出应为 qwertb；若输入 qwer，则输出应为 Not exist!。
-</span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">char *fun(char s[ ] )
-</span><span class="code-line line-number" line="4">{
-</span><span class="code-line line-number" line="5">	int i,k=0;
-</span><span class="code-line line-number" line="6">	while(s[k] != '\0') {
-</span><span class="code-line line-number" line="7">		if( s[k] = ='b') continue;
-</span><span class="code-line line-number" line="8">		k++; 
-</span><span class="code-line line-number" line="9">	}
-</span><span class="code-line line-number" line="10">	if(s[k] == '\0') return s;
-</span><span class="code-line line-number" line="11">	else {
-</span><span class="code-line line-number" line="12">		do {
-</span><span class="code-line line-number" line="13">			s[k]=s[k+1];
-</span><span class="code-line line-number" line="14">			k++;
-</span><span class="code-line line-number" line="15">		} while(s[k] != '\0');
-</span><span class="code-line line-number" line="16">		return s;
-</span><span class="code-line line-number" line="17">	}
-</span><span class="code-line line-number" line="18">}
-</span><span class="code-line line-number" line="19">int main()
-</span><span class="code-line line-number" line="20">{
-</span><span class="code-line line-number" line="21">	char s[30], *p;
-</span><span class="code-line line-number" line="22">	fgets(s,30,stdin);
-</span><span class="code-line line-number" line="23">	p=fun(s);
-</span><span class="code-line line-number" line="24">	if(p==NULL) printf("Not exist!\n");
-</span><span class="code-line line-number" line="25">	else printf("%s\n",p);
-</span><span class="code-line line-number" line="26">return 0;
-</span><span class="code-line line-number" line="27">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">char *fun(char s[ ] )
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">	int i,k=0;
+                    </span><span class="code-line line-number" line="6">	while(s[k] != '\0') {
+                    </span><span class="code-line line-number" line="7">		if( s[k] = ='b') continue;
+                    </span><span class="code-line line-number" line="8">		k++; 
+                    </span><span class="code-line line-number" line="9">	}
+                    </span><span class="code-line line-number" line="10">	if(s[k] == '\0') return s;
+                    </span><span class="code-line line-number" line="11">	else {
+                    </span><span class="code-line line-number" line="12">		do {
+                    </span><span class="code-line line-number" line="13">			s[k]=s[k+1];
+                    </span><span class="code-line line-number" line="14">			k++;
+                    </span><span class="code-line line-number" line="15">		} while(s[k] != '\0');
+                    </span><span class="code-line line-number" line="16">		return s;
+                    </span><span class="code-line line-number" line="17">	}
+                    </span><span class="code-line line-number" line="18">}
+                    </span><span class="code-line line-number" line="19">int main()
+                    </span><span class="code-line line-number" line="20">{
+                    </span><span class="code-line line-number" line="21">	char s[30], *p;
+                    </span><span class="code-line line-number" line="22">	fgets(s,30,stdin);
+                    </span><span class="code-line line-number" line="23">	p=fun(s);
+                    </span><span class="code-line line-number" line="24">	if(p==NULL) printf("Not exist!\n");
+                    </span><span class="code-line line-number" line="25">	else printf("%s\n",p);
+                    </span><span class="code-line line-number" line="26">return 0;
+                    </span><span class="code-line line-number" line="27">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">6. 函数 fun()的功能是：在字符串 s 中找出 ASCII 码最小的字符，将其放在最左边位置上，并将该字符前的原字符向后顺序移动。例如，调用 fun()函数之前字符串为 ebfAgCDg，调用后字符串为 AebfgCDg。
-</span><span class="code-line line-number" line="2">void fun(char s[ ] )
-</span><span class="code-line line-number" line="3">{
-</span><span class="code-line line-number" line="4">    char min, *q;
-</span><span class="code-line line-number" line="5">    int i = 0;
-</span><span class="code-line line-number" line="6">    min = s[i];
-</span><span class="code-line line-number" line="7">    while(s[i] != 0) {
-</span><span class="code-line line-number" line="8">        if(min&gt;s[i]) {
-</span><span class="code-line line-number" line="9">            q = &amp;(s+i);
-</span><span class="code-line line-number" line="10">            min = s[i];
-</span><span class="code-line line-number" line="11">        }
-</span><span class="code-line line-number" line="12">        i++;
-</span><span class="code-line line-number" line="13">    }
-</span><span class="code-line line-number" line="14">    while(q&gt;s) {
-</span><span class="code-line line-number" line="15">        *q = *q-1;
-</span><span class="code-line line-number" line="16">        q--;
-</span><span class="code-line line-number" line="17">    }
-</span><span class="code-line line-number" line="18">    s[0] = min;
-</span><span class="code-line line-number" line="19">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">void fun(char s[ ] )
+                    </span><span class="code-line line-number" line="3">{
+                    </span><span class="code-line line-number" line="4">    char min, *q;
+                    </span><span class="code-line line-number" line="5">    int i = 0;
+                    </span><span class="code-line line-number" line="6">    min = s[i];
+                    </span><span class="code-line line-number" line="7">    while(s[i] != 0) {
+                    </span><span class="code-line line-number" line="8">        if(min&gt;s[i]) {
+                    </span><span class="code-line line-number" line="9">            q = &amp;(s+i);
+                    </span><span class="code-line line-number" line="10">            min = s[i];
+                    </span><span class="code-line line-number" line="11">        }
+                    </span><span class="code-line line-number" line="12">        i++;
+                    </span><span class="code-line line-number" line="13">    }
+                    </span><span class="code-line line-number" line="14">    while(q&gt;s) {
+                    </span><span class="code-line line-number" line="15">        *q = *q-1;
+                    </span><span class="code-line line-number" line="16">        q--;
+                    </span><span class="code-line line-number" line="17">    }
+                    </span><span class="code-line line-number" line="18">    s[0] = min;
+                    </span><span class="code-line line-number" line="19">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">7. 函数 fun()的功能是：从 n 个学生的成绩中统计出高于平均分的学生人数，人数由函数值返回，平均分存放在形参 average 所指的存储单元中。假如 6 名学生的成绩为:84 65.5 68 96.5 87 56, 则高于平均分的学生人数为 3 (平均分为 76.1666667)。
-</span><span class="code-line line-number" line="2">int fun(float *s, int n, float *average)
-</span><span class="code-line line-number" line="3">{
-</span><span class="code-line line-number" line="4">    float ave, t = 0;
-</span><span class="code-line line-number" line="5">    int count = 0, k, i;
-</span><span class="code-line line-number" line="6">    for(k = 0; k&lt;n; k++) t+=s[k];
-</span><span class="code-line line-number" line="7">    ave = t/n;
-</span><span class="code-line line-number" line="8">    for(i = 0; i&lt;n; i++)
-</span><span class="code-line line-number" line="9">    	if(s[i]&gt;ave) count+1; 
-</span><span class="code-line line-number" line="10">    average = ave;
-</span><span class="code-line line-number" line="11">    return count;
-</span><span class="code-line line-number" line="12">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">int fun(float *s, int n, float *average)
+                    </span><span class="code-line line-number" line="3">{
+                    </span><span class="code-line line-number" line="4">    float ave, t = 0;
+                    </span><span class="code-line line-number" line="5">    int count = 0, k, i;
+                    </span><span class="code-line line-number" line="6">    for(k = 0; k&lt;n; k++) t+=s[k];
+                    </span><span class="code-line line-number" line="7">    ave = t/n;
+                    </span><span class="code-line line-number" line="8">    for(i = 0; i&lt;n; i++)
+                    </span><span class="code-line line-number" line="9">    	if(s[i]&gt;ave) count+1; 
+                    </span><span class="code-line line-number" line="10">    average = ave;
+                    </span><span class="code-line line-number" line="11">    return count;
+                    </span><span class="code-line line-number" line="12">}
+                    </span></code></pre>
+                    <pre><code class="code-highlight"><span class="code-line line-number" line="1">2、求出以下分数序列的前n项之和：s=2/1 + 3/2 + 5/3 + 8/5 + 13/8 + 21/13 …。例如，若n=5，程序的输出应为：The value is: 8.391667。
+                    </span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">int func(int n)
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">	int a=2, b=1, c, i;
+                    </span><span class="code-line line-number" line="6">	double s = 0.0;
+                    </span><span class="code-line line-number" line="7">	for(i=1; i&lt;=n; i++) {
+                    </span><span class="code-line line-number" line="8">		s = (double)a/b;
+                    </span><span class="code-line line-number" line="9">		c=a;  a=a+b;  b=c;
+                    </span><span class="code-line line-number" line="10">	}	return s;
+                    </span><span class="code-line line-number" line="11">}
+                    </span><span class="code-line line-number" line="12">
+                    </span><span class="code-line line-number" line="13">int main()
+                    </span><span class="code-line line-number" line="14">{
+                    </span><span class="code-line line-number" line="15">	int n=5;
+                    </span><span class="code-line line-number" line="16">	printf("The value is: %f", func(n));
+                    </span><span class="code-line line-number" line="17">	return 0;
+                    </span><span class="code-line line-number" line="18">}
+                    </span></code></pre>
+                    <pre><code class="code-highlight"><span class="code-line line-number" line="1">5、下面程序用函数实现两个整数的交换。
+                    </span><span class="code-line line-number" line="2">
+                    </span><span class="code-line line-number" line="3">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="4">void swap(int *p1, int *p2)
+                    </span><span class="code-line line-number" line="5">{
+                    </span><span class="code-line line-number" line="6">	int *p;
+                    </span><span class="code-line line-number" line="7">	p=*p2;	
+                    </span><span class="code-line line-number" line="8">*p2=*p1;  *p1=p;
+                    </span><span class="code-line line-number" line="9">}	int main()
+                    </span><span class="code-line line-number" line="10">{ 
+                    </span><span class="code-line line-number" line="11">	int a=4,b=6;
+                    </span><span class="code-line line-number" line="12">	swap(a,b);
+                    </span><span class="code-line line-number" line="13">	printf("%d,%d", a, b);
+                    </span><span class="code-line line-number" line="14">return 0; 
+                    </span><span class="code-line line-number" line="15">}
+                    </span></code></pre>
+                    <pre><code class="code-highlight"><span class="code-line line-number" line="1">4、下面程序实现求一维数组a中值为偶数的元素之和，该程序的输出应为：The result is: 62。
+                    </span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">int sum ( int a[ ],int n )
+                    </span><span class="code-line line-number" line="4">{ 	int i,s=0;
+                    </span><span class="code-line line-number" line="5">	for ( i=0; i&lt;n; i++)
+                    </span><span class="code-line line-number" line="6">	  if (a[i] % 2 == 0)	 s = s + i;
+                    </span><span class="code-line line-number" line="7">	return s;
+                    </span><span class="code-line line-number" line="8">}	int main()
+                    </span><span class="code-line line-number" line="9">{ 
+                    </span><span class="code-line line-number" line="10">	int a[10]={10,4,2,7,3,12,5,34,5,9}, s;
+                    </span><span class="code-line line-number" line="11">	s = sum(a[10],10);
+                    </span><span class="code-line line-number" line="12">	printf("The result is: %d\n", s);
+                    </span><span class="code-line line-number" line="13">return 0; 
+                    </span><span class="code-line line-number" line="14">}
+                    </span></code></pre>
+                    <pre><code class="code-highlight"><span class="code-line line-number" line="1">1.将p的高字节作为低字节，q的低字节作为高字节组成一个新的短整型数k。  
+                    </span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">int main( )
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">short p=0x8034, q=0x5678;
+                    </span><span class="code-line line-number" line="6">    	k = p&gt;&gt;8 | q&lt;&lt;8; 
+                    </span><span class="code-line line-number" line="7">printf("%hx\n",k);
+                    </span><span class="code-line line-number" line="8">    return 0;
+                    </span><span class="code-line line-number" line="9">}
+                    </span></code></pre>
                     <h3>核心考察知识点（每小题 2 个错误，覆盖语法、逻辑、库函数使用）</h3>
                     <h4>1. 语法错误</h4>
                     <ul>
@@ -698,66 +775,70 @@
                     <h2>三、简答题（24 分）</h2>
                     <h3>例题</h3>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1.一个 2 字节的 short 型变量的最大允许值是多少？如果再加 1，结果是多少？
-</span><span class="code-line line-number" line="2">
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4">2.请写出一个 C 表达式，如果字符变量 ch 的值是大写字母，则将其值修改成小写字母；如果字符变量 ch 的值是小写字母，则将其值修改成大写字母;如果 ch 的值不是字母，其值不变。
-</span><span class="code-line line-number" line="5">//考C语言最好记住大小写字母、数字对应的ASCII码值。
-</span><span class="code-line line-number" line="6">
-</span><span class="code-line line-number" line="7">
-</span><span class="code-line line-number" line="8">3.请写一个 C 表达式，将 int 型变量 x 的最高二进制位设置为 1，其余位不变，要求所写表达式在 int 为 2 或 4 字节的机器上均能正确执行。
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10">
-</span><span class="code-line line-number" line="11">
-</span><span class="code-line line-number" line="12">4. 下列程序段定义了 3 个变量 i，类型分别为 int、long 与 float。指出每个变量的存储类，它们分别在那些行进行了声明和使用。
-</span><span class="code-line line-number" line="13">1 int i;
-</span><span class="code-line line-number" line="14">2 void fun(long i)
-</span><span class="code-line line-number" line="15">3 {
-</span><span class="code-line line-number" line="16">4 	long x=i;
-</span><span class="code-line line-number" line="17">5 	{
-</span><span class="code-line line-number" line="18">6 		float i;
-</span><span class="code-line line-number" line="19">7 		i=3.4;
-</span><span class="code-line line-number" line="20">8 	}
-</span><span class="code-line line-number" line="21">9 	x=i+2;
-</span><span class="code-line line-number" line="22">10 }
-</span><span class="code-line line-number" line="23">11 int *p=&amp;i;
-</span><span class="code-line line-number" line="24">
-</span><span class="code-line line-number" line="25">
-</span><span class="code-line line-number" line="26">
-</span><span class="code-line line-number" line="27">5. 判断以下叙述是否正确，如果不正确，请说明原因。
-</span><span class="code-line line-number" line="28">(1) 表达式 z+=x+++y 中的词法元素（记号）数目是 7 个。
-</span><span class="code-line line-number" line="29">(2) 若有定义 char x[ ]="abcde", y[ ]={'a','b','c','d','e'}; 则数组 x 和数组 y 等价。
-</span><span class="code-line line-number" line="30">(3) typedef char *STRING 和 #define STRING char* 中命名的 STRING 使用上没有区别。
-</span><span class="code-line line-number" line="31">(4) 变量可以命名为 INT。
-</span><span class="code-line line-number" line="32">
-</span><span class="code-line line-number" line="33">
-</span><span class="code-line line-number" line="34">
-</span><span class="code-line line-number" line="35">6. 写出下列声明语句。
-</span><span class="code-line line-number" line="36">（1） f 是值为 3 的“只读”型整型变量;
-</span><span class="code-line line-number" line="37">
-</span><span class="code-line line-number" line="38">（2） g 是一个无参指针函数，其返回值是指向包含 2 个指针元素的数组的指针，该数组中每个元素是指向有一个字符指针参数且无返回值的函数。
-</span><span class="code-line line-number" line="39">
-</span><span class="code-line line-number" line="40">
-</span><span class="code-line line-number" line="41">
-</span><span class="code-line line-number" line="42">
-</span><span class="code-line line-number" line="43">3. 请写一个C表达式，将int型数x向左循环移动n位，循环左移即把移出的高位放到该数的低位，n值小于int型数所占的位数。
-</span><span class="code-line line-number" line="44">
-</span><span class="code-line line-number" line="45">
-</span><span class="code-line line-number" line="46">
-</span><span class="code-line line-number" line="47">4. 请定义一个标准宏MIN(x,y,z)，这个宏返回三个参数中最小的一个。
-</span><span class="code-line line-number" line="48">
-</span><span class="code-line line-number" line="49">
-</span><span class="code-line line-number" line="50">5. 请说明下面声明中p1和p2的含义与区别。
-</span><span class="code-line line-number" line="51">int x=2; 
-</span><span class="code-line line-number" line="52">const  int *p1 =&amp;x; 
-</span><span class="code-line line-number" line="53">int *const p2 =&amp;x；
-</span><span class="code-line line-number" line="54">
-</span><span class="code-line line-number" line="55">
-</span><span class="code-line line-number" line="56">6. 请根据下面各题的解释，写出对应的声明语句。
-</span><span class="code-line line-number" line="57">(1)a是一个指向有10个整型数数组的指针。Int (*a)[10]
-</span><span class="code-line line-number" line="58">(2) b是一个有10个元素的指针数组，数组元素是指向函数的指针，该函数有一个整型参数并返回一个整型数。Int (*b[10])(int)
-</span><span class="code-line line-number" line="59">
-</span><span class="code-line line-number" line="60">
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">
+                    </span><span class="code-line line-number" line="3">
+                    </span><span class="code-line line-number" line="4">2.请写出一个 C 表达式，如果字符变量 ch 的值是大写字母，则将其值修改成小写字母；如果字符变量 ch 的值是小写字母，则将其值修改成大写字母;如果 ch 的值不是字母，其值不变。
+                    </span><span class="code-line line-number" line="5">//考C语言最好记住大小写字母、数字对应的ASCII码值。
+                    </span><span class="code-line line-number" line="6">
+                    </span><span class="code-line line-number" line="7">
+                    </span><span class="code-line line-number" line="8">3.请写一个 C 表达式，将 int 型变量 x 的最高二进制位设置为 1，其余位不变，要求所写表达式在 int 为 2 或 4 字节的机器上均能正确执行。
+                    </span><span class="code-line line-number" line="9">
+                    </span><span class="code-line line-number" line="10">
+                    </span><span class="code-line line-number" line="11">
+                    </span><span class="code-line line-number" line="12">4. 下列程序段定义了 3 个变量 i，类型分别为 int、long 与 float。指出每个变量的存储类，它们分别在那些行进行了声明和使用。
+                    </span><span class="code-line line-number" line="13">1 int i;
+                    </span><span class="code-line line-number" line="14">2 void fun(long i)
+                    </span><span class="code-line line-number" line="15">3 {
+                    </span><span class="code-line line-number" line="16">4 	long x=i;
+                    </span><span class="code-line line-number" line="17">5 	{
+                    </span><span class="code-line line-number" line="18">6 		float i;
+                    </span><span class="code-line line-number" line="19">7 		i=3.4;
+                    </span><span class="code-line line-number" line="20">8 	}
+                    </span><span class="code-line line-number" line="21">9 	x=i+2;
+                    </span><span class="code-line line-number" line="22">10 }
+                    </span><span class="code-line line-number" line="23">11 int *p=&amp;i;
+                    </span><span class="code-line line-number" line="24">
+                    </span><span class="code-line line-number" line="25">
+                    </span><span class="code-line line-number" line="26">
+                    </span><span class="code-line line-number" line="27">5. 判断以下叙述是否正确，如果不正确，请说明原因。
+                    </span><span class="code-line line-number" line="28">(1) 表达式 z+=x+++y 中的词法元素（记号）数目是 7 个。
+                    </span><span class="code-line line-number" line="29">(2) 若有定义 char x[ ]="abcde", y[ ]={'a','b','c','d','e'}; 则数组 x 和数组 y 等价。
+                    </span><span class="code-line line-number" line="30">(3) typedef char *STRING 和 #define STRING char* 中命名的 STRING 使用上没有区别。
+                    </span><span class="code-line line-number" line="31">(4) 变量可以命名为 INT。
+                    </span><span class="code-line line-number" line="32">
+                    </span><span class="code-line line-number" line="33">
+                    </span><span class="code-line line-number" line="34">
+                    </span><span class="code-line line-number" line="35">6. 写出下列声明语句。
+                    </span><span class="code-line line-number" line="36">（1） f 是值为 3 的“只读”型整型变量;
+                    </span><span class="code-line line-number" line="37">
+                    </span><span class="code-line line-number" line="38">（2） g 是一个无参指针函数，其返回值是指向包含 2 个指针元素的数组的指针，该数组中每个元素是指向有一个字符指针参数且无返回值的函数。
+                    </span><span class="code-line line-number" line="39">
+                    </span><span class="code-line line-number" line="40">
+                    </span><span class="code-line line-number" line="41">
+                    </span><span class="code-line line-number" line="42">
+                    </span><span class="code-line line-number" line="43">3. 请写一个C表达式，将int型数x向左循环移动n位，循环左移即把移出的高位放到该数的低位，n值小于int型数所占的位数。
+                    </span><span class="code-line line-number" line="44">
+                    </span><span class="code-line line-number" line="45">
+                    </span><span class="code-line line-number" line="46">
+                    </span><span class="code-line line-number" line="47">4. 请定义一个标准宏MIN(x,y,z)，这个宏返回三个参数中最小的一个。
+                    </span><span class="code-line line-number" line="48">
+                    </span><span class="code-line line-number" line="49">
+                    </span><span class="code-line line-number" line="50">5. 请说明下面声明中p1和p2的含义与区别。
+                    </span><span class="code-line line-number" line="51">int x=2; 
+                    </span><span class="code-line line-number" line="52">const  int *p1 =&amp;x; 
+                    </span><span class="code-line line-number" line="53">int *const p2 =&amp;x；
+                    </span><span class="code-line line-number" line="54">
+                    </span><span class="code-line line-number" line="55">
+                    </span><span class="code-line line-number" line="56">6. 请根据下面各题的解释，写出对应的声明语句。
+                    </span><span class="code-line line-number" line="57">(1)a是一个指向有10个整型数数组的指针。Int (*a)[10]
+                    </span><span class="code-line line-number" line="58">(2) b是一个有10个元素的指针数组，数组元素是指向函数的指针，该函数有一个整型参数并返回一个整型数。Int (*b[10])(int)
+                    </span><span class="code-line line-number" line="59">
+                    </span><span class="code-line line-number" line="60">
+                    </span><span class="code-line line-number" line="61">6. 写声明语句。
+                    </span><span class="code-line line-number" line="62">① 声明一个表示性别的枚举类型sex（0表示男性male，1表示女性female)。
+                    </span><span class="code-line line-number" line="63">② 声明一个指向字符型常量的指针pc。   
+                    </span><span class="code-line line-number" line="64">③ p是有3个元素的函数指针数组，数组中每个元素所指向的函数是无参的指针函数，函数返回的指针指向长度为4的整型数组。   
+                    </span></code></pre>
                     <h3>核心考察知识点</h3>
                     <h4>1. 数据类型取值范围与溢出</h4>
                     <h4>2. 字符大小写转换与条件表达式</h4>
@@ -814,6 +895,63 @@
                             </ul>
                         </li>
                     </ul>
+                    <h4>7.常量、关键字、合法标识符的区分</h4>
+                    <ul>
+                        <li>
+                            <p>关键字：</p>
+                            <ul>
+                                <li>
+                                    <p>定义：C 语言预先规定的、具有固定特殊含义的标识符，<strong>不能被用户自定义为变量名、函数名、数组名等</strong>，是编译器识别语法的核心标识。
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>规则：</p>
+                                    <ul>
+                                        <li>
+                                            <p>所有关键字均为<strong>小写</strong>（C
+                                                语言大小写敏感，<code>Union</code>≠<code>union</code>，但<code>union</code>本身是关键字）；
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>不可重定义、不可作为标识符使用；</p>
+                                        </li>
+                                        <li>
+                                            <p>C89 标准有 32 个核心关键字，<code>union</code>是其中之一（用于定义联合体 / 共用体）。</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>合法标识符：</p>
+                            <ul>
+                                <li>
+                                    <p>定义：用户自定义的名称，用于标识变量、函数、数组、结构体、宏等</p>
+                                </li>
+                                <li>
+                                    <p>核心规则：</p>
+                                    <ul>
+                                        <li>
+                                            <p>组成字符：仅能包含<strong>字母（A-Z/a-z）、数字（0-9）、下划线（_）</strong>，不能包含空格、运算符（+、-、*
+                                                等）、特殊符号（(、#等，C标准不允许)，部分编译器扩展支持但非通用）；</p>
+                                        </li>
+                                        <li>
+                                            <p>首字符要求：必须是<strong>字母或下划线</strong>，不能以数字开头；</p>
+                                        </li>
+                                        <li>
+                                            <p>命名禁忌：不能与关键字重名；</p>
+                                        </li>
+                                        <li>
+                                            <p>大小写敏感：<code>temp</code>和<code>Temp</code>是两个不同的标识符。</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>合法常量：详见第一题总结部分</p>
+                        </li>
+                    </ul>
                     <h3>需重点学习的内容</h3>
                     <ul>
                         <li>数据类型取值范围与溢出规则（尤其是有符号 / 无符号的区别）。</li>
@@ -821,119 +959,186 @@
                         <li>存储类（<code>static</code>、<code>extern</code>、<code>register</code>）的作用域、生命周期、存储位置。</li>
                         <li>复杂声明的解析方法（从内向外，先看函数 / 数组，再看指针 / 类型）。</li>
                         <li><code>typedef</code>与<code>#define</code>的区别（类型定义 vs 文本替换）。</li>
+                        <li>合法标识符、合法常量、关键字的区分</li>
                     </ul>
                     <h2>四、程序分析题（24 分）</h2>
                     <h3>例题</h3>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1. 写出下面程序的运行结果。
-</span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">long fib(int g) 
-</span><span class="code-line line-number" line="4">{
-</span><span class="code-line line-number" line="5">    switch (g) {
-</span><span class="code-line line-number" line="6">    case 0: return 0;
-</span><span class="code-line line-number" line="7">    case 1: case 2: return 1;
-</span><span class="code-line line-number" line="8">    }
-</span><span class="code-line line-number" line="9">    return(fib(g-1)+fib(g-2));
-</span><span class="code-line line-number" line="10">}
-</span><span class="code-line line-number" line="11">int main() 
-</span><span class="code-line line-number" line="12">{
-</span><span class="code-line line-number" line="13">    long k;
-</span><span class="code-line line-number" line="14">    k=fib(7);
-</span><span class="code-line line-number" line="15">    printf("k=%d\n",k);
-</span><span class="code-line line-number" line="16">    return 0;
-</span><span class="code-line line-number" line="17">}
-</span><span class="code-line line-number" line="18">//k=13
-</span><span class="code-line line-number" line="19">
-</span><span class="code-line line-number" line="20">
-</span><span class="code-line line-number" line="21">2. 写出下面程序的运行结果。
-</span><span class="code-line line-number" line="22">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="23">int main()
-</span><span class="code-line line-number" line="24">{
-</span><span class="code-line line-number" line="25">    int i,r;
-</span><span class="code-line line-number" line="26">    char s1[80]="bus",s2[80]="book";
-</span><span class="code-line line-number" line="27">    for (i=r=0;s1[i]!='\0'&amp;&amp;s2[i]!='\0';i++)
-</span><span class="code-line line-number" line="28">    	if (s1[i]==s2[i]) i++;//注意这里也有i++
-</span><span class="code-line line-number" line="29">    	else { r=s1[i]-s2[i]; break; }
-</span><span class="code-line line-number" line="30">    printf("%d",r);
-</span><span class="code-line line-number" line="31">    return 0;
-</span><span class="code-line line-number" line="32">}
-</span><span class="code-line line-number" line="33">//4
-</span><span class="code-line line-number" line="34">
-</span><span class="code-line line-number" line="35">
-</span><span class="code-line line-number" line="36">3. 写出下面程序的运行结果。
-</span><span class="code-line line-number" line="37">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="38">#define M 5
-</span><span class="code-line line-number" line="39">#define f(x) x*x
-</span><span class="code-line line-number" line="40">#define ff(x) (x*x)
-</span><span class="code-line line-number" line="41">int main()
-</span><span class="code-line line-number" line="42">{
-</span><span class="code-line line-number" line="43">    int n1,n2;
-</span><span class="code-line line-number" line="44">    n1=100/f(M);
-</span><span class="code-line line-number" line="45">    n2=100/ff(M);
-</span><span class="code-line line-number" line="46">    printf("n1=%d,n2=%d\n",n1,n2); 
-</span><span class="code-line line-number" line="47">    return 0;
-</span><span class="code-line line-number" line="48">}
-</span><span class="code-line line-number" line="49">//n1=100,n2=4
-</span><span class="code-line line-number" line="50">
-</span><span class="code-line line-number" line="51">
-</span><span class="code-line line-number" line="52">4. 写出下面程序的运行结果。
-</span><span class="code-line line-number" line="53">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="54">#define M 4
-</span><span class="code-line line-number" line="55">void fun(int *a)
-</span><span class="code-line line-number" line="56">{
-</span><span class="code-line line-number" line="57">    int i,j,k,m;
-</span><span class="code-line line-number" line="58">    for(i=M;i&gt;0;i--) {
-</span><span class="code-line line-number" line="59">        k=*(a+M-1);
-</span><span class="code-line line-number" line="60">        for (j=M-2;j&gt;=0;j--)
-</span><span class="code-line line-number" line="61">        	*(a+j+1)=*(a+j);
-</span><span class="code-line line-number" line="62">        *a=k;
-</span><span class="code-line line-number" line="63">        for(m=0;m&lt;M;m++)
-</span><span class="code-line line-number" line="64">            printf("%d",*(a+m));
-</span><span class="code-line line-number" line="65">        printf("\n");
-</span><span class="code-line line-number" line="66">    }
-</span><span class="code-line line-number" line="67">}
-</span><span class="code-line line-number" line="68">int main()
-</span><span class="code-line line-number" line="69">{
-</span><span class="code-line line-number" line="70">    int a[M]={1,2,3,4};
-</span><span class="code-line line-number" line="71">    fun(a);
-</span><span class="code-line line-number" line="72">    return 0;
-</span><span class="code-line line-number" line="73">}
-</span><span class="code-line line-number" line="74">/*
-</span><span class="code-line line-number" line="75">4123
-</span><span class="code-line line-number" line="76">3412
-</span><span class="code-line line-number" line="77">2341
-</span><span class="code-line line-number" line="78">1234
-</span><span class="code-line line-number" line="79">*/
-</span><span class="code-line line-number" line="80">
-</span><span class="code-line line-number" line="81">
-</span><span class="code-line line-number" line="82">5. 写出下面程序的运行结果。
-</span><span class="code-line line-number" line="83">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="84">void amov(int *p, int (*a)[3], int n)
-</span><span class="code-line line-number" line="85">{
-</span><span class="code-line line-number" line="86">    int i,j,s=0;
-</span><span class="code-line line-number" line="87">    for (i=0;i&lt;n;i++)
-</span><span class="code-line line-number" line="88">        for(j=0;j&lt;n;j++) {
-</span><span class="code-line line-number" line="89">            *p=(*(a+j))[i];
-</span><span class="code-line line-number" line="90">            s=s+*p;
-</span><span class="code-line line-number" line="91">            p++;
-</span><span class="code-line line-number" line="92">       	}
-</span><span class="code-line line-number" line="93">    printf("\ns=%d\n",s);
-</span><span class="code-line line-number" line="94">}
-</span><span class="code-line line-number" line="95">int main()
-</span><span class="code-line line-number" line="96">{
-</span><span class="code-line line-number" line="97">    int i,*p,a[3][3]={{1,3,5},{2,4,6},{7,8,9}};
-</span><span class="code-line line-number" line="98">    p=&amp;a[0][0];
-</span><span class="code-line line-number" line="99">    for (i=0;i&lt;3;i++) printf("%d ",*(p+i*3));
-</span><span class="code-line line-number" line="100">    putchar('\n');
-</span><span class="code-line line-number" line="101">    for (i=0;i&lt;3;i++) printf("%d ",*(*(a+i)+i));
-</span><span class="code-line line-number" line="102">    amov(p,a,3);
-</span><span class="code-line line-number" line="103">    return 0;
-</span><span class="code-line line-number" line="104">}
-</span><span class="code-line line-number" line="105">*/
-</span><span class="code-line line-number" line="106"> 1  2  7       （1分）
-</span><span class="code-line line-number" line="107"> 1  4  9        （1分）
-</span><span class="code-line line-number" line="108"> S=48           （2分）
-</span><span class="code-line line-number" line="109">*/
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include&lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">long fib(int g) 
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">    switch (g) {
+                    </span><span class="code-line line-number" line="6">    case 0: return 0;
+                    </span><span class="code-line line-number" line="7">    case 1: case 2: return 1;
+                    </span><span class="code-line line-number" line="8">    }
+                    </span><span class="code-line line-number" line="9">    return(fib(g-1)+fib(g-2));
+                    </span><span class="code-line line-number" line="10">}
+                    </span><span class="code-line line-number" line="11">int main() 
+                    </span><span class="code-line line-number" line="12">{
+                    </span><span class="code-line line-number" line="13">    long k;
+                    </span><span class="code-line line-number" line="14">    k=fib(7);
+                    </span><span class="code-line line-number" line="15">    printf("k=%d\n",k);
+                    </span><span class="code-line line-number" line="16">    return 0;
+                    </span><span class="code-line line-number" line="17">}
+                    </span><span class="code-line line-number" line="18">//k=13
+                    </span><span class="code-line line-number" line="19">
+                    </span><span class="code-line line-number" line="20">
+                    </span><span class="code-line line-number" line="21">2. 写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="22">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="23">int main()
+                    </span><span class="code-line line-number" line="24">{
+                    </span><span class="code-line line-number" line="25">    int i,r;
+                    </span><span class="code-line line-number" line="26">    char s1[80]="bus",s2[80]="book";
+                    </span><span class="code-line line-number" line="27">    for (i=r=0;s1[i]!='\0'&amp;&amp;s2[i]!='\0';i++)
+                    </span><span class="code-line line-number" line="28">    	if (s1[i]==s2[i]) i++;//注意这里也有i++
+                    </span><span class="code-line line-number" line="29">    	else { r=s1[i]-s2[i]; break; }
+                    </span><span class="code-line line-number" line="30">    printf("%d",r);
+                    </span><span class="code-line line-number" line="31">    return 0;
+                    </span><span class="code-line line-number" line="32">}
+                    </span><span class="code-line line-number" line="33">//4
+                    </span><span class="code-line line-number" line="34">
+                    </span><span class="code-line line-number" line="35">
+                    </span><span class="code-line line-number" line="36">3. 写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="37">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="38">#define M 5
+                    </span><span class="code-line line-number" line="39">#define f(x) x*x
+                    </span><span class="code-line line-number" line="40">#define ff(x) (x*x)
+                    </span><span class="code-line line-number" line="41">int main()
+                    </span><span class="code-line line-number" line="42">{
+                    </span><span class="code-line line-number" line="43">    int n1,n2;
+                    </span><span class="code-line line-number" line="44">    n1=100/f(M);
+                    </span><span class="code-line line-number" line="45">    n2=100/ff(M);
+                    </span><span class="code-line line-number" line="46">    printf("n1=%d,n2=%d\n",n1,n2); 
+                    </span><span class="code-line line-number" line="47">    return 0;
+                    </span><span class="code-line line-number" line="48">}
+                    </span><span class="code-line line-number" line="49">//n1=100,n2=4
+                    </span><span class="code-line line-number" line="50">
+                    </span><span class="code-line line-number" line="51">
+                    </span><span class="code-line line-number" line="52">4. 写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="53">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="54">#define M 4
+                    </span><span class="code-line line-number" line="55">void fun(int *a)
+                    </span><span class="code-line line-number" line="56">{
+                    </span><span class="code-line line-number" line="57">    int i,j,k,m;
+                    </span><span class="code-line line-number" line="58">    for(i=M;i&gt;0;i--) {
+                    </span><span class="code-line line-number" line="59">        k=*(a+M-1);
+                    </span><span class="code-line line-number" line="60">        for (j=M-2;j&gt;=0;j--)
+                    </span><span class="code-line line-number" line="61">        	*(a+j+1)=*(a+j);
+                    </span><span class="code-line line-number" line="62">        *a=k;
+                    </span><span class="code-line line-number" line="63">        for(m=0;m&lt;M;m++)
+                    </span><span class="code-line line-number" line="64">            printf("%d",*(a+m));
+                    </span><span class="code-line line-number" line="65">        printf("\n");
+                    </span><span class="code-line line-number" line="66">    }
+                    </span><span class="code-line line-number" line="67">}
+                    </span><span class="code-line line-number" line="68">int main()
+                    </span><span class="code-line line-number" line="69">{
+                    </span><span class="code-line line-number" line="70">    int a[M]={1,2,3,4};
+                    </span><span class="code-line line-number" line="71">    fun(a);
+                    </span><span class="code-line line-number" line="72">    return 0;
+                    </span><span class="code-line line-number" line="73">}
+                    </span><span class="code-line line-number" line="74">/*
+                    </span><span class="code-line line-number" line="75">4123
+                    </span><span class="code-line line-number" line="76">3412
+                    </span><span class="code-line line-number" line="77">2341
+                    </span><span class="code-line line-number" line="78">1234
+                    </span><span class="code-line line-number" line="79">*/
+                    </span><span class="code-line line-number" line="80">
+                    </span><span class="code-line line-number" line="81">
+                    </span><span class="code-line line-number" line="82">5. 写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="83">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="84">void amov(int *p, int (*a)[3], int n)
+                    </span><span class="code-line line-number" line="85">{
+                    </span><span class="code-line line-number" line="86">    int i,j,s=0;
+                    </span><span class="code-line line-number" line="87">    for (i=0;i&lt;n;i++)
+                    </span><span class="code-line line-number" line="88">        for(j=0;j&lt;n;j++) {
+                    </span><span class="code-line line-number" line="89">            *p=(*(a+j))[i];
+                    </span><span class="code-line line-number" line="90">            s=s+*p;
+                    </span><span class="code-line line-number" line="91">            p++;
+                    </span><span class="code-line line-number" line="92">       	}
+                    </span><span class="code-line line-number" line="93">    printf("\ns=%d\n",s);
+                    </span><span class="code-line line-number" line="94">}
+                    </span><span class="code-line line-number" line="95">int main()
+                    </span><span class="code-line line-number" line="96">{
+                    </span><span class="code-line line-number" line="97">    int i,*p,a[3][3]={{1,3,5},{2,4,6},{7,8,9}};
+                    </span><span class="code-line line-number" line="98">    p=&amp;a[0][0];
+                    </span><span class="code-line line-number" line="99">    for (i=0;i&lt;3;i++) printf("%d ",*(p+i*3));
+                    </span><span class="code-line line-number" line="100">    putchar('\n');
+                    </span><span class="code-line line-number" line="101">    for (i=0;i&lt;3;i++) printf("%d ",*(*(a+i)+i));
+                    </span><span class="code-line line-number" line="102">    amov(p,a,3);
+                    </span><span class="code-line line-number" line="103">    return 0;
+                    </span><span class="code-line line-number" line="104">}
+                    </span><span class="code-line line-number" line="105">*/
+                    </span><span class="code-line line-number" line="106"> 1  2  7       （1分）
+                    </span><span class="code-line line-number" line="107"> 1  4  9        （1分）
+                    </span><span class="code-line line-number" line="108"> S=48           （2分）
+                    </span><span class="code-line line-number" line="109">*/
+                    </span></code></pre>
+                    <pre><code class="code-highlight"><span class="code-line line-number" line="1">1. 假设输入如下，请写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="2">693 312 3579 2468 99999 10101 37 21 258 963 555
+                    </span><span class="code-line line-number" line="3">^Z （EOF字符）
+                    </span><span class="code-line line-number" line="4">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="5">int main( )
+                    </span><span class="code-line line-number" line="6">{
+                    </span><span class="code-line line-number" line="7">    unsigned a, b;
+                    </span><span class="code-line line-number" line="8">    while (scanf("%u %u", &amp;a, &amp;b) == 2) {
+                    </span><span class="code-line line-number" line="9">        int c = 0, ans = 0;
+                    </span><span class="code-line line-number" line="10">        do {
+                    </span><span class="code-line line-number" line="11">            c = (a%10 + b%10 + c) / 10;
+                    </span><span class="code-line line-number" line="12">            ans += c;
+                    </span><span class="code-line line-number" line="13">            a /= 10, b /= 10;
+                    </span><span class="code-line line-number" line="14">        } while (a || b);
+                    </span><span class="code-line line-number" line="15">        printf("%d\n", ans);
+                    </span><span class="code-line line-number" line="16">        if (!ans) break;
+                    </span><span class="code-line line-number" line="17">    }
+                    </span><span class="code-line line-number" line="18">    return 0;
+                    </span><span class="code-line line-number" line="19">}
+                    </span><span class="code-line line-number" line="20">
+                    </span><span class="code-line line-number" line="21">2. 请写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="22">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="23">int main( )
+                    </span><span class="code-line line-number" line="24">{
+                    </span><span class="code-line line-number" line="25">    int i;
+                    </span><span class="code-line line-number" line="26">    static int s = 0;
+                    </span><span class="code-line line-number" line="27">    for (i=1; i&lt;4; i++) {
+                    </span><span class="code-line line-number" line="28">        static int s = 0;
+                    </span><span class="code-line line-number" line="29">        s += i * i;
+                    </span><span class="code-line line-number" line="30">        printf("%d ", s);
+                    </span><span class="code-line line-number" line="31">    }
+                    </span><span class="code-line line-number" line="32">    printf("%d\n", s);
+                    </span><span class="code-line line-number" line="33">    return 0;
+                    </span><span class="code-line line-number" line="34">}
+                    </span><span class="code-line line-number" line="35">
+                    </span><span class="code-line line-number" line="36">
+                    </span><span class="code-line line-number" line="37">5. 请写出下面程序的运行结果。
+                    </span><span class="code-line line-number" line="38">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="39">int f1(char *pc)
+                    </span><span class="code-line line-number" line="40">{
+                    </span><span class="code-line line-number" line="41">    if (*pc) return 1+f1(pc+1);
+                    </span><span class="code-line line-number" line="42">    return 0;
+                    </span><span class="code-line line-number" line="43">}
+                    </span><span class="code-line line-number" line="44">char *f2(char *pa, char *pb)
+                    </span><span class="code-line line-number" line="45">{
+                    </span><span class="code-line line-number" line="46">    if (*pa = *pb) f2(pa+1, pb+1);
+                    </span><span class="code-line line-number" line="47">    return pa;
+                    </span><span class="code-line line-number" line="48">}
+                    </span><span class="code-line line-number" line="49">char *f3(char *pa, char *pb)
+                    </span><span class="code-line line-number" line="50">{
+                    </span><span class="code-line line-number" line="51">    if (*pa)
+                    </span><span class="code-line line-number" line="52">        f3(pa+1, pb);
+                    </span><span class="code-line line-number" line="53">    else
+                    </span><span class="code-line line-number" line="54">        f2(pa, pb);
+                    </span><span class="code-line line-number" line="55">    return pa;
+                    </span><span class="code-line line-number" line="56">}
+                    </span><span class="code-line line-number" line="57">int main( )
+                    </span><span class="code-line line-number" line="58">{
+                    </span><span class="code-line line-number" line="59">    char a[20] = "0123", b[20] = "abc";
+                    </span><span class="code-line line-number" line="60">    int c=f1(a);
+                    </span><span class="code-line line-number" line="61">    printf("%d\n", c);
+                    </span><span class="code-line line-number" line="62">    if (c%2)   printf("%s", f2(a, b));
+                    </span><span class="code-line line-number" line="63">    else   printf("%s", f3(a, b));
+                    </span><span class="code-line line-number" line="64">    return 0;
+                    </span><span class="code-line line-number" line="65">}
+                    </span></code></pre>
                     <h3>核心考察知识点（实际上根据代码一步一步细心模拟即可，一定要细心，这里给的知识点只是针对这套卷）</h3>
                     <h4>1. 递归函数（斐波那契数列）</h4>
                     <ul>
@@ -976,10 +1181,10 @@
                         <li>
                             <p>运行结果（每行输出一次移位后的数组）</p>
                             <pre class="language-plaintext"><code class="language-plaintext code-highlight"><span class="code-line line-number" line="1">4123
-</span><span class="code-line line-number" line="2">3412
-</span><span class="code-line line-number" line="3">2341
-</span><span class="code-line line-number" line="4">1234
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">3412
+                    </span><span class="code-line line-number" line="3">2341
+                    </span><span class="code-line line-number" line="4">1234
+                    </span></code></pre>
                         </li>
                         <li>
                             <p>考点：数组元素的移动（通过指针访问数组元素<code>*(a+j)</code>），循环嵌套的逻辑（外层控制移位次数，内层控制元素后移）。</p>
@@ -1002,9 +1207,9 @@
                         <li>
                             <p>运行结果：</p>
                             <pre class="language-plaintext"><code class="language-plaintext code-highlight"><span class="code-line line-number" line="1">1 2 7
-</span><span class="code-line line-number" line="2">1 4 9
-</span><span class="code-line line-number" line="3">s=45
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">1 4 9
+                    </span><span class="code-line line-number" line="3">s=45
+                    </span></code></pre>
                         </li>
                         <li>
                             <p>考点：二维数组的指针访问（<code>*(a+i)</code>是第<code>i</code>行的首地址，<code>*(*(a+i)+j)</code>是<code>a[i][j]</code>），矩阵转置的逻辑（行列互换），累加求和。（<strong>二维数组在内存中的存储</strong>）
@@ -1060,91 +1265,91 @@
                     <h2>五、程序完善题（28 分）</h2>
                     <h3>例题</h3>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">1. 函数 selSort(int a[], int n)采用选择排序法，对长度为 n 的一维整型数组 a 进行降序排序。
-</span><span class="code-line line-number" line="2">void selSort(int a[], int n)
-</span><span class="code-line line-number" line="3">{
-</span><span class="code-line line-number" line="4">    int i, j;
-</span><span class="code-line line-number" line="5">    for (i=0; i&lt;n-1; i++) {
-</span><span class="code-line line-number" line="6">        int idx = i;
-</span><span class="code-line line-number" line="7">        for (j=i+1; j&lt;n; j++) {
-</span><span class="code-line line-number" line="8">            if ( ①_____ &lt; a[j])
-</span><span class="code-line line-number" line="9">            	idx = j;
-</span><span class="code-line line-number" line="10">        }
-</span><span class="code-line line-number" line="11">        if (idx != i)
-</span><span class="code-line line-number" line="12">        	a[i] = a[i] + a[idx], a[idx] = ②_____ , a[i] = ③_____ ;
-</span><span class="code-line line-number" line="13">    }
-</span><span class="code-line line-number" line="14">}
-</span><span class="code-line line-number" line="15">
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">void selSort(int a[], int n)
+                    </span><span class="code-line line-number" line="3">{
+                    </span><span class="code-line line-number" line="4">    int i, j;
+                    </span><span class="code-line line-number" line="5">    for (i=0; i&lt;n-1; i++) {
+                    </span><span class="code-line line-number" line="6">        int idx = i;
+                    </span><span class="code-line line-number" line="7">        for (j=i+1; j&lt;n; j++) {
+                    </span><span class="code-line line-number" line="8">            if ( ①_____ &lt; a[j])
+                    </span><span class="code-line line-number" line="9">            	idx = j;
+                    </span><span class="code-line line-number" line="10">        }
+                    </span><span class="code-line line-number" line="11">        if (idx != i)
+                    </span><span class="code-line line-number" line="12">        	a[i] = a[i] + a[idx], a[idx] = ②_____ , a[i] = ③_____ ;
+                    </span><span class="code-line line-number" line="13">    }
+                    </span><span class="code-line line-number" line="14">}
+                    </span><span class="code-line line-number" line="15">
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">2. 函数 delSubstr(char *str, const char *substr)用于删除母串 str 中所出现的所有子串 substr。该函数在实现时用到了标准函数库 string.h 中的字符串处理函数。
-</span><span class="code-line line-number" line="2">#include &lt;string.h&gt;
-</span><span class="code-line line-number" line="3">void delSubstr (char *str, const char *substr)
-</span><span class="code-line line-number" line="4">{
-</span><span class="code-line line-number" line="5">    int lenm = strlen(str), lens = strlen(substr);
-</span><span class="code-line line-number" line="6">    char *pch = str;
-</span><span class="code-line line-number" line="7">    int i, j;
-</span><span class="code-line line-number" line="8">    while ((pch=strstr( ①_____ , substr)) != NULL) {
-</span><span class="code-line line-number" line="9">        for (i=0; i&lt;lens; i++) *pch++ = '\0';
-</span><span class="code-line line-number" line="10">    }
-</span><span class="code-line line-number" line="11">    for (pch=str,i=0; i&lt;lenm; i++) {
-</span><span class="code-line line-number" line="12">        if (*(str+i) != '\0')
-</span><span class="code-line line-number" line="13">      		*pch++ = ②_____ ;
-</span><span class="code-line line-number" line="14">    }
-</span><span class="code-line line-number" line="15">    *pch = ③_____;
-</span><span class="code-line line-number" line="16">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include &lt;string.h&gt;
+                    </span><span class="code-line line-number" line="3">void delSubstr (char *str, const char *substr)
+                    </span><span class="code-line line-number" line="4">{
+                    </span><span class="code-line line-number" line="5">    int lenm = strlen(str), lens = strlen(substr);
+                    </span><span class="code-line line-number" line="6">    char *pch = str;
+                    </span><span class="code-line line-number" line="7">    int i, j;
+                    </span><span class="code-line line-number" line="8">    while ((pch=strstr( ①_____ , substr)) != NULL) {
+                    </span><span class="code-line line-number" line="9">        for (i=0; i&lt;lens; i++) *pch++ = '\0';
+                    </span><span class="code-line line-number" line="10">    }
+                    </span><span class="code-line line-number" line="11">    for (pch=str,i=0; i&lt;lenm; i++) {
+                    </span><span class="code-line line-number" line="12">        if (*(str+i) != '\0')
+                    </span><span class="code-line line-number" line="13">      		*pch++ = ②_____ ;
+                    </span><span class="code-line line-number" line="14">    }
+                    </span><span class="code-line line-number" line="15">    *pch = ③_____;
+                    </span><span class="code-line line-number" line="16">}
+                    </span></code></pre>
                     <pre><code class="code-highlight"><span class="code-line line-number" line="1">4. 下面是十进制超大整数加法运算程序中的几个函数，请完善代码。
-</span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
-</span><span class="code-line line-number" line="3">#include &lt;stdlib.h&gt;
-</span><span class="code-line line-number" line="4">struct intnode {
-</span><span class="code-line line-number" line="5">    int data;
-</span><span class="code-line line-number" line="6">    struct intnode *next;
-</span><span class="code-line line-number" line="7">};
-</span><span class="code-line line-number" line="8">/* 采用后进先出方式建立链表，存放输入的十进制超大整数 */
-</span><span class="code-line line-number" line="9">void inputdata( ①_____ phd)
-</span><span class="code-line line-number" line="10">{
-</span><span class="code-line line-number" line="11">    char ch;
-</span><span class="code-line line-number" line="12">    struct intnode *p;
-</span><span class="code-line line-number" line="13">    while ((ch=getchar()) != '\n') {
-</span><span class="code-line line-number" line="14">        p = (struct intnode *)malloc(sizeof(struct intnode));
-</span><span class="code-line line-number" line="15">        p-&gt;data = ch - '0';
-</span><span class="code-line line-number" line="16">        p-&gt;next = ②_____ ;
-</span><span class="code-line line-number" line="17">        *phd = p;
-</span><span class="code-line line-number" line="18">    }
-</span><span class="code-line line-number" line="19">}
-</span><span class="code-line line-number" line="20">/* 超大整数的加法运算，采用先进先出方式创建和值链表 */
-</span><span class="code-line line-number" line="21">struct intnode *exadder(struct intnode *p1, struct intnode *p2)
-</span><span class="code-line line-number" line="22">{
-</span><span class="code-line line-number" line="23">    struct intnode *head, *tail, *p;
-</span><span class="code-line line-number" line="24">    int carry = 0;
-</span><span class="code-line line-number" line="25">    head = tail = (struct intnode *)malloc(sizeof(struct intnode));
-</span><span class="code-line line-number" line="26">    while (p1!=NULL &amp;&amp; p2!=NULL) {
-</span><span class="code-line line-number" line="27">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
-</span><span class="code-line line-number" line="28">        tail = ③_____;
-</span><span class="code-line line-number" line="29">        carry += p1-&gt;data + p2-&gt;data;
-</span><span class="code-line line-number" line="30">        tail-&gt;data = carry % 10 + '0';
-</span><span class="code-line line-number" line="31">        carry /= 10;
-</span><span class="code-line line-number" line="32">        p1 = p1-&gt;next, p2 = p2-&gt;next;
-</span><span class="code-line line-number" line="33">	}
-</span><span class="code-line line-number" line="34">    p = p1!=NULL ? ④_____ ;
-</span><span class="code-line line-number" line="35">    while (p != NULL) {
-</span><span class="code-line line-number" line="36">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
-</span><span class="code-line line-number" line="37">        tail = tail-&gt;next;
-</span><span class="code-line line-number" line="38">        carry += p-&gt;data;
-</span><span class="code-line line-number" line="39">        tail-&gt;data = carry % 10 + '0';
-</span><span class="code-line line-number" line="40">        carry /= 10;
-</span><span class="code-line line-number" line="41">        p = p-&gt;next;
-</span><span class="code-line line-number" line="42">	}	
-</span><span class="code-line line-number" line="43">    if (carry) {
-</span><span class="code-line line-number" line="44">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
-</span><span class="code-line line-number" line="45">        tail = tail-&gt;next;
-</span><span class="code-line line-number" line="46">        tail-&gt;data = carry + '0';
-</span><span class="code-line line-number" line="47">    }
-</span><span class="code-line line-number" line="48">    tail-&gt;next = ⑤_____ ;
-</span><span class="code-line line-number" line="49">    p = head-&gt;next;
-</span><span class="code-line line-number" line="50">    free(head);
-</span><span class="code-line line-number" line="51">    return p;
-</span><span class="code-line line-number" line="52">}
-</span></code></pre>
+                    </span><span class="code-line line-number" line="2">#include &lt;stdio.h&gt;
+                    </span><span class="code-line line-number" line="3">#include &lt;stdlib.h&gt;
+                    </span><span class="code-line line-number" line="4">struct intnode {
+                    </span><span class="code-line line-number" line="5">    int data;
+                    </span><span class="code-line line-number" line="6">    struct intnode *next;
+                    </span><span class="code-line line-number" line="7">};
+                    </span><span class="code-line line-number" line="8">/* 采用后进先出方式建立链表，存放输入的十进制超大整数 */
+                    </span><span class="code-line line-number" line="9">void inputdata( ①_____ phd)
+                    </span><span class="code-line line-number" line="10">{
+                    </span><span class="code-line line-number" line="11">    char ch;
+                    </span><span class="code-line line-number" line="12">    struct intnode *p;
+                    </span><span class="code-line line-number" line="13">    while ((ch=getchar()) != '\n') {
+                    </span><span class="code-line line-number" line="14">        p = (struct intnode *)malloc(sizeof(struct intnode));
+                    </span><span class="code-line line-number" line="15">        p-&gt;data = ch - '0';
+                    </span><span class="code-line line-number" line="16">        p-&gt;next = ②_____ ;
+                    </span><span class="code-line line-number" line="17">        *phd = p;
+                    </span><span class="code-line line-number" line="18">    }
+                    </span><span class="code-line line-number" line="19">}
+                    </span><span class="code-line line-number" line="20">/* 超大整数的加法运算，采用先进先出方式创建和值链表 */
+                    </span><span class="code-line line-number" line="21">struct intnode *exadder(struct intnode *p1, struct intnode *p2)
+                    </span><span class="code-line line-number" line="22">{
+                    </span><span class="code-line line-number" line="23">    struct intnode *head, *tail, *p;
+                    </span><span class="code-line line-number" line="24">    int carry = 0;
+                    </span><span class="code-line line-number" line="25">    head = tail = (struct intnode *)malloc(sizeof(struct intnode));
+                    </span><span class="code-line line-number" line="26">    while (p1!=NULL &amp;&amp; p2!=NULL) {
+                    </span><span class="code-line line-number" line="27">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
+                    </span><span class="code-line line-number" line="28">        tail = ③_____;
+                    </span><span class="code-line line-number" line="29">        carry += p1-&gt;data + p2-&gt;data;
+                    </span><span class="code-line line-number" line="30">        tail-&gt;data = carry % 10 + '0';
+                    </span><span class="code-line line-number" line="31">        carry /= 10;
+                    </span><span class="code-line line-number" line="32">        p1 = p1-&gt;next, p2 = p2-&gt;next;
+                    </span><span class="code-line line-number" line="33">	}
+                    </span><span class="code-line line-number" line="34">    p = p1!=NULL ? ④_____ ;
+                    </span><span class="code-line line-number" line="35">    while (p != NULL) {
+                    </span><span class="code-line line-number" line="36">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
+                    </span><span class="code-line line-number" line="37">        tail = tail-&gt;next;
+                    </span><span class="code-line line-number" line="38">        carry += p-&gt;data;
+                    </span><span class="code-line line-number" line="39">        tail-&gt;data = carry % 10 + '0';
+                    </span><span class="code-line line-number" line="40">        carry /= 10;
+                    </span><span class="code-line line-number" line="41">        p = p-&gt;next;
+                    </span><span class="code-line line-number" line="42">	}	
+                    </span><span class="code-line line-number" line="43">    if (carry) {
+                    </span><span class="code-line line-number" line="44">        tail-&gt;next = (struct intnode *)malloc(sizeof(struct intnode));
+                    </span><span class="code-line line-number" line="45">        tail = tail-&gt;next;
+                    </span><span class="code-line line-number" line="46">        tail-&gt;data = carry + '0';
+                    </span><span class="code-line line-number" line="47">    }
+                    </span><span class="code-line line-number" line="48">    tail-&gt;next = ⑤_____ ;
+                    </span><span class="code-line line-number" line="49">    p = head-&gt;next;
+                    </span><span class="code-line line-number" line="50">    free(head);
+                    </span><span class="code-line line-number" line="51">    return p;
+                    </span><span class="code-line line-number" line="52">}
+                    </span></code></pre>
                     <h3>核心考察知识点</h3>
                     <h3>题目风格与C语言实验的题目有些类似，这道题对大家的代码能力有一定考察，也是最没有套路的题目，只要平常有写代码，做几道题就知道怎么写了，下面给出的知识点也是仅仅只能针对这道题，但是逻辑都是类似的，重点关注链表操作（如插入、反转、删除等）
                     </h3>
