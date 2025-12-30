@@ -13,29 +13,6 @@
         return isNaN(n) ? null : n;
     }
 
-    function safeGetLS(key) {
-        try { return localStorage.getItem(key); } catch (e) { return null; }
-    }
-
-    function safeSetLS(key, val) {
-        try { localStorage.setItem(key, val); } catch (e) { }
-    }
-
-    function bumpLocalCount(counterKey) {
-        var lsKey = 'siteVisit.count.' + counterKey;
-        var cur = toInt(safeGetLS(lsKey));
-        if (cur === null) cur = 0;
-        cur += 1;
-        safeSetLS(lsKey, String(cur));
-        return cur;
-    }
-
-    function getLocalCount(counterKey) {
-        var lsKey = 'siteVisit.count.' + counterKey;
-        var cur = toInt(safeGetLS(lsKey));
-        return cur === null ? 0 : cur;
-    }
-
     function updateAll() {
         var blocks = document.querySelectorAll('.site-visit[data-counter-key]');
         if (!blocks || blocks.length === 0) return false;
@@ -69,27 +46,9 @@
     }
 
     function start() {
-        // First: ensure local counter increments once per page load (for fallback mode).
-        // We mark a session flag to avoid double-counting when this script is evaluated twice.
-        var blocks = document.querySelectorAll('.site-visit[data-counter-key]');
-        for (var i = 0; i < blocks.length; i++) {
-            var k = blocks[i].getAttribute('data-counter-key') || '';
-            if (!k) continue;
-            var sessionKey = 'siteVisit.session.' + k;
-            try {
-                if (!sessionStorage.getItem(sessionKey)) {
-                    bumpLocalCount(k);
-                    sessionStorage.setItem(sessionKey, '1');
-                }
-            } catch (e) {
-                // If sessionStorage is blocked, fall back to counting anyway.
-                bumpLocalCount(k);
-            }
-        }
-
         // Try a bunch of times because busuanzi is async and sometimes slow.
         var tries = 0;
-        var maxTries = 40; // ~10s if 250ms
+        var maxTries = 120; // ~30s if 250ms
         var timer = setInterval(function () {
             tries++;
             var ok = false;
@@ -99,18 +58,9 @@
                 return;
             }
 
-            // If busuanzi still didn't populate, switch to local fallback after timeout.
+            // If busuanzi still didn't populate, keep “加载中...”.
             if (tries >= maxTries) {
                 clearInterval(timer);
-                for (var i = 0; i < blocks.length; i++) {
-                    var el = blocks[i];
-                    var key = el.getAttribute('data-counter-key') || '';
-                    var outEl = el.querySelector('.site-visit-value');
-                    if (!outEl || !key) continue;
-                    var local = getLocalCount(key);
-                    outEl.textContent = String(local + 50);
-                    outEl.title = 'local-counter';
-                }
             }
         }, 250);
 
